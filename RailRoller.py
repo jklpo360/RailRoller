@@ -764,12 +764,27 @@ def print_help():
   print("L/load: Loads the game from a file in the local directory.")
   print("Q/quit: Quits the game.")
 
-def save(): #TODO: Implement.
-  save_file = open("save.txt", "w")
-  save_file.writelines()
+def save(save_file, player_names, player_regions, destinations, home_cities, locomotives, player_count): 
+  with open(save_file, "w") as file:
+      file.write(",".join(player_names) + "\n")
+      file.write(",".join(player_regions) + "\n")
+      file.write(",".join(destinations) + "\n")
+      file.write(",".join(home_cities) + "\n")
+      file.write(",".join(map(str, locomotives)) + "\n")
+      file.write(str(player_count))
 
-def load(): #TODO: Implement.
-  pass
+def load(save_file):
+  with open(save_file, "r") as file:
+    lines = file.readlines()
+    player_names = lines[0].strip().split(",")
+    player_regions = lines[1].strip().split(",")
+    destinations = lines[2].strip().split(",")
+    home_cities = lines[3].strip().split(",")
+    locomotives = list(map(int, lines[4].strip().split(",")))
+    player_count = int(lines[5])
+    
+    return player_names, player_regions, destinations, home_cities, locomotives, player_count
+
 
 os.system('cls')
 player_count = 0
@@ -833,17 +848,26 @@ try:
       print_help()
     
     elif userinput == "S" or userinput == "save":
-      save()
+      userinput = input("Which save file #: ")
+      savefile = "save" + userinput + ".txt"
+      save(savefile, player_names, player_regions, destinations, home_cities, locomotives, player_count)
     
     elif userinput == "L" or userinput == "load":
-      load()
+      userinput = input("Are you sure you want to overwrite current data?(Y/n): ")
+      if userinput == "Y":
+        userinput = input("Which save file #: ")
+        savefile = "save" + userinput + ".txt"
+        try:
+          player_names, player_regions, destinations, home_cities, locomotives, player_count = load(savefile)
+        except FileNotFoundError:
+          print("No saved data in the file #")
     
     elif userinput == "n":
       userinput = input("Current name is: " + player_names[current_player] + ".\nWould you like to change it?(Y/n): ")
       if userinput == "Y":
         userinput = input("Enter your new name: ")
         player_names[current_player] = userinput
-        print("Name changed to: " + user_input)
+        print("Name changed to: " + userinput)
 
     else:
       print("Invalid input")
