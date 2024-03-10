@@ -649,6 +649,7 @@ def init_home_cities():
     dice22 = random.randint(1,6)
     blackdice2 = random.randint(0,1)
     home_cities[i] = cities[region[(blackdice1, dice11 + dice21)]][(blackdice2, dice12 + dice22)]
+    destinations[i] = home_cities[i]
 
 def init_player_names():
   for i in range(player_count):
@@ -674,9 +675,12 @@ def choose_destination():
         print("Invalid input")
   else:
     player_regions[current_player] = random_region
+  old_city = destinations[current_player]
+  new_city = cities[player_regions[current_player]][(blackdice2, dice12 + dice22)]
   print("Your new region is: " + region_names[player_regions[current_player]])
-  destinations[current_player] = cities[player_regions[current_player]][(blackdice2, dice12 + dice22)]
+  destinations[current_player] = new_city
   print("Your new destination is: " + destinations[current_player])
+  print("Your reward will be: " + str(print_reward(old_city, new_city)))
 
 def pass_turn(current_player):
   os.system('cls')
@@ -688,10 +692,34 @@ def pass_turn(current_player):
 def print_destination():
   print("Your destination is: " + destinations[current_player])
 
+def print_reward(origin, destination):
+  origin_region = ""
+  origin_number = 0
+  i = 0
+  for key in alphabetical_cities:
+    city_list = alphabetical_cities.get(key)
+    if origin in city_list:
+      origin_region = key
+      origin_number = city_list.index(origin)
+    i += 1
+  destination_region = ""
+  destination_number = 0
+  i = 0
+  for key in alphabetical_cities:
+    city_list = alphabetical_cities.get(key)
+    if destination in city_list:
+      destination_region = key
+      destination_number = city_list.index(destination)
+    i += 1
+  table_key = origin_region + destination_region
+  table = payoff_chart[table_key]
+  #print("Destination reward: " + str(table[origin_number][destination_number]))
+  return table[origin_number][destination_number]
+
 def roll():
   dice1 = random.randint(1,6)
   dice2 = random.randint(1,6)
-  dice3 = random.randint(1, 6)
+  dice3 = random.randint(1,6)
 
   if locomotives[current_player] == default_locomotive:
     if dice1 == dice2 and dice1 == 6:
