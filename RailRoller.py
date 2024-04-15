@@ -144,7 +144,7 @@ cities = {
     (1,9): "KANSAS CITY",
     (1,10): "PUEBLO",
     (1,11): "PUEBLO",
-    (1,12): "OKL. CITY",
+    (1,12): "OKLAHOMA CITY",
 
     (0,2): "OKLAHOMA CITY",
     (0,3): "ST PAUL",
@@ -723,20 +723,20 @@ def roll():
 
   if locomotives[current_player] == default_locomotive:
     if dice1 == dice2 and dice1 == 6:
-      print("Bonus dice: " + dice3)
+      print("Bonus dice: " + str(dice3))
       return dice1 + dice2 + dice3
     else:
       return dice1 + dice2
 
   elif locomotives[current_player] == express:
     if dice1 == dice2:
-      print("Bonus dice: " + dice3)
+      print("Bonus dice: " + str(dice3))
       return dice1 + dice2 + dice3
     else: 
       return dice1 + dice2
 
   elif locomotives[current_player] == superchief:
-    print("Bonus dice: " + dice3)
+    print("Bonus dice: " + str(dice3))
     return dice1 + dice2 + dice3
 
 def upgrade():
@@ -767,6 +767,14 @@ def print_locomotive():
 
 def print_player_turn_message():
   print("                  " + player_names[current_player] + "'s turn                  ")
+
+def set_home_city():
+  user_input = input("Please enter your home city: ")
+  home_cities[current_player] = user_input
+
+def set_destination():
+  user_input = input("Please enter your home city: ")
+  destinations[current_player] = user_input
 
 def print_home_city():
   print(home_cities[current_player])
@@ -846,7 +854,7 @@ print_player_turn_message()
 try:
   while True:
     print()
-    userinput = input("Input (r/c/p/u/d/l/h/n/H/help/S/save/L/load/Q/quit): \n")
+    userinput = input("Input (r/c/p/u/d/l/h/n/sh/sd/H/help/S/save/L/load/Q/quit): \n")
     if userinput == "r":
       print(roll())
     
@@ -872,6 +880,12 @@ try:
     elif userinput == "h":
       print_home_city()
     
+    elif userinput == "sh":
+      set_home_city()
+    
+    elif userinput == "dh":
+      set_destination()
+
     elif userinput == "H" or userinput == "help":
       print_help()
     
