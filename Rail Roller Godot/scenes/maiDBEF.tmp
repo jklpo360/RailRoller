@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgwiiyxn01tcv"]
+
+[ext_resource type="PackedScene" uid="uid://d1l8nkcapvtnh" path="res://scenes/four_player.tscn" id="1_6b6bi"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="FourPlayer" type="Node2D" parent="."]
+
+[node name="FourPlayer" parent="FourPlayer" instance=ExtResource("1_6b6bi")]

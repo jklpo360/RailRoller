@@ -1,0 +1,1540 @@
+[gd_scene load_steps=26 format=3 uid="uid://bgwiiyxn01tcv"]
+
+[ext_resource type="Script" path="res://scenes/ExitMenu.gd" id="1_pytis"]
+[ext_resource type="Texture2D" uid="uid://du7iihxbpp0kh" path="res://texture/choose_region_background.png" id="2_yy2pd"]
+[ext_resource type="Script" path="res://scripts/three_player.gd" id="3_6644k"]
+[ext_resource type="Texture2D" uid="uid://d3efg3vds538f" path="res://texture/full_resolution_three_player.png" id="4_g02b7"]
+[ext_resource type="Texture2D" uid="uid://b44dl80qtr1qy" path="res://texture/full_resolution_four_player.png" id="5_nau4m"]
+[ext_resource type="Script" path="res://scripts/four_player.gd" id="5_y01ik"]
+[ext_resource type="Script" path="res://scripts/five_player.gd" id="7_avx76"]
+[ext_resource type="Texture2D" uid="uid://cmg2qahvpv7fh" path="res://texture/full_resolution_five_player.png" id="8_it0df"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_1gr3v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3uxks"]
+font_size = 50
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xjkiv"]
+font_size = 30
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07avf"]
+size = Vector2(193, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w3y4k"]
+size = Vector2(193, 113)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0d1vg"]
+size = Vector2(193, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ovv30"]
+size = Vector2(193, 116)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fjo0q"]
+size = Vector2(192, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kp24u"]
+size = Vector2(192, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ydnr0"]
+size = Vector2(193, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6svyi"]
+size = Vector2(155, 149)
+
+[sub_resource type="QuadMesh" id="QuadMesh_hufy1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8xife"]
+font_size = 50
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o7w5e"]
+font_size = 50
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_3pspo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f7fjy"]
+font_size = 40
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_u1ore"]
+font_size = 50
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Main" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ExitMenu" type="Node2D" parent="."]
+
+[node name="ExitMenu" type="Node2D" parent="ExitMenu"]
+script = ExtResource("1_pytis")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="ExitMenu/ExitMenu"]
+visible = false
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="ExitMenu/ExitMenu/CanvasLayer"]
+position = Vector2(0, -100)
+scale = Vector2(960, -540)
+mesh = SubResource("QuadMesh_1gr3v")
+texture = ExtResource("2_yy2pd")
+
+[node name="Text" type="Node2D" parent="ExitMenu/ExitMenu/CanvasLayer"]
+
+[node name="TopText" type="Label" parent="ExitMenu/ExitMenu/CanvasLayer/Text"]
+offset_left = -266.0
+offset_top = -282.0
+offset_right = 124.0
+offset_bottom = -189.0
+text = "Choose a region"
+label_settings = SubResource("LabelSettings_3uxks")
+
+[node name="North West" type="Label" parent="ExitMenu/ExitMenu/CanvasLayer/Text"]
+offset_left = -413.0
+offset_top = -130.0
+offset_right = -273.0
+offset_bottom = -17.0
+text = "North
+West
+"
+label_settings = SubResource("LabelSettings_xjkiv")
+horizontal_alignment = 1
+
+[node name="Plains" type="Label" parent="ExitMenu/ExitMenu/CanvasLayer/Text"]
+offset_left = -155.0
+offset_top = -106.0
+offset_right = -35.0
+offset_bottom = -51.0
+text = "Plains"
+label_settings = SubResource("LabelSettings_xjkiv")
+
+[node name="North Central" type="Label" parent="ExitMenu/ExitMenu/CanvasLayer/Text"]
+offset_left = 49.0
+offset_top = -130.0
+offset_right = 189.0
+offset_bottom = -17.0
+text = "North
+Central"
+label_settings = SubResource("LabelSettings_xjkiv")
+horizontal_alignment = 1
+
+[node name="North East" type="Label" parent="ExitMenu/ExitMenu/CanvasLayer/Text"]
+offset_left = 281.0
+offset_top = -128.0
+offset_right = 421.0
+offset_bottom = -15.0
+text = "North
+East"
+label_settings = SubResource("LabelSettings_xjkiv")
+horizontal_alignment = 1
+
+[node name="South West" type="Label" parent="ExitMenu/ExitMenu/CanvasLayer/Text"]
+offset_left = -301.0
+offset_top = 16.0
+offset_right = -161.0
+offset_bottom = 129.0
+text = "South
+West
+"
+label_settings = SubResource("LabelSettings_xjkiv")
+horizontal_alignment = 1
+
+[node name="South Central" type="Label" parent="ExitMenu/ExitMenu/CanvasLayer/Text"]
+offset_left = -65.0
+offset_top = 16.0
+offset_right = 75.0
+offset_bottom = 129.0
+text = "South
+Central"
+label_settings = SubResource("LabelSettings_xjkiv")
+horizontal_alignment = 1
+
+[node name="South East" type="Label" parent="ExitMenu/ExitMenu/CanvasLayer/Text"]
+offset_left = 163.0
+offset_top = 16.0
+offset_right = 303.0
+offset_bottom = 129.0
+text = "South
+East"
+label_settings = SubResource("LabelSettings_xjkiv")
+horizontal_alignment = 1
+
+[node name="Buttons" type="Node2D" parent="ExitMenu/ExitMenu/CanvasLayer"]
+
+[node name="NorthWestButton" type="Area2D" parent="ExitMenu/ExitMenu/CanvasLayer/Buttons"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitMenu/ExitMenu/CanvasLayer/Buttons/NorthWestButton"]
+position = Vector2(-347.5, -85)
+shape = SubResource("RectangleShape2D_07avf")
+
+[node name="PlainsButton" type="Area2D" parent="ExitMenu/ExitMenu/CanvasLayer/Buttons"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitMenu/ExitMenu/CanvasLayer/Buttons/PlainsButton"]
+position = Vector2(-115.5, -85.5)
+shape = SubResource("RectangleShape2D_w3y4k")
+
+[node name="NorthCentralButton" type="Area2D" parent="ExitMenu/ExitMenu/CanvasLayer/Buttons"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitMenu/ExitMenu/CanvasLayer/Buttons/NorthCentralButton"]
+position = Vector2(115.5, -86)
+shape = SubResource("RectangleShape2D_0d1vg")
+
+[node name="NorthEastButton" type="Area2D" parent="ExitMenu/ExitMenu/CanvasLayer/Buttons"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitMenu/ExitMenu/CanvasLayer/Buttons/NorthEastButton"]
+position = Vector2(347.5, -88)
+shape = SubResource("RectangleShape2D_ovv30")
+
+[node name="SouthWestButton" type="Area2D" parent="ExitMenu/ExitMenu/CanvasLayer/Buttons"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitMenu/ExitMenu/CanvasLayer/Buttons/SouthWestButton"]
+position = Vector2(-231, 61)
+shape = SubResource("RectangleShape2D_fjo0q")
+
+[node name="SouthCentralButton" type="Area2D" parent="ExitMenu/ExitMenu/CanvasLayer/Buttons"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitMenu/ExitMenu/CanvasLayer/Buttons/SouthCentralButton"]
+position = Vector2(1, 61)
+shape = SubResource("RectangleShape2D_kp24u")
+
+[node name="SouthEastButton" type="Area2D" parent="ExitMenu/ExitMenu/CanvasLayer/Buttons"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitMenu/ExitMenu/CanvasLayer/Buttons/SouthEastButton"]
+position = Vector2(231.5, 60)
+shape = SubResource("RectangleShape2D_ydnr0")
+
+[node name="RandomButton" type="Area2D" parent="ExitMenu/ExitMenu/CanvasLayer/Buttons"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitMenu/ExitMenu/CanvasLayer/Buttons/RandomButton"]
+position = Vector2(355.5, -258.5)
+shape = SubResource("RectangleShape2D_6svyi")
+
+[node name="ThreePlayer" type="Node2D" parent="."]
+visible = false
+z_index = 1
+
+[node name="ThreePlayer" type="Node2D" parent="ThreePlayer"]
+visible = false
+script = ExtResource("3_6644k")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="ThreePlayer/ThreePlayer"]
+visible = false
+offset = Vector2(-960, -540)
+transform = Transform2D(1, 0, 0, 1, -960, -540)
+follow_viewport_enabled = true
+
+[node name="Background" type="MeshInstance2D" parent="ThreePlayer/ThreePlayer/CanvasLayer"]
+position = Vector2(960, 540)
+scale = Vector2(1920, -1080)
+mesh = SubResource("QuadMesh_hufy1")
+texture = ExtResource("4_g02b7")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ThreePlayer/ThreePlayer/CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.499
+anchor_bottom = 0.5
+offset_right = -918.08
+offset_bottom = -500.0
+
+[node name="Player1" type="Node2D" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer"]
+
+[node name="ContextText4" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_right = 292.0
+offset_bottom = 96.0
+text = "Home City"
+label_settings = SubResource("LabelSettings_8xife")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_left = 292.0
+offset_right = 960.0
+offset_bottom = 180.0
+text = "Previous Destination"
+label_settings = SubResource("LabelSettings_8xife")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText2" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_left = 292.0
+offset_right = 960.0
+offset_bottom = 540.0
+text = "Current Destination"
+label_settings = SubResource("LabelSettings_8xife")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText3" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_left = 292.0
+offset_top = 314.0
+offset_right = 960.0
+offset_bottom = 540.0
+text = "Reward"
+label_settings = SubResource("LabelSettings_8xife")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player1HomeCitiesText" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_right = 292.0
+offset_bottom = 234.0
+label_settings = SubResource("LabelSettings_o7w5e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player1HomeCityRegion" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_right = 292.0
+offset_bottom = 314.0
+label_settings = SubResource("LabelSettings_o7w5e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player1OldText" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_left = 292.0
+offset_right = 960.0
+offset_bottom = 385.0
+label_settings = SubResource("LabelSettings_o7w5e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player1OldRegion" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_left = 292.0
+offset_right = 417.0
+offset_bottom = 385.0
+label_settings = SubResource("LabelSettings_o7w5e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player1DestinationText" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_left = 292.0
+offset_top = 157.0
+offset_right = 960.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_o7w5e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player1DestinationRegion" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_left = 292.0
+offset_top = 157.0
+offset_right = 417.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_o7w5e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player1RewardText" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_left = 292.0
+offset_top = 428.0
+offset_right = 960.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_o7w5e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ThreePlayer/ThreePlayer/CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 920.0
+offset_bottom = -500.0
+grow_horizontal = 0
+
+[node name="Player2" type="Node2D" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer2"]
+position = Vector2(-920, 0)
+
+[node name="ContextText4" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_right = 292.0
+offset_bottom = 96.0
+text = "Home City"
+label_settings = SubResource("LabelSettings_8xife")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_left = 292.0
+offset_right = 960.0
+offset_bottom = 180.0
+text = "Previous Destination"
+label_settings = SubResource("LabelSettings_8xife")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText2" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_left = 292.0
+offset_right = 960.0
+offset_bottom = 540.0
+text = "Current Destination"
+label_settings = SubResource("LabelSettings_8xife")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText3" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_left = 292.0
+offset_top = 314.0
+offset_right = 960.0
+offset_bottom = 540.0
+text = "Reward"
+label_settings = SubResource("LabelSettings_8xife")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2HomeCitiesText" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_right = 292.0
+offset_bottom = 234.0
+label_settings = SubResource("LabelSettings_o7w5e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2HomeCityRegion" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_right = 292.0
+offset_bottom = 314.0
+label_settings = SubResource("LabelSettings_o7w5e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2OldText" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_left = 292.0
+offset_right = 960.0
+offset_bottom = 385.0
+label_settings = SubResource("LabelSettings_o7w5e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2OldRegion" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_left = 292.0
+offset_right = 417.0
+offset_bottom = 385.0
+label_settings = SubResource("LabelSettings_o7w5e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2DestinationText" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_left = 292.0
+offset_top = 157.0
+offset_right = 960.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_o7w5e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2DestinationRegion" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_left = 292.0
+offset_top = 157.0
+offset_right = 417.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_o7w5e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2RewardText" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_left = 292.0
+offset_top = 428.0
+offset_right = 960.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_o7w5e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="ThreePlayer/ThreePlayer/CanvasLayer"]
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = 500.0
+offset_right = -920.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Player3" type="Node2D" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer3"]
+position = Vector2(480, -500)
+
+[node name="ContextText4" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_right = 292.0
+offset_bottom = 96.0
+text = "Home City"
+label_settings = SubResource("LabelSettings_8xife")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_left = 292.0
+offset_right = 960.0
+offset_bottom = 180.0
+text = "Previous Destination"
+label_settings = SubResource("LabelSettings_8xife")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText2" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_left = 292.0
+offset_right = 960.0
+offset_bottom = 540.0
+text = "Current Destination"
+label_settings = SubResource("LabelSettings_8xife")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText3" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_left = 292.0
+offset_top = 314.0
+offset_right = 960.0
+offset_bottom = 540.0
+text = "Reward"
+label_settings = SubResource("LabelSettings_8xife")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3HomeCitiesText" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_right = 292.0
+offset_bottom = 234.0
+label_settings = SubResource("LabelSettings_o7w5e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3HomeCityRegion" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_right = 292.0
+offset_bottom = 314.0
+label_settings = SubResource("LabelSettings_o7w5e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3OldText" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_left = 292.0
+offset_right = 960.0
+offset_bottom = 385.0
+label_settings = SubResource("LabelSettings_o7w5e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3OldRegion" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_left = 292.0
+offset_right = 417.0
+offset_bottom = 385.0
+label_settings = SubResource("LabelSettings_o7w5e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3DestinationText" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_left = 292.0
+offset_top = 157.0
+offset_right = 960.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_o7w5e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3DestinationRegion" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_left = 292.0
+offset_top = 157.0
+offset_right = 417.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_o7w5e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3RewardText" type="Label" parent="ThreePlayer/ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_left = 292.0
+offset_top = 428.0
+offset_right = 960.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_o7w5e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FourPlayer" type="Node2D" parent="."]
+visible = false
+z_index = 1
+
+[node name="FourPlayer" type="Node2D" parent="FourPlayer"]
+visible = false
+script = ExtResource("5_y01ik")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="FourPlayer/FourPlayer"]
+visible = false
+offset = Vector2(-960, -540)
+transform = Transform2D(1, 0, 0, 1, -960, -540)
+follow_viewport_enabled = true
+
+[node name="Background" type="MeshInstance2D" parent="FourPlayer/FourPlayer/CanvasLayer"]
+position = Vector2(960, 540)
+scale = Vector2(1920, -1080)
+mesh = SubResource("QuadMesh_3pspo")
+texture = ExtResource("5_nau4m")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="FourPlayer/FourPlayer/CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.499
+anchor_bottom = 0.5
+offset_right = -918.08
+offset_bottom = -500.0
+
+[node name="Player1" type="Node2D" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer"]
+
+[node name="ContextText4" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_right = 292.0
+offset_bottom = 96.0
+text = "Home City"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_left = 292.0
+offset_right = 960.0
+offset_bottom = 180.0
+text = "Previous Destination"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText2" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_left = 292.0
+offset_right = 960.0
+offset_bottom = 540.0
+text = "Current Destination"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText3" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_left = 292.0
+offset_top = 314.0
+offset_right = 960.0
+offset_bottom = 540.0
+text = "Reward"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player1HomeCitiesText" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_right = 292.0
+offset_bottom = 234.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player1HomeCityRegion" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_right = 292.0
+offset_bottom = 314.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player1OldText" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_left = 292.0
+offset_right = 960.0
+offset_bottom = 385.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player1OldRegion" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_left = 292.0
+offset_right = 417.0
+offset_bottom = 385.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player1DestinationText" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_left = 292.0
+offset_top = 157.0
+offset_right = 960.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player1DestinationRegion" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_left = 292.0
+offset_top = 157.0
+offset_right = 417.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player1RewardText" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_left = 292.0
+offset_top = 428.0
+offset_right = 960.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="FourPlayer/FourPlayer/CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 920.0
+offset_bottom = -500.0
+grow_horizontal = 0
+
+[node name="Player2" type="Node2D" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer2"]
+position = Vector2(-920, 0)
+
+[node name="ContextText4" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_right = 292.0
+offset_bottom = 96.0
+text = "Home City"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_left = 292.0
+offset_right = 960.0
+offset_bottom = 180.0
+text = "Previous Destination"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText2" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_left = 292.0
+offset_right = 960.0
+offset_bottom = 540.0
+text = "Current Destination"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText3" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_left = 292.0
+offset_top = 314.0
+offset_right = 960.0
+offset_bottom = 540.0
+text = "Reward"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2HomeCitiesText" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_right = 292.0
+offset_bottom = 234.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2HomeCityRegion" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_right = 292.0
+offset_bottom = 314.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2OldText" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_left = 292.0
+offset_right = 960.0
+offset_bottom = 385.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2OldRegion" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_left = 292.0
+offset_right = 417.0
+offset_bottom = 385.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2DestinationText" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_left = 292.0
+offset_top = 157.0
+offset_right = 960.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2DestinationRegion" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_left = 292.0
+offset_top = 157.0
+offset_right = 417.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2RewardText" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_left = 292.0
+offset_top = 428.0
+offset_right = 960.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="FourPlayer/FourPlayer/CanvasLayer"]
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = 500.0
+offset_right = -920.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Player3" type="Node2D" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer3"]
+position = Vector2(0, -500)
+
+[node name="ContextText4" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_right = 292.0
+offset_bottom = 96.0
+text = "Home City"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_left = 292.0
+offset_right = 960.0
+offset_bottom = 180.0
+text = "Previous Destination"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText2" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_left = 292.0
+offset_right = 960.0
+offset_bottom = 540.0
+text = "Current Destination"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText3" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_left = 292.0
+offset_top = 314.0
+offset_right = 960.0
+offset_bottom = 540.0
+text = "Reward"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3HomeCitiesText" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_right = 292.0
+offset_bottom = 234.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3HomeCityRegion" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_right = 292.0
+offset_bottom = 314.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3OldText" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_left = 292.0
+offset_right = 960.0
+offset_bottom = 385.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3OldRegion" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_left = 292.0
+offset_right = 417.0
+offset_bottom = 385.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3DestinationText" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_left = 292.0
+offset_top = 157.0
+offset_right = 960.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3DestinationRegion" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_left = 292.0
+offset_top = 157.0
+offset_right = 417.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3RewardText" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_left = 292.0
+offset_top = 428.0
+offset_right = 960.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="FourPlayer/FourPlayer/CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 920.0
+offset_top = 500.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Player4" type="Node2D" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer4"]
+position = Vector2(-920, -500)
+
+[node name="ContextText4" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer4/Player4"]
+offset_right = 292.0
+offset_bottom = 96.0
+text = "Home City"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer4/Player4"]
+offset_left = 292.0
+offset_right = 960.0
+offset_bottom = 180.0
+text = "Previous Destination"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText2" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer4/Player4"]
+offset_left = 292.0
+offset_right = 960.0
+offset_bottom = 540.0
+text = "Current Destination"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText3" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer4/Player4"]
+offset_left = 292.0
+offset_top = 314.0
+offset_right = 960.0
+offset_bottom = 540.0
+text = "Reward"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player4HomeCitiesText" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer4/Player4"]
+offset_right = 292.0
+offset_bottom = 234.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player4HomeCityRegion" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer4/Player4"]
+offset_right = 292.0
+offset_bottom = 314.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player4OldText" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer4/Player4"]
+offset_left = 292.0
+offset_right = 960.0
+offset_bottom = 385.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player4OldRegion" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer4/Player4"]
+offset_left = 292.0
+offset_right = 417.0
+offset_bottom = 385.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player4DestinationText" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer4/Player4"]
+offset_left = 292.0
+offset_top = 157.0
+offset_right = 960.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player4DestinationRegion" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer4/Player4"]
+offset_left = 292.0
+offset_top = 157.0
+offset_right = 417.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player4RewardText" type="Label" parent="FourPlayer/FourPlayer/CanvasLayer/HBoxContainer4/Player4"]
+offset_left = 292.0
+offset_top = 428.0
+offset_right = 960.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FivePlayer" type="Node2D" parent="."]
+z_index = 1
+
+[node name="FivePlayer" type="Node2D" parent="FivePlayer"]
+script = ExtResource("7_avx76")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="FivePlayer/FivePlayer"]
+offset = Vector2(-960, -540)
+transform = Transform2D(1, 0, 0, 1, -960, -540)
+follow_viewport_enabled = true
+
+[node name="Background" type="MeshInstance2D" parent="FivePlayer/FivePlayer/CanvasLayer"]
+position = Vector2(960, 540)
+scale = Vector2(1920, -1080)
+mesh = SubResource("QuadMesh_3pspo")
+texture = ExtResource("8_it0df")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="FivePlayer/FivePlayer/CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.499
+anchor_bottom = 0.5
+offset_right = -918.08
+offset_bottom = -500.0
+
+[node name="Player1" type="Node2D" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer"]
+
+[node name="ContextText4" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_right = 227.0
+offset_bottom = 96.0
+text = "Home City"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_left = 227.0
+offset_right = 640.0
+offset_bottom = 180.0
+text = "Previous Destination"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText2" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_left = 227.0
+offset_right = 640.0
+offset_bottom = 540.0
+text = "Current Destination"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText3" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_left = 227.0
+offset_top = 314.0
+offset_right = 640.0
+offset_bottom = 540.0
+text = "Reward"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player1HomeCitiesText" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_right = 227.0
+offset_bottom = 234.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player1HomeCityRegion" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_right = 227.0
+offset_bottom = 315.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player1OldText" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_left = 227.0
+offset_right = 640.0
+offset_bottom = 390.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player1OldRegion" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_left = 227.0
+offset_top = -2.0
+offset_right = 352.0
+offset_bottom = 383.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player1DestinationText" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_left = 227.0
+offset_top = 157.0
+offset_right = 640.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player1DestinationRegion" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_left = 227.0
+offset_top = 156.0
+offset_right = 352.0
+offset_bottom = 539.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player1RewardText" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer/Player1"]
+offset_left = 227.0
+offset_top = 428.0
+offset_right = 640.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="FivePlayer/FivePlayer/CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 920.0
+offset_bottom = -500.0
+grow_horizontal = 0
+
+[node name="Player2" type="Node2D" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer2"]
+position = Vector2(-1240, 0)
+
+[node name="ContextText4" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_right = 227.0
+offset_bottom = 96.0
+text = "Home City"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_left = 227.0
+offset_right = 640.0
+offset_bottom = 180.0
+text = "Previous Destination"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText2" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_left = 227.0
+offset_right = 640.0
+offset_bottom = 540.0
+text = "Current Destination"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText3" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_left = 227.0
+offset_top = 314.0
+offset_right = 640.0
+offset_bottom = 540.0
+text = "Reward"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2HomeCitiesText" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_right = 227.0
+offset_bottom = 234.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2HomeCityRegion" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_right = 227.0
+offset_bottom = 315.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2OldText" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_left = 227.0
+offset_right = 640.0
+offset_bottom = 390.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2OldRegion" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_left = 227.0
+offset_top = -2.0
+offset_right = 352.0
+offset_bottom = 383.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2DestinationText" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_left = 227.0
+offset_top = 157.0
+offset_right = 640.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2DestinationRegion" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_left = 227.0
+offset_top = 156.0
+offset_right = 352.0
+offset_bottom = 539.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2RewardText" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer2/Player2"]
+offset_left = 227.0
+offset_top = 428.0
+offset_right = 640.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="FivePlayer/FivePlayer/CanvasLayer"]
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = 500.0
+offset_right = -920.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Player3" type="Node2D" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer3"]
+position = Vector2(0, -500)
+
+[node name="ContextText4" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_right = 227.0
+offset_bottom = 96.0
+text = "Home City"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_left = 227.0
+offset_right = 640.0
+offset_bottom = 180.0
+text = "Previous Destination"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText2" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_left = 227.0
+offset_right = 640.0
+offset_bottom = 540.0
+text = "Current Destination"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText3" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_left = 227.0
+offset_top = 314.0
+offset_right = 640.0
+offset_bottom = 540.0
+text = "Reward"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3HomeCitiesText" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_right = 227.0
+offset_bottom = 234.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3HomeCityRegion" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_right = 227.0
+offset_bottom = 315.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3OldText" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_left = 227.0
+offset_right = 640.0
+offset_bottom = 390.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3OldRegion" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_left = 227.0
+offset_top = -2.0
+offset_right = 352.0
+offset_bottom = 383.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3DestinationText" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_left = 227.0
+offset_top = 157.0
+offset_right = 640.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3DestinationRegion" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_left = 227.0
+offset_top = 156.0
+offset_right = 352.0
+offset_bottom = 539.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3RewardText" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer3/Player3"]
+offset_left = 227.0
+offset_top = 428.0
+offset_right = 640.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="FivePlayer/FivePlayer/CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 920.0
+offset_top = 500.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Player4" type="Node2D" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer4"]
+position = Vector2(-1240, -500)
+
+[node name="ContextText4" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer4/Player4"]
+offset_right = 227.0
+offset_bottom = 96.0
+text = "Home City"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer4/Player4"]
+offset_left = 227.0
+offset_right = 640.0
+offset_bottom = 180.0
+text = "Previous Destination"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText2" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer4/Player4"]
+offset_left = 227.0
+offset_right = 640.0
+offset_bottom = 540.0
+text = "Current Destination"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText3" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer4/Player4"]
+offset_left = 227.0
+offset_top = 314.0
+offset_right = 640.0
+offset_bottom = 540.0
+text = "Reward"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player4HomeCitiesText" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer4/Player4"]
+offset_right = 227.0
+offset_bottom = 234.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player4HomeCityRegion" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer4/Player4"]
+offset_right = 227.0
+offset_bottom = 315.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player4OldText" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer4/Player4"]
+offset_left = 227.0
+offset_right = 640.0
+offset_bottom = 390.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player4OldRegion" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer4/Player4"]
+offset_left = 227.0
+offset_top = -2.0
+offset_right = 352.0
+offset_bottom = 383.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player4DestinationText" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer4/Player4"]
+offset_left = 227.0
+offset_top = 157.0
+offset_right = 640.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player4DestinationRegion" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer4/Player4"]
+offset_left = 227.0
+offset_top = 156.0
+offset_right = 352.0
+offset_bottom = 539.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player4RewardText" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer4/Player4"]
+offset_left = 227.0
+offset_top = 428.0
+offset_right = 640.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="FivePlayer/FivePlayer/CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 920.0
+offset_top = 500.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Player5" type="Node2D" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer5"]
+position = Vector2(-600, -770)
+
+[node name="ContextText4" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer5/Player5"]
+offset_right = 227.0
+offset_bottom = 96.0
+text = "Home City"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer5/Player5"]
+offset_left = 227.0
+offset_right = 640.0
+offset_bottom = 180.0
+text = "Previous Destination"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText2" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer5/Player5"]
+offset_left = 227.0
+offset_right = 640.0
+offset_bottom = 540.0
+text = "Current Destination"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContextText3" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer5/Player5"]
+offset_left = 227.0
+offset_top = 314.0
+offset_right = 640.0
+offset_bottom = 540.0
+text = "Reward"
+label_settings = SubResource("LabelSettings_f7fjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player5HomeCitiesText" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer5/Player5"]
+offset_right = 227.0
+offset_bottom = 234.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player5HomeCityRegion" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer5/Player5"]
+offset_right = 227.0
+offset_bottom = 315.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player5OldText" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer5/Player5"]
+offset_left = 227.0
+offset_right = 640.0
+offset_bottom = 390.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player5OldRegion" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer5/Player5"]
+offset_left = 227.0
+offset_top = -2.0
+offset_right = 352.0
+offset_bottom = 383.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player5DestinationText" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer5/Player5"]
+offset_left = 227.0
+offset_top = 157.0
+offset_right = 640.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player5DestinationRegion" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer5/Player5"]
+offset_left = 227.0
+offset_top = 156.0
+offset_right = 352.0
+offset_bottom = 539.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player5RewardText" type="Label" parent="FivePlayer/FivePlayer/CanvasLayer/HBoxContainer5/Player5"]
+offset_left = 227.0
+offset_top = 428.0
+offset_right = 640.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_u1ore")
+horizontal_alignment = 1
+vertical_alignment = 1
