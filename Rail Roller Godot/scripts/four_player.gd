@@ -5,8 +5,7 @@ const DEFAULT_LOCOMOTIVE_ID = 0
 const EXPRESS_ID = 1
 const SUPERCHIEF_ID = 2
 var rng = RandomNumberGenerator.new()
-var response
-var returned_region = "NAR"
+var returned_regions = []
 
 var home_cities = []
 var destinations = []
@@ -22,6 +21,7 @@ var reward_text_boxes
 
 signal choose_region
 signal open_exit_menu
+signal response
 
 var payoff_chart
 
@@ -631,6 +631,8 @@ var alphabetical_cities = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	choose_region.connect(find_parent("Main").find_children("RegionMenu")[1]._on_choose_region)
+	
 	home_cities_text_boxes = find_children("*HomeCitiesText")
 	home_cities_text_regions = find_children("*HomeCityRegion")
 	old_destination_text_boxes = find_children("*OldText")
@@ -683,6 +685,7 @@ func _ready():
 		home_cities.append(0)
 		destinations.append(0)
 		player_regions.append(0)
+		returned_regions.append("NAR")
 		assign_home_city(i)
 		choose_destination(i)
 
@@ -732,12 +735,17 @@ func choose_destination(player):
 	var random_region = region[array1]
 	# Choosing a region
 	if random_region == player_regions[player]:
-		response = false
-		choose_region.emit()
-		#await response
-		#player_regions[player] = returned_region
+		choose_region.emit(player, NUM_PLAYERS)
+		if returned_regions[player] == "NAR":
+			print("waiting for emit")
+			await response
+		else:
+			print("continuing")
+		player_regions[player] = returned_regions[player]
+		returned_regions[player] = "NAR"
 	else:
 		player_regions[player] = random_region
+	print("player", player, "'s region is: ", player_regions[player])
 	var old_city = destinations[player]
 	var new_city = cities[player_regions[player]][array2]
 	destination_text_regions[player].text = str("(", player_regions[player], ")")
@@ -780,6 +788,6 @@ func _input(event):
 	if event is InputEventKey and event.pressed and event.physical_keycode == KEY_ESCAPE:
 		open_exit_menu.emit()
 
-func _region_response(region):
-	returned_region = region
-	response = true
+func _region_response(region, player):
+	returned_regions[player] = region
+	response.emit()

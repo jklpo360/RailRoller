@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://co8l0htpabuj6"]
+[gd_scene load_steps=6 format=3 uid="uid://brpbpa4r1vqmc"]
 
-[ext_resource type="Script" path="res://scenes/four_player.gd" id="1_4fye4"]
-[ext_resource type="Texture2D" uid="uid://d3efg3vds538f" path="res://texture/full_resolution_three_player.png" id="2_ikc1l"]
+[ext_resource type="Script" path="res://scripts/three_player.gd" id="1_2012w"]
+[ext_resource type="Texture2D" uid="uid://d3efg3vds538f" path="res://texture/full_resolution_three_player.png" id="2_voa4g"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_hufy1"]
 
@@ -17,29 +17,32 @@ outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
 [node name="ThreePlayer" type="Node2D"]
-script = ExtResource("1_4fye4")
+z_index = 1
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="ThreePlayer" type="Node2D" parent="."]
+script = ExtResource("1_2012w")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="ThreePlayer"]
 offset = Vector2(-960, -540)
 transform = Transform2D(1, 0, 0, 1, -960, -540)
 follow_viewport_enabled = true
 
-[node name="Background" type="MeshInstance2D" parent="CanvasLayer"]
+[node name="Background" type="MeshInstance2D" parent="ThreePlayer/CanvasLayer"]
 position = Vector2(960, 540)
 scale = Vector2(1920, -1080)
 mesh = SubResource("QuadMesh_hufy1")
-texture = ExtResource("2_ikc1l")
+texture = ExtResource("2_voa4g")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ThreePlayer/CanvasLayer"]
 anchors_preset = -1
 anchor_right = 0.499
 anchor_bottom = 0.5
 offset_right = -918.08
 offset_bottom = -500.0
 
-[node name="Player1" type="Node2D" parent="CanvasLayer/HBoxContainer"]
+[node name="Player1" type="Node2D" parent="ThreePlayer/CanvasLayer/HBoxContainer"]
 
-[node name="ContextText4" type="Label" parent="CanvasLayer/HBoxContainer/Player1"]
+[node name="ContextText4" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
 offset_right = 292.0
 offset_bottom = 96.0
 text = "Home City"
@@ -47,7 +50,7 @@ label_settings = SubResource("LabelSettings_8xife")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContextText" type="Label" parent="CanvasLayer/HBoxContainer/Player1"]
+[node name="ContextText" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
 offset_left = 292.0
 offset_right = 960.0
 offset_bottom = 180.0
@@ -56,7 +59,7 @@ label_settings = SubResource("LabelSettings_8xife")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContextText2" type="Label" parent="CanvasLayer/HBoxContainer/Player1"]
+[node name="ContextText2" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
 offset_left = 292.0
 offset_right = 960.0
 offset_bottom = 540.0
@@ -65,7 +68,7 @@ label_settings = SubResource("LabelSettings_8xife")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContextText3" type="Label" parent="CanvasLayer/HBoxContainer/Player1"]
+[node name="ContextText3" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
 offset_left = 292.0
 offset_top = 314.0
 offset_right = 960.0
@@ -75,21 +78,21 @@ label_settings = SubResource("LabelSettings_8xife")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player1HomeCitiesText" type="Label" parent="CanvasLayer/HBoxContainer/Player1"]
+[node name="Player1HomeCitiesText" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
 offset_right = 292.0
 offset_bottom = 234.0
 label_settings = SubResource("LabelSettings_o7w5e")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player1HomeCityRegion" type="Label" parent="CanvasLayer/HBoxContainer/Player1"]
+[node name="Player1HomeCityRegion" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
 offset_right = 292.0
 offset_bottom = 314.0
 label_settings = SubResource("LabelSettings_o7w5e")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player1OldText" type="Label" parent="CanvasLayer/HBoxContainer/Player1"]
+[node name="Player1OldText" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
 offset_left = 292.0
 offset_right = 960.0
 offset_bottom = 385.0
@@ -97,7 +100,7 @@ label_settings = SubResource("LabelSettings_o7w5e")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player1OldRegion" type="Label" parent="CanvasLayer/HBoxContainer/Player1"]
+[node name="Player1OldRegion" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
 offset_left = 292.0
 offset_right = 417.0
 offset_bottom = 385.0
@@ -105,7 +108,7 @@ label_settings = SubResource("LabelSettings_o7w5e")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player1DestinationText" type="Label" parent="CanvasLayer/HBoxContainer/Player1"]
+[node name="Player1DestinationText" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
 offset_left = 292.0
 offset_top = 157.0
 offset_right = 960.0
@@ -114,7 +117,7 @@ label_settings = SubResource("LabelSettings_o7w5e")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player1DestinationRegion" type="Label" parent="CanvasLayer/HBoxContainer/Player1"]
+[node name="Player1DestinationRegion" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
 offset_left = 292.0
 offset_top = 157.0
 offset_right = 417.0
@@ -123,7 +126,7 @@ label_settings = SubResource("LabelSettings_o7w5e")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player1RewardText" type="Label" parent="CanvasLayer/HBoxContainer/Player1"]
+[node name="Player1RewardText" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
 offset_left = 292.0
 offset_top = 428.0
 offset_right = 960.0
@@ -132,7 +135,7 @@ label_settings = SubResource("LabelSettings_o7w5e")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="ThreePlayer/CanvasLayer"]
 anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 1.0
@@ -141,10 +144,10 @@ offset_left = 920.0
 offset_bottom = -500.0
 grow_horizontal = 0
 
-[node name="Player2" type="Node2D" parent="CanvasLayer/HBoxContainer2"]
+[node name="Player2" type="Node2D" parent="ThreePlayer/CanvasLayer/HBoxContainer2"]
 position = Vector2(-920, 0)
 
-[node name="ContextText4" type="Label" parent="CanvasLayer/HBoxContainer2/Player2"]
+[node name="ContextText4" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
 offset_right = 292.0
 offset_bottom = 96.0
 text = "Home City"
@@ -152,7 +155,7 @@ label_settings = SubResource("LabelSettings_8xife")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContextText" type="Label" parent="CanvasLayer/HBoxContainer2/Player2"]
+[node name="ContextText" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
 offset_left = 292.0
 offset_right = 960.0
 offset_bottom = 180.0
@@ -161,7 +164,7 @@ label_settings = SubResource("LabelSettings_8xife")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContextText2" type="Label" parent="CanvasLayer/HBoxContainer2/Player2"]
+[node name="ContextText2" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
 offset_left = 292.0
 offset_right = 960.0
 offset_bottom = 540.0
@@ -170,7 +173,7 @@ label_settings = SubResource("LabelSettings_8xife")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContextText3" type="Label" parent="CanvasLayer/HBoxContainer2/Player2"]
+[node name="ContextText3" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
 offset_left = 292.0
 offset_top = 314.0
 offset_right = 960.0
@@ -180,21 +183,21 @@ label_settings = SubResource("LabelSettings_8xife")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player2HomeCitiesText" type="Label" parent="CanvasLayer/HBoxContainer2/Player2"]
+[node name="Player2HomeCitiesText" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
 offset_right = 292.0
 offset_bottom = 234.0
 label_settings = SubResource("LabelSettings_o7w5e")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player2HomeCityRegion" type="Label" parent="CanvasLayer/HBoxContainer2/Player2"]
+[node name="Player2HomeCityRegion" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
 offset_right = 292.0
 offset_bottom = 314.0
 label_settings = SubResource("LabelSettings_o7w5e")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player2OldText" type="Label" parent="CanvasLayer/HBoxContainer2/Player2"]
+[node name="Player2OldText" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
 offset_left = 292.0
 offset_right = 960.0
 offset_bottom = 385.0
@@ -202,7 +205,7 @@ label_settings = SubResource("LabelSettings_o7w5e")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player2OldRegion" type="Label" parent="CanvasLayer/HBoxContainer2/Player2"]
+[node name="Player2OldRegion" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
 offset_left = 292.0
 offset_right = 417.0
 offset_bottom = 385.0
@@ -210,7 +213,7 @@ label_settings = SubResource("LabelSettings_o7w5e")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player2DestinationText" type="Label" parent="CanvasLayer/HBoxContainer2/Player2"]
+[node name="Player2DestinationText" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
 offset_left = 292.0
 offset_top = 157.0
 offset_right = 960.0
@@ -219,7 +222,7 @@ label_settings = SubResource("LabelSettings_o7w5e")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player2DestinationRegion" type="Label" parent="CanvasLayer/HBoxContainer2/Player2"]
+[node name="Player2DestinationRegion" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
 offset_left = 292.0
 offset_top = 157.0
 offset_right = 417.0
@@ -228,7 +231,7 @@ label_settings = SubResource("LabelSettings_o7w5e")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player2RewardText" type="Label" parent="CanvasLayer/HBoxContainer2/Player2"]
+[node name="Player2RewardText" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
 offset_left = 292.0
 offset_top = 428.0
 offset_right = 960.0
@@ -237,7 +240,7 @@ label_settings = SubResource("LabelSettings_o7w5e")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="ThreePlayer/CanvasLayer"]
 anchors_preset = -1
 anchor_top = 0.5
 anchor_right = 0.5
@@ -247,10 +250,10 @@ offset_right = -920.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Player3" type="Node2D" parent="CanvasLayer/HBoxContainer3"]
+[node name="Player3" type="Node2D" parent="ThreePlayer/CanvasLayer/HBoxContainer3"]
 position = Vector2(480, -500)
 
-[node name="ContextText4" type="Label" parent="CanvasLayer/HBoxContainer3/Player3"]
+[node name="ContextText4" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
 offset_right = 292.0
 offset_bottom = 96.0
 text = "Home City"
@@ -258,7 +261,7 @@ label_settings = SubResource("LabelSettings_8xife")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContextText" type="Label" parent="CanvasLayer/HBoxContainer3/Player3"]
+[node name="ContextText" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
 offset_left = 292.0
 offset_right = 960.0
 offset_bottom = 180.0
@@ -267,7 +270,7 @@ label_settings = SubResource("LabelSettings_8xife")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContextText2" type="Label" parent="CanvasLayer/HBoxContainer3/Player3"]
+[node name="ContextText2" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
 offset_left = 292.0
 offset_right = 960.0
 offset_bottom = 540.0
@@ -276,7 +279,7 @@ label_settings = SubResource("LabelSettings_8xife")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContextText3" type="Label" parent="CanvasLayer/HBoxContainer3/Player3"]
+[node name="ContextText3" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
 offset_left = 292.0
 offset_top = 314.0
 offset_right = 960.0
@@ -286,21 +289,21 @@ label_settings = SubResource("LabelSettings_8xife")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player3HomeCitiesText" type="Label" parent="CanvasLayer/HBoxContainer3/Player3"]
+[node name="Player3HomeCitiesText" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
 offset_right = 292.0
 offset_bottom = 234.0
 label_settings = SubResource("LabelSettings_o7w5e")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player3HomeCityRegion" type="Label" parent="CanvasLayer/HBoxContainer3/Player3"]
+[node name="Player3HomeCityRegion" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
 offset_right = 292.0
 offset_bottom = 314.0
 label_settings = SubResource("LabelSettings_o7w5e")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player3OldText" type="Label" parent="CanvasLayer/HBoxContainer3/Player3"]
+[node name="Player3OldText" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
 offset_left = 292.0
 offset_right = 960.0
 offset_bottom = 385.0
@@ -308,7 +311,7 @@ label_settings = SubResource("LabelSettings_o7w5e")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player3OldRegion" type="Label" parent="CanvasLayer/HBoxContainer3/Player3"]
+[node name="Player3OldRegion" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
 offset_left = 292.0
 offset_right = 417.0
 offset_bottom = 385.0
@@ -316,7 +319,7 @@ label_settings = SubResource("LabelSettings_o7w5e")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player3DestinationText" type="Label" parent="CanvasLayer/HBoxContainer3/Player3"]
+[node name="Player3DestinationText" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
 offset_left = 292.0
 offset_top = 157.0
 offset_right = 960.0
@@ -325,7 +328,7 @@ label_settings = SubResource("LabelSettings_o7w5e")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player3DestinationRegion" type="Label" parent="CanvasLayer/HBoxContainer3/Player3"]
+[node name="Player3DestinationRegion" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
 offset_left = 292.0
 offset_top = 157.0
 offset_right = 417.0
@@ -334,7 +337,7 @@ label_settings = SubResource("LabelSettings_o7w5e")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player3RewardText" type="Label" parent="CanvasLayer/HBoxContainer3/Player3"]
+[node name="Player3RewardText" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
 offset_left = 292.0
 offset_top = 428.0
 offset_right = 960.0

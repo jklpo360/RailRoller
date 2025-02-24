@@ -1,5 +1,6 @@
 import random
 import os
+import string
 
 region = {
   (1,2): "P",
@@ -655,7 +656,11 @@ def init_player_names():
   for i in range(player_count):
     player_names[i] = "Player" + str(i+1)
 
-def choose_destination(): 
+def choose_destination(current_player): 
+  print("choosing a destination for player id: " + str(current_player))
+  print("typeof: " + str(type(current_player)))
+  if current_player >= player_count:
+    return
   dice11 = random.randint(1,6)
   dice21 = random.randint(1,6)
   blackdice1 = random.randint(0,1)
@@ -677,20 +682,8 @@ def choose_destination():
     player_regions[current_player] = random_region
   old_city = destinations[current_player]
   new_city = cities[player_regions[current_player]][(blackdice2, dice12 + dice22)]
-  print("Your new region is: " + region_names[player_regions[current_player]])
   destinations[current_player] = new_city
-  print("Your new destination is: " + destinations[current_player])
-  print("Your reward will be: " + str(print_reward(old_city, new_city)))
-
-def pass_turn(current_player):
-  os.system('cls')
-  if current_player + 1 == player_count:
-    return 0
-  else:
-    return current_player + 1
-
-def print_destination():
-  print("Your destination is: " + destinations[current_player])
+  rewards[current_player] = print_reward(old_city, new_city)
 
 def print_reward(origin, destination):
   origin_region = ""
@@ -716,69 +709,6 @@ def print_reward(origin, destination):
   #print("Destination reward: " + str(table[origin_number][destination_number]))
   return table[origin_number][destination_number]
 
-def roll():
-  dice1 = random.randint(1,6)
-  dice2 = random.randint(1,6)
-  dice3 = random.randint(1,6)
-
-  if locomotives[current_player] == default_locomotive:
-    if dice1 == dice2 and dice1 == 6:
-      print("Bonus dice: " + str(dice3))
-      return dice1 + dice2 + dice3
-    else:
-      return dice1 + dice2
-
-  elif locomotives[current_player] == express:
-    if dice1 == dice2:
-      print("Bonus dice: " + str(dice3))
-      return dice1 + dice2 + dice3
-    else: 
-      return dice1 + dice2
-
-  elif locomotives[current_player] == superchief:
-    print("Bonus dice: " + str(dice3))
-    return dice1 + dice2 + dice3
-
-def upgrade():
-  if locomotives[current_player] == 2:
-    print("You have already gotten all possible train upgrades")
-  elif locomotives[current_player] == 1:
-    user_input = input("Would you like to upgrade your Express into a Superchief (Y/n):")
-    if user_input == "Y":
-      locomotives[current_player] = 2
-  elif locomotives[current_player] == 0:
-    user_input = input("Would you like to upgrade your train into an Express or a Superchief? (E/S/n)")
-    if user_input == "E":
-      locomotives[current_player] = 1
-    if user_input == "S":
-      locomotives[current_player] = 2
-  else:
-    print("Invalid locomotion: " + locomotives[current_player])
-
-def print_locomotive():
-  if locomotives[current_player] == 0:
-    print("Your train has no upgrades. You roll two dice and a third when you have rolled double sixes")
-  elif locomotives[current_player] == 1:
-    print("Your train has the Express upgrade. You roll two dice and a third when you have rolled doubles")
-  elif locomotives[current_player] == 2:
-    print("Your train has the Superchief upgrade. You roll three dice every turn")
-  else:
-    print("Invalid locomotion: " + locomotives[current_player])
-
-def print_player_turn_message():
-  print("                  " + player_names[current_player] + "'s turn                  ")
-
-def set_home_city():
-  user_input = input("Please enter your home city: ")
-  home_cities[current_player] = user_input
-
-def set_destination():
-  user_input = input("Please enter your home city: ")
-  destinations[current_player] = user_input
-
-def print_home_city():
-  print(home_cities[current_player])
-
 def print_setup():
   for i in range(player_count):
     print(player_names[i] + "'s home city is: " + home_cities[i] + "\n")
@@ -787,26 +717,21 @@ def print_setup():
 def print_help():
   #TODO finish help method
   print("                  COMMANDS LIST                  ")
-  print("r     : Rolls the dice for your movement.")
-  print("c     : Chooses a new destination.")
-  print("p     : Passes your turn.")
-  print("u     : Upgrades your locomotive.")
-  print("d     : Prints your current destination.")
-  print("l     : Prints your current locomotive.")
-  print("h     : Prints your home city")
-  print("n     : Changes your name")
+  for i in range(player_count):
+    print(str(i) + "     : Chooses a new destination for " + str(player_names[i]) + ".")
+  print("n     : Changes a player's name")
   print("H/help: Prints this menu.")
   print("S/save: Saves the game to a file in the local directory.")
   print("L/load: Loads the game from a file in the local directory.")
   print("Q/quit: Quits the game.")
 
-def save(save_file, player_names, player_regions, destinations, home_cities, locomotives, player_count): 
+def save(save_file, player_names, player_regions, destinations, rewards, home_cities,  player_count): 
   with open(save_file, "w") as file:
-      file.write(",".join(player_names) + "\n")
-      file.write(",".join(player_regions) + "\n")
-      file.write(",".join(destinations) + "\n")
-      file.write(",".join(home_cities) + "\n")
-      file.write(",".join(map(str, locomotives)) + "\n")
+      file.write(",".join(str(player_names)) + "\n")
+      file.write(",".join(str(player_regions)) + "\n")
+      file.write(",".join(str(destinations)) + "\n")
+      file.write(",".join(str(rewards)) + "\n")
+      file.write(",".join(str(home_cities)) + "\n")
       file.write(str(player_count))
 
 def load(save_file):
@@ -815,12 +740,21 @@ def load(save_file):
     player_names = lines[0].strip().split(",")
     player_regions = lines[1].strip().split(",")
     destinations = lines[2].strip().split(",")
-    home_cities = lines[3].strip().split(",")
-    locomotives = list(map(int, lines[4].strip().split(",")))
+    destinations = lines[3].strip().split(",")
+    home_cities = lines[4].strip().split(",")
     player_count = int(lines[5])
     
     return player_names, player_regions, destinations, home_cities, locomotives, player_count
 
+def print_player_info():
+  for i in range(player_count):
+    print ((i+1))
+    print("\t**" + player_names[i] + "**")
+    print("Home City: " + str(home_cities[i]))
+    print("Destination: " + str(destinations[i]))
+    print("Destination Region: " + str(player_regions[i]))
+    print("Reward: " + str(rewards[i]))
+    print()
 
 os.system('cls')
 player_count = 0
@@ -837,8 +771,12 @@ while True:
 player_names = ["none"]*player_count
 player_regions = ["none"]*player_count
 destinations = ["none"]*player_count
+rewards = ["none"]*player_count
 home_cities = ["none"]*player_count
 locomotives = [0]*player_count
+input_string = "1"
+for i in range(player_count-1):
+  input_string += "/" + str(i+2)
 init_player_names()
 os.system('cls')
 init_home_cities()
@@ -848,53 +786,48 @@ try:
 except KeyboardInterrupt:
   quit()
 os.system('cls')
-current_player = 0
-print_player_turn_message()
+#current_player = 0
+#print_player_turn_message()
 
 try:
   while True:
+    os.system('cls')
     print()
-    userinput = input("Input (r/c/p/u/d/l/h/n/sh/sd/H/help/S/save/L/load/Q/quit): \n")
-    if userinput == "r":
-      print(roll())
-    
-    elif userinput == "c":
-      choose_destination()
+    print_player_info()
+    print()
+    print(player_names)
+    userinput = input("Input (" + str(input_string) + "/n/h/help/s/save/l/load/q/quit): \n")
 
-    elif userinput == "d":
-      print_destination()
+    if userinput == "1":
+      choose_destination(0)
+
+    elif userinput == "2": 
+      choose_destination(1)
       
-    elif userinput == "p":
-      current_player = pass_turn(current_player)
-      print_player_turn_message()
+    elif userinput == "3": 
+      choose_destination(2)
+      
+    elif userinput == "4":
+      choose_destination(3)
+      
+    elif userinput == "5": 
+      choose_destination(4)
+      
+    elif userinput == "6":
+      choose_destination(5)
 
-    elif userinput == "u":
-      upgrade()
-    
-    elif userinput == "l":
-      print_locomotive()
-
-    elif userinput == "Q" or userinput == "quit":
+    elif userinput == "q" or userinput == "quit":
       quit()
     
-    elif userinput == "h":
-      print_home_city()
-    
-    elif userinput == "sh":
-      set_home_city()
-    
-    elif userinput == "dh":
-      set_destination()
-
-    elif userinput == "H" or userinput == "help":
+    elif userinput == "h" or userinput == "help":
       print_help()
     
-    elif userinput == "S" or userinput == "save":
+    elif userinput == "s" or userinput == "save":
       userinput = input("Which save file #: ")
       savefile = "save" + userinput + ".txt"
       save(savefile, player_names, player_regions, destinations, home_cities, locomotives, player_count)
     
-    elif userinput == "L" or userinput == "load":
+    elif userinput == "l" or userinput == "load":
       userinput = input("Are you sure you want to overwrite current data?(Y/n): ")
       if userinput == "Y":
         userinput = input("Which save file #: ")
@@ -905,11 +838,15 @@ try:
           print("No saved data in the file #")
     
     elif userinput == "n":
-      userinput = input("Current name is: " + player_names[current_player] + ".\nWould you like to change it?(Y/n): ")
-      if userinput == "Y":
-        userinput = input("Enter your new name: ")
-        player_names[current_player] = userinput
-        print("Name changed to: " + userinput)
+      player = int(input("Choose a player (1-" + str(player_count) +"): ")) - 1
+      if player >= 0 and player <= player_count:
+        userinput = input("Current name is: " + player_names[player] + ".\nWould you like to change it?(Y/n): ")
+        if userinput == "Y":
+          userinput = input("Enter your new name: ")
+          player_names[player] = userinput
+          print("Name changed to: " + userinput)
+      else:
+        print("Invalid input")
 
     else:
       print("Invalid input")

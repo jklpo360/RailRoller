@@ -64,7 +64,6 @@ script = ExtResource("1_du30o")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="PlayerNumberMenu/PlayerNumberMenu"]
 layer = 3
-visible = false
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="PlayerNumberMenu/PlayerNumberMenu/CanvasLayer"]
 position = Vector2(0, -100)
@@ -175,6 +174,7 @@ script = ExtResource("3_4dcsq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="RegionMenu/RegionMenu"]
 layer = 3
+visible = false
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="RegionMenu/RegionMenu/CanvasLayer"]
 position = Vector2(0, -100)
@@ -326,10 +326,4 @@ shape = SubResource("RectangleShape2D_6svyi")
 [connection signal="input_event" from="PlayerNumberMenu/PlayerNumberMenu/CanvasLayer/Buttons/5" to="PlayerNumberMenu/PlayerNumberMenu" method="_input_event"]
 [connection signal="input_event" from="PlayerNumberMenu/PlayerNumberMenu/CanvasLayer/Buttons/6" to="PlayerNumberMenu/PlayerNumberMenu" method="_input_event"]
 [connection signal="input_event" from="RegionMenu/RegionMenu/CanvasLayer/Buttons/NorthWestButton" to="RegionMenu/RegionMenu" method="_on_input_event"]
-[connection signal="input_event" from="RegionMenu/RegionMenu/CanvasLayer/Buttons/PlainsButton" to="RegionMenu/RegionMenu" method="_on_input_event"]
 [connection signal="input_event" from="RegionMenu/RegionMenu/CanvasLayer/Buttons/NorthCentralButton" to="RegionMenu/RegionMenu" method="_on_input_event"]
-[connection signal="input_event" from="RegionMenu/RegionMenu/CanvasLayer/Buttons/NorthEastButton" to="RegionMenu/RegionMenu" method="_on_input_event"]
-[connection signal="input_event" from="RegionMenu/RegionMenu/CanvasLayer/Buttons/SouthWestButton" to="RegionMenu/RegionMenu" method="_on_input_event"]
-[connection signal="input_event" from="RegionMenu/RegionMenu/CanvasLayer/Buttons/SouthCentralButton" to="RegionMenu/RegionMenu" method="_on_input_event"]
-[connection signal="input_event" from="RegionMenu/RegionMenu/CanvasLayer/Buttons/SouthEastButton" to="RegionMenu/RegionMenu" method="_on_input_event"]
-[connection signal="input_event" from="RegionMenu/RegionMenu/CanvasLayer/Buttons/RandomButton" to="RegionMenu/RegionMenu" method="_on_input_event"]
