@@ -1,0 +1,337 @@
+[gd_scene load_steps=20 format=3 uid="uid://bgwiiyxn01tcv"]
+
+[ext_resource type="Script" uid="uid://cf5180fr8p8o0" path="res://scripts/start_menu.gd" id="1_du30o"]
+[ext_resource type="Script" uid="uid://5dq247v4vej0" path="res://scripts/main.gd" id="1_l2tty"]
+[ext_resource type="Texture2D" uid="uid://ctahh828rxlvg" path="res://texture/player_number_selection_background.png" id="2_ygcbu"]
+[ext_resource type="Texture2D" uid="uid://du7iihxbpp0kh" path="res://texture/choose_region_background.png" id="2_yy2pd"]
+[ext_resource type="Script" uid="uid://dbvryul7nt3ew" path="res://scripts/region_menu.gd" id="3_4dcsq"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_1gr3v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_85da2"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_a4s31"]
+font_size = 50
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4xqht"]
+size = Vector2(146, 92)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3uxks"]
+font_size = 50
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xjkiv"]
+font_size = 30
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07avf"]
+size = Vector2(193, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w3y4k"]
+size = Vector2(193, 113)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0d1vg"]
+size = Vector2(193, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ovv30"]
+size = Vector2(193, 116)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fjo0q"]
+size = Vector2(192, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kp24u"]
+size = Vector2(192, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ydnr0"]
+size = Vector2(193, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6svyi"]
+size = Vector2(155, 149)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_l2tty")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="PlayerNumberMenu" type="Node2D" parent="."]
+top_level = true
+
+[node name="PlayerNumberMenu" type="Node2D" parent="PlayerNumberMenu"]
+script = ExtResource("1_du30o")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="PlayerNumberMenu/PlayerNumberMenu"]
+layer = 3
+visible = false
+follow_viewport_enabled = true
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="PlayerNumberMenu/PlayerNumberMenu/CanvasLayer"]
+position = Vector2(0, -100)
+scale = Vector2(960, -540)
+mesh = SubResource("QuadMesh_1gr3v")
+texture = ExtResource("2_ygcbu")
+
+[node name="Text" type="Node2D" parent="PlayerNumberMenu/PlayerNumberMenu/CanvasLayer"]
+
+[node name="Label" type="Label" parent="PlayerNumberMenu/PlayerNumberMenu/CanvasLayer/Text"]
+offset_left = -15.0
+offset_top = -39.0
+offset_right = 20.0
+offset_bottom = 37.0
+text = "4"
+label_settings = SubResource("LabelSettings_85da2")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label4" type="Label" parent="PlayerNumberMenu/PlayerNumberMenu/CanvasLayer/Text"]
+offset_left = -197.0
+offset_top = -39.0
+offset_right = 20.0
+offset_bottom = 37.0
+text = "3"
+label_settings = SubResource("LabelSettings_85da2")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label5" type="Label" parent="PlayerNumberMenu/PlayerNumberMenu/CanvasLayer/Text"]
+offset_left = -384.0
+offset_top = -39.0
+offset_right = 20.0
+offset_bottom = 37.0
+text = "2"
+label_settings = SubResource("LabelSettings_85da2")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="PlayerNumberMenu/PlayerNumberMenu/CanvasLayer/Text"]
+offset_left = -15.0
+offset_top = -39.0
+offset_right = 384.0
+offset_bottom = 37.0
+text = "5"
+label_settings = SubResource("LabelSettings_85da2")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="PlayerNumberMenu/PlayerNumberMenu/CanvasLayer/Text"]
+offset_left = 299.0
+offset_top = -39.0
+offset_right = 438.0
+offset_bottom = 37.0
+text = "6
+"
+label_settings = SubResource("LabelSettings_85da2")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label6" type="Label" parent="PlayerNumberMenu/PlayerNumberMenu/CanvasLayer/Text"]
+offset_left = -480.0
+offset_top = -285.0
+offset_right = 480.0
+offset_bottom = -181.0
+text = "How many players?"
+label_settings = SubResource("LabelSettings_a4s31")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Buttons" type="Node2D" parent="PlayerNumberMenu/PlayerNumberMenu/CanvasLayer"]
+
+[node name="2" type="Area2D" parent="PlayerNumberMenu/PlayerNumberMenu/CanvasLayer/Buttons"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerNumberMenu/PlayerNumberMenu/CanvasLayer/Buttons/2"]
+position = Vector2(-367, -4)
+shape = SubResource("RectangleShape2D_4xqht")
+
+[node name="3" type="Area2D" parent="PlayerNumberMenu/PlayerNumberMenu/CanvasLayer/Buttons"]
+position = Vector2(184, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerNumberMenu/PlayerNumberMenu/CanvasLayer/Buttons/3"]
+position = Vector2(-367, -4)
+shape = SubResource("RectangleShape2D_4xqht")
+
+[node name="4" type="Area2D" parent="PlayerNumberMenu/PlayerNumberMenu/CanvasLayer/Buttons"]
+position = Vector2(368, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerNumberMenu/PlayerNumberMenu/CanvasLayer/Buttons/4"]
+position = Vector2(-367, -4)
+shape = SubResource("RectangleShape2D_4xqht")
+
+[node name="5" type="Area2D" parent="PlayerNumberMenu/PlayerNumberMenu/CanvasLayer/Buttons"]
+position = Vector2(552, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerNumberMenu/PlayerNumberMenu/CanvasLayer/Buttons/5"]
+position = Vector2(-367, -4)
+shape = SubResource("RectangleShape2D_4xqht")
+
+[node name="6" type="Area2D" parent="PlayerNumberMenu/PlayerNumberMenu/CanvasLayer/Buttons"]
+position = Vector2(736, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerNumberMenu/PlayerNumberMenu/CanvasLayer/Buttons/6"]
+position = Vector2(-367, -4)
+shape = SubResource("RectangleShape2D_4xqht")
+
+[node name="RegionMenu" type="Node2D" parent="."]
+
+[node name="RegionMenu" type="Node2D" parent="RegionMenu"]
+script = ExtResource("3_4dcsq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="RegionMenu/RegionMenu"]
+layer = 3
+follow_viewport_enabled = true
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="RegionMenu/RegionMenu/CanvasLayer"]
+position = Vector2(0, -100)
+scale = Vector2(960, -540)
+mesh = SubResource("QuadMesh_1gr3v")
+texture = ExtResource("2_yy2pd")
+
+[node name="Text" type="Node2D" parent="RegionMenu/RegionMenu/CanvasLayer"]
+
+[node name="TopText" type="Label" parent="RegionMenu/RegionMenu/CanvasLayer/Text"]
+offset_left = -266.0
+offset_top = -282.0
+offset_right = 124.0
+offset_bottom = -189.0
+text = "Choose a region"
+label_settings = SubResource("LabelSettings_3uxks")
+metadata/_edit_use_anchors_ = true
+
+[node name="North West" type="Label" parent="RegionMenu/RegionMenu/CanvasLayer/Text"]
+offset_left = -413.0
+offset_top = -130.0
+offset_right = -273.0
+offset_bottom = -17.0
+text = "North
+West
+"
+label_settings = SubResource("LabelSettings_xjkiv")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Plains" type="Label" parent="RegionMenu/RegionMenu/CanvasLayer/Text"]
+offset_left = -155.0
+offset_top = -106.0
+offset_right = -35.0
+offset_bottom = -51.0
+text = "Plains"
+label_settings = SubResource("LabelSettings_xjkiv")
+metadata/_edit_use_anchors_ = true
+
+[node name="North Central" type="Label" parent="RegionMenu/RegionMenu/CanvasLayer/Text"]
+offset_left = 49.0
+offset_top = -130.0
+offset_right = 189.0
+offset_bottom = -17.0
+text = "North
+Central"
+label_settings = SubResource("LabelSettings_xjkiv")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="North East" type="Label" parent="RegionMenu/RegionMenu/CanvasLayer/Text"]
+offset_left = 281.0
+offset_top = -128.0
+offset_right = 421.0
+offset_bottom = -15.0
+text = "North
+East"
+label_settings = SubResource("LabelSettings_xjkiv")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="South West" type="Label" parent="RegionMenu/RegionMenu/CanvasLayer/Text"]
+offset_left = -301.0
+offset_top = 16.0
+offset_right = -161.0
+offset_bottom = 129.0
+text = "South
+West
+"
+label_settings = SubResource("LabelSettings_xjkiv")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="South Central" type="Label" parent="RegionMenu/RegionMenu/CanvasLayer/Text"]
+offset_left = -65.0
+offset_top = 16.0
+offset_right = 75.0
+offset_bottom = 129.0
+text = "South
+Central"
+label_settings = SubResource("LabelSettings_xjkiv")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="South East" type="Label" parent="RegionMenu/RegionMenu/CanvasLayer/Text"]
+offset_left = 163.0
+offset_top = 16.0
+offset_right = 303.0
+offset_bottom = 129.0
+text = "South
+East"
+label_settings = SubResource("LabelSettings_xjkiv")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Buttons" type="Node2D" parent="RegionMenu/RegionMenu/CanvasLayer"]
+
+[node name="NorthWestButton" type="Area2D" parent="RegionMenu/RegionMenu/CanvasLayer/Buttons"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RegionMenu/RegionMenu/CanvasLayer/Buttons/NorthWestButton"]
+position = Vector2(-347.5, -85)
+shape = SubResource("RectangleShape2D_07avf")
+
+[node name="PlainsButton" type="Area2D" parent="RegionMenu/RegionMenu/CanvasLayer/Buttons"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RegionMenu/RegionMenu/CanvasLayer/Buttons/PlainsButton"]
+position = Vector2(-115.5, -85.5)
+shape = SubResource("RectangleShape2D_w3y4k")
+
+[node name="NorthCentralButton" type="Area2D" parent="RegionMenu/RegionMenu/CanvasLayer/Buttons"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RegionMenu/RegionMenu/CanvasLayer/Buttons/NorthCentralButton"]
+position = Vector2(115.5, -86)
+shape = SubResource("RectangleShape2D_0d1vg")
+
+[node name="NorthEastButton" type="Area2D" parent="RegionMenu/RegionMenu/CanvasLayer/Buttons"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RegionMenu/RegionMenu/CanvasLayer/Buttons/NorthEastButton"]
+position = Vector2(347.5, -88)
+shape = SubResource("RectangleShape2D_ovv30")
+
+[node name="SouthWestButton" type="Area2D" parent="RegionMenu/RegionMenu/CanvasLayer/Buttons"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RegionMenu/RegionMenu/CanvasLayer/Buttons/SouthWestButton"]
+position = Vector2(-231, 61)
+shape = SubResource("RectangleShape2D_fjo0q")
+
+[node name="SouthCentralButton" type="Area2D" parent="RegionMenu/RegionMenu/CanvasLayer/Buttons"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RegionMenu/RegionMenu/CanvasLayer/Buttons/SouthCentralButton"]
+position = Vector2(1, 61)
+shape = SubResource("RectangleShape2D_kp24u")
+
+[node name="SouthEastButton" type="Area2D" parent="RegionMenu/RegionMenu/CanvasLayer/Buttons"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RegionMenu/RegionMenu/CanvasLayer/Buttons/SouthEastButton"]
+position = Vector2(231.5, 60)
+shape = SubResource("RectangleShape2D_ydnr0")
+
+[node name="RandomButton" type="Area2D" parent="RegionMenu/RegionMenu/CanvasLayer/Buttons"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RegionMenu/RegionMenu/CanvasLayer/Buttons/RandomButton"]
+position = Vector2(355.5, -258.5)
+shape = SubResource("RectangleShape2D_6svyi")
+
+[connection signal="input_event" from="PlayerNumberMenu/PlayerNumberMenu/CanvasLayer/Buttons/2" to="PlayerNumberMenu/PlayerNumberMenu" method="_input_event"]
+[connection signal="input_event" from="PlayerNumberMenu/PlayerNumberMenu/CanvasLayer/Buttons/3" to="PlayerNumberMenu/PlayerNumberMenu" method="_input_event"]
+[connection signal="input_event" from="PlayerNumberMenu/PlayerNumberMenu/CanvasLayer/Buttons/4" to="PlayerNumberMenu/PlayerNumberMenu" method="_input_event"]
+[connection signal="input_event" from="PlayerNumberMenu/PlayerNumberMenu/CanvasLayer/Buttons/5" to="PlayerNumberMenu/PlayerNumberMenu" method="_input_event"]
+[connection signal="input_event" from="PlayerNumberMenu/PlayerNumberMenu/CanvasLayer/Buttons/6" to="PlayerNumberMenu/PlayerNumberMenu" method="_input_event"]
+[connection signal="input_event" from="RegionMenu/RegionMenu/CanvasLayer/Buttons/NorthWestButton" to="RegionMenu/RegionMenu" method="_on_input_event"]
+[connection signal="input_event" from="RegionMenu/RegionMenu/CanvasLayer/Buttons/PlainsButton" to="RegionMenu/RegionMenu" method="_on_input_event"]
+[connection signal="input_event" from="RegionMenu/RegionMenu/CanvasLayer/Buttons/NorthCentralButton" to="RegionMenu/RegionMenu" method="_on_input_event"]
+[connection signal="input_event" from="RegionMenu/RegionMenu/CanvasLayer/Buttons/NorthEastButton" to="RegionMenu/RegionMenu" method="_on_input_event"]
+[connection signal="input_event" from="RegionMenu/RegionMenu/CanvasLayer/Buttons/SouthWestButton" to="RegionMenu/RegionMenu" method="_on_input_event"]
+[connection signal="input_event" from="RegionMenu/RegionMenu/CanvasLayer/Buttons/SouthCentralButton" to="RegionMenu/RegionMenu" method="_on_input_event"]
+[connection signal="input_event" from="RegionMenu/RegionMenu/CanvasLayer/Buttons/SouthEastButton" to="RegionMenu/RegionMenu" method="_on_input_event"]
+[connection signal="input_event" from="RegionMenu/RegionMenu/CanvasLayer/Buttons/RandomButton" to="RegionMenu/RegionMenu" method="_on_input_event"]

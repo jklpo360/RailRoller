@@ -1,347 +1,873 @@
-[gd_scene load_steps=6 format=3 uid="uid://brpbpa4r1vqmc"]
+[gd_scene load_steps=21 format=3 uid="uid://brpbpa4r1vqmc"]
 
-[ext_resource type="Script" path="res://scripts/three_player.gd" id="1_2012w"]
-[ext_resource type="Texture2D" uid="uid://d3efg3vds538f" path="res://texture/full_resolution_three_player.png" id="2_voa4g"]
+[ext_resource type="Script" uid="uid://blkpm7tv4q24c" path="res://scripts/three_player.gd" id="1_2012w"]
+[ext_resource type="Texture2D" uid="uid://dvs0s20v7vq2p" path="res://texture/start_menu_texture.png" id="2_ktyes"]
+[ext_resource type="Texture2D" uid="uid://c3rmp58wfie3y" path="res://texture/blue_texture.png" id="3_baeib"]
+[ext_resource type="Texture2D" uid="uid://dd8770row8art" path="res://texture/green_texture.png" id="4_wdvdf"]
+[ext_resource type="LabelSettings" uid="uid://clikw1naxh2nx" path="res://theme/game_label.tres" id="5_wdvdf"]
+[ext_resource type="Theme" uid="uid://c0qhemh8e0xdb" path="res://theme/default.tres" id="6_gyv5h"]
+[ext_resource type="Texture2D" uid="uid://bnglmqko43g6g" path="res://texture/white_texture.png" id="7_7o3hj"]
+[ext_resource type="Texture2D" uid="uid://d4deow46htltl" path="res://texture/yellow_texture.png" id="8_rxte2"]
+[ext_resource type="Texture2D" uid="uid://xd5bujyqhc55" path="res://texture/red_texture.png" id="9_5re4p"]
+[ext_resource type="Texture2D" uid="uid://x0b57jsr7m6j" path="res://texture/black_texture.png" id="10_me0ei"]
+[ext_resource type="Texture2D" uid="uid://0objvwwi3byj" path="res://texture/transparent_mask.png" id="11_gyv5h"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_hufy1"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_8xife"]
+[sub_resource type="QuadMesh" id="QuadMesh_cfel8"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_d6svf"]
+size = Vector2(220, 160)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tm82x"]
 font_size = 50
 shadow_size = 10
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(0, 0)
 
-[sub_resource type="LabelSettings" id="LabelSettings_o7w5e"]
+[sub_resource type="LabelSettings" id="LabelSettings_4rndd"]
+font_size = 50
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1606p"]
+font_size = 50
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hxvts"]
+font_size = 50
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_snbhe"]
+font_size = 50
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ppa2q"]
 font_size = 50
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
 [node name="ThreePlayer" type="Node2D"]
 z_index = 1
-
-[node name="ThreePlayer" type="Node2D" parent="."]
 script = ExtResource("1_2012w")
+red_texture = ExtResource("9_5re4p")
+blue_texture = ExtResource("3_baeib")
+green_texture = ExtResource("4_wdvdf")
+yellow_texture = ExtResource("8_rxte2")
+white_texture = ExtResource("7_7o3hj")
+black_texture = ExtResource("10_me0ei")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="ThreePlayer"]
-offset = Vector2(-960, -540)
-transform = Transform2D(1, 0, 0, 1, -960, -540)
-follow_viewport_enabled = true
-
-[node name="Background" type="MeshInstance2D" parent="ThreePlayer/CanvasLayer"]
-position = Vector2(960, 540)
+[node name="Background" type="MeshInstance2D" parent="."]
 scale = Vector2(1920, -1080)
 mesh = SubResource("QuadMesh_hufy1")
-texture = ExtResource("2_voa4g")
+texture = ExtResource("2_ktyes")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ThreePlayer/CanvasLayer"]
-anchors_preset = -1
-anchor_right = 0.499
-anchor_bottom = 0.5
-offset_right = -918.08
-offset_bottom = -500.0
+[node name="PlayerBackground1" type="MeshInstance2D" parent="."]
+position = Vector2(-480, -270)
+scale = Vector2(960, 540)
+mesh = SubResource("QuadMesh_cfel8")
+texture = ExtResource("3_baeib")
 
-[node name="Player1" type="Node2D" parent="ThreePlayer/CanvasLayer/HBoxContainer"]
+[node name="PlayerBackground2" type="MeshInstance2D" parent="."]
+position = Vector2(480, -270)
+scale = Vector2(960, 540)
+mesh = SubResource("QuadMesh_cfel8")
+texture = ExtResource("4_wdvdf")
 
-[node name="ContextText4" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
-offset_right = 292.0
-offset_bottom = 96.0
-text = "Home City"
-label_settings = SubResource("LabelSettings_8xife")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="PlayerBackground3" type="MeshInstance2D" parent="."]
+position = Vector2(0, 270)
+scale = Vector2(960, 540)
+mesh = SubResource("QuadMesh_cfel8")
+texture = ExtResource("8_rxte2")
 
-[node name="ContextText" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
-offset_left = 292.0
+[node name="Player1" type="Node2D" parent="."]
+position = Vector2(-960, -540)
+
+[node name="SetupInterface1" type="Node2D" parent="Player1"]
+
+[node name="NamePrompt1" type="Label" parent="Player1/SetupInterface1"]
+offset_top = 54.0
 offset_right = 960.0
-offset_bottom = 180.0
-text = "Previous Destination"
-label_settings = SubResource("LabelSettings_8xife")
+offset_bottom = 123.0
+text = "ENTER_NAME_TEXT"
+label_settings = ExtResource("5_wdvdf")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContextText2" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
-offset_left = 292.0
+[node name="PlayerName1" type="LineEdit" parent="Player1/SetupInterface1"]
+offset_left = 321.0
+offset_top = 139.0
+offset_right = 638.0
+offset_bottom = 216.0
+theme = ExtResource("6_gyv5h")
+text = "PLAYER_1"
+
+[node name="ColorPrompt1" type="Label" parent="Player1/SetupInterface1"]
+offset_top = 299.0
+offset_right = 480.0
+offset_bottom = 368.0
+text = "CHOOSE_COLOR"
+label_settings = ExtResource("5_wdvdf")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="KeyPrompt1" type="Label" parent="Player1/SetupInterface1"]
+offset_left = 480.0
+offset_top = 299.0
 offset_right = 960.0
-offset_bottom = 540.0
-text = "Current Destination"
-label_settings = SubResource("LabelSettings_8xife")
+offset_bottom = 368.0
+text = "DESTINATION_KEY"
+label_settings = ExtResource("5_wdvdf")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
-[node name="ContextText3" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
-offset_left = 292.0
-offset_top = 314.0
-offset_right = 960.0
-offset_bottom = 540.0
-text = "Reward"
-label_settings = SubResource("LabelSettings_8xife")
-horizontal_alignment = 1
+[node name="ColorSelectionBackground1" type="MeshInstance2D" parent="Player1/SetupInterface1"]
+position = Vector2(240, 448)
+mesh = SubResource("QuadMesh_d6svf")
+texture = ExtResource("2_ktyes")
+
+[node name="BlueSelection1" type="Button" parent="Player1/SetupInterface1"]
+offset_left = 155.0
+offset_top = 393.0
+offset_right = 213.0
+offset_bottom = 451.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("3_baeib")
+
+[node name="GreenSelection1" type="Button" parent="Player1/SetupInterface1"]
+offset_left = 215.0
+offset_top = 393.0
+offset_right = 273.0
+offset_bottom = 451.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("4_wdvdf")
+
+[node name="WhiteSelection1" type="Button" parent="Player1/SetupInterface1"]
+offset_left = 275.0
+offset_top = 393.0
+offset_right = 333.0
+offset_bottom = 451.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("7_7o3hj")
+
+[node name="YellowSelection1" type="Button" parent="Player1/SetupInterface1"]
+offset_left = 155.0
+offset_top = 453.0
+offset_right = 213.0
+offset_bottom = 511.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("8_rxte2")
+
+[node name="RedSelection1" type="Button" parent="Player1/SetupInterface1"]
+offset_left = 215.0
+offset_top = 453.0
+offset_right = 273.0
+offset_bottom = 511.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("9_5re4p")
+
+[node name="BlackSelection1" type="Button" parent="Player1/SetupInterface1"]
+offset_left = 275.0
+offset_top = 453.0
+offset_right = 333.0
+offset_bottom = 511.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("10_me0ei")
+
+[node name="SecondaryLabel1" type="Label" parent="Player1/SetupInterface1"]
+offset_left = 551.0
+offset_top = 439.0
+offset_right = 813.0
+offset_bottom = 533.0
+text = "SECONDARY"
+label_settings = ExtResource("5_wdvdf")
+horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Player1HomeCitiesText" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
-offset_right = 292.0
-offset_bottom = 234.0
-label_settings = SubResource("LabelSettings_o7w5e")
-horizontal_alignment = 1
+[node name="SecondaryKeybind1" type="Button" parent="Player1/SetupInterface1"]
+offset_left = 813.0
+offset_top = 445.0
+offset_right = 890.0
+offset_bottom = 522.0
+theme = ExtResource("6_gyv5h")
+
+[node name="PrimaryLabel1" type="Label" parent="Player1/SetupInterface1"]
+offset_left = 551.0
+offset_top = 356.0
+offset_right = 813.0
+offset_bottom = 451.0
+text = "PRIMARY"
+label_settings = ExtResource("5_wdvdf")
+horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Player1HomeCityRegion" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
-offset_right = 292.0
-offset_bottom = 314.0
-label_settings = SubResource("LabelSettings_o7w5e")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="PrimaryKeybind1" type="Button" parent="Player1/SetupInterface1"]
+offset_left = 813.0
+offset_top = 364.0
+offset_right = 890.0
+offset_bottom = 441.0
+theme = ExtResource("6_gyv5h")
+text = "1"
 
-[node name="Player1OldText" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
-offset_left = 292.0
-offset_right = 960.0
-offset_bottom = 385.0
-label_settings = SubResource("LabelSettings_o7w5e")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="StartButtonAnchor1" type="Node2D" parent="Player1/SetupInterface1"]
+position = Vector2(480, 270)
 
-[node name="Player1OldRegion" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
-offset_left = 292.0
-offset_right = 417.0
-offset_bottom = 385.0
-label_settings = SubResource("LabelSettings_o7w5e")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Player1DestinationText" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
-offset_left = 292.0
-offset_top = 157.0
-offset_right = 960.0
-offset_bottom = 540.0
-label_settings = SubResource("LabelSettings_o7w5e")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Player1DestinationRegion" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
-offset_left = 292.0
-offset_top = 157.0
-offset_right = 417.0
-offset_bottom = 540.0
-label_settings = SubResource("LabelSettings_o7w5e")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Player1RewardText" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer/Player1"]
-offset_left = 292.0
-offset_top = 428.0
-offset_right = 960.0
-offset_bottom = 540.0
-label_settings = SubResource("LabelSettings_o7w5e")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="ThreePlayer/CanvasLayer"]
-anchors_preset = -1
+[node name="StartButton1" type="Button" parent="Player1/SetupInterface1/StartButtonAnchor1"]
+z_index = 1
+anchors_preset = 8
 anchor_left = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 920.0
-offset_bottom = -500.0
-grow_horizontal = 0
-
-[node name="Player2" type="Node2D" parent="ThreePlayer/CanvasLayer/HBoxContainer2"]
-position = Vector2(-920, 0)
-
-[node name="ContextText4" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
-offset_right = 292.0
-offset_bottom = 96.0
-text = "Home City"
-label_settings = SubResource("LabelSettings_8xife")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ContextText" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
-offset_left = 292.0
-offset_right = 960.0
-offset_bottom = 180.0
-text = "Previous Destination"
-label_settings = SubResource("LabelSettings_8xife")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ContextText2" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
-offset_left = 292.0
-offset_right = 960.0
-offset_bottom = 540.0
-text = "Current Destination"
-label_settings = SubResource("LabelSettings_8xife")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ContextText3" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
-offset_left = 292.0
-offset_top = 314.0
-offset_right = 960.0
-offset_bottom = 540.0
-text = "Reward"
-label_settings = SubResource("LabelSettings_8xife")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Player2HomeCitiesText" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
-offset_right = 292.0
-offset_bottom = 234.0
-label_settings = SubResource("LabelSettings_o7w5e")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Player2HomeCityRegion" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
-offset_right = 292.0
-offset_bottom = 314.0
-label_settings = SubResource("LabelSettings_o7w5e")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Player2OldText" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
-offset_left = 292.0
-offset_right = 960.0
-offset_bottom = 385.0
-label_settings = SubResource("LabelSettings_o7w5e")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Player2OldRegion" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
-offset_left = 292.0
-offset_right = 417.0
-offset_bottom = 385.0
-label_settings = SubResource("LabelSettings_o7w5e")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Player2DestinationText" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
-offset_left = 292.0
-offset_top = 157.0
-offset_right = 960.0
-offset_bottom = 540.0
-label_settings = SubResource("LabelSettings_o7w5e")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Player2DestinationRegion" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
-offset_left = 292.0
-offset_top = 157.0
-offset_right = 417.0
-offset_bottom = 540.0
-label_settings = SubResource("LabelSettings_o7w5e")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Player2RewardText" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer2/Player2"]
-offset_left = 292.0
-offset_top = 428.0
-offset_right = 960.0
-offset_bottom = 540.0
-label_settings = SubResource("LabelSettings_o7w5e")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="ThreePlayer/CanvasLayer"]
-anchors_preset = -1
 anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_top = 500.0
-offset_right = -920.0
+anchor_bottom = 0.5
+offset_left = -78.5
+offset_top = -38.5
+offset_right = 78.5
+offset_bottom = 38.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("6_gyv5h")
+text = "READY"
 
-[node name="Player3" type="Node2D" parent="ThreePlayer/CanvasLayer/HBoxContainer3"]
-position = Vector2(480, -500)
+[node name="GameDisplay1" type="Node2D" parent="Player1"]
+visible = false
 
-[node name="ContextText4" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
-offset_right = 292.0
+[node name="HOME_CITY_TEXT" type="Label" parent="Player1/GameDisplay1"]
+offset_right = 414.0
 offset_bottom = 96.0
-text = "Home City"
-label_settings = SubResource("LabelSettings_8xife")
+text = "HOME_CITY_TEXT"
+label_settings = SubResource("LabelSettings_tm82x")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContextText" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
+[node name="PREVIOUS_DESTINATION_TEXT" type="Label" parent="Player1/GameDisplay1"]
 offset_left = 292.0
-offset_right = 960.0
+offset_right = 1021.0
 offset_bottom = 180.0
-text = "Previous Destination"
-label_settings = SubResource("LabelSettings_8xife")
+text = "PREVIOUS_DESTINATION_TEXT"
+label_settings = SubResource("LabelSettings_tm82x")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContextText2" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
+[node name="CURRENT_DESTINATION_TEXT" type="Label" parent="Player1/GameDisplay1"]
 offset_left = 292.0
-offset_right = 960.0
+offset_right = 1009.0
 offset_bottom = 540.0
-text = "Current Destination"
-label_settings = SubResource("LabelSettings_8xife")
+text = "CURRENT_DESTINATION_TEXT"
+label_settings = SubResource("LabelSettings_tm82x")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContextText3" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
+[node name="REWARD_TEXT" type="Label" parent="Player1/GameDisplay1"]
 offset_left = 292.0
 offset_top = 314.0
 offset_right = 960.0
 offset_bottom = 540.0
-text = "Reward"
-label_settings = SubResource("LabelSettings_8xife")
+text = "REWARD_TEXT"
+label_settings = SubResource("LabelSettings_tm82x")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player3HomeCitiesText" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
+[node name="Player1HomeCitiesText" type="Label" parent="Player1/GameDisplay1"]
 offset_right = 292.0
 offset_bottom = 234.0
-label_settings = SubResource("LabelSettings_o7w5e")
+label_settings = SubResource("LabelSettings_4rndd")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player3HomeCityRegion" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
+[node name="Player1HomeCityRegion" type="Label" parent="Player1/GameDisplay1"]
 offset_right = 292.0
 offset_bottom = 314.0
-label_settings = SubResource("LabelSettings_o7w5e")
+label_settings = SubResource("LabelSettings_4rndd")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player3OldText" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
+[node name="Player1OldText" type="Label" parent="Player1/GameDisplay1"]
 offset_left = 292.0
 offset_right = 960.0
 offset_bottom = 385.0
-label_settings = SubResource("LabelSettings_o7w5e")
+label_settings = SubResource("LabelSettings_4rndd")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player3OldRegion" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
+[node name="Player1OldRegion" type="Label" parent="Player1/GameDisplay1"]
 offset_left = 292.0
 offset_right = 417.0
 offset_bottom = 385.0
-label_settings = SubResource("LabelSettings_o7w5e")
+label_settings = SubResource("LabelSettings_4rndd")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player3DestinationText" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
+[node name="Player1DestinationText" type="Label" parent="Player1/GameDisplay1"]
 offset_left = 292.0
 offset_top = 157.0
 offset_right = 960.0
 offset_bottom = 540.0
-label_settings = SubResource("LabelSettings_o7w5e")
+label_settings = SubResource("LabelSettings_4rndd")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player3DestinationRegion" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
+[node name="Player1DestinationRegion" type="Label" parent="Player1/GameDisplay1"]
 offset_left = 292.0
 offset_top = 157.0
 offset_right = 417.0
 offset_bottom = 540.0
-label_settings = SubResource("LabelSettings_o7w5e")
+label_settings = SubResource("LabelSettings_4rndd")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player3RewardText" type="Label" parent="ThreePlayer/CanvasLayer/HBoxContainer3/Player3"]
+[node name="Player1RewardText" type="Label" parent="Player1/GameDisplay1"]
 offset_left = 292.0
 offset_top = 428.0
 offset_right = 960.0
 offset_bottom = 540.0
-label_settings = SubResource("LabelSettings_o7w5e")
+label_settings = SubResource("LabelSettings_4rndd")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Player2" type="Node2D" parent="."]
+position = Vector2(0, -540)
+
+[node name="SetupInterface2" type="Node2D" parent="Player2"]
+
+[node name="NamePrompt2" type="Label" parent="Player2/SetupInterface2"]
+offset_top = 54.0
+offset_right = 960.0
+offset_bottom = 123.0
+text = "ENTER_NAME_TEXT"
+label_settings = ExtResource("5_wdvdf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerName2" type="LineEdit" parent="Player2/SetupInterface2"]
+offset_left = 321.0
+offset_top = 139.0
+offset_right = 638.0
+offset_bottom = 216.0
+theme = ExtResource("6_gyv5h")
+text = "PLAYER_2"
+
+[node name="ColorPrompt2" type="Label" parent="Player2/SetupInterface2"]
+offset_top = 299.0
+offset_right = 480.0
+offset_bottom = 368.0
+text = "CHOOSE_COLOR"
+label_settings = ExtResource("5_wdvdf")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="KeyPrompt2" type="Label" parent="Player2/SetupInterface2"]
+offset_left = 480.0
+offset_top = 299.0
+offset_right = 960.0
+offset_bottom = 368.0
+text = "DESTINATION_KEY"
+label_settings = ExtResource("5_wdvdf")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ColorSelectionBackground2" type="MeshInstance2D" parent="Player2/SetupInterface2"]
+position = Vector2(240, 448)
+mesh = SubResource("QuadMesh_d6svf")
+texture = ExtResource("2_ktyes")
+
+[node name="BlueSelection2" type="Button" parent="Player2/SetupInterface2"]
+offset_left = 155.0
+offset_top = 393.0
+offset_right = 213.0
+offset_bottom = 451.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("3_baeib")
+
+[node name="GreenSelection2" type="Button" parent="Player2/SetupInterface2"]
+offset_left = 215.0
+offset_top = 393.0
+offset_right = 273.0
+offset_bottom = 451.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("4_wdvdf")
+
+[node name="WhiteSelection2" type="Button" parent="Player2/SetupInterface2"]
+offset_left = 275.0
+offset_top = 393.0
+offset_right = 333.0
+offset_bottom = 451.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("7_7o3hj")
+
+[node name="YellowSelection2" type="Button" parent="Player2/SetupInterface2"]
+offset_left = 155.0
+offset_top = 453.0
+offset_right = 213.0
+offset_bottom = 511.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("8_rxte2")
+
+[node name="RedSelection2" type="Button" parent="Player2/SetupInterface2"]
+offset_left = 215.0
+offset_top = 453.0
+offset_right = 273.0
+offset_bottom = 511.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("9_5re4p")
+
+[node name="BlackSelection2" type="Button" parent="Player2/SetupInterface2"]
+offset_left = 275.0
+offset_top = 453.0
+offset_right = 333.0
+offset_bottom = 511.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("10_me0ei")
+
+[node name="SecondaryLabel2" type="Label" parent="Player2/SetupInterface2"]
+offset_left = 551.0
+offset_top = 439.0
+offset_right = 813.0
+offset_bottom = 533.0
+text = "SECONDARY"
+label_settings = ExtResource("5_wdvdf")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SecondaryKeybind2" type="Button" parent="Player2/SetupInterface2"]
+offset_left = 813.0
+offset_top = 445.0
+offset_right = 890.0
+offset_bottom = 522.0
+theme = ExtResource("6_gyv5h")
+
+[node name="PrimaryLabel2" type="Label" parent="Player2/SetupInterface2"]
+offset_left = 551.0
+offset_top = 356.0
+offset_right = 813.0
+offset_bottom = 451.0
+text = "PRIMARY"
+label_settings = ExtResource("5_wdvdf")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PrimaryKeybind2" type="Button" parent="Player2/SetupInterface2"]
+offset_left = 813.0
+offset_top = 364.0
+offset_right = 890.0
+offset_bottom = 441.0
+theme = ExtResource("6_gyv5h")
+text = "2"
+
+[node name="StartButtonAnchor2" type="Node2D" parent="Player2/SetupInterface2"]
+position = Vector2(480, 270)
+
+[node name="StartButton2" type="Button" parent="Player2/SetupInterface2/StartButtonAnchor2"]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.5
+offset_top = -38.5
+offset_right = 78.5
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_gyv5h")
+text = "READY"
+
+[node name="GameDisplay2" type="Node2D" parent="Player2"]
+visible = false
+
+[node name="HOME_CITY_TEXT" type="Label" parent="Player2/GameDisplay2"]
+offset_right = 292.0
+offset_bottom = 96.0
+text = "HOME_CITY_TEXT"
+label_settings = SubResource("LabelSettings_1606p")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PREVIOUS_DESTINATION_TEXT" type="Label" parent="Player2/GameDisplay2"]
+offset_left = 292.0
+offset_right = 960.0
+offset_bottom = 180.0
+text = "PREVIOUS_DESTINATION_TEXT"
+label_settings = SubResource("LabelSettings_1606p")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CURRENT_DESTINATION_TEXT" type="Label" parent="Player2/GameDisplay2"]
+offset_left = 292.0
+offset_right = 960.0
+offset_bottom = 540.0
+text = "CURRENT_DESTINATION_TEXT"
+label_settings = SubResource("LabelSettings_1606p")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="REWARD_TEXT" type="Label" parent="Player2/GameDisplay2"]
+offset_left = 292.0
+offset_top = 314.0
+offset_right = 960.0
+offset_bottom = 540.0
+text = "REWARD_TEXT"
+label_settings = SubResource("LabelSettings_1606p")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2HomeCitiesText" type="Label" parent="Player2/GameDisplay2"]
+offset_right = 292.0
+offset_bottom = 234.0
+label_settings = SubResource("LabelSettings_hxvts")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2HomeCityRegion" type="Label" parent="Player2/GameDisplay2"]
+offset_right = 292.0
+offset_bottom = 314.0
+label_settings = SubResource("LabelSettings_hxvts")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2OldText" type="Label" parent="Player2/GameDisplay2"]
+offset_left = 292.0
+offset_right = 960.0
+offset_bottom = 385.0
+label_settings = SubResource("LabelSettings_hxvts")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2OldRegion" type="Label" parent="Player2/GameDisplay2"]
+offset_left = 292.0
+offset_right = 417.0
+offset_bottom = 385.0
+label_settings = SubResource("LabelSettings_hxvts")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2DestinationText" type="Label" parent="Player2/GameDisplay2"]
+offset_left = 292.0
+offset_top = 157.0
+offset_right = 960.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_hxvts")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2DestinationRegion" type="Label" parent="Player2/GameDisplay2"]
+offset_left = 292.0
+offset_top = 157.0
+offset_right = 417.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_hxvts")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2RewardText" type="Label" parent="Player2/GameDisplay2"]
+offset_left = 292.0
+offset_top = 428.0
+offset_right = 960.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_hxvts")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3" type="Node2D" parent="."]
+position = Vector2(-480, 0)
+
+[node name="SetupInterface3" type="Node2D" parent="Player3"]
+
+[node name="NamePrompt3" type="Label" parent="Player3/SetupInterface3"]
+offset_top = 54.0
+offset_right = 960.0
+offset_bottom = 123.0
+text = "ENTER_NAME_TEXT"
+label_settings = ExtResource("5_wdvdf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerName3" type="LineEdit" parent="Player3/SetupInterface3"]
+offset_left = 321.0
+offset_top = 139.0
+offset_right = 638.0
+offset_bottom = 216.0
+theme = ExtResource("6_gyv5h")
+text = "PLAYER_3"
+
+[node name="ColorPrompt3" type="Label" parent="Player3/SetupInterface3"]
+offset_top = 299.0
+offset_right = 480.0
+offset_bottom = 368.0
+text = "CHOOSE_COLOR"
+label_settings = ExtResource("5_wdvdf")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="KeyPrompt3" type="Label" parent="Player3/SetupInterface3"]
+offset_left = 480.0
+offset_top = 299.0
+offset_right = 960.0
+offset_bottom = 368.0
+text = "DESTINATION_KEY"
+label_settings = ExtResource("5_wdvdf")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ColorSelectionBackground3" type="MeshInstance2D" parent="Player3/SetupInterface3"]
+position = Vector2(240, 448)
+mesh = SubResource("QuadMesh_d6svf")
+texture = ExtResource("2_ktyes")
+
+[node name="BlueSelection3" type="Button" parent="Player3/SetupInterface3"]
+offset_left = 155.0
+offset_top = 393.0
+offset_right = 213.0
+offset_bottom = 451.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("3_baeib")
+
+[node name="GreenSelection3" type="Button" parent="Player3/SetupInterface3"]
+offset_left = 215.0
+offset_top = 393.0
+offset_right = 273.0
+offset_bottom = 451.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("4_wdvdf")
+
+[node name="WhiteSelection3" type="Button" parent="Player3/SetupInterface3"]
+offset_left = 275.0
+offset_top = 393.0
+offset_right = 333.0
+offset_bottom = 451.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("7_7o3hj")
+
+[node name="YellowSelection3" type="Button" parent="Player3/SetupInterface3"]
+offset_left = 155.0
+offset_top = 453.0
+offset_right = 213.0
+offset_bottom = 511.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("8_rxte2")
+
+[node name="RedSelection3" type="Button" parent="Player3/SetupInterface3"]
+offset_left = 215.0
+offset_top = 453.0
+offset_right = 273.0
+offset_bottom = 511.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("9_5re4p")
+
+[node name="BlackSelection3" type="Button" parent="Player3/SetupInterface3"]
+offset_left = 275.0
+offset_top = 453.0
+offset_right = 333.0
+offset_bottom = 511.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("10_me0ei")
+
+[node name="SecondaryLabel3" type="Label" parent="Player3/SetupInterface3"]
+offset_left = 551.0
+offset_top = 439.0
+offset_right = 813.0
+offset_bottom = 533.0
+text = "SECONDARY"
+label_settings = ExtResource("5_wdvdf")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SecondaryKeybind3" type="Button" parent="Player3/SetupInterface3"]
+offset_left = 813.0
+offset_top = 445.0
+offset_right = 890.0
+offset_bottom = 522.0
+theme = ExtResource("6_gyv5h")
+
+[node name="PrimaryLabel3" type="Label" parent="Player3/SetupInterface3"]
+offset_left = 551.0
+offset_top = 356.0
+offset_right = 813.0
+offset_bottom = 451.0
+text = "PRIMARY"
+label_settings = ExtResource("5_wdvdf")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PrimaryKeybind3" type="Button" parent="Player3/SetupInterface3"]
+offset_left = 813.0
+offset_top = 364.0
+offset_right = 890.0
+offset_bottom = 441.0
+theme = ExtResource("6_gyv5h")
+text = "3"
+
+[node name="StartButtonAnchor3" type="Node2D" parent="Player3/SetupInterface3"]
+position = Vector2(480, 270)
+
+[node name="StartButton3" type="Button" parent="Player3/SetupInterface3/StartButtonAnchor3"]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.5
+offset_top = -38.5
+offset_right = 78.5
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_gyv5h")
+text = "READY"
+
+[node name="GameDisplay3" type="Node2D" parent="Player3"]
+visible = false
+
+[node name="HOME_CITY_TEXT" type="Label" parent="Player3/GameDisplay3"]
+offset_right = 292.0
+offset_bottom = 96.0
+text = "HOME_CITY_TEXT"
+label_settings = SubResource("LabelSettings_snbhe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PREVIOUS_DESTINATION_TEXT" type="Label" parent="Player3/GameDisplay3"]
+offset_left = 292.0
+offset_right = 960.0
+offset_bottom = 180.0
+text = "PREVIOUS_DESTINATION_TEXT"
+label_settings = SubResource("LabelSettings_snbhe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CURRENT_DESTINATION_TEXT" type="Label" parent="Player3/GameDisplay3"]
+offset_left = 292.0
+offset_right = 960.0
+offset_bottom = 540.0
+text = "CURRENT_DESTINATION_TEXT"
+label_settings = SubResource("LabelSettings_snbhe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="REWARD_TEXT" type="Label" parent="Player3/GameDisplay3"]
+offset_left = 292.0
+offset_top = 314.0
+offset_right = 960.0
+offset_bottom = 540.0
+text = "REWARD_TEXT"
+label_settings = SubResource("LabelSettings_snbhe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3HomeCitiesText" type="Label" parent="Player3/GameDisplay3"]
+offset_right = 292.0
+offset_bottom = 234.0
+label_settings = SubResource("LabelSettings_ppa2q")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3HomeCityRegion" type="Label" parent="Player3/GameDisplay3"]
+offset_right = 292.0
+offset_bottom = 314.0
+label_settings = SubResource("LabelSettings_ppa2q")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3OldText" type="Label" parent="Player3/GameDisplay3"]
+offset_left = 292.0
+offset_right = 960.0
+offset_bottom = 385.0
+label_settings = SubResource("LabelSettings_ppa2q")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3OldRegion" type="Label" parent="Player3/GameDisplay3"]
+offset_left = 292.0
+offset_right = 417.0
+offset_bottom = 385.0
+label_settings = SubResource("LabelSettings_ppa2q")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3DestinationText" type="Label" parent="Player3/GameDisplay3"]
+offset_left = 292.0
+offset_top = 157.0
+offset_right = 960.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_ppa2q")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3DestinationRegion" type="Label" parent="Player3/GameDisplay3"]
+offset_left = 292.0
+offset_top = 157.0
+offset_right = 417.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_ppa2q")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3RewardText" type="Label" parent="Player3/GameDisplay3"]
+offset_left = 292.0
+offset_top = 428.0
+offset_right = 960.0
+offset_bottom = 540.0
+label_settings = SubResource("LabelSettings_ppa2q")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerHidingBackground1" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(-480, -270)
+scale = Vector2(960, 540)
+mesh = SubResource("QuadMesh_cfel8")
+texture = ExtResource("11_gyv5h")
+
+[node name="PlayerHidingBackground2" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(480, -270)
+scale = Vector2(960, 540)
+mesh = SubResource("QuadMesh_cfel8")
+texture = ExtResource("11_gyv5h")
+
+[node name="PlayerHidingBackground3" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(0, 270)
+scale = Vector2(960, 540)
+mesh = SubResource("QuadMesh_cfel8")
+texture = ExtResource("11_gyv5h")
+
+[connection signal="pressed" from="Player1/SetupInterface1/BlueSelection1" to="." method="_on_color_selection" binds= [1, "blue"]]
+[connection signal="pressed" from="Player1/SetupInterface1/GreenSelection1" to="." method="_on_color_selection" binds= [1, "green"]]
+[connection signal="pressed" from="Player1/SetupInterface1/WhiteSelection1" to="." method="_on_color_selection" binds= [1, "white"]]
+[connection signal="pressed" from="Player1/SetupInterface1/YellowSelection1" to="." method="_on_color_selection" binds= [1, "yellow"]]
+[connection signal="pressed" from="Player1/SetupInterface1/RedSelection1" to="." method="_on_color_selection" binds= [1, "red"]]
+[connection signal="pressed" from="Player1/SetupInterface1/BlackSelection1" to="." method="_on_color_selection" binds= [1, "black"]]
+[connection signal="pressed" from="Player1/SetupInterface1/SecondaryKeybind1" to="." method="_on_keybind_pressed" binds= [1, false]]
+[connection signal="pressed" from="Player1/SetupInterface1/PrimaryKeybind1" to="." method="_on_keybind_pressed" binds= [1, true]]
+[connection signal="pressed" from="Player1/SetupInterface1/StartButtonAnchor1/StartButton1" to="." method="_on_ready_pressed" binds= [1]]
+[connection signal="pressed" from="Player2/SetupInterface2/BlueSelection2" to="." method="_on_color_selection" binds= [2, "blue"]]
+[connection signal="pressed" from="Player2/SetupInterface2/GreenSelection2" to="." method="_on_color_selection" binds= [2, "green"]]
+[connection signal="pressed" from="Player2/SetupInterface2/WhiteSelection2" to="." method="_on_color_selection" binds= [2, "white"]]
+[connection signal="pressed" from="Player2/SetupInterface2/YellowSelection2" to="." method="_on_color_selection" binds= [2, "yellow"]]
+[connection signal="pressed" from="Player2/SetupInterface2/RedSelection2" to="." method="_on_color_selection" binds= [2, "red"]]
+[connection signal="pressed" from="Player2/SetupInterface2/BlackSelection2" to="." method="_on_color_selection" binds= [2, "black"]]
+[connection signal="pressed" from="Player2/SetupInterface2/SecondaryKeybind2" to="." method="_on_keybind_pressed" binds= [2, false]]
+[connection signal="pressed" from="Player2/SetupInterface2/PrimaryKeybind2" to="." method="_on_keybind_pressed" binds= [2, true]]
+[connection signal="pressed" from="Player2/SetupInterface2/StartButtonAnchor2/StartButton2" to="." method="_on_ready_pressed" binds= [2]]
+[connection signal="pressed" from="Player3/SetupInterface3/BlueSelection3" to="." method="_on_color_selection" binds= [3, "blue"]]
+[connection signal="pressed" from="Player3/SetupInterface3/GreenSelection3" to="." method="_on_color_selection" binds= [3, "green"]]
+[connection signal="pressed" from="Player3/SetupInterface3/WhiteSelection3" to="." method="_on_color_selection" binds= [3, "white"]]
+[connection signal="pressed" from="Player3/SetupInterface3/YellowSelection3" to="." method="_on_color_selection" binds= [3, "yellow"]]
+[connection signal="pressed" from="Player3/SetupInterface3/RedSelection3" to="." method="_on_color_selection" binds= [3, "red"]]
+[connection signal="pressed" from="Player3/SetupInterface3/BlackSelection3" to="." method="_on_color_selection" binds= [3, "black"]]
+[connection signal="pressed" from="Player3/SetupInterface3/SecondaryKeybind3" to="." method="_on_keybind_pressed" binds= [3, false]]
+[connection signal="pressed" from="Player3/SetupInterface3/PrimaryKeybind3" to="." method="_on_keybind_pressed" binds= [3, true]]
+[connection signal="pressed" from="Player3/SetupInterface3/StartButtonAnchor3/StartButton3" to="." method="_on_ready_pressed" binds= [3]]

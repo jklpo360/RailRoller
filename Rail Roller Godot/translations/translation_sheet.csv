@@ -1,0 +1,32 @@
+key,en,br,jp,es
+TITLE_TEXT,Rail Roller,Rail Roller,レールローラー,Rail Roller
+START_TEXT, Start , Início , 開始 , Inicio 
+LOAD_TEXT, Load ,,,
+LOAD_MENU,Load game,,,
+SAVE_NAME,,,,
+DELETE_CONFIRMATION,Are you sure?,,,
+DELETE_CONFIRMATION_YES,Yes,,,
+DELETE_CONFIRMATION_NO,No,,,
+OPTIONS_TEXT, Options , Opções , オプション , Opciones 
+,,,,
+HOME_CITY_TEXT,Home City,Cidade natal,出身地,Ciudad natal
+PREVIOUS_DESTINATION_TEXT,Previous Destination,Destino anterior,前の目的地,Destino anterior
+CURRENT_DESTINATION_TEXT,Current Destination,Próximo destino,現在目的地,Próximo destino
+REWARD_TEXT,Reward,Recompensa,報酬 ,Regalo
+HOW_MANY_PLAYERS_TEXT,How many players?,,何人？,
+CHOOSE_REGION_TEXT,Choose a region,,地域を選べなさい,
+START_BUTTON_TOOLTIP,,,,
+,,,,
+ENTER_NAME_TEXT,Enter player name,,,
+CHOOSE_COLOR, Player color,,,
+DESTINATION_KEY,Keybinds ,,,
+PRIMARY,Primary ,,,
+SECONDARY,Secondary ,,,
+PLAYER_1,Player 1,,,
+PLAYER_2,Player 2,,,
+PLAYER_3,Player 3,,,
+PLAYER_4,Player 4,,,
+PLAYER_5,Player 5,,,
+PLAYER_6,Player 6,,,
+READY,Ready,,,
+CHANGE_PLAYER_INFO,Change player info,,,

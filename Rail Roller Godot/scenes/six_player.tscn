@@ -1,674 +1,1831 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkj4l4apce3jl"]
+[gd_scene load_steps=20 format=3 uid="uid://bkj4l4apce3jl"]
 
-[ext_resource type="Script" path="res://scripts/six_player.gd" id="1_amlhe"]
-[ext_resource type="Texture2D" uid="uid://c8u656rgevol2" path="res://texture/full_resolution_six_player.png" id="2_t48b2"]
+[ext_resource type="Script" uid="uid://dkr2wylx81spc" path="res://scripts/six_player.gd" id="1_amlhe"]
+[ext_resource type="Texture2D" uid="uid://xd5bujyqhc55" path="res://texture/red_texture.png" id="2_4wkdi"]
+[ext_resource type="Texture2D" uid="uid://dvs0s20v7vq2p" path="res://texture/start_menu_texture.png" id="2_asc3q"]
+[ext_resource type="Texture2D" uid="uid://c3rmp58wfie3y" path="res://texture/blue_texture.png" id="3_asc3q"]
+[ext_resource type="Texture2D" uid="uid://dd8770row8art" path="res://texture/green_texture.png" id="4_oo1rg"]
+[ext_resource type="Texture2D" uid="uid://d4deow46htltl" path="res://texture/yellow_texture.png" id="5_5hnar"]
+[ext_resource type="Texture2D" uid="uid://bnglmqko43g6g" path="res://texture/white_texture.png" id="6_ttgt6"]
+[ext_resource type="Texture2D" uid="uid://x0b57jsr7m6j" path="res://texture/black_texture.png" id="7_ypfm7"]
+[ext_resource type="LabelSettings" uid="uid://clikw1naxh2nx" path="res://theme/game_label.tres" id="9_5hnar"]
+[ext_resource type="Theme" uid="uid://c0qhemh8e0xdb" path="res://theme/default.tres" id="10_ttgt6"]
+[ext_resource type="LabelSettings" uid="uid://dcii2cd6iftqw" path="res://theme/text_label.tres" id="11_ypfm7"]
+[ext_resource type="Texture2D" uid="uid://0objvwwi3byj" path="res://texture/transparent_mask.png" id="12_ttgt6"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_3pspo"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_f7fjy"]
-font_size = 40
-shadow_size = 10
-shadow_color = Color(0, 0, 0, 1)
-shadow_offset = Vector2(0, 0)
+[sub_resource type="QuadMesh" id="QuadMesh_oo1rg"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_u1ore"]
-font_size = 50
-outline_size = 10
-outline_color = Color(0, 0, 0, 1)
+[sub_resource type="QuadMesh" id="QuadMesh_4ka1f"]
+size = Vector2(220, 160)
+
+[sub_resource type="QuadMesh" id="QuadMesh_0sn4h"]
+size = Vector2(220, 160)
+
+[sub_resource type="QuadMesh" id="QuadMesh_5hnar"]
+size = Vector2(220, 160)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ttgt6"]
+size = Vector2(220, 160)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ypfm7"]
+size = Vector2(220, 160)
 
 [node name="SixPlayer" type="Node2D"]
 z_index = 1
-
-[node name="SixPlayer" type="Node2D" parent="."]
 script = ExtResource("1_amlhe")
+red_texture = ExtResource("2_4wkdi")
+blue_texture = ExtResource("3_asc3q")
+green_texture = ExtResource("4_oo1rg")
+yellow_texture = ExtResource("5_5hnar")
+white_texture = ExtResource("6_ttgt6")
+black_texture = ExtResource("7_ypfm7")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="SixPlayer"]
-offset = Vector2(-960, -540)
-transform = Transform2D(1, 0, 0, 1, -960, -540)
-follow_viewport_enabled = true
-
-[node name="Background" type="MeshInstance2D" parent="SixPlayer/CanvasLayer"]
-position = Vector2(960, 540)
+[node name="Background" type="MeshInstance2D" parent="."]
 scale = Vector2(1920, -1080)
 mesh = SubResource("QuadMesh_3pspo")
-texture = ExtResource("2_t48b2")
+texture = ExtResource("2_asc3q")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SixPlayer/CanvasLayer"]
-anchors_preset = -1
-anchor_right = 0.499
-anchor_bottom = 0.5
-offset_right = -918.08
-offset_bottom = -500.0
+[node name="PlayerBackground1" type="MeshInstance2D" parent="."]
+position = Vector2(-640, -270)
+scale = Vector2(640, 540)
+mesh = SubResource("QuadMesh_oo1rg")
+texture = ExtResource("3_asc3q")
 
-[node name="Player1" type="Node2D" parent="SixPlayer/CanvasLayer/HBoxContainer"]
+[node name="PlayerBackground2" type="MeshInstance2D" parent="."]
+position = Vector2(0, -270)
+scale = Vector2(640, 540)
+mesh = SubResource("QuadMesh_oo1rg")
+texture = ExtResource("4_oo1rg")
 
-[node name="ContextText4" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer/Player1"]
-offset_right = 227.0
-offset_bottom = 96.0
-text = "Home City"
-label_settings = SubResource("LabelSettings_f7fjy")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="PlayerBackground3" type="MeshInstance2D" parent="."]
+position = Vector2(-640, 270)
+scale = Vector2(640, 540)
+mesh = SubResource("QuadMesh_oo1rg")
+texture = ExtResource("5_5hnar")
 
-[node name="ContextText" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer/Player1"]
-offset_left = 227.0
+[node name="PlayerBackground4" type="MeshInstance2D" parent="."]
+position = Vector2(0, 270)
+scale = Vector2(640, 540)
+mesh = SubResource("QuadMesh_oo1rg")
+texture = ExtResource("2_4wkdi")
+
+[node name="PlayerBackground5" type="MeshInstance2D" parent="."]
+position = Vector2(640, -270)
+scale = Vector2(640, 540)
+mesh = SubResource("QuadMesh_oo1rg")
+texture = ExtResource("6_ttgt6")
+
+[node name="PlayerBackground6" type="MeshInstance2D" parent="."]
+position = Vector2(640, 270)
+scale = Vector2(640, 540)
+mesh = SubResource("QuadMesh_oo1rg")
+texture = ExtResource("7_ypfm7")
+
+[node name="Player1" type="Node2D" parent="."]
+position = Vector2(-960, -540)
+
+[node name="SetupInterface1" type="Node2D" parent="Player1"]
+
+[node name="NamePrompt1" type="Label" parent="Player1/SetupInterface1"]
+offset_top = 54.0
 offset_right = 640.0
-offset_bottom = 180.0
-text = "Previous Destination"
-label_settings = SubResource("LabelSettings_f7fjy")
+offset_bottom = 123.0
+text = "ENTER_NAME_TEXT"
+label_settings = ExtResource("9_5hnar")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContextText2" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer/Player1"]
-offset_left = 227.0
+[node name="PlayerName1" type="LineEdit" parent="Player1/SetupInterface1"]
+offset_left = 161.0
+offset_top = 139.0
+offset_right = 478.0
+offset_bottom = 216.0
+theme = ExtResource("10_ttgt6")
+text = "PLAYER_1"
+
+[node name="ColorPrompt1" type="Label" parent="Player1/SetupInterface1"]
+offset_top = 299.0
+offset_right = 320.0
+offset_bottom = 368.0
+text = "CHOOSE_COLOR"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="KeyPrompt1" type="Label" parent="Player1/SetupInterface1"]
+offset_left = 320.0
+offset_top = 299.0
 offset_right = 640.0
-offset_bottom = 540.0
-text = "Current Destination"
-label_settings = SubResource("LabelSettings_f7fjy")
+offset_bottom = 368.0
+text = "DESTINATION_KEY"
+label_settings = ExtResource("9_5hnar")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
-[node name="ContextText3" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer/Player1"]
-offset_left = 227.0
-offset_top = 314.0
-offset_right = 640.0
-offset_bottom = 540.0
-text = "Reward"
-label_settings = SubResource("LabelSettings_f7fjy")
-horizontal_alignment = 1
+[node name="ColorSelectionBackground1" type="MeshInstance2D" parent="Player1/SetupInterface1"]
+position = Vector2(160, 448)
+mesh = SubResource("QuadMesh_4ka1f")
+texture = ExtResource("2_asc3q")
+
+[node name="BlueSelection1" type="Button" parent="Player1/SetupInterface1"]
+offset_left = 75.0
+offset_top = 393.0
+offset_right = 125.0
+offset_bottom = 443.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("3_asc3q")
+
+[node name="GreenSelection1" type="Button" parent="Player1/SetupInterface1"]
+offset_left = 135.0
+offset_top = 393.0
+offset_right = 193.0
+offset_bottom = 451.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("4_oo1rg")
+
+[node name="WhiteSelection1" type="Button" parent="Player1/SetupInterface1"]
+offset_left = 195.0
+offset_top = 393.0
+offset_right = 253.0
+offset_bottom = 451.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("6_ttgt6")
+
+[node name="YellowSelection1" type="Button" parent="Player1/SetupInterface1"]
+offset_left = 75.0
+offset_top = 453.0
+offset_right = 133.0
+offset_bottom = 511.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("5_5hnar")
+
+[node name="RedSelection1" type="Button" parent="Player1/SetupInterface1"]
+offset_left = 135.0
+offset_top = 453.0
+offset_right = 193.0
+offset_bottom = 511.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("2_4wkdi")
+
+[node name="BlackSelection1" type="Button" parent="Player1/SetupInterface1"]
+offset_left = 195.0
+offset_top = 453.0
+offset_right = 253.0
+offset_bottom = 511.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("7_ypfm7")
+
+[node name="SecondaryLabel1" type="Label" parent="Player1/SetupInterface1"]
+offset_left = 270.0
+offset_top = 439.0
+offset_right = 532.0
+offset_bottom = 533.0
+text = "SECONDARY"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Player1HomeCitiesText" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer/Player1"]
-offset_right = 227.0
-offset_bottom = 234.0
-label_settings = SubResource("LabelSettings_u1ore")
-horizontal_alignment = 1
+[node name="SecondaryKeybind1" type="Button" parent="Player1/SetupInterface1"]
+offset_left = 532.0
+offset_top = 445.0
+offset_right = 609.0
+offset_bottom = 522.0
+theme = ExtResource("10_ttgt6")
+
+[node name="PrimaryLabel1" type="Label" parent="Player1/SetupInterface1"]
+offset_left = 270.0
+offset_top = 356.0
+offset_right = 532.0
+offset_bottom = 451.0
+text = "PRIMARY"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Player1HomeCityRegion" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer/Player1"]
-offset_right = 227.0
-offset_bottom = 315.0
-label_settings = SubResource("LabelSettings_u1ore")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="PrimaryKeybind1" type="Button" parent="Player1/SetupInterface1"]
+offset_left = 532.0
+offset_top = 364.0
+offset_right = 609.0
+offset_bottom = 441.0
+theme = ExtResource("10_ttgt6")
+text = "1"
 
-[node name="Player1OldText" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer/Player1"]
-offset_left = 227.0
-offset_right = 640.0
-offset_bottom = 390.0
-label_settings = SubResource("LabelSettings_u1ore")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="StartButtonAnchor1" type="Node2D" parent="Player1/SetupInterface1"]
+position = Vector2(320, 270)
 
-[node name="Player1OldRegion" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer/Player1"]
-offset_left = 227.0
-offset_top = -2.0
-offset_right = 352.0
-offset_bottom = 383.0
-label_settings = SubResource("LabelSettings_u1ore")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Player1DestinationText" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer/Player1"]
-offset_left = 227.0
-offset_top = 157.0
-offset_right = 640.0
-offset_bottom = 540.0
-label_settings = SubResource("LabelSettings_u1ore")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Player1DestinationRegion" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer/Player1"]
-offset_left = 227.0
-offset_top = 156.0
-offset_right = 352.0
-offset_bottom = 539.0
-label_settings = SubResource("LabelSettings_u1ore")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Player1RewardText" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer/Player1"]
-offset_left = 227.0
-offset_top = 428.0
-offset_right = 640.0
-offset_bottom = 540.0
-label_settings = SubResource("LabelSettings_u1ore")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="SixPlayer/CanvasLayer"]
-anchors_preset = -1
+[node name="StartButton1" type="Button" parent="Player1/SetupInterface1/StartButtonAnchor1"]
+z_index = 1
+anchors_preset = 8
 anchor_left = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 920.0
-offset_bottom = -500.0
-grow_horizontal = 0
-
-[node name="Player2" type="Node2D" parent="SixPlayer/CanvasLayer/HBoxContainer2"]
-position = Vector2(-1240, 0)
-
-[node name="ContextText4" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer2/Player2"]
-offset_right = 227.0
-offset_bottom = 96.0
-text = "Home City"
-label_settings = SubResource("LabelSettings_f7fjy")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ContextText" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer2/Player2"]
-offset_left = 227.0
-offset_right = 640.0
-offset_bottom = 180.0
-text = "Previous Destination"
-label_settings = SubResource("LabelSettings_f7fjy")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ContextText2" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer2/Player2"]
-offset_left = 227.0
-offset_right = 640.0
-offset_bottom = 540.0
-text = "Current Destination"
-label_settings = SubResource("LabelSettings_f7fjy")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ContextText3" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer2/Player2"]
-offset_left = 227.0
-offset_top = 314.0
-offset_right = 640.0
-offset_bottom = 540.0
-text = "Reward"
-label_settings = SubResource("LabelSettings_f7fjy")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Player2HomeCitiesText" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer2/Player2"]
-offset_right = 227.0
-offset_bottom = 234.0
-label_settings = SubResource("LabelSettings_u1ore")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Player2HomeCityRegion" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer2/Player2"]
-offset_right = 227.0
-offset_bottom = 315.0
-label_settings = SubResource("LabelSettings_u1ore")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Player2OldText" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer2/Player2"]
-offset_left = 227.0
-offset_right = 640.0
-offset_bottom = 390.0
-label_settings = SubResource("LabelSettings_u1ore")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Player2OldRegion" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer2/Player2"]
-offset_left = 227.0
-offset_top = -2.0
-offset_right = 352.0
-offset_bottom = 383.0
-label_settings = SubResource("LabelSettings_u1ore")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Player2DestinationText" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer2/Player2"]
-offset_left = 227.0
-offset_top = 157.0
-offset_right = 640.0
-offset_bottom = 540.0
-label_settings = SubResource("LabelSettings_u1ore")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Player2DestinationRegion" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer2/Player2"]
-offset_left = 227.0
-offset_top = 156.0
-offset_right = 352.0
-offset_bottom = 539.0
-label_settings = SubResource("LabelSettings_u1ore")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Player2RewardText" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer2/Player2"]
-offset_left = 227.0
-offset_top = 428.0
-offset_right = 640.0
-offset_bottom = 540.0
-label_settings = SubResource("LabelSettings_u1ore")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="SixPlayer/CanvasLayer"]
-anchors_preset = -1
 anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_top = 500.0
-offset_right = -920.0
+anchor_bottom = 0.5
+offset_left = -78.5
+offset_top = -38.5
+offset_right = 78.5
+offset_bottom = 38.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("10_ttgt6")
+text = "READY"
+metadata/_edit_use_anchors_ = true
 
-[node name="Player3" type="Node2D" parent="SixPlayer/CanvasLayer/HBoxContainer3"]
-position = Vector2(0, -500)
+[node name="GameDisplay1" type="Node2D" parent="Player1"]
+visible = false
 
-[node name="ContextText4" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer3/Player3"]
-offset_right = 227.0
-offset_bottom = 96.0
-text = "Home City"
-label_settings = SubResource("LabelSettings_f7fjy")
+[node name="HOME_CITY_TEXT" type="Label" parent="Player1/GameDisplay1"]
+offset_top = 300.0
+offset_right = 332.0
+offset_bottom = 396.0
+text = "HOME_CITY_TEXT"
+label_settings = ExtResource("9_5hnar")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContextText" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer3/Player3"]
+[node name="PREVIOUS_DESTINATION_TEXT" type="Label" parent="Player1/GameDisplay1"]
 offset_left = 227.0
 offset_right = 640.0
 offset_bottom = 180.0
-text = "Previous Destination"
-label_settings = SubResource("LabelSettings_f7fjy")
+text = "PREVIOUS_DESTINATION_TEXT"
+label_settings = ExtResource("9_5hnar")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContextText2" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer3/Player3"]
+[node name="CURRENT_DESTINATION_TEXT" type="Label" parent="Player1/GameDisplay1"]
 offset_left = 227.0
 offset_right = 640.0
 offset_bottom = 540.0
-text = "Current Destination"
-label_settings = SubResource("LabelSettings_f7fjy")
+text = "CURRENT_DESTINATION_TEXT"
+label_settings = ExtResource("9_5hnar")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContextText3" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer3/Player3"]
+[node name="REWARD_TEXT" type="Label" parent="Player1/GameDisplay1"]
 offset_left = 227.0
 offset_top = 314.0
 offset_right = 640.0
 offset_bottom = 540.0
-text = "Reward"
-label_settings = SubResource("LabelSettings_f7fjy")
+text = "REWARD_TEXT"
+label_settings = ExtResource("9_5hnar")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player3HomeCitiesText" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer3/Player3"]
+[node name="Player1Name" type="Label" parent="Player1/GameDisplay1"]
+offset_right = 229.0
+offset_bottom = 102.0
+text = "Player1"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player1PrimaryKey" type="Button" parent="Player1/GameDisplay1"]
+offset_left = 25.0
+offset_top = 96.0
+offset_right = 102.0
+offset_bottom = 173.0
+theme = ExtResource("10_ttgt6")
+text = "1"
+
+[node name="Player1SecondaryKey" type="Button" parent="Player1/GameDisplay1"]
+offset_left = 127.0
+offset_top = 96.0
+offset_right = 204.0
+offset_bottom = 173.0
+theme = ExtResource("10_ttgt6")
+button_mask = 0
+
+[node name="Player1HomeCitiesText" type="Label" parent="Player1/GameDisplay1"]
+offset_top = 300.0
 offset_right = 227.0
-offset_bottom = 234.0
-label_settings = SubResource("LabelSettings_u1ore")
+offset_bottom = 534.0
+label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player3HomeCityRegion" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer3/Player3"]
+[node name="Player1HomeCityRegion" type="Label" parent="Player1/GameDisplay1"]
+offset_top = 300.0
 offset_right = 227.0
-offset_bottom = 315.0
-label_settings = SubResource("LabelSettings_u1ore")
+offset_bottom = 615.0
+label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player3OldText" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer3/Player3"]
+[node name="Player1OldText" type="Label" parent="Player1/GameDisplay1"]
 offset_left = 227.0
 offset_right = 640.0
 offset_bottom = 390.0
-label_settings = SubResource("LabelSettings_u1ore")
+label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player3OldRegion" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer3/Player3"]
+[node name="Player1OldRegion" type="Label" parent="Player1/GameDisplay1"]
 offset_left = 227.0
 offset_top = -2.0
 offset_right = 352.0
 offset_bottom = 383.0
-label_settings = SubResource("LabelSettings_u1ore")
+label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player3DestinationText" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer3/Player3"]
+[node name="Player1DestinationText" type="Label" parent="Player1/GameDisplay1"]
 offset_left = 227.0
 offset_top = 157.0
 offset_right = 640.0
 offset_bottom = 540.0
-label_settings = SubResource("LabelSettings_u1ore")
+label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player3DestinationRegion" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer3/Player3"]
+[node name="Player1DestinationRegion" type="Label" parent="Player1/GameDisplay1"]
 offset_left = 227.0
 offset_top = 156.0
 offset_right = 352.0
 offset_bottom = 539.0
-label_settings = SubResource("LabelSettings_u1ore")
+label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player3RewardText" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer3/Player3"]
+[node name="Player1RewardText" type="Label" parent="Player1/GameDisplay1"]
 offset_left = 227.0
 offset_top = 428.0
 offset_right = 640.0
 offset_bottom = 540.0
-label_settings = SubResource("LabelSettings_u1ore")
+label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="SixPlayer/CanvasLayer"]
-anchors_preset = -1
+[node name="Player2" type="Node2D" parent="."]
+position = Vector2(-320, -540)
+
+[node name="SetupInterface2" type="Node2D" parent="Player2"]
+
+[node name="NamePrompt2" type="Label" parent="Player2/SetupInterface2"]
+offset_top = 54.0
+offset_right = 640.0
+offset_bottom = 123.0
+text = "ENTER_NAME_TEXT"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerName2" type="LineEdit" parent="Player2/SetupInterface2"]
+offset_left = 161.0
+offset_top = 139.0
+offset_right = 478.0
+offset_bottom = 216.0
+theme = ExtResource("10_ttgt6")
+text = "PLAYER_2"
+
+[node name="ColorPrompt2" type="Label" parent="Player2/SetupInterface2"]
+offset_top = 299.0
+offset_right = 320.0
+offset_bottom = 368.0
+text = "CHOOSE_COLOR"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="KeyPrompt2" type="Label" parent="Player2/SetupInterface2"]
+offset_left = 320.0
+offset_top = 299.0
+offset_right = 640.0
+offset_bottom = 368.0
+text = "DESTINATION_KEY"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ColorSelectionBackground2" type="MeshInstance2D" parent="Player2/SetupInterface2"]
+position = Vector2(160, 448)
+mesh = SubResource("QuadMesh_0sn4h")
+texture = ExtResource("2_asc3q")
+
+[node name="BlueSelection2" type="Button" parent="Player2/SetupInterface2"]
+offset_left = 75.0
+offset_top = 393.0
+offset_right = 125.0
+offset_bottom = 443.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("3_asc3q")
+
+[node name="GreenSelection2" type="Button" parent="Player2/SetupInterface2"]
+offset_left = 135.0
+offset_top = 393.0
+offset_right = 193.0
+offset_bottom = 451.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("4_oo1rg")
+
+[node name="WhiteSelection2" type="Button" parent="Player2/SetupInterface2"]
+offset_left = 195.0
+offset_top = 393.0
+offset_right = 253.0
+offset_bottom = 451.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("6_ttgt6")
+
+[node name="YellowSelection2" type="Button" parent="Player2/SetupInterface2"]
+offset_left = 75.0
+offset_top = 453.0
+offset_right = 133.0
+offset_bottom = 511.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("5_5hnar")
+
+[node name="RedSelection2" type="Button" parent="Player2/SetupInterface2"]
+offset_left = 135.0
+offset_top = 453.0
+offset_right = 193.0
+offset_bottom = 511.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("2_4wkdi")
+
+[node name="BlackSelection2" type="Button" parent="Player2/SetupInterface2"]
+offset_left = 195.0
+offset_top = 453.0
+offset_right = 253.0
+offset_bottom = 511.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("7_ypfm7")
+
+[node name="SecondaryLabel2" type="Label" parent="Player2/SetupInterface2"]
+offset_left = 270.0
+offset_top = 439.0
+offset_right = 532.0
+offset_bottom = 533.0
+text = "SECONDARY"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SecondaryKeybind2" type="Button" parent="Player2/SetupInterface2"]
+offset_left = 532.0
+offset_top = 445.0
+offset_right = 609.0
+offset_bottom = 522.0
+theme = ExtResource("10_ttgt6")
+
+[node name="PrimaryLabel2" type="Label" parent="Player2/SetupInterface2"]
+offset_left = 270.0
+offset_top = 356.0
+offset_right = 532.0
+offset_bottom = 451.0
+text = "PRIMARY"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PrimaryKeybind2" type="Button" parent="Player2/SetupInterface2"]
+offset_left = 532.0
+offset_top = 364.0
+offset_right = 609.0
+offset_bottom = 441.0
+theme = ExtResource("10_ttgt6")
+text = "2"
+
+[node name="StartButtonAnchor2" type="Node2D" parent="Player2/SetupInterface2"]
+position = Vector2(320, 270)
+
+[node name="StartButton2" type="Button" parent="Player2/SetupInterface2/StartButtonAnchor2"]
+z_index = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 920.0
-offset_top = 500.0
-grow_horizontal = 0
-grow_vertical = 0
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.5
+offset_top = -38.5
+offset_right = 78.5
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_ttgt6")
+text = "READY"
+metadata/_edit_use_anchors_ = true
 
-[node name="Player4" type="Node2D" parent="SixPlayer/CanvasLayer/HBoxContainer4"]
-position = Vector2(-1240, -500)
+[node name="GameDisplay2" type="Node2D" parent="Player2"]
+visible = false
 
-[node name="ContextText4" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer4/Player4"]
-offset_right = 227.0
-offset_bottom = 96.0
-text = "Home City"
-label_settings = SubResource("LabelSettings_f7fjy")
+[node name="HOME_CITY_TEXT" type="Label" parent="Player2/GameDisplay2"]
+offset_top = 300.0
+offset_right = 332.0
+offset_bottom = 396.0
+text = "HOME_CITY_TEXT"
+label_settings = ExtResource("9_5hnar")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContextText" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer4/Player4"]
+[node name="PREVIOUS_DESTINATION_TEXT" type="Label" parent="Player2/GameDisplay2"]
 offset_left = 227.0
 offset_right = 640.0
 offset_bottom = 180.0
-text = "Previous Destination"
-label_settings = SubResource("LabelSettings_f7fjy")
+text = "PREVIOUS_DESTINATION_TEXT"
+label_settings = ExtResource("9_5hnar")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContextText2" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer4/Player4"]
+[node name="CURRENT_DESTINATION_TEXT" type="Label" parent="Player2/GameDisplay2"]
 offset_left = 227.0
 offset_right = 640.0
 offset_bottom = 540.0
-text = "Current Destination"
-label_settings = SubResource("LabelSettings_f7fjy")
+text = "CURRENT_DESTINATION_TEXT"
+label_settings = ExtResource("9_5hnar")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContextText3" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer4/Player4"]
+[node name="REWARD_TEXT" type="Label" parent="Player2/GameDisplay2"]
 offset_left = 227.0
 offset_top = 314.0
 offset_right = 640.0
 offset_bottom = 540.0
-text = "Reward"
-label_settings = SubResource("LabelSettings_f7fjy")
+text = "REWARD_TEXT"
+label_settings = ExtResource("9_5hnar")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player4HomeCitiesText" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer4/Player4"]
+[node name="Player2Name" type="Label" parent="Player2/GameDisplay2"]
+offset_right = 229.0
+offset_bottom = 102.0
+text = "Player1"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2PrimaryKey" type="Button" parent="Player2/GameDisplay2"]
+offset_left = 25.0
+offset_top = 96.0
+offset_right = 102.0
+offset_bottom = 173.0
+theme = ExtResource("10_ttgt6")
+text = "1"
+
+[node name="Player2SecondaryKey" type="Button" parent="Player2/GameDisplay2"]
+offset_left = 127.0
+offset_top = 96.0
+offset_right = 204.0
+offset_bottom = 173.0
+theme = ExtResource("10_ttgt6")
+button_mask = 0
+
+[node name="Player2HomeCitiesText" type="Label" parent="Player2/GameDisplay2"]
+offset_top = 300.0
 offset_right = 227.0
-offset_bottom = 234.0
-label_settings = SubResource("LabelSettings_u1ore")
+offset_bottom = 534.0
+label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player4HomeCityRegion" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer4/Player4"]
+[node name="Player2HomeCityRegion" type="Label" parent="Player2/GameDisplay2"]
+offset_top = 300.0
 offset_right = 227.0
-offset_bottom = 315.0
-label_settings = SubResource("LabelSettings_u1ore")
+offset_bottom = 615.0
+label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player4OldText" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer4/Player4"]
+[node name="Player2OldText" type="Label" parent="Player2/GameDisplay2"]
 offset_left = 227.0
 offset_right = 640.0
 offset_bottom = 390.0
-label_settings = SubResource("LabelSettings_u1ore")
+label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player4OldRegion" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer4/Player4"]
+[node name="Player2OldRegion" type="Label" parent="Player2/GameDisplay2"]
 offset_left = 227.0
 offset_top = -2.0
 offset_right = 352.0
 offset_bottom = 383.0
-label_settings = SubResource("LabelSettings_u1ore")
+label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player4DestinationText" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer4/Player4"]
+[node name="Player2DestinationText" type="Label" parent="Player2/GameDisplay2"]
 offset_left = 227.0
 offset_top = 157.0
 offset_right = 640.0
 offset_bottom = 540.0
-label_settings = SubResource("LabelSettings_u1ore")
+label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player4DestinationRegion" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer4/Player4"]
+[node name="Player2DestinationRegion" type="Label" parent="Player2/GameDisplay2"]
 offset_left = 227.0
 offset_top = 156.0
 offset_right = 352.0
 offset_bottom = 539.0
-label_settings = SubResource("LabelSettings_u1ore")
+label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player4RewardText" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer4/Player4"]
+[node name="Player2RewardText" type="Label" parent="Player2/GameDisplay2"]
 offset_left = 227.0
 offset_top = 428.0
 offset_right = 640.0
 offset_bottom = 540.0
-label_settings = SubResource("LabelSettings_u1ore")
+label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="SixPlayer/CanvasLayer"]
-anchors_preset = -1
+[node name="Player3" type="Node2D" parent="."]
+position = Vector2(-960, 0)
+
+[node name="SetupInterface3" type="Node2D" parent="Player3"]
+
+[node name="NamePrompt3" type="Label" parent="Player3/SetupInterface3"]
+offset_top = 54.0
+offset_right = 640.0
+offset_bottom = 123.0
+text = "ENTER_NAME_TEXT"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerName3" type="LineEdit" parent="Player3/SetupInterface3"]
+offset_left = 161.0
+offset_top = 139.0
+offset_right = 478.0
+offset_bottom = 216.0
+theme = ExtResource("10_ttgt6")
+text = "PLAYER_3"
+
+[node name="ColorPrompt3" type="Label" parent="Player3/SetupInterface3"]
+offset_top = 299.0
+offset_right = 320.0
+offset_bottom = 368.0
+text = "CHOOSE_COLOR"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="KeyPrompt3" type="Label" parent="Player3/SetupInterface3"]
+offset_left = 320.0
+offset_top = 299.0
+offset_right = 640.0
+offset_bottom = 368.0
+text = "DESTINATION_KEY"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ColorSelectionBackground3" type="MeshInstance2D" parent="Player3/SetupInterface3"]
+position = Vector2(160, 448)
+mesh = SubResource("QuadMesh_5hnar")
+texture = ExtResource("2_asc3q")
+
+[node name="BlueSelection3" type="Button" parent="Player3/SetupInterface3"]
+offset_left = 75.0
+offset_top = 393.0
+offset_right = 125.0
+offset_bottom = 443.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("3_asc3q")
+
+[node name="GreenSelection3" type="Button" parent="Player3/SetupInterface3"]
+offset_left = 135.0
+offset_top = 393.0
+offset_right = 193.0
+offset_bottom = 451.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("4_oo1rg")
+
+[node name="WhiteSelection3" type="Button" parent="Player3/SetupInterface3"]
+offset_left = 195.0
+offset_top = 393.0
+offset_right = 253.0
+offset_bottom = 451.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("6_ttgt6")
+
+[node name="YellowSelection3" type="Button" parent="Player3/SetupInterface3"]
+offset_left = 75.0
+offset_top = 453.0
+offset_right = 133.0
+offset_bottom = 511.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("5_5hnar")
+
+[node name="RedSelection3" type="Button" parent="Player3/SetupInterface3"]
+offset_left = 135.0
+offset_top = 453.0
+offset_right = 193.0
+offset_bottom = 511.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("2_4wkdi")
+
+[node name="BlackSelection3" type="Button" parent="Player3/SetupInterface3"]
+offset_left = 195.0
+offset_top = 453.0
+offset_right = 253.0
+offset_bottom = 511.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("7_ypfm7")
+
+[node name="SecondaryLabel3" type="Label" parent="Player3/SetupInterface3"]
+offset_left = 270.0
+offset_top = 439.0
+offset_right = 532.0
+offset_bottom = 533.0
+text = "SECONDARY"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SecondaryKeybind3" type="Button" parent="Player3/SetupInterface3"]
+offset_left = 532.0
+offset_top = 445.0
+offset_right = 609.0
+offset_bottom = 522.0
+theme = ExtResource("10_ttgt6")
+
+[node name="PrimaryLabel3" type="Label" parent="Player3/SetupInterface3"]
+offset_left = 270.0
+offset_top = 356.0
+offset_right = 532.0
+offset_bottom = 451.0
+text = "PRIMARY"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PrimaryKeybind3" type="Button" parent="Player3/SetupInterface3"]
+offset_left = 532.0
+offset_top = 364.0
+offset_right = 609.0
+offset_bottom = 441.0
+theme = ExtResource("10_ttgt6")
+text = "3"
+
+[node name="StartButtonAnchor3" type="Node2D" parent="Player3/SetupInterface3"]
+position = Vector2(320, 270)
+
+[node name="StartButton3" type="Button" parent="Player3/SetupInterface3/StartButtonAnchor3"]
+z_index = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 920.0
-offset_top = 500.0
-grow_horizontal = 0
-grow_vertical = 0
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.5
+offset_top = -38.5
+offset_right = 78.5
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_ttgt6")
+text = "READY"
+metadata/_edit_use_anchors_ = true
 
-[node name="Player5" type="Node2D" parent="SixPlayer/CanvasLayer/HBoxContainer5"]
-position = Vector2(-600, -1040)
+[node name="GameDisplay3" type="Node2D" parent="Player3"]
+visible = false
 
-[node name="ContextText4" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer5/Player5"]
-offset_right = 227.0
-offset_bottom = 96.0
-text = "Home City"
-label_settings = SubResource("LabelSettings_f7fjy")
+[node name="HOME_CITY_TEXT" type="Label" parent="Player3/GameDisplay3"]
+offset_top = 300.0
+offset_right = 332.0
+offset_bottom = 396.0
+text = "HOME_CITY_TEXT"
+label_settings = ExtResource("9_5hnar")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContextText" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer5/Player5"]
+[node name="PREVIOUS_DESTINATION_TEXT" type="Label" parent="Player3/GameDisplay3"]
 offset_left = 227.0
-offset_right = 640.0
+offset_right = 811.0
 offset_bottom = 180.0
-text = "Previous Destination"
-label_settings = SubResource("LabelSettings_f7fjy")
+text = "PREVIOUS_DESTINATION_TEXT"
+label_settings = ExtResource("9_5hnar")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContextText2" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer5/Player5"]
+[node name="CURRENT_DESTINATION_TEXT" type="Label" parent="Player3/GameDisplay3"]
 offset_left = 227.0
-offset_right = 640.0
+offset_right = 800.0
 offset_bottom = 540.0
-text = "Current Destination"
-label_settings = SubResource("LabelSettings_f7fjy")
+text = "CURRENT_DESTINATION_TEXT"
+label_settings = ExtResource("9_5hnar")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContextText3" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer5/Player5"]
+[node name="REWARD_TEXT" type="Label" parent="Player3/GameDisplay3"]
 offset_left = 227.0
 offset_top = 314.0
 offset_right = 640.0
 offset_bottom = 540.0
-text = "Reward"
-label_settings = SubResource("LabelSettings_f7fjy")
+text = "REWARD_TEXT"
+label_settings = ExtResource("9_5hnar")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player5HomeCitiesText" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer5/Player5"]
+[node name="Player3Name" type="Label" parent="Player3/GameDisplay3"]
+offset_right = 229.0
+offset_bottom = 102.0
+text = "Player1"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3PrimaryKey" type="Button" parent="Player3/GameDisplay3"]
+offset_left = 25.0
+offset_top = 96.0
+offset_right = 102.0
+offset_bottom = 173.0
+theme = ExtResource("10_ttgt6")
+text = "1"
+
+[node name="Player3SecondaryKey" type="Button" parent="Player3/GameDisplay3"]
+offset_left = 127.0
+offset_top = 96.0
+offset_right = 204.0
+offset_bottom = 173.0
+theme = ExtResource("10_ttgt6")
+button_mask = 0
+
+[node name="Player3HomeCitiesText" type="Label" parent="Player3/GameDisplay3"]
+offset_top = 300.0
 offset_right = 227.0
-offset_bottom = 234.0
-label_settings = SubResource("LabelSettings_u1ore")
+offset_bottom = 534.0
+label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player5HomeCityRegion" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer5/Player5"]
+[node name="Player3HomeCityRegion" type="Label" parent="Player3/GameDisplay3"]
+offset_top = 300.0
 offset_right = 227.0
-offset_bottom = 315.0
-label_settings = SubResource("LabelSettings_u1ore")
+offset_bottom = 615.0
+label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player5OldText" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer5/Player5"]
+[node name="Player3OldText" type="Label" parent="Player3/GameDisplay3"]
 offset_left = 227.0
 offset_right = 640.0
 offset_bottom = 390.0
-label_settings = SubResource("LabelSettings_u1ore")
+label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player5OldRegion" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer5/Player5"]
+[node name="Player3OldRegion" type="Label" parent="Player3/GameDisplay3"]
 offset_left = 227.0
 offset_top = -2.0
 offset_right = 352.0
 offset_bottom = 383.0
-label_settings = SubResource("LabelSettings_u1ore")
+label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player5DestinationText" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer5/Player5"]
+[node name="Player3DestinationText" type="Label" parent="Player3/GameDisplay3"]
 offset_left = 227.0
 offset_top = 157.0
 offset_right = 640.0
 offset_bottom = 540.0
-label_settings = SubResource("LabelSettings_u1ore")
+label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player5DestinationRegion" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer5/Player5"]
+[node name="Player3DestinationRegion" type="Label" parent="Player3/GameDisplay3"]
 offset_left = 227.0
 offset_top = 156.0
 offset_right = 352.0
 offset_bottom = 539.0
-label_settings = SubResource("LabelSettings_u1ore")
+label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player5RewardText" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer5/Player5"]
+[node name="Player3RewardText" type="Label" parent="Player3/GameDisplay3"]
 offset_left = 227.0
 offset_top = 428.0
 offset_right = 640.0
 offset_bottom = 540.0
-label_settings = SubResource("LabelSettings_u1ore")
+label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer6" type="HBoxContainer" parent="SixPlayer/CanvasLayer"]
-anchors_preset = -1
+[node name="Player4" type="Node2D" parent="."]
+position = Vector2(-320, 0)
+
+[node name="SetupInterface4" type="Node2D" parent="Player4"]
+
+[node name="NamePrompt4" type="Label" parent="Player4/SetupInterface4"]
+offset_top = 54.0
+offset_right = 640.0
+offset_bottom = 123.0
+text = "ENTER_NAME_TEXT"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerName4" type="LineEdit" parent="Player4/SetupInterface4"]
+offset_left = 161.0
+offset_top = 139.0
+offset_right = 478.0
+offset_bottom = 216.0
+theme = ExtResource("10_ttgt6")
+text = "PLAYER_4"
+
+[node name="ColorPrompt4" type="Label" parent="Player4/SetupInterface4"]
+offset_top = 299.0
+offset_right = 320.0
+offset_bottom = 368.0
+text = "CHOOSE_COLOR"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="KeyPrompt4" type="Label" parent="Player4/SetupInterface4"]
+offset_left = 320.0
+offset_top = 299.0
+offset_right = 640.0
+offset_bottom = 368.0
+text = "DESTINATION_KEY"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ColorSelectionBackground4" type="MeshInstance2D" parent="Player4/SetupInterface4"]
+position = Vector2(160, 448)
+mesh = SubResource("QuadMesh_ttgt6")
+texture = ExtResource("2_asc3q")
+
+[node name="BlueSelection4" type="Button" parent="Player4/SetupInterface4"]
+offset_left = 75.0
+offset_top = 393.0
+offset_right = 125.0
+offset_bottom = 443.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("3_asc3q")
+
+[node name="GreenSelection4" type="Button" parent="Player4/SetupInterface4"]
+offset_left = 135.0
+offset_top = 393.0
+offset_right = 193.0
+offset_bottom = 451.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("4_oo1rg")
+
+[node name="WhiteSelection4" type="Button" parent="Player4/SetupInterface4"]
+offset_left = 195.0
+offset_top = 393.0
+offset_right = 253.0
+offset_bottom = 451.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("6_ttgt6")
+
+[node name="YellowSelection4" type="Button" parent="Player4/SetupInterface4"]
+offset_left = 75.0
+offset_top = 453.0
+offset_right = 133.0
+offset_bottom = 511.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("5_5hnar")
+
+[node name="RedSelection4" type="Button" parent="Player4/SetupInterface4"]
+offset_left = 135.0
+offset_top = 453.0
+offset_right = 193.0
+offset_bottom = 511.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("2_4wkdi")
+
+[node name="BlackSelection4" type="Button" parent="Player4/SetupInterface4"]
+offset_left = 195.0
+offset_top = 453.0
+offset_right = 253.0
+offset_bottom = 511.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("7_ypfm7")
+
+[node name="SecondaryLabel4" type="Label" parent="Player4/SetupInterface4"]
+offset_left = 270.0
+offset_top = 439.0
+offset_right = 532.0
+offset_bottom = 533.0
+text = "SECONDARY"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SecondaryKeybind4" type="Button" parent="Player4/SetupInterface4"]
+offset_left = 532.0
+offset_top = 445.0
+offset_right = 609.0
+offset_bottom = 522.0
+theme = ExtResource("10_ttgt6")
+
+[node name="PrimaryLabel4" type="Label" parent="Player4/SetupInterface4"]
+offset_left = 270.0
+offset_top = 356.0
+offset_right = 532.0
+offset_bottom = 451.0
+text = "PRIMARY"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PrimaryKeybind4" type="Button" parent="Player4/SetupInterface4"]
+offset_left = 532.0
+offset_top = 364.0
+offset_right = 609.0
+offset_bottom = 441.0
+theme = ExtResource("10_ttgt6")
+text = "4"
+
+[node name="StartButtonAnchor4" type="Node2D" parent="Player4/SetupInterface4"]
+position = Vector2(320, 270)
+
+[node name="StartButton4" type="Button" parent="Player4/SetupInterface4/StartButtonAnchor4"]
+z_index = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 920.0
-offset_top = 500.0
-grow_horizontal = 0
-grow_vertical = 0
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.5
+offset_top = -38.5
+offset_right = 78.5
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_ttgt6")
+text = "READY"
+metadata/_edit_use_anchors_ = true
 
-[node name="Player6" type="Node2D" parent="SixPlayer/CanvasLayer/HBoxContainer6"]
-position = Vector2(-600, -500)
+[node name="GameDisplay4" type="Node2D" parent="Player4"]
+visible = false
 
-[node name="ContextText4" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer6/Player6"]
-offset_right = 227.0
-offset_bottom = 96.0
-text = "Home City"
-label_settings = SubResource("LabelSettings_f7fjy")
+[node name="HOME_CITY_TEXT" type="Label" parent="Player4/GameDisplay4"]
+offset_top = 300.0
+offset_right = 332.0
+offset_bottom = 396.0
+text = "HOME_CITY_TEXT"
+label_settings = ExtResource("9_5hnar")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContextText" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer6/Player6"]
+[node name="PREVIOUS_DESTINATION_TEXT" type="Label" parent="Player4/GameDisplay4"]
 offset_left = 227.0
-offset_right = 640.0
+offset_right = 811.0
 offset_bottom = 180.0
-text = "Previous Destination"
-label_settings = SubResource("LabelSettings_f7fjy")
+text = "PREVIOUS_DESTINATION_TEXT"
+label_settings = ExtResource("9_5hnar")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContextText2" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer6/Player6"]
+[node name="CURRENT_DESTINATION_TEXT" type="Label" parent="Player4/GameDisplay4"]
 offset_left = 227.0
-offset_right = 640.0
+offset_right = 800.0
 offset_bottom = 540.0
-text = "Current Destination"
-label_settings = SubResource("LabelSettings_f7fjy")
+text = "CURRENT_DESTINATION_TEXT"
+label_settings = ExtResource("9_5hnar")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContextText3" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer6/Player6"]
+[node name="REWARD_TEXT" type="Label" parent="Player4/GameDisplay4"]
 offset_left = 227.0
 offset_top = 314.0
 offset_right = 640.0
 offset_bottom = 540.0
-text = "Reward"
-label_settings = SubResource("LabelSettings_f7fjy")
+text = "REWARD_TEXT"
+label_settings = ExtResource("9_5hnar")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player6HomeCitiesText" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer6/Player6"]
+[node name="Player4Name" type="Label" parent="Player4/GameDisplay4"]
+offset_right = 229.0
+offset_bottom = 102.0
+text = "Player1"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player4PrimaryKey" type="Button" parent="Player4/GameDisplay4"]
+offset_left = 25.0
+offset_top = 96.0
+offset_right = 102.0
+offset_bottom = 173.0
+theme = ExtResource("10_ttgt6")
+text = "1"
+
+[node name="Player4SecondaryKey" type="Button" parent="Player4/GameDisplay4"]
+offset_left = 127.0
+offset_top = 96.0
+offset_right = 204.0
+offset_bottom = 173.0
+theme = ExtResource("10_ttgt6")
+button_mask = 0
+
+[node name="Player4HomeCitiesText" type="Label" parent="Player4/GameDisplay4"]
+offset_top = 300.0
 offset_right = 227.0
-offset_bottom = 234.0
-label_settings = SubResource("LabelSettings_u1ore")
+offset_bottom = 534.0
+label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player6HomeCityRegion" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer6/Player6"]
+[node name="Player4HomeCityRegion" type="Label" parent="Player4/GameDisplay4"]
+offset_top = 300.0
 offset_right = 227.0
-offset_bottom = 315.0
-label_settings = SubResource("LabelSettings_u1ore")
+offset_bottom = 615.0
+label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player6OldText" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer6/Player6"]
+[node name="Player4OldText" type="Label" parent="Player4/GameDisplay4"]
 offset_left = 227.0
 offset_right = 640.0
 offset_bottom = 390.0
-label_settings = SubResource("LabelSettings_u1ore")
+label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player6OldRegion" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer6/Player6"]
+[node name="Player4OldRegion" type="Label" parent="Player4/GameDisplay4"]
 offset_left = 227.0
 offset_top = -2.0
 offset_right = 352.0
 offset_bottom = 383.0
-label_settings = SubResource("LabelSettings_u1ore")
+label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player6DestinationText" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer6/Player6"]
+[node name="Player4DestinationText" type="Label" parent="Player4/GameDisplay4"]
 offset_left = 227.0
 offset_top = 157.0
 offset_right = 640.0
 offset_bottom = 540.0
-label_settings = SubResource("LabelSettings_u1ore")
+label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player6DestinationRegion" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer6/Player6"]
+[node name="Player4DestinationRegion" type="Label" parent="Player4/GameDisplay4"]
 offset_left = 227.0
 offset_top = 156.0
 offset_right = 352.0
 offset_bottom = 539.0
-label_settings = SubResource("LabelSettings_u1ore")
+label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player6RewardText" type="Label" parent="SixPlayer/CanvasLayer/HBoxContainer6/Player6"]
+[node name="Player4RewardText" type="Label" parent="Player4/GameDisplay4"]
 offset_left = 227.0
 offset_top = 428.0
 offset_right = 640.0
 offset_bottom = 540.0
-label_settings = SubResource("LabelSettings_u1ore")
+label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Player5" type="Node2D" parent="."]
+position = Vector2(320, -540)
+
+[node name="SetupInterface5" type="Node2D" parent="Player5"]
+
+[node name="NamePrompt5" type="Label" parent="Player5/SetupInterface5"]
+offset_top = 54.0
+offset_right = 640.0
+offset_bottom = 123.0
+text = "ENTER_NAME_TEXT"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerName5" type="LineEdit" parent="Player5/SetupInterface5"]
+offset_left = 161.0
+offset_top = 139.0
+offset_right = 478.0
+offset_bottom = 216.0
+theme = ExtResource("10_ttgt6")
+text = "PLAYER_5"
+
+[node name="ColorPrompt5" type="Label" parent="Player5/SetupInterface5"]
+offset_top = 299.0
+offset_right = 320.0
+offset_bottom = 368.0
+text = "CHOOSE_COLOR"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="KeyPrompt5" type="Label" parent="Player5/SetupInterface5"]
+offset_left = 320.0
+offset_top = 299.0
+offset_right = 640.0
+offset_bottom = 368.0
+text = "DESTINATION_KEY"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ColorSelectionBackground5" type="MeshInstance2D" parent="Player5/SetupInterface5"]
+position = Vector2(160, 448)
+mesh = SubResource("QuadMesh_ypfm7")
+texture = ExtResource("2_asc3q")
+
+[node name="BlueSelection5" type="Button" parent="Player5/SetupInterface5"]
+offset_left = 75.0
+offset_top = 393.0
+offset_right = 125.0
+offset_bottom = 443.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("3_asc3q")
+
+[node name="GreenSelection5" type="Button" parent="Player5/SetupInterface5"]
+offset_left = 135.0
+offset_top = 393.0
+offset_right = 193.0
+offset_bottom = 451.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("4_oo1rg")
+
+[node name="WhiteSelection5" type="Button" parent="Player5/SetupInterface5"]
+offset_left = 195.0
+offset_top = 393.0
+offset_right = 253.0
+offset_bottom = 451.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("6_ttgt6")
+
+[node name="YellowSelection5" type="Button" parent="Player5/SetupInterface5"]
+offset_left = 75.0
+offset_top = 453.0
+offset_right = 133.0
+offset_bottom = 511.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("5_5hnar")
+
+[node name="RedSelection5" type="Button" parent="Player5/SetupInterface5"]
+offset_left = 135.0
+offset_top = 453.0
+offset_right = 193.0
+offset_bottom = 511.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("2_4wkdi")
+
+[node name="BlackSelection5" type="Button" parent="Player5/SetupInterface5"]
+offset_left = 195.0
+offset_top = 453.0
+offset_right = 253.0
+offset_bottom = 511.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("7_ypfm7")
+
+[node name="SecondaryLabel5" type="Label" parent="Player5/SetupInterface5"]
+offset_left = 270.0
+offset_top = 439.0
+offset_right = 532.0
+offset_bottom = 533.0
+text = "SECONDARY"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SecondaryKeybind5" type="Button" parent="Player5/SetupInterface5"]
+offset_left = 532.0
+offset_top = 445.0
+offset_right = 609.0
+offset_bottom = 522.0
+theme = ExtResource("10_ttgt6")
+
+[node name="PrimaryLabel5" type="Label" parent="Player5/SetupInterface5"]
+offset_left = 270.0
+offset_top = 356.0
+offset_right = 532.0
+offset_bottom = 451.0
+text = "PRIMARY"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PrimaryKeybind5" type="Button" parent="Player5/SetupInterface5"]
+offset_left = 532.0
+offset_top = 364.0
+offset_right = 609.0
+offset_bottom = 441.0
+theme = ExtResource("10_ttgt6")
+text = "5"
+
+[node name="StartButtonAnchor5" type="Node2D" parent="Player5/SetupInterface5"]
+position = Vector2(320, 270)
+
+[node name="StartButton5" type="Button" parent="Player5/SetupInterface5/StartButtonAnchor5"]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.5
+offset_top = -38.5
+offset_right = 78.5
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_ttgt6")
+text = "READY"
+metadata/_edit_use_anchors_ = true
+
+[node name="GameDisplay5" type="Node2D" parent="Player5"]
+visible = false
+
+[node name="HOME_CITY_TEXT" type="Label" parent="Player5/GameDisplay5"]
+offset_top = 300.0
+offset_right = 332.0
+offset_bottom = 396.0
+text = "HOME_CITY_TEXT"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PREVIOUS_DESTINATION_TEXT" type="Label" parent="Player5/GameDisplay5"]
+offset_left = 227.0
+offset_right = 811.0
+offset_bottom = 180.0
+text = "PREVIOUS_DESTINATION_TEXT"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CURRENT_DESTINATION_TEXT" type="Label" parent="Player5/GameDisplay5"]
+offset_left = 227.0
+offset_right = 800.0
+offset_bottom = 540.0
+text = "CURRENT_DESTINATION_TEXT"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="REWARD_TEXT" type="Label" parent="Player5/GameDisplay5"]
+offset_left = 227.0
+offset_top = 314.0
+offset_right = 640.0
+offset_bottom = 540.0
+text = "REWARD_TEXT"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player5Name" type="Label" parent="Player5/GameDisplay5"]
+offset_right = 229.0
+offset_bottom = 102.0
+text = "Player1"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player5PrimaryKey" type="Button" parent="Player5/GameDisplay5"]
+offset_left = 25.0
+offset_top = 96.0
+offset_right = 102.0
+offset_bottom = 173.0
+theme = ExtResource("10_ttgt6")
+text = "1"
+
+[node name="Player5SecondaryKey" type="Button" parent="Player5/GameDisplay5"]
+offset_left = 127.0
+offset_top = 96.0
+offset_right = 204.0
+offset_bottom = 173.0
+theme = ExtResource("10_ttgt6")
+button_mask = 0
+
+[node name="Player5HomeCitiesText" type="Label" parent="Player5/GameDisplay5"]
+offset_top = 300.0
+offset_right = 227.0
+offset_bottom = 534.0
+label_settings = ExtResource("11_ypfm7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player5HomeCityRegion" type="Label" parent="Player5/GameDisplay5"]
+offset_top = 300.0
+offset_right = 227.0
+offset_bottom = 615.0
+label_settings = ExtResource("11_ypfm7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player5OldText" type="Label" parent="Player5/GameDisplay5"]
+offset_left = 227.0
+offset_right = 640.0
+offset_bottom = 390.0
+label_settings = ExtResource("11_ypfm7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player5OldRegion" type="Label" parent="Player5/GameDisplay5"]
+offset_left = 227.0
+offset_top = -2.0
+offset_right = 352.0
+offset_bottom = 383.0
+label_settings = ExtResource("11_ypfm7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player5DestinationText" type="Label" parent="Player5/GameDisplay5"]
+offset_left = 227.0
+offset_top = 157.0
+offset_right = 640.0
+offset_bottom = 540.0
+label_settings = ExtResource("11_ypfm7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player5DestinationRegion" type="Label" parent="Player5/GameDisplay5"]
+offset_left = 227.0
+offset_top = 156.0
+offset_right = 352.0
+offset_bottom = 539.0
+label_settings = ExtResource("11_ypfm7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player5RewardText" type="Label" parent="Player5/GameDisplay5"]
+offset_left = 227.0
+offset_top = 428.0
+offset_right = 640.0
+offset_bottom = 540.0
+label_settings = ExtResource("11_ypfm7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player6" type="Node2D" parent="."]
+position = Vector2(320, 0)
+
+[node name="SetupInterface6" type="Node2D" parent="Player6"]
+
+[node name="NamePrompt6" type="Label" parent="Player6/SetupInterface6"]
+offset_top = 54.0
+offset_right = 640.0
+offset_bottom = 123.0
+text = "ENTER_NAME_TEXT"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerName6" type="LineEdit" parent="Player6/SetupInterface6"]
+offset_left = 161.0
+offset_top = 139.0
+offset_right = 478.0
+offset_bottom = 216.0
+theme = ExtResource("10_ttgt6")
+text = "PLAYER_6"
+
+[node name="ColorPrompt6" type="Label" parent="Player6/SetupInterface6"]
+offset_top = 299.0
+offset_right = 320.0
+offset_bottom = 368.0
+text = "CHOOSE_COLOR"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="KeyPrompt6" type="Label" parent="Player6/SetupInterface6"]
+offset_left = 320.0
+offset_top = 299.0
+offset_right = 640.0
+offset_bottom = 368.0
+text = "DESTINATION_KEY"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ColorSelectionBackground6" type="MeshInstance2D" parent="Player6/SetupInterface6"]
+position = Vector2(160, 448)
+mesh = SubResource("QuadMesh_ypfm7")
+texture = ExtResource("2_asc3q")
+
+[node name="BlueSelection6" type="Button" parent="Player6/SetupInterface6"]
+offset_left = 75.0
+offset_top = 393.0
+offset_right = 125.0
+offset_bottom = 443.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("3_asc3q")
+
+[node name="GreenSelection6" type="Button" parent="Player6/SetupInterface6"]
+offset_left = 135.0
+offset_top = 393.0
+offset_right = 193.0
+offset_bottom = 451.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("4_oo1rg")
+
+[node name="WhiteSelection6" type="Button" parent="Player6/SetupInterface6"]
+offset_left = 195.0
+offset_top = 393.0
+offset_right = 253.0
+offset_bottom = 451.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("6_ttgt6")
+
+[node name="YellowSelection6" type="Button" parent="Player6/SetupInterface6"]
+offset_left = 75.0
+offset_top = 453.0
+offset_right = 133.0
+offset_bottom = 511.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("5_5hnar")
+
+[node name="RedSelection6" type="Button" parent="Player6/SetupInterface6"]
+offset_left = 135.0
+offset_top = 453.0
+offset_right = 193.0
+offset_bottom = 511.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("2_4wkdi")
+
+[node name="BlackSelection6" type="Button" parent="Player6/SetupInterface6"]
+offset_left = 195.0
+offset_top = 453.0
+offset_right = 253.0
+offset_bottom = 511.0
+scale = Vector2(0.862, 0.862)
+icon = ExtResource("7_ypfm7")
+
+[node name="SecondaryLabel6" type="Label" parent="Player6/SetupInterface6"]
+offset_left = 270.0
+offset_top = 439.0
+offset_right = 532.0
+offset_bottom = 533.0
+text = "SECONDARY"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SecondaryKeybind6" type="Button" parent="Player6/SetupInterface6"]
+offset_left = 532.0
+offset_top = 445.0
+offset_right = 609.0
+offset_bottom = 522.0
+theme = ExtResource("10_ttgt6")
+
+[node name="PrimaryLabel6" type="Label" parent="Player6/SetupInterface6"]
+offset_left = 270.0
+offset_top = 356.0
+offset_right = 532.0
+offset_bottom = 451.0
+text = "PRIMARY"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PrimaryKeybind6" type="Button" parent="Player6/SetupInterface6"]
+offset_left = 532.0
+offset_top = 364.0
+offset_right = 609.0
+offset_bottom = 441.0
+theme = ExtResource("10_ttgt6")
+text = "6"
+
+[node name="StartButtonAnchor6" type="Node2D" parent="Player6/SetupInterface6"]
+position = Vector2(320, 270)
+
+[node name="StartButton6" type="Button" parent="Player6/SetupInterface6/StartButtonAnchor6"]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.5
+offset_top = -38.5
+offset_right = 78.5
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_ttgt6")
+text = "READY"
+metadata/_edit_use_anchors_ = true
+
+[node name="GameDisplay6" type="Node2D" parent="Player6"]
+visible = false
+
+[node name="HOME_CITY_TEXT" type="Label" parent="Player6/GameDisplay6"]
+offset_top = 300.0
+offset_right = 332.0
+offset_bottom = 396.0
+text = "HOME_CITY_TEXT"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PREVIOUS_DESTINATION_TEXT" type="Label" parent="Player6/GameDisplay6"]
+offset_left = 227.0
+offset_right = 811.0
+offset_bottom = 180.0
+text = "PREVIOUS_DESTINATION_TEXT"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CURRENT_DESTINATION_TEXT" type="Label" parent="Player6/GameDisplay6"]
+offset_left = 227.0
+offset_right = 800.0
+offset_bottom = 540.0
+text = "CURRENT_DESTINATION_TEXT"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="REWARD_TEXT" type="Label" parent="Player6/GameDisplay6"]
+offset_left = 227.0
+offset_top = 314.0
+offset_right = 640.0
+offset_bottom = 540.0
+text = "REWARD_TEXT"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player6Name" type="Label" parent="Player6/GameDisplay6"]
+offset_right = 229.0
+offset_bottom = 102.0
+text = "Player1"
+label_settings = ExtResource("9_5hnar")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player6PrimaryKey" type="Button" parent="Player6/GameDisplay6"]
+offset_left = 25.0
+offset_top = 96.0
+offset_right = 102.0
+offset_bottom = 173.0
+theme = ExtResource("10_ttgt6")
+text = "1"
+
+[node name="Player6SecondaryKey" type="Button" parent="Player6/GameDisplay6"]
+offset_left = 127.0
+offset_top = 96.0
+offset_right = 204.0
+offset_bottom = 173.0
+theme = ExtResource("10_ttgt6")
+button_mask = 0
+
+[node name="Player6HomeCitiesText" type="Label" parent="Player6/GameDisplay6"]
+offset_top = 300.0
+offset_right = 227.0
+offset_bottom = 534.0
+label_settings = ExtResource("11_ypfm7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player6HomeCityRegion" type="Label" parent="Player6/GameDisplay6"]
+offset_top = 300.0
+offset_right = 227.0
+offset_bottom = 615.0
+label_settings = ExtResource("11_ypfm7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player6OldText" type="Label" parent="Player6/GameDisplay6"]
+offset_left = 227.0
+offset_right = 640.0
+offset_bottom = 390.0
+label_settings = ExtResource("11_ypfm7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player6OldRegion" type="Label" parent="Player6/GameDisplay6"]
+offset_left = 227.0
+offset_top = -2.0
+offset_right = 352.0
+offset_bottom = 383.0
+label_settings = ExtResource("11_ypfm7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player6DestinationText" type="Label" parent="Player6/GameDisplay6"]
+offset_left = 227.0
+offset_top = 157.0
+offset_right = 640.0
+offset_bottom = 540.0
+label_settings = ExtResource("11_ypfm7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player6DestinationRegion" type="Label" parent="Player6/GameDisplay6"]
+offset_left = 227.0
+offset_top = 156.0
+offset_right = 352.0
+offset_bottom = 539.0
+label_settings = ExtResource("11_ypfm7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player6RewardText" type="Label" parent="Player6/GameDisplay6"]
+offset_left = 227.0
+offset_top = 428.0
+offset_right = 640.0
+offset_bottom = 540.0
+label_settings = ExtResource("11_ypfm7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerHidingBackground1" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(-640, -270)
+scale = Vector2(640, 540)
+mesh = SubResource("QuadMesh_oo1rg")
+texture = ExtResource("12_ttgt6")
+
+[node name="PlayerHidingBackground2" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(0, -270)
+scale = Vector2(640, 540)
+mesh = SubResource("QuadMesh_oo1rg")
+texture = ExtResource("12_ttgt6")
+
+[node name="PlayerHidingBackground3" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(-640, 270)
+scale = Vector2(640, 540)
+mesh = SubResource("QuadMesh_oo1rg")
+texture = ExtResource("12_ttgt6")
+
+[node name="PlayerHidingBackground4" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(0, 270)
+scale = Vector2(640, 540)
+mesh = SubResource("QuadMesh_oo1rg")
+texture = ExtResource("12_ttgt6")
+
+[node name="PlayerHidingBackground5" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(640, -270)
+scale = Vector2(640, 540)
+mesh = SubResource("QuadMesh_oo1rg")
+texture = ExtResource("12_ttgt6")
+
+[node name="PlayerHidingBackground6" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(640, 270)
+scale = Vector2(640, 540)
+mesh = SubResource("QuadMesh_oo1rg")
+texture = ExtResource("12_ttgt6")
+
+[connection signal="pressed" from="Player1/SetupInterface1/BlueSelection1" to="." method="_on_color_selection" binds= [1, "blue"]]
+[connection signal="pressed" from="Player1/SetupInterface1/GreenSelection1" to="." method="_on_color_selection" binds= [1, "green"]]
+[connection signal="pressed" from="Player1/SetupInterface1/WhiteSelection1" to="." method="_on_color_selection" binds= [1, "white"]]
+[connection signal="pressed" from="Player1/SetupInterface1/YellowSelection1" to="." method="_on_color_selection" binds= [1, "yellow"]]
+[connection signal="pressed" from="Player1/SetupInterface1/RedSelection1" to="." method="_on_color_selection" binds= [1, "red"]]
+[connection signal="pressed" from="Player1/SetupInterface1/BlackSelection1" to="." method="_on_color_selection" binds= [1, "black"]]
+[connection signal="pressed" from="Player1/SetupInterface1/SecondaryKeybind1" to="." method="_on_keybind_pressed" binds= [1, false]]
+[connection signal="pressed" from="Player1/SetupInterface1/PrimaryKeybind1" to="." method="_on_keybind_pressed" binds= [1, true]]
+[connection signal="pressed" from="Player1/SetupInterface1/StartButtonAnchor1/StartButton1" to="." method="_on_ready_pressed" binds= [1]]
+[connection signal="pressed" from="Player2/SetupInterface2/BlueSelection2" to="." method="_on_color_selection" binds= [2, "blue"]]
+[connection signal="pressed" from="Player2/SetupInterface2/GreenSelection2" to="." method="_on_color_selection" binds= [2, "green"]]
+[connection signal="pressed" from="Player2/SetupInterface2/WhiteSelection2" to="." method="_on_color_selection" binds= [2, "white"]]
+[connection signal="pressed" from="Player2/SetupInterface2/YellowSelection2" to="." method="_on_color_selection" binds= [2, "yellow"]]
+[connection signal="pressed" from="Player2/SetupInterface2/RedSelection2" to="." method="_on_color_selection" binds= [2, "red"]]
+[connection signal="pressed" from="Player2/SetupInterface2/BlackSelection2" to="." method="_on_color_selection" binds= [2, "black"]]
+[connection signal="pressed" from="Player2/SetupInterface2/SecondaryKeybind2" to="." method="_on_keybind_pressed" binds= [2, false]]
+[connection signal="pressed" from="Player2/SetupInterface2/PrimaryKeybind2" to="." method="_on_keybind_pressed" binds= [2, true]]
+[connection signal="pressed" from="Player2/SetupInterface2/StartButtonAnchor2/StartButton2" to="." method="_on_ready_pressed" binds= [2]]
+[connection signal="pressed" from="Player3/SetupInterface3/BlueSelection3" to="." method="_on_color_selection" binds= [3, "blue"]]
+[connection signal="pressed" from="Player3/SetupInterface3/GreenSelection3" to="." method="_on_color_selection" binds= [3, "green"]]
+[connection signal="pressed" from="Player3/SetupInterface3/WhiteSelection3" to="." method="_on_color_selection" binds= [3, "white"]]
+[connection signal="pressed" from="Player3/SetupInterface3/YellowSelection3" to="." method="_on_color_selection" binds= [3, "yellow"]]
+[connection signal="pressed" from="Player3/SetupInterface3/RedSelection3" to="." method="_on_color_selection" binds= [3, "red"]]
+[connection signal="pressed" from="Player3/SetupInterface3/BlackSelection3" to="." method="_on_color_selection" binds= [3, "black"]]
+[connection signal="pressed" from="Player3/SetupInterface3/SecondaryKeybind3" to="." method="_on_keybind_pressed" binds= [3, false]]
+[connection signal="pressed" from="Player3/SetupInterface3/PrimaryKeybind3" to="." method="_on_keybind_pressed" binds= [3, true]]
+[connection signal="pressed" from="Player3/SetupInterface3/StartButtonAnchor3/StartButton3" to="." method="_on_ready_pressed" binds= [3]]
+[connection signal="pressed" from="Player4/SetupInterface4/BlueSelection4" to="." method="_on_color_selection" binds= [4, "blue"]]
+[connection signal="pressed" from="Player4/SetupInterface4/GreenSelection4" to="." method="_on_color_selection" binds= [4, "green"]]
+[connection signal="pressed" from="Player4/SetupInterface4/WhiteSelection4" to="." method="_on_color_selection" binds= [4, "white"]]
+[connection signal="pressed" from="Player4/SetupInterface4/YellowSelection4" to="." method="_on_color_selection" binds= [4, "yellow"]]
+[connection signal="pressed" from="Player4/SetupInterface4/RedSelection4" to="." method="_on_color_selection" binds= [4, "red"]]
+[connection signal="pressed" from="Player4/SetupInterface4/BlackSelection4" to="." method="_on_color_selection" binds= [4, "black"]]
+[connection signal="pressed" from="Player4/SetupInterface4/SecondaryKeybind4" to="." method="_on_keybind_pressed" binds= [4, false]]
+[connection signal="pressed" from="Player4/SetupInterface4/PrimaryKeybind4" to="." method="_on_keybind_pressed" binds= [4, true]]
+[connection signal="pressed" from="Player4/SetupInterface4/StartButtonAnchor4/StartButton4" to="." method="_on_ready_pressed" binds= [4]]
+[connection signal="pressed" from="Player5/SetupInterface5/BlueSelection5" to="." method="_on_color_selection" binds= [5, "blue"]]
+[connection signal="pressed" from="Player5/SetupInterface5/GreenSelection5" to="." method="_on_color_selection" binds= [5, "green"]]
+[connection signal="pressed" from="Player5/SetupInterface5/WhiteSelection5" to="." method="_on_color_selection" binds= [5, "white"]]
+[connection signal="pressed" from="Player5/SetupInterface5/YellowSelection5" to="." method="_on_color_selection" binds= [5, "yellow"]]
+[connection signal="pressed" from="Player5/SetupInterface5/RedSelection5" to="." method="_on_color_selection" binds= [5, "red"]]
+[connection signal="pressed" from="Player5/SetupInterface5/BlackSelection5" to="." method="_on_color_selection" binds= [5, "black"]]
+[connection signal="pressed" from="Player5/SetupInterface5/SecondaryKeybind5" to="." method="_on_keybind_pressed" binds= [5, false]]
+[connection signal="pressed" from="Player5/SetupInterface5/PrimaryKeybind5" to="." method="_on_keybind_pressed" binds= [5, true]]
+[connection signal="pressed" from="Player5/SetupInterface5/StartButtonAnchor5/StartButton5" to="." method="_on_ready_pressed" binds= [5]]
+[connection signal="pressed" from="Player6/SetupInterface6/BlueSelection6" to="." method="_on_color_selection" binds= [6, "blue"]]
+[connection signal="pressed" from="Player6/SetupInterface6/GreenSelection6" to="." method="_on_color_selection" binds= [6, "green"]]
+[connection signal="pressed" from="Player6/SetupInterface6/WhiteSelection6" to="." method="_on_color_selection" binds= [6, "white"]]
+[connection signal="pressed" from="Player6/SetupInterface6/YellowSelection6" to="." method="_on_color_selection" binds= [6, "yellow"]]
+[connection signal="pressed" from="Player6/SetupInterface6/RedSelection6" to="." method="_on_color_selection" binds= [6, "red"]]
+[connection signal="pressed" from="Player6/SetupInterface6/BlackSelection6" to="." method="_on_color_selection" binds= [6, "black"]]
+[connection signal="pressed" from="Player6/SetupInterface6/SecondaryKeybind6" to="." method="_on_keybind_pressed" binds= [6, false]]
+[connection signal="pressed" from="Player6/SetupInterface6/PrimaryKeybind6" to="." method="_on_keybind_pressed" binds= [6, true]]
+[connection signal="pressed" from="Player6/SetupInterface6/StartButtonAnchor6/StartButton6" to="." method="_on_ready_pressed" binds= [6]]

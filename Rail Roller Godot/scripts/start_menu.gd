@@ -1,17 +1,21 @@
 extends Node2D
 
-var buttons
+signal response
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	buttons = find_children("\\d")
-	
+func _on_x_pressed() -> void:
+	response.emit(0)
 
+func _on_2_pressed() -> void:
+	response.emit(2)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_3_pressed() -> void:
+	response.emit(3)
 
+func _on_4_pressed() -> void:
+	response.emit(4)
 
-func _input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	print(event)
+func _on_5_pressed() -> void:
+	response.emit(5)
+
+func _on_6_pressed() -> void:
+	response.emit(6)
