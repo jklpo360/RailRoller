@@ -88,7 +88,6 @@ texture = ExtResource("2_ubilc")
 position = Vector2(-960, -540)
 
 [node name="SetupInterface1" type="Node2D" parent="Player1"]
-visible = false
 
 [node name="NamePrompt1" type="Label" parent="Player1/SetupInterface1"]
 offset_top = 54.0
@@ -236,6 +235,7 @@ theme = ExtResource("9_frjxl")
 text = "READY"
 
 [node name="GameDisplay1" type="Node2D" parent="Player1"]
+visible = false
 
 [node name="HOME_CITY_TEXT" type="Label" parent="Player1/GameDisplay1"]
 offset_top = 300.0
@@ -547,6 +547,30 @@ label_settings = SubResource("LabelSettings_ic8rr")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Player2Name" type="Label" parent="Player2/GameDisplay2"]
+offset_right = 229.0
+offset_bottom = 102.0
+text = "Player1"
+label_settings = ExtResource("8_kqp6e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2PrimaryKey" type="Button" parent="Player2/GameDisplay2"]
+offset_left = 25.0
+offset_top = 96.0
+offset_right = 102.0
+offset_bottom = 173.0
+theme = ExtResource("9_frjxl")
+text = "1"
+
+[node name="Player2SecondaryKey" type="Button" parent="Player2/GameDisplay2"]
+offset_left = 127.0
+offset_top = 96.0
+offset_right = 204.0
+offset_bottom = 173.0
+theme = ExtResource("9_frjxl")
+button_mask = 0
+
 [node name="Player2HomeCitiesText" type="Label" parent="Player2/GameDisplay2"]
 offset_top = 300.0
 offset_right = 292.0
@@ -796,6 +820,30 @@ label_settings = SubResource("LabelSettings_ho3ph")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Player3Name" type="Label" parent="Player3/GameDisplay3"]
+offset_right = 229.0
+offset_bottom = 102.0
+text = "Player1"
+label_settings = ExtResource("8_kqp6e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player3PrimaryKey" type="Button" parent="Player3/GameDisplay3"]
+offset_left = 25.0
+offset_top = 96.0
+offset_right = 102.0
+offset_bottom = 173.0
+theme = ExtResource("9_frjxl")
+text = "1"
+
+[node name="Player3SecondaryKey" type="Button" parent="Player3/GameDisplay3"]
+offset_left = 127.0
+offset_top = 96.0
+offset_right = 204.0
+offset_bottom = 173.0
+theme = ExtResource("9_frjxl")
+button_mask = 0
+
 [node name="Player3HomeCitiesText" type="Label" parent="Player3/GameDisplay3"]
 offset_top = 300.0
 offset_right = 292.0
@@ -1043,6 +1091,30 @@ text = "REWARD_TEXT"
 label_settings = SubResource("LabelSettings_ho3ph")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Player4Name" type="Label" parent="Player4/GameDisplay4"]
+offset_right = 229.0
+offset_bottom = 102.0
+text = "Player1"
+label_settings = ExtResource("8_kqp6e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player4PrimaryKey" type="Button" parent="Player4/GameDisplay4"]
+offset_left = 25.0
+offset_top = 96.0
+offset_right = 102.0
+offset_bottom = 173.0
+theme = ExtResource("9_frjxl")
+text = "1"
+
+[node name="Player4SecondaryKey" type="Button" parent="Player4/GameDisplay4"]
+offset_left = 127.0
+offset_top = 96.0
+offset_right = 204.0
+offset_bottom = 173.0
+theme = ExtResource("9_frjxl")
+button_mask = 0
 
 [node name="Player4HomeCitiesText" type="Label" parent="Player4/GameDisplay4"]
 offset_top = 300.0

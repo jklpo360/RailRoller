@@ -6,6 +6,7 @@ class_name Game extends Node2D
 @export var yellow_texture: CompressedTexture2D
 @export var white_texture: CompressedTexture2D
 @export var black_texture: CompressedTexture2D
+var color_textures = {}
 
 var NUM_PLAYERS
 var rng = RandomNumberGenerator.new()
@@ -26,6 +27,10 @@ var hiding_backgrounds
 var ready_buttons
 var setup_interfaces
 var game_displays
+
+var player_name_text_boxes
+var primary_key_buttons
+var secondary_key_buttons
 
 var home_cities_text_boxes
 var home_cities_text_regions
@@ -649,10 +654,10 @@ var alphabetical_cities = {
 func initialize_arrays():
 	backgrounds = find_children("PlayerBackground*")
 	hiding_backgrounds = find_children("PlayerHidingBackground*")
-	ready_buttons = find_children("StartButton\\d")
+	ready_buttons = find_children("StartButton?")
 	setup_interfaces = find_children("SetupInterface*")
 	game_displays = find_children("GameDisplay*")
-	colors = {
+	color_textures = {
 		"red" : red_texture,
 		"blue" : blue_texture,
 		"green" : green_texture,
@@ -663,6 +668,10 @@ func initialize_arrays():
 	
 	var region_menu = find_parent("Main").find_child("RegionMenu")
 	GlobalSignals.return_region.connect(_region_response, ConnectFlags.CONNECT_PERSIST)
+	
+	player_name_text_boxes = find_children("Player*Name")
+	primary_key_buttons = find_children("Player*PrimaryKey")
+	secondary_key_buttons = find_children("Player*SecondaryKey")
 	
 	home_cities_text_boxes = find_children("*HomeCitiesText")
 	home_cities_text_regions = find_children("*HomeCityRegion")
@@ -720,6 +729,11 @@ func initialize_arrays():
 	
 	
 func setup_game():
+	for i in range(NUM_PLAYERS):
+		player_name_text_boxes[i].text = names.get(i+1)
+		primary_key_buttons[i].text = primary_keybind_text.get(i+1)
+		secondary_key_buttons[i].text = secondary_keybind_text.get(i+1)
+		
 	for i in range(NUM_PLAYERS):
 		assign_home_city(i)
 		choose_destination(i)
@@ -798,3 +812,34 @@ func print_reward(origin, destination, origin_region, destination_region):
 func _region_response(region, player):
 	returned_regions[player] = region
 	response.emit()
+
+func change_color(player, color):
+	backgrounds[player-1].texture = color_textures.get(color)
+	colors.set(player, color)
+
+func toggle_ready(player):
+	if readied.get(player):
+		readied.set(player, false)
+		hiding_backgrounds[player-1].hide()
+		ready_buttons[player-1].text = TranslationServer.translate("READY")
+	else:
+		readied.set(player, true)
+		var all_readied = true
+		for i in readied.values():
+			all_readied = all_readied and i
+		if all_readied:
+			for i in hiding_backgrounds:
+				i.hide()
+			for i in setup_interfaces:
+				i.hide()
+			for i in game_displays:
+				i.show()
+			for i in ready_buttons:
+				i.text = TranslationServer.translate("READY")
+			setup_game()
+		else:
+			hiding_backgrounds[player-1].show()
+			ready_buttons[player-1].text = TranslationServer.translate("CHANGE_PLAYER_INFO")
+
+func start_keybind(player, primary):
+	pass

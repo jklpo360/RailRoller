@@ -65,11 +65,50 @@ scale = Vector2(640, 540)
 mesh = SubResource("QuadMesh_bpe87")
 texture = ExtResource("10_vb6a6")
 
+[node name="PlayerHidingBackground1" type="MeshInstance2D" parent="."]
+visible = false
+z_index = 1
+position = Vector2(-640, -270)
+scale = Vector2(640, 540)
+mesh = SubResource("QuadMesh_bpe87")
+texture = ExtResource("12_1gaqw")
+
+[node name="PlayerHidingBackground2" type="MeshInstance2D" parent="."]
+visible = false
+z_index = 1
+position = Vector2(0, -270)
+scale = Vector2(640, 540)
+mesh = SubResource("QuadMesh_bpe87")
+texture = ExtResource("12_1gaqw")
+
+[node name="PlayerHidingBackground3" type="MeshInstance2D" parent="."]
+visible = false
+z_index = 1
+position = Vector2(-640, 270)
+scale = Vector2(640, 540)
+mesh = SubResource("QuadMesh_bpe87")
+texture = ExtResource("12_1gaqw")
+
+[node name="PlayerHidingBackground4" type="MeshInstance2D" parent="."]
+visible = false
+z_index = 1
+position = Vector2(0, 270)
+scale = Vector2(640, 540)
+mesh = SubResource("QuadMesh_bpe87")
+texture = ExtResource("12_1gaqw")
+
+[node name="PlayerHidingBackground5" type="MeshInstance2D" parent="."]
+visible = false
+z_index = 1
+position = Vector2(640, 0)
+scale = Vector2(640, 540)
+mesh = SubResource("QuadMesh_bpe87")
+texture = ExtResource("12_1gaqw")
+
 [node name="Player1" type="Node2D" parent="."]
 position = Vector2(-960, -540)
 
 [node name="SetupInterface1" type="Node2D" parent="Player1"]
-visible = false
 
 [node name="NamePrompt1" type="Label" parent="Player1/SetupInterface1"]
 offset_top = 54.0
@@ -218,6 +257,7 @@ text = "READY"
 metadata/_edit_use_anchors_ = true
 
 [node name="GameDisplay1" type="Node2D" parent="Player1"]
+visible = false
 
 [node name="HOME_CITY_TEXT" type="Label" parent="Player1/GameDisplay1"]
 offset_top = 300.0
@@ -346,7 +386,6 @@ vertical_alignment = 1
 position = Vector2(-320, -540)
 
 [node name="SetupInterface2" type="Node2D" parent="Player2"]
-visible = false
 
 [node name="NamePrompt2" type="Label" parent="Player2/SetupInterface2"]
 offset_top = 54.0
@@ -495,6 +534,7 @@ text = "READY"
 metadata/_edit_use_anchors_ = true
 
 [node name="GameDisplay2" type="Node2D" parent="Player2"]
+visible = false
 
 [node name="HOME_CITY_TEXT" type="Label" parent="Player2/GameDisplay2"]
 offset_top = 300.0
@@ -621,7 +661,6 @@ vertical_alignment = 1
 position = Vector2(-960, 0)
 
 [node name="SetupInterface3" type="Node2D" parent="Player3"]
-visible = false
 
 [node name="NamePrompt3" type="Label" parent="Player3/SetupInterface3"]
 offset_top = 54.0
@@ -770,6 +809,7 @@ text = "READY"
 metadata/_edit_use_anchors_ = true
 
 [node name="GameDisplay3" type="Node2D" parent="Player3"]
+visible = false
 
 [node name="HOME_CITY_TEXT" type="Label" parent="Player3/GameDisplay3"]
 offset_top = 300.0
@@ -896,7 +936,6 @@ vertical_alignment = 1
 position = Vector2(-320, 0)
 
 [node name="SetupInterface4" type="Node2D" parent="Player4"]
-visible = false
 
 [node name="NamePrompt4" type="Label" parent="Player4/SetupInterface4"]
 offset_top = 54.0
@@ -1045,6 +1084,7 @@ text = "READY"
 metadata/_edit_use_anchors_ = true
 
 [node name="GameDisplay4" type="Node2D" parent="Player4"]
+visible = false
 
 [node name="HOME_CITY_TEXT" type="Label" parent="Player4/GameDisplay4"]
 offset_top = 300.0
@@ -1171,7 +1211,6 @@ vertical_alignment = 1
 position = Vector2(320, -270)
 
 [node name="SetupInterface5" type="Node2D" parent="Player5"]
-visible = false
 
 [node name="NamePrompt5" type="Label" parent="Player5/SetupInterface5"]
 offset_top = 54.0
@@ -1320,6 +1359,7 @@ text = "READY"
 metadata/_edit_use_anchors_ = true
 
 [node name="GameDisplay5" type="Node2D" parent="Player5"]
+visible = false
 
 [node name="HOME_CITY_TEXT" type="Label" parent="Player5/GameDisplay5"]
 offset_top = 300.0
@@ -1441,41 +1481,6 @@ offset_bottom = 540.0
 label_settings = ExtResource("11_vb6a6")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="PlayerHidingBackground1" type="MeshInstance2D" parent="."]
-visible = false
-position = Vector2(-640, -270)
-scale = Vector2(640, 540)
-mesh = SubResource("QuadMesh_bpe87")
-texture = ExtResource("12_1gaqw")
-
-[node name="PlayerHidingBackground2" type="MeshInstance2D" parent="."]
-visible = false
-position = Vector2(0, -270)
-scale = Vector2(640, 540)
-mesh = SubResource("QuadMesh_bpe87")
-texture = ExtResource("12_1gaqw")
-
-[node name="PlayerHidingBackground3" type="MeshInstance2D" parent="."]
-visible = false
-position = Vector2(-640, 270)
-scale = Vector2(640, 540)
-mesh = SubResource("QuadMesh_bpe87")
-texture = ExtResource("12_1gaqw")
-
-[node name="PlayerHidingBackground4" type="MeshInstance2D" parent="."]
-visible = false
-position = Vector2(0, 270)
-scale = Vector2(640, 540)
-mesh = SubResource("QuadMesh_bpe87")
-texture = ExtResource("12_1gaqw")
-
-[node name="PlayerHidingBackground5" type="MeshInstance2D" parent="."]
-visible = false
-position = Vector2(640, 0)
-scale = Vector2(640, 540)
-mesh = SubResource("QuadMesh_bpe87")
-texture = ExtResource("12_1gaqw")
 
 [connection signal="pressed" from="Player1/SetupInterface1/BlueSelection1" to="." method="_on_color_selection" binds= [1, "blue"]]
 [connection signal="pressed" from="Player1/SetupInterface1/GreenSelection1" to="." method="_on_color_selection" binds= [1, "green"]]
