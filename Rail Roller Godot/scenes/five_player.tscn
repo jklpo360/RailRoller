@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://co1qp358gm4hu"]
+[gd_scene load_steps=19 format=3 uid="uid://co1qp358gm4hu"]
 
 [ext_resource type="Script" uid="uid://buujvkhlctudo" path="res://scripts/five_player.gd" id="1_iwiel"]
 [ext_resource type="Texture2D" uid="uid://dvs0s20v7vq2p" path="res://texture/start_menu_texture.png" id="2_bpe87"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://bnglmqko43g6g" path="res://texture/white_texture.png" id="10_vb6a6"]
 [ext_resource type="LabelSettings" uid="uid://dcii2cd6iftqw" path="res://theme/text_label.tres" id="11_vb6a6"]
 [ext_resource type="Texture2D" uid="uid://0objvwwi3byj" path="res://texture/transparent_mask.png" id="12_1gaqw"]
+[ext_resource type="Script" uid="uid://b3g1b84tyasuw" path="res://scripts/keybind_button.gd" id="12_77fgt"]
+[ext_resource type="Script" uid="uid://l0it6v0kgv40" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="13_e5ws6"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_3pspo"]
 
@@ -19,6 +21,17 @@
 
 [sub_resource type="QuadMesh" id="QuadMesh_1gaqw"]
 size = Vector2(220, 160)
+
+[sub_resource type="Texture2D" id="Texture2D_o036q"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("13_e5ws6")
+path = "Player1"
+show_mode = 0
+force_controller_icon_style = -1
+force_type = 0
+force_device = 16
+metadata/_custom_type_script = "uid://l0it6v0kgv40"
 
 [node name="FivePlayer" type="Node2D"]
 z_index = 1
@@ -217,6 +230,11 @@ offset_top = 445.0
 offset_right = 609.0
 offset_bottom = 522.0
 theme = ExtResource("9_gmlxx")
+script = ExtResource("12_77fgt")
+action = "Player1"
+action_event_index = 1
+player = 1
+metadata/_custom_type_script = "uid://b3g1b84tyasuw"
 
 [node name="PrimaryLabel1" type="Label" parent="Player1/SetupInterface1"]
 offset_left = 270.0
@@ -235,6 +253,18 @@ offset_right = 609.0
 offset_bottom = 441.0
 theme = ExtResource("9_gmlxx")
 text = "1"
+script = ExtResource("12_77fgt")
+action = "Player1"
+player = 1
+metadata/_custom_type_script = "uid://b3g1b84tyasuw"
+
+[node name="TextureRect" type="TextureRect" parent="Player1/SetupInterface1"]
+offset_left = 517.0
+offset_top = 203.0
+offset_right = 617.0
+offset_bottom = 303.0
+scale = Vector2(0.77, 0.77)
+texture = SubResource("Texture2D_o036q")
 
 [node name="StartButtonAnchor1" type="Node2D" parent="Player1/SetupInterface1"]
 position = Vector2(320, 270)
@@ -494,6 +524,11 @@ offset_top = 445.0
 offset_right = 609.0
 offset_bottom = 522.0
 theme = ExtResource("9_gmlxx")
+script = ExtResource("12_77fgt")
+action = "Player2"
+action_event_index = 1
+player = 2
+metadata/_custom_type_script = "uid://b3g1b84tyasuw"
 
 [node name="PrimaryLabel2" type="Label" parent="Player2/SetupInterface2"]
 offset_left = 270.0
@@ -512,6 +547,10 @@ offset_right = 609.0
 offset_bottom = 441.0
 theme = ExtResource("9_gmlxx")
 text = "2"
+script = ExtResource("12_77fgt")
+action = "Player2"
+player = 2
+metadata/_custom_type_script = "uid://b3g1b84tyasuw"
 
 [node name="StartButtonAnchor2" type="Node2D" parent="Player2/SetupInterface2"]
 position = Vector2(320, 270)
@@ -769,6 +808,11 @@ offset_top = 445.0
 offset_right = 609.0
 offset_bottom = 522.0
 theme = ExtResource("9_gmlxx")
+script = ExtResource("12_77fgt")
+action = "Player3"
+action_event_index = 1
+player = 3
+metadata/_custom_type_script = "uid://b3g1b84tyasuw"
 
 [node name="PrimaryLabel3" type="Label" parent="Player3/SetupInterface3"]
 offset_left = 270.0
@@ -787,6 +831,10 @@ offset_right = 609.0
 offset_bottom = 441.0
 theme = ExtResource("9_gmlxx")
 text = "3"
+script = ExtResource("12_77fgt")
+action = "Player3"
+player = 3
+metadata/_custom_type_script = "uid://b3g1b84tyasuw"
 
 [node name="StartButtonAnchor3" type="Node2D" parent="Player3/SetupInterface3"]
 position = Vector2(320, 270)
@@ -1044,6 +1092,11 @@ offset_top = 445.0
 offset_right = 609.0
 offset_bottom = 522.0
 theme = ExtResource("9_gmlxx")
+script = ExtResource("12_77fgt")
+action = "Player4"
+action_event_index = 1
+player = 4
+metadata/_custom_type_script = "uid://b3g1b84tyasuw"
 
 [node name="PrimaryLabel4" type="Label" parent="Player4/SetupInterface4"]
 offset_left = 270.0
@@ -1062,6 +1115,10 @@ offset_right = 609.0
 offset_bottom = 441.0
 theme = ExtResource("9_gmlxx")
 text = "4"
+script = ExtResource("12_77fgt")
+action = "Player4"
+player = 4
+metadata/_custom_type_script = "uid://b3g1b84tyasuw"
 
 [node name="StartButtonAnchor4" type="Node2D" parent="Player4/SetupInterface4"]
 position = Vector2(320, 270)
@@ -1319,6 +1376,11 @@ offset_top = 445.0
 offset_right = 609.0
 offset_bottom = 522.0
 theme = ExtResource("9_gmlxx")
+script = ExtResource("12_77fgt")
+action = "Player5"
+action_event_index = 1
+player = 5
+metadata/_custom_type_script = "uid://b3g1b84tyasuw"
 
 [node name="PrimaryLabel5" type="Label" parent="Player5/SetupInterface5"]
 offset_left = 270.0
@@ -1337,6 +1399,10 @@ offset_right = 609.0
 offset_bottom = 441.0
 theme = ExtResource("9_gmlxx")
 text = "5"
+script = ExtResource("12_77fgt")
+action = "Player5"
+player = 5
+metadata/_custom_type_script = "uid://b3g1b84tyasuw"
 
 [node name="StartButtonAnchor5" type="Node2D" parent="Player5/SetupInterface5"]
 position = Vector2(320, 270)
@@ -1488,8 +1554,6 @@ vertical_alignment = 1
 [connection signal="pressed" from="Player1/SetupInterface1/YellowSelection1" to="." method="_on_color_selection" binds= [1, "yellow"]]
 [connection signal="pressed" from="Player1/SetupInterface1/RedSelection1" to="." method="_on_color_selection" binds= [1, "red"]]
 [connection signal="pressed" from="Player1/SetupInterface1/BlackSelection1" to="." method="_on_color_selection" binds= [1, "black"]]
-[connection signal="pressed" from="Player1/SetupInterface1/SecondaryKeybind1" to="." method="_on_keybind_pressed" binds= [1, false]]
-[connection signal="pressed" from="Player1/SetupInterface1/PrimaryKeybind1" to="." method="_on_keybind_pressed" binds= [1, true]]
 [connection signal="pressed" from="Player1/SetupInterface1/StartButtonAnchor1/StartButton1" to="." method="_on_ready_pressed" binds= [1]]
 [connection signal="pressed" from="Player2/SetupInterface2/BlueSelection2" to="." method="_on_color_selection" binds= [2, "blue"]]
 [connection signal="pressed" from="Player2/SetupInterface2/GreenSelection2" to="." method="_on_color_selection" binds= [2, "green"]]
@@ -1497,8 +1561,6 @@ vertical_alignment = 1
 [connection signal="pressed" from="Player2/SetupInterface2/YellowSelection2" to="." method="_on_color_selection" binds= [2, "yellow"]]
 [connection signal="pressed" from="Player2/SetupInterface2/RedSelection2" to="." method="_on_color_selection" binds= [2, "red"]]
 [connection signal="pressed" from="Player2/SetupInterface2/BlackSelection2" to="." method="_on_color_selection" binds= [2, "black"]]
-[connection signal="pressed" from="Player2/SetupInterface2/SecondaryKeybind2" to="." method="_on_keybind_pressed" binds= [2, false]]
-[connection signal="pressed" from="Player2/SetupInterface2/PrimaryKeybind2" to="." method="_on_keybind_pressed" binds= [2, true]]
 [connection signal="pressed" from="Player2/SetupInterface2/StartButtonAnchor2/StartButton2" to="." method="_on_ready_pressed" binds= [2]]
 [connection signal="pressed" from="Player3/SetupInterface3/BlueSelection3" to="." method="_on_color_selection" binds= [3, "blue"]]
 [connection signal="pressed" from="Player3/SetupInterface3/GreenSelection3" to="." method="_on_color_selection" binds= [3, "green"]]
@@ -1506,8 +1568,6 @@ vertical_alignment = 1
 [connection signal="pressed" from="Player3/SetupInterface3/YellowSelection3" to="." method="_on_color_selection" binds= [3, "yellow"]]
 [connection signal="pressed" from="Player3/SetupInterface3/RedSelection3" to="." method="_on_color_selection" binds= [3, "red"]]
 [connection signal="pressed" from="Player3/SetupInterface3/BlackSelection3" to="." method="_on_color_selection" binds= [3, "black"]]
-[connection signal="pressed" from="Player3/SetupInterface3/SecondaryKeybind3" to="." method="_on_keybind_pressed" binds= [3, false]]
-[connection signal="pressed" from="Player3/SetupInterface3/PrimaryKeybind3" to="." method="_on_keybind_pressed" binds= [3, true]]
 [connection signal="pressed" from="Player3/SetupInterface3/StartButtonAnchor3/StartButton3" to="." method="_on_ready_pressed" binds= [3]]
 [connection signal="pressed" from="Player4/SetupInterface4/BlueSelection4" to="." method="_on_color_selection" binds= [4, "blue"]]
 [connection signal="pressed" from="Player4/SetupInterface4/GreenSelection4" to="." method="_on_color_selection" binds= [4, "green"]]
@@ -1515,8 +1575,6 @@ vertical_alignment = 1
 [connection signal="pressed" from="Player4/SetupInterface4/YellowSelection4" to="." method="_on_color_selection" binds= [4, "yellow"]]
 [connection signal="pressed" from="Player4/SetupInterface4/RedSelection4" to="." method="_on_color_selection" binds= [4, "red"]]
 [connection signal="pressed" from="Player4/SetupInterface4/BlackSelection4" to="." method="_on_color_selection" binds= [4, "black"]]
-[connection signal="pressed" from="Player4/SetupInterface4/SecondaryKeybind4" to="." method="_on_keybind_pressed" binds= [4, false]]
-[connection signal="pressed" from="Player4/SetupInterface4/PrimaryKeybind4" to="." method="_on_keybind_pressed" binds= [4, true]]
 [connection signal="pressed" from="Player4/SetupInterface4/StartButtonAnchor4/StartButton4" to="." method="_on_ready_pressed" binds= [4]]
 [connection signal="pressed" from="Player5/SetupInterface5/BlueSelection5" to="." method="_on_color_selection" binds= [5, "blue"]]
 [connection signal="pressed" from="Player5/SetupInterface5/GreenSelection5" to="." method="_on_color_selection" binds= [5, "green"]]
@@ -1524,6 +1582,4 @@ vertical_alignment = 1
 [connection signal="pressed" from="Player5/SetupInterface5/YellowSelection5" to="." method="_on_color_selection" binds= [5, "yellow"]]
 [connection signal="pressed" from="Player5/SetupInterface5/RedSelection5" to="." method="_on_color_selection" binds= [5, "red"]]
 [connection signal="pressed" from="Player5/SetupInterface5/BlackSelection5" to="." method="_on_color_selection" binds= [5, "black"]]
-[connection signal="pressed" from="Player5/SetupInterface5/SecondaryKeybind5" to="." method="_on_keybind_pressed" binds= [5, false]]
-[connection signal="pressed" from="Player5/SetupInterface5/PrimaryKeybind5" to="." method="_on_keybind_pressed" binds= [5, true]]
 [connection signal="pressed" from="Player5/SetupInterface5/StartButtonAnchor5/StartButton5" to="." method="_on_ready_pressed" binds= [5]]

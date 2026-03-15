@@ -1,0 +1,624 @@
+[gd_scene load_steps=29 format=3 uid="uid://bgwiiyxn01tcv"]
+
+[ext_resource type="Script" uid="uid://cf5180fr8p8o0" path="res://scripts/start_menu.gd" id="1_du30o"]
+[ext_resource type="Script" uid="uid://5dq247v4vej0" path="res://scripts/main.gd" id="1_l2tty"]
+[ext_resource type="Texture2D" uid="uid://0objvwwi3byj" path="res://texture/transparent_mask.png" id="2_jbj1t"]
+[ext_resource type="Texture2D" uid="uid://dvs0s20v7vq2p" path="res://texture/start_menu_texture.png" id="2_tipki"]
+[ext_resource type="Texture2D" uid="uid://ctahh828rxlvg" path="res://texture/player_number_selection_background.png" id="2_ygcbu"]
+[ext_resource type="Script" uid="uid://dbvryul7nt3ew" path="res://scripts/region_menu.gd" id="3_4dcsq"]
+[ext_resource type="Theme" uid="uid://b48pku5j8f87a" path="res://theme/title.tres" id="3_85g3d"]
+[ext_resource type="LabelSettings" uid="uid://bx1wvf64otkeh" path="res://theme/title_label.tres" id="4_jbj1t"]
+[ext_resource type="Theme" uid="uid://c0qhemh8e0xdb" path="res://theme/default.tres" id="4_tefeu"]
+[ext_resource type="LabelSettings" uid="uid://c1apuwxryyjli" path="res://theme/menu_label.tres" id="8_muem4"]
+[ext_resource type="Script" uid="uid://bmrexwxvkjosb" path="res://scripts/load_menu.gd" id="9_a8y0u"]
+[ext_resource type="Texture2D" uid="uid://boeeiw7q3gnyp" path="res://texture/background_texture.png" id="9_choun"]
+[ext_resource type="Texture2D" uid="uid://b5t2t0mo70gla" path="res://texture/menu_background_texture.png" id="10_dp3eg"]
+[ext_resource type="Texture2D" uid="uid://gaied8lvhire" path="res://texture/x_icon.png" id="10_eb6dy"]
+[ext_resource type="Texture2D" uid="uid://ceut4a5grkpd3" path="res://texture/confirmation_background.png" id="10_jkv2x"]
+[ext_resource type="Texture2D" uid="uid://cyxr6ld3rdhwa" path="res://texture/refresh_icon.png" id="10_ya4ey"]
+[ext_resource type="Theme" uid="uid://b3s2c2uf7f2qv" path="res://theme/region_button.tres" id="12_0ld40"]
+[ext_resource type="Texture2D" uid="uid://b16gi6b72jxsq" path="res://texture/load_save_icon.png" id="12_trceg"]
+[ext_resource type="PackedScene" uid="uid://cmopiwmgjwjb8" path="res://demo/IconRemapper.tscn" id="19_0ld40"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_muem4"]
+size = Vector2(1920, 1080)
+
+[sub_resource type="QuadMesh" id="QuadMesh_choun"]
+size = Vector2(1920, 1080)
+
+[sub_resource type="Theme" id="Theme_tipki"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_1gr3v"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_eb6dy"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_dp3eg"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_jbj1t"]
+size = Vector2(300, 200)
+
+[sub_resource type="SystemFont" id="SystemFont_muem4"]
+
+[sub_resource type="Theme" id="Theme_dp3eg"]
+default_font = SubResource("SystemFont_muem4")
+default_font_size = 30
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_l2tty")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="MainUnfocusMask" type="MeshInstance2D" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = 2
+mesh = SubResource("QuadMesh_muem4")
+texture = ExtResource("2_jbj1t")
+
+[node name="MainMenuBackground" type="MeshInstance2D" parent="."]
+mesh = SubResource("QuadMesh_choun")
+texture = ExtResource("2_tipki")
+
+[node name="MainMenu" type="VBoxContainer" parent="MainMenuBackground"]
+z_index = 1
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+focus_neighbor_top = NodePath("OptionsButton")
+focus_neighbor_bottom = NodePath("OptionsButton")
+focus_next = NodePath("OptionsButton")
+focus_previous = NodePath("OptionsButton")
+theme = SubResource("Theme_tipki")
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="TitleText" type="Label" parent="MainMenuBackground/MainMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_stretch_ratio = 0.63
+text = "TITLE_TEXT"
+label_settings = ExtResource("4_jbj1t")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Filler" type="Control" parent="MainMenuBackground/MainMenu"]
+layout_mode = 2
+
+[node name="Filler2" type="Control" parent="MainMenuBackground/MainMenu"]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="MainMenuBackground/MainMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../OptionsButton")
+focus_neighbor_bottom = NodePath("../LoadButton")
+focus_next = NodePath("../LoadButton")
+focus_previous = NodePath("../OptionsButton")
+theme = ExtResource("4_tefeu")
+text = "START_TEXT"
+
+[node name="LoadButton" type="Button" parent="MainMenuBackground/MainMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_bottom = NodePath("../OptionsButton")
+focus_next = NodePath("../OptionsButton")
+focus_previous = NodePath("../StartButton")
+theme = ExtResource("4_tefeu")
+text = "LOAD_TEXT"
+
+[node name="OptionsButton" type="Button" parent="MainMenuBackground/MainMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../LoadButton")
+focus_neighbor_bottom = NodePath("../StartButton")
+focus_next = NodePath("../StartButton")
+focus_previous = NodePath("../LoadButton")
+theme = ExtResource("4_tefeu")
+text = "OPTIONS_TEXT"
+
+[node name="MainButtonMasker" type="BoxContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerNumberMenu" type="Node2D" parent="."]
+z_index = 3
+script = ExtResource("1_du30o")
+
+[node name="NumPlayersCanvas" type="CanvasLayer" parent="PlayerNumberMenu"]
+unique_name_in_owner = true
+layer = 3
+visible = false
+follow_viewport_enabled = true
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="PlayerNumberMenu/NumPlayersCanvas"]
+position = Vector2(0, -100)
+scale = Vector2(960, -540)
+mesh = SubResource("QuadMesh_1gr3v")
+texture = ExtResource("2_ygcbu")
+
+[node name="2" type="Button" parent="PlayerNumberMenu/NumPlayersCanvas"]
+offset_left = -440.0
+offset_top = -50.0
+offset_right = -294.0
+offset_bottom = 42.0
+focus_neighbor_left = NodePath("../6")
+focus_neighbor_top = NodePath("../x")
+focus_neighbor_right = NodePath("../3")
+focus_neighbor_bottom = NodePath("../x")
+focus_next = NodePath("../3")
+focus_previous = NodePath("../6")
+theme = ExtResource("4_tefeu")
+text = "2"
+
+[node name="3" type="Button" parent="PlayerNumberMenu/NumPlayersCanvas"]
+offset_left = -256.0
+offset_top = -50.0
+offset_right = -110.0
+offset_bottom = 42.0
+focus_neighbor_left = NodePath("../2")
+focus_neighbor_top = NodePath("../x")
+focus_neighbor_right = NodePath("../4")
+focus_neighbor_bottom = NodePath("../x")
+focus_next = NodePath("../4")
+focus_previous = NodePath("../2")
+theme = ExtResource("4_tefeu")
+text = "3
+"
+
+[node name="4" type="Button" parent="PlayerNumberMenu/NumPlayersCanvas"]
+offset_left = -72.0
+offset_top = -50.0
+offset_right = 74.0
+offset_bottom = 42.0
+focus_neighbor_left = NodePath("../3")
+focus_neighbor_top = NodePath("../x")
+focus_neighbor_right = NodePath("../5")
+focus_neighbor_bottom = NodePath("../x")
+focus_next = NodePath("../5")
+focus_previous = NodePath("../3")
+theme = ExtResource("4_tefeu")
+text = "4"
+
+[node name="5" type="Button" parent="PlayerNumberMenu/NumPlayersCanvas"]
+offset_left = 112.0
+offset_top = -50.0
+offset_right = 258.0
+offset_bottom = 42.0
+focus_neighbor_left = NodePath("../4")
+focus_neighbor_top = NodePath("../x")
+focus_neighbor_right = NodePath("../6")
+focus_neighbor_bottom = NodePath("../x")
+focus_next = NodePath("../4")
+focus_previous = NodePath("../6")
+theme = ExtResource("4_tefeu")
+text = "5"
+
+[node name="6" type="Button" parent="PlayerNumberMenu/NumPlayersCanvas"]
+offset_left = 296.0
+offset_top = -50.0
+offset_right = 442.0
+offset_bottom = 42.0
+focus_neighbor_left = NodePath("../5")
+focus_neighbor_top = NodePath("../x")
+focus_neighbor_right = NodePath("../2")
+focus_neighbor_bottom = NodePath("../x")
+focus_next = NodePath("../x")
+focus_previous = NodePath("../5")
+theme = ExtResource("4_tefeu")
+text = "6"
+
+[node name="x" type="Button" parent="PlayerNumberMenu/NumPlayersCanvas"]
+offset_left = 350.0
+offset_top = -332.0
+offset_right = 442.0
+offset_bottom = -240.0
+focus_neighbor_left = NodePath("../2")
+focus_neighbor_top = NodePath("../4")
+focus_neighbor_right = NodePath("../6")
+focus_neighbor_bottom = NodePath("../4")
+focus_next = NodePath("../2")
+focus_previous = NodePath("../6")
+theme = ExtResource("4_tefeu")
+text = "X"
+
+[node name="TopText" type="Label" parent="PlayerNumberMenu/NumPlayersCanvas"]
+offset_left = -480.0
+offset_top = -320.5
+offset_right = 480.0
+offset_bottom = -251.5
+theme = ExtResource("4_tefeu")
+text = "HOW_MANY_PLAYERS_TEXT"
+label_settings = ExtResource("8_muem4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RegionMenu" type="Node2D" parent="."]
+unique_name_in_owner = true
+z_index = 2
+script = ExtResource("3_4dcsq")
+
+[node name="RegionCanvas" type="CanvasLayer" parent="RegionMenu"]
+unique_name_in_owner = true
+layer = 3
+visible = false
+follow_viewport_enabled = true
+
+[node name="RegionMenuBackground" type="MeshInstance2D" parent="RegionMenu/RegionCanvas"]
+position = Vector2(0, -100)
+scale = Vector2(960, -540)
+mesh = SubResource("QuadMesh_1gr3v")
+texture = ExtResource("10_dp3eg")
+
+[node name="Text" type="Node2D" parent="RegionMenu/RegionCanvas"]
+
+[node name="TopText" type="Label" parent="RegionMenu/RegionCanvas/Text"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -276.0
+offset_top = -316.0
+offset_right = 276.0
+offset_bottom = -247.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_85g3d")
+text = "CHOOSE_REGION_TEXT"
+label_settings = ExtResource("8_muem4")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Buttons" type="Node2D" parent="RegionMenu/RegionCanvas"]
+
+[node name="NorthWest" type="Button" parent="RegionMenu/RegionCanvas/Buttons"]
+offset_left = -444.0
+offset_top = -141.0
+offset_right = -251.0
+offset_bottom = -29.0
+focus_neighbor_left = NodePath("../NorthEast")
+focus_neighbor_top = NodePath("../Minimize")
+focus_neighbor_right = NodePath("../Plains")
+focus_neighbor_bottom = NodePath("../SouthWest")
+focus_next = NodePath("../Plains")
+focus_previous = NodePath("../SouthEast")
+theme = ExtResource("12_0ld40")
+text = "North West"
+
+[node name="Plains" type="Button" parent="RegionMenu/RegionCanvas/Buttons"]
+offset_left = -212.0
+offset_top = -141.0
+offset_right = -19.0
+offset_bottom = -29.0
+focus_neighbor_left = NodePath("../NorthWest")
+focus_neighbor_top = NodePath("../Minimize")
+focus_neighbor_right = NodePath("../NorthCentral")
+focus_neighbor_bottom = NodePath("../SouthCentral")
+focus_next = NodePath("../NorthCentral")
+focus_previous = NodePath("../NorthWest")
+theme = ExtResource("12_0ld40")
+text = "Plains"
+
+[node name="NorthCentral" type="Button" parent="RegionMenu/RegionCanvas/Buttons"]
+offset_left = 19.0
+offset_top = -142.0
+offset_right = 212.0
+offset_bottom = -30.0
+focus_neighbor_left = NodePath("../Plains")
+focus_neighbor_top = NodePath("../Minimize")
+focus_neighbor_right = NodePath("../NorthEast")
+focus_neighbor_bottom = NodePath("../SouthEast")
+focus_next = NodePath("../NorthEast")
+focus_previous = NodePath("../Plains")
+theme = ExtResource("12_0ld40")
+text = "North Central"
+
+[node name="NorthEast" type="Button" parent="RegionMenu/RegionCanvas/Buttons"]
+offset_left = 250.0
+offset_top = -142.0
+offset_right = 443.0
+offset_bottom = -30.0
+focus_neighbor_left = NodePath("../NorthCentral")
+focus_neighbor_top = NodePath("../Minimize")
+focus_neighbor_right = NodePath("../NorthWest")
+focus_neighbor_bottom = NodePath("../SouthEast")
+focus_next = NodePath("../SouthWest")
+focus_previous = NodePath("../NorthCentral")
+theme = ExtResource("12_0ld40")
+text = "North East"
+
+[node name="SouthWest" type="Button" parent="RegionMenu/RegionCanvas/Buttons"]
+offset_left = -328.0
+offset_top = 5.0
+offset_right = -135.0
+offset_bottom = 117.0
+focus_neighbor_left = NodePath("../SouthEast")
+focus_neighbor_top = NodePath("../Plains")
+focus_neighbor_right = NodePath("../SouthCentral")
+focus_neighbor_bottom = NodePath("../Minimize")
+focus_next = NodePath("../NorthEast")
+focus_previous = NodePath("../SouthCentral")
+theme = ExtResource("12_0ld40")
+text = "South West"
+
+[node name="SouthCentral" type="Button" parent="RegionMenu/RegionCanvas/Buttons"]
+offset_left = -96.0
+offset_top = 5.0
+offset_right = 97.0
+offset_bottom = 117.0
+focus_neighbor_left = NodePath("../SouthWest")
+focus_neighbor_top = NodePath("../NorthCentral")
+focus_neighbor_right = NodePath("../SouthEast")
+focus_neighbor_bottom = NodePath("../Minimize")
+focus_next = NodePath("../SouthEast")
+focus_previous = NodePath("../SouthWest")
+theme = ExtResource("12_0ld40")
+text = "South Central"
+
+[node name="SouthEast" type="Button" parent="RegionMenu/RegionCanvas/Buttons"]
+offset_left = 135.0
+offset_top = 4.0
+offset_right = 328.0
+offset_bottom = 116.0
+focus_neighbor_left = NodePath("../SouthCentral")
+focus_neighbor_top = NodePath("../NorthEast")
+focus_neighbor_right = NodePath("../SouthWest")
+focus_neighbor_bottom = NodePath("../Minimize")
+focus_next = NodePath("../Minimize")
+focus_previous = NodePath("../SouthCentral")
+theme = ExtResource("12_0ld40")
+text = "South East"
+
+[node name="Minimize" type="Button" parent="RegionMenu/RegionCanvas/Buttons"]
+clip_contents = true
+offset_left = 360.0
+offset_top = -320.0
+offset_right = 430.0
+offset_bottom = -243.0
+focus_neighbor_left = NodePath("../NorthWest")
+focus_neighbor_top = NodePath("../SouthEast")
+focus_neighbor_right = NodePath("../NorthEast")
+focus_neighbor_bottom = NodePath("../NorthEast")
+focus_next = NodePath("../NorthWest")
+focus_previous = NodePath("../SouthEast")
+theme = ExtResource("4_tefeu")
+text = "-"
+
+[node name="LoadMenu" type="Node2D" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = 2
+script = ExtResource("9_a8y0u")
+
+[node name="Background" type="MeshInstance2D" parent="LoadMenu"]
+position = Vector2(0, 50)
+scale = Vector2(600, 400)
+mesh = SubResource("QuadMesh_eb6dy")
+texture = ExtResource("9_choun")
+
+[node name="Container" type="BoxContainer" parent="LoadMenu"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = -150.0
+offset_right = 300.0
+offset_bottom = 32.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="TopText" type="Label" parent="LoadMenu/Container"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_tefeu")
+text = "LOAD_MENU"
+label_settings = ExtResource("8_muem4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseButton" type="Button" parent="LoadMenu"]
+z_index = 3
+offset_left = 178.0
+offset_top = -95.5
+offset_right = 250.0
+offset_bottom = -23.5
+icon = ExtResource("10_eb6dy")
+
+[node name="SaveMenu" type="VBoxContainer" parent="LoadMenu"]
+offset_left = -300.0
+offset_top = -28.0
+offset_right = 300.0
+offset_bottom = 250.0
+alignment = 1
+
+[node name="Row1" type="HBoxContainer" parent="LoadMenu/SaveMenu"]
+layout_mode = 2
+theme_override_constants/separation = 13
+alignment = 2
+
+[node name="Spacer4" type="Control" parent="LoadMenu/SaveMenu/Row1"]
+layout_mode = 2
+
+[node name="Spacer5" type="Control" parent="LoadMenu/SaveMenu/Row1"]
+layout_mode = 2
+
+[node name="Spacer6" type="Control" parent="LoadMenu/SaveMenu/Row1"]
+layout_mode = 2
+
+[node name="SaveName" type="Label" parent="LoadMenu/SaveMenu/Row1"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme = ExtResource("4_tefeu")
+text = "SAVE_NAME"
+label_settings = ExtResource("8_muem4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LoadButton" type="Button" parent="LoadMenu/SaveMenu/Row1"]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("12_trceg")
+
+[node name="RefreshButton" type="Button" parent="LoadMenu/SaveMenu/Row1"]
+z_index = 3
+layout_mode = 2
+icon = ExtResource("10_ya4ey")
+
+[node name="Spacer" type="Control" parent="LoadMenu/SaveMenu/Row1"]
+layout_mode = 2
+
+[node name="Spacer2" type="Control" parent="LoadMenu/SaveMenu/Row1"]
+layout_mode = 2
+
+[node name="Spacer3" type="Control" parent="LoadMenu/SaveMenu/Row1"]
+layout_mode = 2
+
+[node name="LoadUnfocusMask" type="MeshInstance2D" parent="LoadMenu"]
+unique_name_in_owner = true
+visible = false
+z_index = 4
+position = Vector2(0, 50)
+scale = Vector2(600, 400)
+mesh = SubResource("QuadMesh_dp3eg")
+texture = ExtResource("2_jbj1t")
+
+[node name="LoadButtonMasker" type="BoxContainer" parent="LoadMenu"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -150.0
+offset_right = 300.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DeleteConfirmation" type="Node2D" parent="LoadMenu"]
+unique_name_in_owner = true
+visible = false
+z_index = 5
+position = Vector2(0, 50)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="LoadMenu/DeleteConfirmation"]
+z_index = 5
+mesh = SubResource("QuadMesh_jbj1t")
+texture = ExtResource("10_jkv2x")
+
+[node name="ConfirmationText" type="RichTextLabel" parent="LoadMenu/DeleteConfirmation"]
+z_index = 6
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -130.0
+offset_top = -80.0
+offset_right = 130.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 4
+theme = SubResource("Theme_dp3eg")
+text = "DELETE_CONFIRMATION"
+autowrap_mode = 0
+vertical_alignment = 1
+
+[node name="ConfirmationCloseButton" type="Button" parent="LoadMenu/DeleteConfirmation"]
+z_index = 6
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 66.0
+offset_top = -70.0
+offset_right = 138.0
+offset_bottom = 2.0
+grow_vertical = 0
+scale = Vector2(0.75, 0.75)
+size_flags_horizontal = 8
+icon = ExtResource("10_eb6dy")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LoadMenu/DeleteConfirmation"]
+z_index = 6
+offset_left = -150.0
+offset_top = 6.0
+offset_right = 150.0
+offset_bottom = 99.0
+
+[node name="Spacer" type="Control" parent="LoadMenu/DeleteConfirmation/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ConfirmationYesButton" type="Button" parent="LoadMenu/DeleteConfirmation/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("4_tefeu")
+text = "DELETE_CONFIRMATION_YES"
+
+[node name="Spacer2" type="Control" parent="LoadMenu/DeleteConfirmation/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ConfirmationNoButton" type="Button" parent="LoadMenu/DeleteConfirmation/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("4_tefeu")
+text = "DELETE_CONFIRMATION_NO"
+
+[node name="Spacer3" type="Control" parent="LoadMenu/DeleteConfirmation/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control" parent="." instance=ExtResource("19_0ld40")]
+offset_left = 219.0
+offset_top = -267.0
+offset_right = 856.0
+offset_bottom = 319.0
+
+[connection signal="pressed" from="MainMenuBackground/MainMenu/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainMenuBackground/MainMenu/LoadButton" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="MainMenuBackground/MainMenu/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="response" from="PlayerNumberMenu" to="." method="_on_player_number_menu_response"]
+[connection signal="pressed" from="PlayerNumberMenu/NumPlayersCanvas/2" to="PlayerNumberMenu" method="_on_2_pressed"]
+[connection signal="pressed" from="PlayerNumberMenu/NumPlayersCanvas/3" to="PlayerNumberMenu" method="_on_3_pressed"]
+[connection signal="pressed" from="PlayerNumberMenu/NumPlayersCanvas/4" to="PlayerNumberMenu" method="_on_4_pressed"]
+[connection signal="pressed" from="PlayerNumberMenu/NumPlayersCanvas/5" to="PlayerNumberMenu" method="_on_5_pressed"]
+[connection signal="pressed" from="PlayerNumberMenu/NumPlayersCanvas/6" to="PlayerNumberMenu" method="_on_6_pressed"]
+[connection signal="pressed" from="PlayerNumberMenu/NumPlayersCanvas/x" to="PlayerNumberMenu" method="_on_x_pressed"]
+[connection signal="pressed" from="RegionMenu/RegionCanvas/Buttons/NorthWest" to="RegionMenu" method="_on_north_west_pressed"]
+[connection signal="pressed" from="RegionMenu/RegionCanvas/Buttons/Plains" to="RegionMenu" method="_on_plains_pressed"]
+[connection signal="pressed" from="RegionMenu/RegionCanvas/Buttons/NorthCentral" to="RegionMenu" method="_on_north_central_pressed"]
+[connection signal="pressed" from="RegionMenu/RegionCanvas/Buttons/NorthEast" to="RegionMenu" method="_on_north_east_pressed"]
+[connection signal="pressed" from="RegionMenu/RegionCanvas/Buttons/SouthWest" to="RegionMenu" method="_on_south_west_pressed"]
+[connection signal="pressed" from="RegionMenu/RegionCanvas/Buttons/SouthCentral" to="RegionMenu" method="_on_south_central_pressed"]
+[connection signal="pressed" from="RegionMenu/RegionCanvas/Buttons/SouthEast" to="RegionMenu" method="_on_south_east_pressed"]
+[connection signal="pressed" from="RegionMenu/RegionCanvas/Buttons/Minimize" to="RegionMenu" method="_on_minimize_pressed"]
+[connection signal="response" from="LoadMenu" to="." method="_on_load_menu_response"]
+[connection signal="pressed" from="LoadMenu/CloseButton" to="LoadMenu" method="_on_close_button_pressed"]
+[connection signal="pressed" from="LoadMenu/SaveMenu/Row1/LoadButton" to="LoadMenu" method="_on_load_button_pressed"]
+[connection signal="pressed" from="LoadMenu/SaveMenu/Row1/RefreshButton" to="LoadMenu" method="_on_refresh_button_pressed"]
+[connection signal="pressed" from="LoadMenu/DeleteConfirmation/ConfirmationCloseButton" to="LoadMenu" method="_on_confirmation_close_button_pressed"]
+[connection signal="pressed" from="LoadMenu/DeleteConfirmation/HBoxContainer/ConfirmationYesButton" to="LoadMenu" method="_on_confirmation_yes_button_pressed"]
+[connection signal="pressed" from="LoadMenu/DeleteConfirmation/HBoxContainer/ConfirmationNoButton" to="LoadMenu" method="_on_confirmation_no_button_pressed"]

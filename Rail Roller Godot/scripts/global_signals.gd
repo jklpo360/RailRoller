@@ -1,5 +1,6 @@
 extends Node
 
+signal change_keybind(player, primary, text, contents)
 signal request_region(player)
 signal return_region(region, player)
 

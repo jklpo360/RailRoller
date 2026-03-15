@@ -17,19 +17,19 @@ func _ready():
 		4 : TranslationServer.translate("PLAYER_4"),
 		5 : TranslationServer.translate("PLAYER_5")
 	}
-	primary_keybind_text = {
-		1 : "1",
-		2 : "2",
-		3 : "3",
-		4 : "4",
-		5 : "5"
+	primary_keybind_content = {
+		1 : [true, "1"],
+		2 : [true, "2"],
+		3 : [true, "3"],
+		4 : [true, "4"],
+		5 : [true, "5"]
 	}
-	secondary_keybind_text = {
-		1 : "",
-		2 : "",
-		3 : "",
-		4 : "",
-		5 : ""
+	secondary_keybind_content = {
+		1 : [true, ""],
+		2 : [true, ""],
+		3 : [true, ""],
+		4 : [true, ""],
+		5 : [true, ""]
 	}
 	readied = {
 		1 : false,
@@ -40,24 +40,22 @@ func _ready():
 	}
 	
 func _input(event):
-	if event.is_pressed() and event.is_action("Player1") and not_waiting:
-		choose_destination(0)
-	if event.is_pressed() and event.is_action("Player2") and not_waiting:
-		choose_destination(1)
-	if event.is_pressed() and event.is_action("Player3") and not_waiting:
-		choose_destination(2)
-	if event.is_pressed() and event.is_action("Player4") and not_waiting:
-		choose_destination(3)
-	if event.is_pressed() and event.is_action("Player5") and not_waiting:
-		choose_destination(4)
+	if in_game:
+		if event.is_pressed() and event.is_action("Player1") and not_waiting:
+			choose_destination(0)
+		if event.is_pressed() and event.is_action("Player2") and not_waiting:
+			choose_destination(1)
+		if event.is_pressed() and event.is_action("Player3") and not_waiting:
+			choose_destination(2)
+		if event.is_pressed() and event.is_action("Player4") and not_waiting:
+			choose_destination(3)
+		if event.is_pressed() and event.is_action("Player5") and not_waiting:
+			choose_destination(4)
 	if event is InputEventKey and event.pressed and event.physical_keycode == KEY_ESCAPE:
 		open_exit_menu.emit()
 
 func _on_color_selection(player: int, color: String):
 	change_color(player, color)
-
-func _on_keybind_pressed(player: int, primary: bool) -> void:
-	start_keybind(player, primary)
 
 func _on_ready_pressed(player: int):
 	toggle_ready(player)

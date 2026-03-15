@@ -12,11 +12,12 @@ var NUM_PLAYERS
 var rng = RandomNumberGenerator.new()
 var returned_regions = []
 var not_waiting = true
+var in_game = false
 
 var colors = {}
 var names = {}
-var primary_keybind_text = {}
-var secondary_keybind_text = {}
+var primary_keybind_content = {}
+var secondary_keybind_content = {}
 var readied = {}
 var home_cities = []
 var destinations = []
@@ -672,6 +673,7 @@ func initialize_arrays():
 	player_name_text_boxes = find_children("Player*Name")
 	primary_key_buttons = find_children("Player*PrimaryKey")
 	secondary_key_buttons = find_children("Player*SecondaryKey")
+	GlobalSignals.change_keybind.connect(_change_keybind, ConnectFlags.CONNECT_PERSIST)
 	
 	home_cities_text_boxes = find_children("*HomeCitiesText")
 	home_cities_text_regions = find_children("*HomeCityRegion")
@@ -730,13 +732,30 @@ func initialize_arrays():
 	
 func setup_game():
 	for i in range(NUM_PLAYERS):
-		player_name_text_boxes[i].text = names.get(i+1)
-		primary_key_buttons[i].text = primary_keybind_text.get(i+1)
-		secondary_key_buttons[i].text = secondary_keybind_text.get(i+1)
+		var player = i+1
+		player_name_text_boxes[i].text = names.get(player)
 		
-	for i in range(NUM_PLAYERS):
+		if primary_keybind_content.get(player)[0]:
+			primary_key_buttons[i].text = primary_keybind_content.get(player)[1]
+			primary_key_buttons[i].icon = null
+		else:
+			primary_key_buttons[i].text = ""
+			primary_key_buttons[i].icon = primary_keybind_content.get(player)[1]
+			
+		if secondary_keybind_content.get(player)[0]:
+			secondary_key_buttons[i].text = secondary_keybind_content.get(player)[1]
+			secondary_key_buttons[i].icon = null
+		else:
+			secondary_key_buttons[i].text = ""
+			secondary_key_buttons[i].icon = secondary_keybind_content.get(player)[1]
+		
+	var i = 0
+	while i < NUM_PLAYERS:
 		assign_home_city(i)
 		choose_destination(i)
+		i += 1
+	
+	in_game = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -841,5 +860,8 @@ func toggle_ready(player):
 			hiding_backgrounds[player-1].show()
 			ready_buttons[player-1].text = TranslationServer.translate("CHANGE_PLAYER_INFO")
 
-func start_keybind(player, primary):
-	pass
+func _change_keybind(player, primary, text, contents):
+	if primary:
+		primary_keybind_content.set(player, [text, contents])
+	else:
+		secondary_keybind_content.set(player, [text, contents])

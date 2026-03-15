@@ -19,21 +19,21 @@ func _ready():
 		5 : TranslationServer.translate("PLAYER_5"),
 		6 : TranslationServer.translate("PLAYER_6")
 	}
-	primary_keybind_text = {
-		1 : "1",
-		2 : "2",
-		3 : "3",
-		4 : "4",
-		5 : "5",
-		6 : "6"
+	primary_keybind_content = {
+		1 : [true, "1"],
+		2 : [true, "2"],
+		3 : [true, "3"],
+		4 : [true, "4"],
+		5 : [true, "5"],
+		6 : [true, "6"]
 	}
-	secondary_keybind_text = {
-		1 : "",
-		2 : "",
-		3 : "",
-		4 : "",
-		5 : "",
-		6 : ""
+	secondary_keybind_content = {
+		1 : [true, ""],
+		2 : [true, ""],
+		3 : [true, ""],
+		4 : [true, ""],
+		5 : [true, ""],
+		6 : [true, ""]
 	}
 	readied = {
 		1 : false,
@@ -43,7 +43,6 @@ func _ready():
 		5 : false,
 		6 : false
 	}
-	setup_game()
 
 func _input(event):
 	if event.is_pressed() and event.is_action("Player1") and not_waiting:
@@ -62,32 +61,7 @@ func _input(event):
 		open_exit_menu.emit()
 
 func _on_color_selection(player: int, color: String):
-	backgrounds[player-1].texture = colors.get(color)
-	colors.set(player, color)
-
-func _on_keybind_pressed(player: int, primary: bool) -> void:
-	pass
+	change_color(player, color)
 
 func _on_ready_pressed(player: int):
-	if readied.get(player):
-		readied.set(player, false)
-		hiding_backgrounds[player-1].hide()
-		ready_buttons[player-1].text = TranslationServer.translate("READY")
-	else:
-		readied.set(player, true)
-		var all_readied = true
-		for i in readied.values():
-			all_readied = all_readied and i
-		if all_readied:
-			for i in hiding_backgrounds:
-				i.hide()
-			for i in setup_interfaces:
-				i.hide()
-			for i in game_displays:
-				i.show()
-			for i in ready_buttons:
-				i.text = TranslationServer.translate("READY")
-			setup_game()
-		else:
-			hiding_backgrounds[player-1].show()
-			ready_buttons[player-1].text = TranslationServer.translate("CHANGE_PLAYER_INFO")
+	toggle_ready(player)
