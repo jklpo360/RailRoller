@@ -25,10 +25,11 @@ func _ready():
 	}
 
 func _input(event):
-	if event.is_pressed() and event.is_action("Player1") and not_waiting:
-		choose_destination(0)
-	if event.is_pressed() and event.is_action("Player2") and not_waiting:
-		choose_destination(1)
+	if in_game:
+		if event.is_pressed() and event.is_action("Player1") and not_waiting:
+			choose_destination(0)
+		if event.is_pressed() and event.is_action("Player2") and not_waiting:
+			choose_destination(1)
 
 func _on_color_selection(player: int, color: String):
 	change_color(player, color)

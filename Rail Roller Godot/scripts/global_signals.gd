@@ -1,6 +1,9 @@
 extends Node
 
 signal change_keybind(player, primary, text, contents)
+signal erase_keybind(player, primary)
+signal bump_keybind_action_index(player)
+
 signal request_region(player)
 signal return_region(region, player)
 

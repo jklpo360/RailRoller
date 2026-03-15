@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://brpbpa4r1vqmc"]
+[gd_scene load_steps=22 format=3 uid="uid://brpbpa4r1vqmc"]
 
 [ext_resource type="Script" uid="uid://blkpm7tv4q24c" path="res://scripts/three_player.gd" id="1_2012w"]
 [ext_resource type="Texture2D" uid="uid://dvs0s20v7vq2p" path="res://texture/start_menu_texture.png" id="2_ktyes"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://d4deow46htltl" path="res://texture/yellow_texture.png" id="8_rxte2"]
 [ext_resource type="Texture2D" uid="uid://xd5bujyqhc55" path="res://texture/red_texture.png" id="9_5re4p"]
 [ext_resource type="Texture2D" uid="uid://x0b57jsr7m6j" path="res://texture/black_texture.png" id="10_me0ei"]
+[ext_resource type="Script" uid="uid://b3g1b84tyasuw" path="res://scripts/keybind_button.gd" id="11_7o3hj"]
 [ext_resource type="Texture2D" uid="uid://0objvwwi3byj" path="res://texture/transparent_mask.png" id="11_gyv5h"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_hufy1"]
@@ -197,6 +198,11 @@ offset_top = 445.0
 offset_right = 890.0
 offset_bottom = 522.0
 theme = ExtResource("6_gyv5h")
+script = ExtResource("11_7o3hj")
+action = "Player1"
+action_event_index = 1
+player = 1
+metadata/_custom_type_script = "uid://b3g1b84tyasuw"
 
 [node name="PrimaryLabel1" type="Label" parent="Player1/SetupInterface1"]
 offset_left = 551.0
@@ -215,6 +221,10 @@ offset_right = 890.0
 offset_bottom = 441.0
 theme = ExtResource("6_gyv5h")
 text = "1"
+script = ExtResource("11_7o3hj")
+action = "Player1"
+player = 1
+metadata/_custom_type_script = "uid://b3g1b84tyasuw"
 
 [node name="StartButtonAnchor1" type="Node2D" parent="Player1/SetupInterface1"]
 position = Vector2(480, 270)
@@ -470,6 +480,11 @@ offset_top = 445.0
 offset_right = 890.0
 offset_bottom = 522.0
 theme = ExtResource("6_gyv5h")
+script = ExtResource("11_7o3hj")
+action = "Player2"
+action_event_index = 1
+player = 2
+metadata/_custom_type_script = "uid://b3g1b84tyasuw"
 
 [node name="PrimaryLabel2" type="Label" parent="Player2/SetupInterface2"]
 offset_left = 551.0
@@ -488,6 +503,10 @@ offset_right = 890.0
 offset_bottom = 441.0
 theme = ExtResource("6_gyv5h")
 text = "2"
+script = ExtResource("11_7o3hj")
+action = "Player2"
+player = 2
+metadata/_custom_type_script = "uid://b3g1b84tyasuw"
 
 [node name="StartButtonAnchor2" type="Node2D" parent="Player2/SetupInterface2"]
 position = Vector2(480, 270)
@@ -743,6 +762,11 @@ offset_top = 445.0
 offset_right = 890.0
 offset_bottom = 522.0
 theme = ExtResource("6_gyv5h")
+script = ExtResource("11_7o3hj")
+action = "Player3"
+action_event_index = 1
+player = 3
+metadata/_custom_type_script = "uid://b3g1b84tyasuw"
 
 [node name="PrimaryLabel3" type="Label" parent="Player3/SetupInterface3"]
 offset_left = 551.0
@@ -761,6 +785,10 @@ offset_right = 890.0
 offset_bottom = 441.0
 theme = ExtResource("6_gyv5h")
 text = "3"
+script = ExtResource("11_7o3hj")
+action = "Player3"
+player = 3
+metadata/_custom_type_script = "uid://b3g1b84tyasuw"
 
 [node name="StartButtonAnchor3" type="Node2D" parent="Player3/SetupInterface3"]
 position = Vector2(480, 270)

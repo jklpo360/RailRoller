@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bkj4l4apce3jl"]
+[gd_scene load_steps=21 format=3 uid="uid://bkj4l4apce3jl"]
 
 [ext_resource type="Script" uid="uid://dkr2wylx81spc" path="res://scripts/six_player.gd" id="1_amlhe"]
 [ext_resource type="Texture2D" uid="uid://xd5bujyqhc55" path="res://texture/red_texture.png" id="2_4wkdi"]
@@ -12,6 +12,7 @@
 [ext_resource type="Theme" uid="uid://c0qhemh8e0xdb" path="res://theme/default.tres" id="10_ttgt6"]
 [ext_resource type="LabelSettings" uid="uid://dcii2cd6iftqw" path="res://theme/text_label.tres" id="11_ypfm7"]
 [ext_resource type="Texture2D" uid="uid://0objvwwi3byj" path="res://texture/transparent_mask.png" id="12_ttgt6"]
+[ext_resource type="Script" uid="uid://b3g1b84tyasuw" path="res://scripts/keybind_button.gd" id="12_ypfm7"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_3pspo"]
 
@@ -237,6 +238,11 @@ offset_top = 445.0
 offset_right = 609.0
 offset_bottom = 522.0
 theme = ExtResource("10_ttgt6")
+script = ExtResource("12_ypfm7")
+action = "Player1"
+action_event_index = 1
+player = 1
+metadata/_custom_type_script = "uid://b3g1b84tyasuw"
 
 [node name="PrimaryLabel1" type="Label" parent="Player1/SetupInterface1"]
 offset_left = 270.0
@@ -255,6 +261,10 @@ offset_right = 609.0
 offset_bottom = 441.0
 theme = ExtResource("10_ttgt6")
 text = "1"
+script = ExtResource("12_ypfm7")
+action = "Player1"
+player = 1
+metadata/_custom_type_script = "uid://b3g1b84tyasuw"
 
 [node name="StartButtonAnchor1" type="Node2D" parent="Player1/SetupInterface1"]
 position = Vector2(320, 270)
@@ -512,6 +522,11 @@ offset_top = 445.0
 offset_right = 609.0
 offset_bottom = 522.0
 theme = ExtResource("10_ttgt6")
+script = ExtResource("12_ypfm7")
+action = "Player2"
+action_event_index = 1
+player = 2
+metadata/_custom_type_script = "uid://b3g1b84tyasuw"
 
 [node name="PrimaryLabel2" type="Label" parent="Player2/SetupInterface2"]
 offset_left = 270.0
@@ -530,6 +545,10 @@ offset_right = 609.0
 offset_bottom = 441.0
 theme = ExtResource("10_ttgt6")
 text = "2"
+script = ExtResource("12_ypfm7")
+action = "Player2"
+player = 2
+metadata/_custom_type_script = "uid://b3g1b84tyasuw"
 
 [node name="StartButtonAnchor2" type="Node2D" parent="Player2/SetupInterface2"]
 position = Vector2(320, 270)
@@ -787,6 +806,11 @@ offset_top = 445.0
 offset_right = 609.0
 offset_bottom = 522.0
 theme = ExtResource("10_ttgt6")
+script = ExtResource("12_ypfm7")
+action = "Player3"
+action_event_index = 1
+player = 3
+metadata/_custom_type_script = "uid://b3g1b84tyasuw"
 
 [node name="PrimaryLabel3" type="Label" parent="Player3/SetupInterface3"]
 offset_left = 270.0
@@ -805,6 +829,10 @@ offset_right = 609.0
 offset_bottom = 441.0
 theme = ExtResource("10_ttgt6")
 text = "3"
+script = ExtResource("12_ypfm7")
+action = "Player3"
+player = 3
+metadata/_custom_type_script = "uid://b3g1b84tyasuw"
 
 [node name="StartButtonAnchor3" type="Node2D" parent="Player3/SetupInterface3"]
 position = Vector2(320, 270)
@@ -1062,6 +1090,11 @@ offset_top = 445.0
 offset_right = 609.0
 offset_bottom = 522.0
 theme = ExtResource("10_ttgt6")
+script = ExtResource("12_ypfm7")
+action = "Player4"
+action_event_index = 1
+player = 4
+metadata/_custom_type_script = "uid://b3g1b84tyasuw"
 
 [node name="PrimaryLabel4" type="Label" parent="Player4/SetupInterface4"]
 offset_left = 270.0
@@ -1080,6 +1113,10 @@ offset_right = 609.0
 offset_bottom = 441.0
 theme = ExtResource("10_ttgt6")
 text = "4"
+script = ExtResource("12_ypfm7")
+action = "Player4"
+player = 4
+metadata/_custom_type_script = "uid://b3g1b84tyasuw"
 
 [node name="StartButtonAnchor4" type="Node2D" parent="Player4/SetupInterface4"]
 position = Vector2(320, 270)
@@ -1337,6 +1374,11 @@ offset_top = 445.0
 offset_right = 609.0
 offset_bottom = 522.0
 theme = ExtResource("10_ttgt6")
+script = ExtResource("12_ypfm7")
+action = "Player5"
+action_event_index = 1
+player = 5
+metadata/_custom_type_script = "uid://b3g1b84tyasuw"
 
 [node name="PrimaryLabel5" type="Label" parent="Player5/SetupInterface5"]
 offset_left = 270.0
@@ -1355,6 +1397,10 @@ offset_right = 609.0
 offset_bottom = 441.0
 theme = ExtResource("10_ttgt6")
 text = "5"
+script = ExtResource("12_ypfm7")
+action = "Player5"
+player = 5
+metadata/_custom_type_script = "uid://b3g1b84tyasuw"
 
 [node name="StartButtonAnchor5" type="Node2D" parent="Player5/SetupInterface5"]
 position = Vector2(320, 270)
@@ -1612,6 +1658,11 @@ offset_top = 445.0
 offset_right = 609.0
 offset_bottom = 522.0
 theme = ExtResource("10_ttgt6")
+script = ExtResource("12_ypfm7")
+action = "Player6"
+action_event_index = 1
+player = 6
+metadata/_custom_type_script = "uid://b3g1b84tyasuw"
 
 [node name="PrimaryLabel6" type="Label" parent="Player6/SetupInterface6"]
 offset_left = 270.0
@@ -1630,6 +1681,10 @@ offset_right = 609.0
 offset_bottom = 441.0
 theme = ExtResource("10_ttgt6")
 text = "6"
+script = ExtResource("12_ypfm7")
+action = "Player6"
+player = 6
+metadata/_custom_type_script = "uid://b3g1b84tyasuw"
 
 [node name="StartButtonAnchor6" type="Node2D" parent="Player6/SetupInterface6"]
 position = Vector2(320, 270)

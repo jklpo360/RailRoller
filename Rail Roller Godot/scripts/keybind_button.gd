@@ -4,6 +4,7 @@ class_name KeybindButton
 @export var action : String
 @export var action_event_index : int = 0
 @export var player: int
+var primary : bool
 
 const CONTROLLER_LABELS: Dictionary = {
 	JoyButton.JOY_BUTTON_A: "A",
@@ -23,12 +24,16 @@ const CONTROLLER_LABELS: Dictionary = {
 }
 
 var ICONS: Dictionary = {
-	"Start" : load("res://texture/refresh_icon.png")
+	"Start" : load("res://texture/refresh_icon.png"),
+	"Waiting" : load("res://texture/waiting_icon.png")
 }
 
 func _ready():
+	primary = action_event_index == 0
 	toggle_mode = true
 	_toggled(false)
+	GlobalSignals.erase_keybind.connect(_erase_button, ConnectFlags.CONNECT_PERSIST)
+	GlobalSignals.bump_keybind_action_index.connect(_bump_action_index, ConnectFlags.CONNECT_PERSIST)
 	
 func _toggled(toggled_on: bool):
 	if !action or !InputMap.has_action(action):
@@ -36,11 +41,12 @@ func _toggled(toggled_on: bool):
 	
 	if toggled_on:
 		text = ""
-		icon = ICONS.get("Start")
+		icon = ICONS.get("Waiting")
 		return
 	
 	if action_event_index >= InputMap.action_get_events(action).size():
-		text = "Unassigned!"
+		text = ""
+		icon = null
 		return
 	
 	var input = InputMap.action_get_events(action)[action_event_index]
@@ -52,7 +58,7 @@ func _toggled(toggled_on: bool):
 				text = ""
 				GlobalSignals.change_keybind.emit(
 					player, 
-					action_event_index == 0,
+					primary,
 					true,
 					icon
 				)
@@ -60,7 +66,7 @@ func _toggled(toggled_on: bool):
 				icon = null
 				GlobalSignals.change_keybind.emit(
 					player, 
-					action_event_index == 0,
+					primary,
 					true,
 					text
 				)
@@ -71,7 +77,7 @@ func _toggled(toggled_on: bool):
 				text = ""
 				GlobalSignals.change_keybind.emit(
 					player, 
-					action_event_index == 0,
+					primary,
 					true,
 					icon
 				)
@@ -79,7 +85,7 @@ func _toggled(toggled_on: bool):
 				icon = null
 				GlobalSignals.change_keybind.emit(
 					player, 
-					action_event_index == 0,
+					primary,
 					true,
 					text
 				)
@@ -91,7 +97,7 @@ func _toggled(toggled_on: bool):
 				text = ""
 				GlobalSignals.change_keybind.emit(
 					player, 
-					action_event_index == 0,
+					primary,
 					true,
 					icon
 				)
@@ -99,7 +105,7 @@ func _toggled(toggled_on: bool):
 				icon = null
 				GlobalSignals.change_keybind.emit(
 					player, 
-					action_event_index == 0,
+					primary,
 					true,
 					text
 				)
@@ -110,7 +116,7 @@ func _toggled(toggled_on: bool):
 				text = ""
 				GlobalSignals.change_keybind.emit(
 					player, 
-					action_event_index == 0,
+					primary,
 					true,
 					icon
 				)
@@ -118,7 +124,7 @@ func _toggled(toggled_on: bool):
 				icon = null
 				GlobalSignals.change_keybind.emit(
 					player, 
-					action_event_index == 0,
+					primary,
 					true,
 					text
 				)
@@ -141,3 +147,17 @@ func _input(event: InputEvent):
 	if event.is_pressed() and event is InputEventMouseButton:
 		button_pressed = false
 		release_focus()
+
+func _erase_button(player, primary, erase_bind):
+	if self.player == player and self.primary == primary:
+		text = ""
+		icon = null
+		if erase_bind:
+			print("different_player")
+			var action_events_list = InputMap.action_get_events(action)
+			if action_event_index < action_events_list.size():
+				InputMap.action_erase_event(action, action_events_list[action_event_index])
+
+func _bump_action_index(player):
+	if self.player == player and not primary:
+		action_event_index = 0

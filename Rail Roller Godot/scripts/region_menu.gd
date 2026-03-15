@@ -21,44 +21,44 @@ func _on_choose_region(player):
 
 func _on_north_west_pressed() -> void:
 	if not minimized:
-		GlobalSignals.return_region.emit("NW", current_player)
 		%RegionCanvas.hide()
+		GlobalSignals.return_region.emit("NW", current_player)
 
 
 func _on_plains_pressed() -> void:
 	if not minimized:
-		GlobalSignals.return_region.emit("P", current_player)
 		%RegionCanvas.hide()
+		GlobalSignals.return_region.emit("P", current_player)
 
 
 func _on_north_central_pressed() -> void:
 	if not minimized:
-		GlobalSignals.return_region.emit("NC", current_player)
 		%RegionCanvas.hide()
+		GlobalSignals.return_region.emit("NC", current_player)
 
 
 func _on_north_east_pressed() -> void:
 	if not minimized:
-		GlobalSignals.return_region.emit("NE", current_player)
 		%RegionCanvas.hide()
+		GlobalSignals.return_region.emit("NE", current_player)
 
 
 func _on_south_west_pressed() -> void:
 	if not minimized:
-		GlobalSignals.return_region.emit("SW", current_player)
 		%RegionCanvas.hide()
+		GlobalSignals.return_region.emit("SW", current_player)
 
 
 func _on_south_central_pressed() -> void:
 	if not minimized:
-		GlobalSignals.return_region.emit("SC", current_player)
 		%RegionCanvas.hide()
+		GlobalSignals.return_region.emit("SC", current_player)
 
 
 func _on_south_east_pressed() -> void:
 	if not minimized:
-		GlobalSignals.return_region.emit("SE", current_player)
 		%RegionCanvas.hide()
+		GlobalSignals.return_region.emit("SE", current_player)
 
 var minimized = false
 

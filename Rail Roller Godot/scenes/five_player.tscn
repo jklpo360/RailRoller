@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://co1qp358gm4hu"]
+[gd_scene load_steps=17 format=3 uid="uid://co1qp358gm4hu"]
 
 [ext_resource type="Script" uid="uid://buujvkhlctudo" path="res://scripts/five_player.gd" id="1_iwiel"]
 [ext_resource type="Texture2D" uid="uid://dvs0s20v7vq2p" path="res://texture/start_menu_texture.png" id="2_bpe87"]
@@ -13,7 +13,6 @@
 [ext_resource type="LabelSettings" uid="uid://dcii2cd6iftqw" path="res://theme/text_label.tres" id="11_vb6a6"]
 [ext_resource type="Texture2D" uid="uid://0objvwwi3byj" path="res://texture/transparent_mask.png" id="12_1gaqw"]
 [ext_resource type="Script" uid="uid://b3g1b84tyasuw" path="res://scripts/keybind_button.gd" id="12_77fgt"]
-[ext_resource type="Script" uid="uid://l0it6v0kgv40" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="13_e5ws6"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_3pspo"]
 
@@ -21,17 +20,6 @@
 
 [sub_resource type="QuadMesh" id="QuadMesh_1gaqw"]
 size = Vector2(220, 160)
-
-[sub_resource type="Texture2D" id="Texture2D_o036q"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("13_e5ws6")
-path = "Player1"
-show_mode = 0
-force_controller_icon_style = -1
-force_type = 0
-force_device = 16
-metadata/_custom_type_script = "uid://l0it6v0kgv40"
 
 [node name="FivePlayer" type="Node2D"]
 z_index = 1
@@ -257,14 +245,6 @@ script = ExtResource("12_77fgt")
 action = "Player1"
 player = 1
 metadata/_custom_type_script = "uid://b3g1b84tyasuw"
-
-[node name="TextureRect" type="TextureRect" parent="Player1/SetupInterface1"]
-offset_left = 517.0
-offset_top = 203.0
-offset_right = 617.0
-offset_bottom = 303.0
-scale = Vector2(0.77, 0.77)
-texture = SubResource("Texture2D_o036q")
 
 [node name="StartButtonAnchor1" type="Node2D" parent="Player1/SetupInterface1"]
 position = Vector2(320, 270)

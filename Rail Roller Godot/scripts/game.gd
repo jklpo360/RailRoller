@@ -16,6 +16,7 @@ var in_game = false
 
 var colors = {}
 var names = {}
+var player_name_text_fields = []
 var primary_keybind_content = {}
 var secondary_keybind_content = {}
 var readied = {}
@@ -666,6 +667,7 @@ func initialize_arrays():
 		"white" : white_texture,
 		"black" : black_texture
 	}
+	player_name_text_fields = find_children("PlayerName?")
 	
 	var region_menu = find_parent("Main").find_child("RegionMenu")
 	GlobalSignals.return_region.connect(_region_response, ConnectFlags.CONNECT_PERSIST)
@@ -728,6 +730,7 @@ func initialize_arrays():
 		destinations.append(0)
 		player_regions.append(0)
 		returned_regions.append("NAR")
+		player_name_text_fields[i].text = TranslationServer.translate(player_name_text_fields[i].text)
 	
 	
 func setup_game():
@@ -752,7 +755,7 @@ func setup_game():
 	var i = 0
 	while i < NUM_PLAYERS:
 		assign_home_city(i)
-		choose_destination(i)
+		await choose_destination(i)
 		i += 1
 	
 	in_game = true
@@ -812,7 +815,7 @@ func choose_destination(player):
 	else:
 		player_regions[player] = random_region
 	var old_city = destinations[player]
-	var new_city = cities[player_regions[player]][roll2] #fix for the case of multiple request regions at the same time
+	var new_city = cities[player_regions[player]][roll2]
 	destination_text_regions[player].text = str("(", player_regions[player], ")")
 	destinations[player] = new_city
 	destination_text_boxes[player].text = destinations[player]
@@ -833,6 +836,11 @@ func _region_response(region, player):
 	response.emit()
 
 func change_color(player, color):
+	if colors.values().has(color):
+		var index = colors.values().find(color)
+		backgrounds[index].texture = load("res://texture/transparent_mask.png")
+		colors.set(index+1, "")
+		
 	backgrounds[player-1].texture = color_textures.get(color)
 	colors.set(player, color)
 
@@ -861,6 +869,29 @@ func toggle_ready(player):
 			ready_buttons[player-1].text = TranslationServer.translate("CHANGE_PLAYER_INFO")
 
 func _change_keybind(player, primary, text, contents):
+	var duplicate_value = false
+	var duplicate_primary : bool
+	var duplicate_index : int
+	var primary_values = primary_keybind_content.values()
+	var secondary_values = secondary_keybind_content.values()
+	for i in range(NUM_PLAYERS):
+		if contents == primary_values[i][1]:
+			duplicate_value = true
+			duplicate_primary = true
+			duplicate_index = i
+			break
+		if contents == secondary_values[i][1]:
+			duplicate_value = true
+			duplicate_primary = false
+			duplicate_index = i
+			break
+			
+	if duplicate_value:
+		if duplicate_primary:
+			primary_keybind_content.set(duplicate_index+1, [true, ""])
+		else:
+			secondary_keybind_content.set(duplicate_index+1, [true, ""])
+		GlobalSignals.erase_keybind.emit(duplicate_index+1, duplicate_primary, duplicate_index+1 != player)
 	if primary:
 		primary_keybind_content.set(player, [text, contents])
 	else:

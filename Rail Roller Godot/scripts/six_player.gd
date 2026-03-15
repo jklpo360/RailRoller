@@ -45,18 +45,19 @@ func _ready():
 	}
 
 func _input(event):
-	if event.is_pressed() and event.is_action("Player1") and not_waiting:
-		choose_destination(0)
-	if event.is_pressed() and event.is_action("Player2") and not_waiting:
-		choose_destination(1)
-	if event.is_pressed() and event.is_action("Player3") and not_waiting:
-		choose_destination(2)
-	if event.is_pressed() and event.is_action("Player4") and not_waiting:
-		choose_destination(3)
-	if event.is_pressed() and event.is_action("Player5") and not_waiting:
-		choose_destination(4)
-	if event.is_pressed() and event.is_action("Player6") and not_waiting:
-		choose_destination(5)
+	if in_game:
+		if event.is_pressed() and event.is_action("Player1") and not_waiting:
+			choose_destination(0)
+		if event.is_pressed() and event.is_action("Player2") and not_waiting:
+			choose_destination(1)
+		if event.is_pressed() and event.is_action("Player3") and not_waiting:
+			choose_destination(2)
+		if event.is_pressed() and event.is_action("Player4") and not_waiting:
+			choose_destination(3)
+		if event.is_pressed() and event.is_action("Player5") and not_waiting:
+			choose_destination(4)
+		if event.is_pressed() and event.is_action("Player6") and not_waiting:
+			choose_destination(5)
 	if event is InputEventKey and event.pressed and event.physical_keycode == KEY_ESCAPE:
 		open_exit_menu.emit()
 
