@@ -875,12 +875,12 @@ func _change_keybind(player, primary, text, contents):
 	var primary_values = primary_keybind_content.values()
 	var secondary_values = secondary_keybind_content.values()
 	for i in range(NUM_PLAYERS):
-		if contents == primary_values[i][1]:
+		if text == primary_values[i][0] and contents == primary_values[i][1]:
 			duplicate_value = true
 			duplicate_primary = true
 			duplicate_index = i
 			break
-		if contents == secondary_values[i][1]:
+		if text == secondary_values[i][0] and contents == secondary_values[i][1]:
 			duplicate_value = true
 			duplicate_primary = false
 			duplicate_index = i
