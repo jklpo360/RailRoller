@@ -9,9 +9,12 @@ signal return_region(region, player)
 
 signal open_num_players_menu
 signal close_num_players_menu
-signal start_game(num_players)
 
 signal open_options_menu
+signal change_language(locale_code)
 
+signal start_pre_game
+signal start_game
+signal load_game
 signal save_game
-signal game_loaded
+signal exit_game

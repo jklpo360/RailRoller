@@ -654,6 +654,8 @@ var alphabetical_cities = {
 
 # Called when the node enters the scene tree for the first time.
 func initialize_arrays():
+	GlobalSignals.save_game.connect(_on_save_game, CONNECT_PERSIST)
+	GlobalSignals.exit_game.connect(_on_exit_game, CONNECT_PERSIST)
 	backgrounds = find_children("PlayerBackground*")
 	hiding_backgrounds = find_children("PlayerHidingBackground*")
 	ready_buttons = find_children("StartButton?")
@@ -730,10 +732,10 @@ func initialize_arrays():
 		destinations.append(0)
 		player_regions.append(0)
 		returned_regions.append("NAR")
-		player_name_text_fields[i].text = TranslationServer.translate(player_name_text_fields[i].text)
 	
 	
 func setup_game():
+	GlobalSignals.start_game.emit()
 	for i in range(NUM_PLAYERS):
 		var player = i+1
 		player_name_text_boxes[i].text = names.get(player)
@@ -843,6 +845,7 @@ func change_color(player, color):
 		
 	backgrounds[player-1].texture = color_textures.get(color)
 	colors.set(player, color)
+	return
 
 func toggle_ready(player):
 	if readied.get(player):
@@ -896,3 +899,80 @@ func _change_keybind(player, primary, text, contents):
 		primary_keybind_content.set(player, [text, contents])
 	else:
 		secondary_keybind_content.set(player, [text, contents])
+
+func _on_save_game() -> void:
+	var primary_events = []
+	for i in range(NUM_PLAYERS):
+		var events_list = InputMap.action_get_events("Player%i" % (i+1))
+		if events_list.size() > 0:
+			primary_events.push(events_list[0])
+		else:
+			# TODO: add a check to make sure that the game cant start when
+			#       a player doesnt have a keybind
+			return
+	var secondary_events = []
+	for i in range(NUM_PLAYERS):
+		var events_list = InputMap.action_get_events("Player%i" % (i+1))
+		if events_list.size() > 1:
+			secondary_events.push(events_list[1])
+		else:
+			secondary_events.push(null)
+	var home_city_regions = []
+	for x in home_cities_text_regions:
+		home_city_regions.push(x.text)
+	var old_destinations
+	for x in old_destination_text_boxes:
+		old_destinations.push(x.text)
+	var old_destination_regions
+	for x in old_destination_text_regions:
+		old_destination_regions.push(x.text)
+	var rewards
+	for x in reward_text_boxes:
+		rewards.push(x.text)
+	SaveLoad.save_game(names, colors, primary_events,
+	secondary_events, home_cities, home_city_regions, 
+	old_destinations, old_destination_regions,
+	destinations, player_regions, rewards)
+	print("sent info to SaveLoad!")
+
+func load_game() -> void:
+	#
+	
+	# Load save info
+	names = SaveLoad.save_contents.get("names")
+	print("names: %s" % names)
+	var colors = SaveLoad.save_contents.get("colors")
+	print("colors: %s" % colors)
+	var primary_events = SaveLoad.save_contents.get("primary_events")
+	var secondary_events = SaveLoad.save_contents.get("secondary_events")
+	home_cities = SaveLoad.save_contents.get("home_cities")
+	var home_city_regions =  SaveLoad.save_contents.get("home_city_regions")
+	var old_destinations = SaveLoad.save_contents.get("old_destinations")
+	var old_destination_regions = SaveLoad.save_contents.get("old_destination_regions")
+	destinations = SaveLoad.save_contents.get("destinations")
+	player_regions = SaveLoad.save_contents.get("destination_regions")
+	var rewards = SaveLoad.save_contents.get("rewards")
+	print("home cities: %s" % home_cities)
+	for i in range(NUM_PLAYERS):
+		# initialize colors
+		change_color(i+1, colors[i])
+		
+		# initialize InputEvents
+		var action = "Player%i" % (i+1)
+		InputMap.action_erase_events(action)
+		InputMap.action_add_event(action, primary_events[i])
+		if secondary_events[i] != null:
+			InputMap.action_add_event(action, secondary_events[i])
+		
+		# initialize text boxes
+		player_name_text_boxes[i].text = names[i]
+		home_cities_text_boxes[i].text = home_cities[i]
+		home_cities_text_regions[i].text = home_city_regions[i]
+		old_destination_text_boxes[i].text = old_destinations[i]
+		old_destination_text_regions[i].text = old_destination_regions[i]
+		destination_text_boxes[i].text = destinations[i]
+		destination_text_regions[i].text = player_regions[i]
+		reward_text_boxes[i].text = rewards[i]
+
+func _on_exit_game() -> void:
+	queue_free()

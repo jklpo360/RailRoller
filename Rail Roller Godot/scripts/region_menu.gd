@@ -14,6 +14,7 @@ var current_player
 
 func _ready():
 	GlobalSignals.request_region.connect(_on_choose_region, CONNECT_PERSIST)
+	GlobalSignals.exit_game.connect(_on_exit_game, CONNECT_PERSIST)
 
 func _on_choose_region(player):
 	%RegionCanvas.show()
@@ -92,3 +93,6 @@ func _process(delta: float) -> void:
 			%RegionCanvas.scale = lerp(starting_scale, ending_scale, alpha)
 			%RegionCanvas.offset = lerp(starting_offset, ending_offset, alpha)
 		
+
+func _on_exit_game() -> void:
+	%RegionCanvas.hide()

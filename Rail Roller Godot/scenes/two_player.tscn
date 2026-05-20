@@ -218,12 +218,13 @@ visible = false
 
 [node name="HOME_CITY_TEXT" type="Label" parent="Player1/GameDisplay1"]
 offset_top = 800.0
-offset_right = 414.0
+offset_right = 292.0
 offset_bottom = 896.0
 text = "HOME_CITY_TEXT"
 label_settings = SubResource("LabelSettings_8xife")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 1
 
 [node name="PREVIOUS_DESTINATION_TEXT" type="Label" parent="Player1/GameDisplay1"]
 offset_left = 292.0
@@ -500,12 +501,13 @@ visible = false
 
 [node name="HOME_CITY_TEXT" type="Label" parent="Player2/GameDisplay2"]
 offset_top = 800.0
-offset_right = 414.0
+offset_right = 292.0
 offset_bottom = 896.0
 text = "HOME_CITY_TEXT"
 label_settings = SubResource("LabelSettings_8xife")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 1
 
 [node name="PREVIOUS_DESTINATION_TEXT" type="Label" parent="Player2/GameDisplay2"]
 offset_left = 292.0

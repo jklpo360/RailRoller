@@ -271,12 +271,13 @@ visible = false
 
 [node name="HOME_CITY_TEXT" type="Label" parent="Player1/GameDisplay1"]
 offset_top = 300.0
-offset_right = 332.0
+offset_right = 227.0
 offset_bottom = 396.0
 text = "HOME_CITY_TEXT"
 label_settings = ExtResource("8_h575c")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 1
 
 [node name="PREVIOUS_DESTINATION_TEXT" type="Label" parent="Player1/GameDisplay1"]
 offset_left = 227.0
@@ -286,6 +287,7 @@ text = "PREVIOUS_DESTINATION_TEXT"
 label_settings = ExtResource("8_h575c")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 1
 
 [node name="CURRENT_DESTINATION_TEXT" type="Label" parent="Player1/GameDisplay1"]
 offset_left = 227.0
@@ -295,6 +297,7 @@ text = "CURRENT_DESTINATION_TEXT"
 label_settings = ExtResource("8_h575c")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 1
 
 [node name="REWARD_TEXT" type="Label" parent="Player1/GameDisplay1"]
 offset_left = 227.0
@@ -557,12 +560,13 @@ visible = false
 
 [node name="HOME_CITY_TEXT" type="Label" parent="Player2/GameDisplay2"]
 offset_top = 300.0
-offset_right = 332.0
+offset_right = 227.0
 offset_bottom = 396.0
 text = "HOME_CITY_TEXT"
 label_settings = ExtResource("8_h575c")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 1
 
 [node name="PREVIOUS_DESTINATION_TEXT" type="Label" parent="Player2/GameDisplay2"]
 offset_left = 227.0
@@ -572,6 +576,7 @@ text = "PREVIOUS_DESTINATION_TEXT"
 label_settings = ExtResource("8_h575c")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 1
 
 [node name="CURRENT_DESTINATION_TEXT" type="Label" parent="Player2/GameDisplay2"]
 offset_left = 227.0
@@ -581,6 +586,7 @@ text = "CURRENT_DESTINATION_TEXT"
 label_settings = ExtResource("8_h575c")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 1
 
 [node name="REWARD_TEXT" type="Label" parent="Player2/GameDisplay2"]
 offset_left = 227.0
@@ -841,30 +847,33 @@ visible = false
 
 [node name="HOME_CITY_TEXT" type="Label" parent="Player3/GameDisplay3"]
 offset_top = 300.0
-offset_right = 332.0
+offset_right = 227.0
 offset_bottom = 396.0
 text = "HOME_CITY_TEXT"
 label_settings = ExtResource("8_h575c")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 1
 
 [node name="PREVIOUS_DESTINATION_TEXT" type="Label" parent="Player3/GameDisplay3"]
 offset_left = 227.0
-offset_right = 811.0
+offset_right = 640.0
 offset_bottom = 180.0
 text = "PREVIOUS_DESTINATION_TEXT"
 label_settings = ExtResource("8_h575c")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 1
 
 [node name="CURRENT_DESTINATION_TEXT" type="Label" parent="Player3/GameDisplay3"]
 offset_left = 227.0
-offset_right = 800.0
+offset_right = 640.0
 offset_bottom = 540.0
 text = "CURRENT_DESTINATION_TEXT"
 label_settings = ExtResource("8_h575c")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 1
 
 [node name="REWARD_TEXT" type="Label" parent="Player3/GameDisplay3"]
 offset_left = 227.0
@@ -1125,30 +1134,33 @@ visible = false
 
 [node name="HOME_CITY_TEXT" type="Label" parent="Player4/GameDisplay4"]
 offset_top = 300.0
-offset_right = 332.0
+offset_right = 227.0
 offset_bottom = 396.0
 text = "HOME_CITY_TEXT"
 label_settings = ExtResource("8_h575c")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 1
 
 [node name="PREVIOUS_DESTINATION_TEXT" type="Label" parent="Player4/GameDisplay4"]
 offset_left = 227.0
-offset_right = 811.0
+offset_right = 640.0
 offset_bottom = 180.0
 text = "PREVIOUS_DESTINATION_TEXT"
 label_settings = ExtResource("8_h575c")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 1
 
 [node name="CURRENT_DESTINATION_TEXT" type="Label" parent="Player4/GameDisplay4"]
 offset_left = 227.0
-offset_right = 800.0
+offset_right = 640.0
 offset_bottom = 540.0
 text = "CURRENT_DESTINATION_TEXT"
 label_settings = ExtResource("8_h575c")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 1
 
 [node name="REWARD_TEXT" type="Label" parent="Player4/GameDisplay4"]
 offset_left = 227.0
@@ -1409,30 +1421,33 @@ visible = false
 
 [node name="HOME_CITY_TEXT" type="Label" parent="Player5/GameDisplay5"]
 offset_top = 300.0
-offset_right = 332.0
+offset_right = 227.0
 offset_bottom = 396.0
 text = "HOME_CITY_TEXT"
 label_settings = ExtResource("8_h575c")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 1
 
 [node name="PREVIOUS_DESTINATION_TEXT" type="Label" parent="Player5/GameDisplay5"]
 offset_left = 227.0
-offset_right = 811.0
+offset_right = 640.0
 offset_bottom = 180.0
 text = "PREVIOUS_DESTINATION_TEXT"
 label_settings = ExtResource("8_h575c")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 1
 
 [node name="CURRENT_DESTINATION_TEXT" type="Label" parent="Player5/GameDisplay5"]
 offset_left = 227.0
-offset_right = 800.0
+offset_right = 640.0
 offset_bottom = 540.0
 text = "CURRENT_DESTINATION_TEXT"
 label_settings = ExtResource("8_h575c")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 1
 
 [node name="REWARD_TEXT" type="Label" parent="Player5/GameDisplay5"]
 offset_left = 227.0

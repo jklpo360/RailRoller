@@ -1,32 +1,38 @@
-key,en,br,jp,es
+key,en,pt-BR,jp,es
 TITLE_TEXT,Rail Roller,Rail Roller,レールローラー,Rail Roller
 START_TEXT, Start , Início , 開始 , Inicio 
-LOAD_TEXT, Load ,, ロード,
-LOAD_MENU,Load game,,,
+LOAD_TEXT, Load ,, ロード ,
+LOAD_MENU,Load game,,ロード,
 SAVE_NAME,,,,
 DELETE_CONFIRMATION,Are you sure?,,,
 DELETE_CONFIRMATION_YES,Yes,,,
 DELETE_CONFIRMATION_NO,No,,,
 OPTIONS_TEXT, Options , Opções , オプション , Opciones 
-,,,,
+OPTIONS_MENU,Options,Opções,オプション,Opciones
+SELECT_LANGUAGE_TEXT, Select Language,, 言語選択,
+SWAP_RULE_TEXT, Swap Rule,, 出発地チェンジ,
+LANGUAGE_MENU_TEXT,Language,,言語,
+SAVE_GAME,Save,,保存,
+EXIT_APPLICATION,Quit,,終了,
+QUIT_TEXT, Quit ,, 終了 ,
 HOME_CITY_TEXT,Home City,Cidade natal,出身地,Ciudad natal
-PREVIOUS_DESTINATION_TEXT,Previous Destination,Destino anterior,前の目的地,Destino anterior
-CURRENT_DESTINATION_TEXT,Current Destination,Próximo destino,現在目的地,Próximo destino
+PREVIOUS_DESTINATION_TEXT,Previous Destination,Destino anterior,出発地,Destino anterior
+CURRENT_DESTINATION_TEXT,Current Destination,Próximo destino,目的地,Próximo destino
 REWARD_TEXT,Reward,Recompensa,報酬 ,Regalo
 HOW_MANY_PLAYERS_TEXT,How many players?,,何人？,
 CHOOSE_REGION_TEXT,Choose a region,,地域を選べなさい,
 START_BUTTON_TOOLTIP,,,,
 ,,,,
 ENTER_NAME_TEXT,Enter player name,,プレイヤー名,
-CHOOSE_COLOR, Player color,, 色を選択,
-DESTINATION_KEY,Keybinds ,,操作キー,
+CHOOSE_COLOR, Player color,,色,
+DESTINATION_KEY,Keybinds ,,           操作キー,
 PRIMARY,Primary ,,第一,
 SECONDARY,Secondary ,,第二,
-PLAYER_1,Player 1,,,
-PLAYER_2,Player 2,,,
-PLAYER_3,Player 3,,,
-PLAYER_4,Player 4,,,
-PLAYER_5,Player 5,,,
-PLAYER_6,Player 6,,,
-READY,Ready,,,
+PLAYER_1,Player 1,,P1,
+PLAYER_2,Player 2,,P2,
+PLAYER_3,Player 3,,P3,
+PLAYER_4,Player 4,,P4,
+PLAYER_5,Player 5,,P5,
+PLAYER_6,Player 6,,P6,
+READY,Ready,,準備,
 CHANGE_PLAYER_INFO,Change player info,,戻る,

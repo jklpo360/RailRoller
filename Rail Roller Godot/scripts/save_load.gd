@@ -4,32 +4,15 @@ const save_location = "user://SaveFile.json"
 var saved = false
 var save_name = ""
 
-var save_contents: Dictionary = {
-	"save_name": "",
-	"colors": [],
-	"home_cities": [],
-	"previous_destinations": [],
-	"destinations": [],
-	"rewards": []
-}
+var save_contents: Dictionary = {}
 
 func _ready():
-	GlobalSignals.save_game.connect(_on_save_game, CONNECT_PERSIST)
-	
 	check_for_save()
 
 func check_for_save():
-	saved = FileAccess.file_exists(save_location)
-	if saved:
+	if FileAccess.file_exists(save_location):
 		await load_save()
-		save_name = save_contents.save_name
-		
-	
-
-func save():
-	var file = FileAccess.open(save_location, FileAccess.WRITE)
-	file.store_var(save_contents.duplicate())
-	file.close()
+	return
 
 func load_save():
 	if FileAccess.file_exists(save_location):
@@ -38,21 +21,31 @@ func load_save():
 		file.close()
 		
 		save_contents = data.duplicate()
-		save_name = save_contents.save_name
-		GlobalSignals.game_load.emit(
-			save_contents.save_name,
-			save_contents.colors,
-			save_contents.home_cities, 
-			save_contents.previous_destinations, 
-			save_contents.destinations, 
-			save_contents.rewards
-		)
+		saved = true
+		save_name = FileAccess.get_modified_time(save_location)
+		print(save_name)
 	return
 
-func _on_save_game(save_name, colors, home_cities, previous_destinations, current_destinations, rewards):
-	save_contents.save_name = save_name
-	save_contents.colors = colors.duplicate()
-	save_contents.home_cities = home_cities.duplicate()
-	save_contents.previous_destinations = previous_destinations.duplicate()
-	save_contents.destinations = current_destinations.duplicate()
-	save_contents.rewards = rewards.duplicate()
+func save_game(names, colors, primary_events,	
+	secondary_events, home_cities, home_city_regions,
+	old_destinations, old_destination_regions, destinations, 
+	destination_regions, rewards) -> void:
+		save_contents = {}
+		save_contents.set("names", names)
+		save_contents.set("colors", colors)
+		save_contents.set("primary_events", primary_events)
+		save_contents.set("secondary_events", secondary_events)
+		save_contents.set("home_cities", home_cities)
+		save_contents.set("home_city_regions", home_city_regions)
+		save_contents.set("old_destinations", old_destinations)
+		save_contents.set("old_destination_regions", old_destination_regions)
+		save_contents.set("destinations", destinations)
+		save_contents.set("destination_regions", destination_regions)
+		save_contents.set("rewards", rewards)
+		
+		var file = FileAccess.open(save_location, FileAccess.WRITE)
+		file.store_var(save_contents.duplicate())
+		saved = true
+		# TODO: decide the format for the name of save files in the load menu
+		#save_name = 
+		file.close()

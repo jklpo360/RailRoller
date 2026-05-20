@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bgwiiyxn01tcv"]
+[gd_scene load_steps=29 format=3 uid="uid://bgwiiyxn01tcv"]
 
 [ext_resource type="Script" uid="uid://cf5180fr8p8o0" path="res://scripts/start_menu.gd" id="1_du30o"]
 [ext_resource type="Script" uid="uid://5dq247v4vej0" path="res://scripts/main.gd" id="1_l2tty"]
@@ -18,6 +18,9 @@
 [ext_resource type="Texture2D" uid="uid://cyxr6ld3rdhwa" path="res://texture/icons/menu_icons/refresh_icon.png" id="10_ya4ey"]
 [ext_resource type="Theme" uid="uid://b3s2c2uf7f2qv" path="res://theme/region_button.tres" id="12_0ld40"]
 [ext_resource type="Texture2D" uid="uid://b16gi6b72jxsq" path="res://texture/icons/menu_icons/load_save_icon.png" id="12_trceg"]
+[ext_resource type="Script" uid="uid://cfdbprouu4vhb" path="res://scripts/option_menu.gd" id="19_gqmmt"]
+[ext_resource type="Texture2D" uid="uid://hyeufsskj27a" path="res://texture/icons/menu_icons/language_icon.png" id="20_jscy8"]
+[ext_resource type="Texture2D" uid="uid://cfyklxrgufngn" path="res://texture/icons/menu_icons/toggle_button.png" id="20_yc10j"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_muem4"]
 size = Vector2(1920, 1080)
@@ -34,13 +37,6 @@ size = Vector2(1920, 1080)
 [sub_resource type="QuadMesh" id="QuadMesh_dp3eg"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_jbj1t"]
-size = Vector2(300, 200)
-
-[sub_resource type="SystemFont" id="SystemFont_muem4"]
-
-[sub_resource type="Theme" id="Theme_dp3eg"]
-default_font = SubResource("SystemFont_muem4")
-default_font_size = 30
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_l2tty")
@@ -119,6 +115,17 @@ focus_next = NodePath("../StartButton")
 focus_previous = NodePath("../LoadButton")
 theme = ExtResource("4_tefeu")
 text = "OPTIONS_TEXT"
+
+[node name="QuitButton" type="Button" parent="MainMenuBackground/MainMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../LoadButton")
+focus_neighbor_bottom = NodePath("../StartButton")
+focus_next = NodePath("../StartButton")
+focus_previous = NodePath("../LoadButton")
+theme = ExtResource("4_tefeu")
+text = "QUIT_TEXT"
 
 [node name="MainButtonMasker" type="BoxContainer" parent="."]
 unique_name_in_owner = true
@@ -414,7 +421,7 @@ scale = Vector2(600, 400)
 mesh = SubResource("QuadMesh_eb6dy")
 texture = ExtResource("9_choun")
 
-[node name="Container" type="BoxContainer" parent="LoadMenu"]
+[node name="TitleContainer" type="BoxContainer" parent="LoadMenu"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -425,7 +432,7 @@ offset_bottom = 32.0
 grow_horizontal = 2
 alignment = 1
 
-[node name="TopText" type="Label" parent="LoadMenu/Container"]
+[node name="TopText" type="Label" parent="LoadMenu/TitleContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("4_tefeu")
@@ -464,16 +471,18 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="SaveName" type="Label" parent="LoadMenu/SaveMenu/Row1"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 2
 theme = ExtResource("4_tefeu")
-text = "SAVE_NAME"
+text = "NO_SAVE_FILE"
 label_settings = ExtResource("8_muem4")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="LoadButton" type="Button" parent="LoadMenu/SaveMenu/Row1"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 icon = ExtResource("12_trceg")
 
@@ -491,7 +500,160 @@ layout_mode = 2
 [node name="Spacer3" type="Control" parent="LoadMenu/SaveMenu/Row1"]
 layout_mode = 2
 
-[node name="LoadUnfocusMask" type="MeshInstance2D" parent="LoadMenu"]
+[node name="OptionMenu" type="Node2D" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = 2
+script = ExtResource("19_gqmmt")
+
+[node name="Background" type="MeshInstance2D" parent="OptionMenu"]
+position = Vector2(0, 50)
+scale = Vector2(600, 400)
+mesh = SubResource("QuadMesh_eb6dy")
+texture = ExtResource("9_choun")
+
+[node name="TitleContainer" type="BoxContainer" parent="OptionMenu"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = -150.0
+offset_right = 300.0
+offset_bottom = 32.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="TopText" type="Label" parent="OptionMenu/TitleContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_tefeu")
+text = "OPTIONS_MENU"
+label_settings = ExtResource("8_muem4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseButton" type="Button" parent="OptionMenu"]
+z_index = 3
+offset_left = 178.0
+offset_top = -95.5
+offset_right = 250.0
+offset_bottom = -23.5
+icon = ExtResource("10_eb6dy")
+
+[node name="OptionsList" type="VBoxContainer" parent="OptionMenu"]
+offset_left = -300.0
+offset_top = -28.0
+offset_right = 300.0
+offset_bottom = 250.0
+alignment = 1
+
+[node name="SelectLanguage" type="HBoxContainer" parent="OptionMenu/OptionsList"]
+layout_mode = 2
+theme_override_constants/separation = 13
+alignment = 2
+
+[node name="Spacer4" type="Control" parent="OptionMenu/OptionsList/SelectLanguage"]
+layout_mode = 2
+
+[node name="Spacer5" type="Control" parent="OptionMenu/OptionsList/SelectLanguage"]
+layout_mode = 2
+
+[node name="Spacer6" type="Control" parent="OptionMenu/OptionsList/SelectLanguage"]
+layout_mode = 2
+
+[node name="OptionName" type="Label" parent="OptionMenu/OptionsList/SelectLanguage"]
+custom_minimum_size = Vector2(425, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+theme = ExtResource("4_tefeu")
+text = "SELECT_LANGUAGE_TEXT"
+label_settings = ExtResource("8_muem4")
+vertical_alignment = 1
+clip_text = true
+
+[node name="LanguageButton" type="Button" parent="OptionMenu/OptionsList/SelectLanguage"]
+z_index = 3
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+icon = ExtResource("20_jscy8")
+
+[node name="Spacer" type="Control" parent="OptionMenu/OptionsList/SelectLanguage"]
+layout_mode = 2
+
+[node name="Spacer2" type="Control" parent="OptionMenu/OptionsList/SelectLanguage"]
+layout_mode = 2
+
+[node name="Spacer3" type="Control" parent="OptionMenu/OptionsList/SelectLanguage"]
+layout_mode = 2
+
+[node name="SwapRule" type="HBoxContainer" parent="OptionMenu/OptionsList"]
+layout_mode = 2
+theme_override_constants/separation = 13
+alignment = 2
+
+[node name="Spacer4" type="Control" parent="OptionMenu/OptionsList/SwapRule"]
+layout_mode = 2
+
+[node name="Spacer5" type="Control" parent="OptionMenu/OptionsList/SwapRule"]
+layout_mode = 2
+
+[node name="Spacer6" type="Control" parent="OptionMenu/OptionsList/SwapRule"]
+layout_mode = 2
+
+[node name="OptionName" type="Label" parent="OptionMenu/OptionsList/SwapRule"]
+custom_minimum_size = Vector2(425, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+theme = ExtResource("4_tefeu")
+text = "SWAP_RULE_TEXT"
+label_settings = ExtResource("8_muem4")
+vertical_alignment = 1
+clip_text = true
+
+[node name="SwapRuleButton" type="Button" parent="OptionMenu/OptionsList/SwapRule"]
+z_index = 3
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+
+[node name="SwapRule" type="Sprite2D" parent="OptionMenu/OptionsList/SwapRule/SwapRuleButton"]
+unique_name_in_owner = true
+position = Vector2(36, 36)
+texture = ExtResource("20_yc10j")
+hframes = 2
+
+[node name="Spacer" type="Control" parent="OptionMenu/OptionsList/SwapRule"]
+layout_mode = 2
+
+[node name="Spacer2" type="Control" parent="OptionMenu/OptionsList/SwapRule"]
+layout_mode = 2
+
+[node name="Spacer3" type="Control" parent="OptionMenu/OptionsList/SwapRule"]
+layout_mode = 2
+
+[node name="BottomRow" type="HBoxContainer" parent="OptionMenu/OptionsList"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme = ExtResource("4_tefeu")
+theme_override_constants/separation = 13
+alignment = 1
+
+[node name="SaveButton" type="Button" parent="OptionMenu/OptionsList/BottomRow"]
+unique_name_in_owner = true
+visible = false
+z_index = 3
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+text = "SAVE_GAME"
+
+[node name="ExitButton" type="Button" parent="OptionMenu/OptionsList/BottomRow"]
+unique_name_in_owner = true
+z_index = 3
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+text = "EXIT_APPLICATION"
+
+[node name="OptionUnfocusMask" type="MeshInstance2D" parent="OptionMenu"]
 unique_name_in_owner = true
 visible = false
 z_index = 4
@@ -500,7 +662,7 @@ scale = Vector2(600, 400)
 mesh = SubResource("QuadMesh_dp3eg")
 texture = ExtResource("2_jbj1t")
 
-[node name="LoadButtonMasker" type="BoxContainer" parent="LoadMenu"]
+[node name="OptionButtonMasker" type="BoxContainer" parent="OptionMenu"]
 unique_name_in_owner = true
 visible = false
 anchors_preset = 8
@@ -515,84 +677,187 @@ offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DeleteConfirmation" type="Node2D" parent="LoadMenu"]
+[node name="LanguageMenu" type="Node2D" parent="OptionMenu"]
 unique_name_in_owner = true
 visible = false
 z_index = 5
 position = Vector2(0, 50)
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="LoadMenu/DeleteConfirmation"]
+[node name="LanguageMenuBackground" type="MeshInstance2D" parent="OptionMenu/LanguageMenu"]
 z_index = 5
+scale = Vector2(400, 600)
 mesh = SubResource("QuadMesh_jbj1t")
 texture = ExtResource("10_jkv2x")
 
-[node name="ConfirmationText" type="RichTextLabel" parent="LoadMenu/DeleteConfirmation"]
+[node name="TitleText" type="RichTextLabel" parent="OptionMenu/LanguageMenu"]
 z_index = 6
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -130.0
-offset_top = -80.0
-offset_right = 130.0
-offset_bottom = -6.0
+offset_left = -200.0
+offset_top = -300.0
+offset_right = 200.0
+offset_bottom = -169.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 4
-theme = SubResource("Theme_dp3eg")
-text = "DELETE_CONFIRMATION"
+theme = ExtResource("4_tefeu")
+text = "LANGUAGE_MENU_TEXT"
 autowrap_mode = 0
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ConfirmationCloseButton" type="Button" parent="LoadMenu/DeleteConfirmation"]
+[node name="LanguageCloseButton" type="Button" parent="OptionMenu/LanguageMenu"]
 z_index = 6
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 66.0
-offset_top = -70.0
-offset_right = 138.0
-offset_bottom = 2.0
+offset_left = 115.0
+offset_top = -261.0
+offset_right = 187.0
+offset_bottom = -189.0
 grow_vertical = 0
 scale = Vector2(0.75, 0.75)
 size_flags_horizontal = 8
 icon = ExtResource("10_eb6dy")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="LoadMenu/DeleteConfirmation"]
+[node name="LanguageList" type="VBoxContainer" parent="OptionMenu/LanguageMenu"]
 z_index = 6
-offset_left = -150.0
-offset_top = 6.0
-offset_right = 150.0
-offset_bottom = 99.0
+offset_left = -200.0
+offset_top = -169.0
+offset_right = 200.0
+offset_bottom = 300.0
 
-[node name="Spacer" type="Control" parent="LoadMenu/DeleteConfirmation/HBoxContainer"]
+[node name="Spacer" type="Control" parent="OptionMenu/LanguageMenu/LanguageList"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ConfirmationYesButton" type="Button" parent="LoadMenu/DeleteConfirmation/HBoxContainer"]
+[node name="English" type="HBoxContainer" parent="OptionMenu/LanguageMenu/LanguageList"]
+z_index = 6
 layout_mode = 2
-size_flags_vertical = 4
-theme = ExtResource("4_tefeu")
-text = "DELETE_CONFIRMATION_YES"
 
-[node name="Spacer2" type="Control" parent="LoadMenu/DeleteConfirmation/HBoxContainer"]
+[node name="Spacer" type="Control" parent="OptionMenu/LanguageMenu/LanguageList/English"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ConfirmationNoButton" type="Button" parent="LoadMenu/DeleteConfirmation/HBoxContainer"]
+[node name="LanguageText" type="RichTextLabel" parent="OptionMenu/LanguageMenu/LanguageList/English"]
+z_index = 6
+custom_minimum_size = Vector2(260, 0)
 layout_mode = 2
 size_flags_vertical = 4
 theme = ExtResource("4_tefeu")
-text = "DELETE_CONFIRMATION_NO"
+text = "English"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Spacer3" type="Control" parent="LoadMenu/DeleteConfirmation/HBoxContainer"]
+[node name="LanguageCheckButton" type="Button" parent="OptionMenu/LanguageMenu/LanguageList/English"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("4_tefeu")
+
+[node name="Spacer3" type="Control" parent="OptionMenu/LanguageMenu/LanguageList/English"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Japanese" type="HBoxContainer" parent="OptionMenu/LanguageMenu/LanguageList"]
+z_index = 6
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="OptionMenu/LanguageMenu/LanguageList/Japanese"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LanguageText" type="RichTextLabel" parent="OptionMenu/LanguageMenu/LanguageList/Japanese"]
+z_index = 6
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("4_tefeu")
+text = "日本語"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LanguageCheckButton" type="Button" parent="OptionMenu/LanguageMenu/LanguageList/Japanese"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("4_tefeu")
+
+[node name="Spacer3" type="Control" parent="OptionMenu/LanguageMenu/LanguageList/Japanese"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Portuguese" type="HBoxContainer" parent="OptionMenu/LanguageMenu/LanguageList"]
+z_index = 6
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="OptionMenu/LanguageMenu/LanguageList/Portuguese"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LanguageText" type="RichTextLabel" parent="OptionMenu/LanguageMenu/LanguageList/Portuguese"]
+z_index = 6
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("4_tefeu")
+text = "Português "
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LanguageCheckButton" type="Button" parent="OptionMenu/LanguageMenu/LanguageList/Portuguese"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("4_tefeu")
+
+[node name="Spacer3" type="Control" parent="OptionMenu/LanguageMenu/LanguageList/Portuguese"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Spanish" type="HBoxContainer" parent="OptionMenu/LanguageMenu/LanguageList"]
+z_index = 6
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="OptionMenu/LanguageMenu/LanguageList/Spanish"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LanguageText" type="RichTextLabel" parent="OptionMenu/LanguageMenu/LanguageList/Spanish"]
+z_index = 6
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("4_tefeu")
+text = "Español"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LanguageCheckButton" type="Button" parent="OptionMenu/LanguageMenu/LanguageList/Spanish"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("4_tefeu")
+
+[node name="Spacer3" type="Control" parent="OptionMenu/LanguageMenu/LanguageList/Spanish"]
 layout_mode = 2
 size_flags_horizontal = 3
 
 [connection signal="pressed" from="MainMenuBackground/MainMenu/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainMenuBackground/MainMenu/LoadButton" to="." method="_on_load_button_pressed"]
 [connection signal="pressed" from="MainMenuBackground/MainMenu/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MainMenuBackground/MainMenu/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="response" from="PlayerNumberMenu" to="." method="_on_player_number_menu_response"]
 [connection signal="pressed" from="PlayerNumberMenu/NumPlayersCanvas/2" to="PlayerNumberMenu" method="_on_2_pressed"]
 [connection signal="pressed" from="PlayerNumberMenu/NumPlayersCanvas/3" to="PlayerNumberMenu" method="_on_3_pressed"]
@@ -612,6 +877,14 @@ size_flags_horizontal = 3
 [connection signal="pressed" from="LoadMenu/CloseButton" to="LoadMenu" method="_on_close_button_pressed"]
 [connection signal="pressed" from="LoadMenu/SaveMenu/Row1/LoadButton" to="LoadMenu" method="_on_load_button_pressed"]
 [connection signal="pressed" from="LoadMenu/SaveMenu/Row1/RefreshButton" to="LoadMenu" method="_on_refresh_button_pressed"]
-[connection signal="pressed" from="LoadMenu/DeleteConfirmation/ConfirmationCloseButton" to="LoadMenu" method="_on_confirmation_close_button_pressed"]
-[connection signal="pressed" from="LoadMenu/DeleteConfirmation/HBoxContainer/ConfirmationYesButton" to="LoadMenu" method="_on_confirmation_yes_button_pressed"]
-[connection signal="pressed" from="LoadMenu/DeleteConfirmation/HBoxContainer/ConfirmationNoButton" to="LoadMenu" method="_on_confirmation_no_button_pressed"]
+[connection signal="response" from="OptionMenu" to="." method="_on_option_menu_response"]
+[connection signal="pressed" from="OptionMenu/CloseButton" to="OptionMenu" method="_on_close_button_pressed"]
+[connection signal="pressed" from="OptionMenu/OptionsList/SelectLanguage/LanguageButton" to="OptionMenu" method="_on_language_button_pressed"]
+[connection signal="pressed" from="OptionMenu/OptionsList/SwapRule/SwapRuleButton" to="OptionMenu" method="_on_swap_rule_button_pressed"]
+[connection signal="pressed" from="OptionMenu/OptionsList/BottomRow/SaveButton" to="OptionMenu" method="_on_save_button_pressed"]
+[connection signal="pressed" from="OptionMenu/OptionsList/BottomRow/ExitButton" to="OptionMenu" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="OptionMenu/LanguageMenu/LanguageCloseButton" to="OptionMenu" method="_on_language_close_button_pressed"]
+[connection signal="pressed" from="OptionMenu/LanguageMenu/LanguageList/English/LanguageCheckButton" to="OptionMenu" method="_on_language_check_button_pressed" binds= ["en"]]
+[connection signal="pressed" from="OptionMenu/LanguageMenu/LanguageList/Japanese/LanguageCheckButton" to="OptionMenu" method="_on_language_check_button_pressed" binds= ["jp"]]
+[connection signal="pressed" from="OptionMenu/LanguageMenu/LanguageList/Portuguese/LanguageCheckButton" to="OptionMenu" method="_on_language_check_button_pressed" binds= ["pt-BR"]]
+[connection signal="pressed" from="OptionMenu/LanguageMenu/LanguageList/Spanish/LanguageCheckButton" to="OptionMenu" method="_on_language_check_button_pressed" binds= ["es"]]
