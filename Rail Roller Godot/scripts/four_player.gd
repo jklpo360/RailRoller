@@ -3,36 +3,40 @@ extends Game
 func _ready():
 	NUM_PLAYERS = 4
 	initialize_arrays()
-	colors = {
-		1 : "blue",
-		2 : "green",
-		3 : "yellow",
-		4 : "red"
-	}
-	names = {
-		1 : TranslationServer.translate("PLAYER_1"),
-		2 : TranslationServer.translate("PLAYER_2"),
-		3 : TranslationServer.translate("PLAYER_3"),
-		4 : TranslationServer.translate("PLAYER_4")
-	}
-	primary_keybind_content = {
-		1 : [true, "1"],
-		2 : [true, "2"],
-		3 : [true, "3"],
-		4 : [true, "4"]
-	}
-	secondary_keybind_content = {
-		1 : [true, ""],
-		2 : [true, ""],
-		3 : [true, ""],
-		4 : [true, ""]
-	}
-	readied = {
-		1 : false,
-		2 : false,
-		3 : false, 
-		4 : false
-	}
+	if SaveLoad.loading:
+		load_game()
+		SaveLoad.loading = false
+	else:
+		colors = {
+			1 : "blue",
+			2 : "green",
+			3 : "yellow",
+			4 : "red"
+		}
+		names = {
+			1 : TranslationServer.translate("PLAYER_1"),
+			2 : TranslationServer.translate("PLAYER_2"),
+			3 : TranslationServer.translate("PLAYER_3"),
+			4 : TranslationServer.translate("PLAYER_4")
+		}
+		primary_keybind_content = {
+			1 : [true, "1"],
+			2 : [true, "2"],
+			3 : [true, "3"],
+			4 : [true, "4"]
+		}
+		secondary_keybind_content = {
+			1 : [true, ""],
+			2 : [true, ""],
+			3 : [true, ""],
+			4 : [true, ""]
+		}
+		readied = {
+			1 : false,
+			2 : false,
+			3 : false, 
+			4 : false
+		}
 
 func _input(event):
 	if in_game:

@@ -3,26 +3,30 @@ extends Game
 func _ready():
 	NUM_PLAYERS = 2
 	initialize_arrays()
-	colors = {
-		1 : "blue",
-		2 : "green"
-	}
-	names = {
-		1 : TranslationServer.translate("PLAYER_1"),
-		2 : TranslationServer.translate("PLAYER_2")
-	}
-	primary_keybind_content = {
-		1 : [true, "1"],
-		2 : [true, "2"]
-	}
-	secondary_keybind_content = {
-		1 : [true, ""],
-		2 : [true, ""]
-	}
-	readied = {
-		1 : false,
-		2 : false
-	}
+	if SaveLoad.loading:
+		load_game()
+		SaveLoad.loading = false
+	else:
+		colors = {
+			1 : "blue",
+			2 : "green"
+		}
+		names = {
+			1 : TranslationServer.translate("PLAYER_1"),
+			2 : TranslationServer.translate("PLAYER_2")
+		}
+		primary_keybind_content = {
+			1 : [true, "1"],
+			2 : [true, "2"]
+		}
+		secondary_keybind_content = {
+			1 : [true, ""],
+			2 : [true, ""]
+		}
+		readied = {
+			1 : false,
+			2 : false
+		}
 
 func _input(event):
 	if in_game:

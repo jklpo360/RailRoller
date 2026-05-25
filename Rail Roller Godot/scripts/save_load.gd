@@ -2,6 +2,7 @@ extends Node
 
 const save_location = "user://SaveFile.json"
 var saved = false
+var loading = false
 var save_name = ""
 
 var save_contents: Dictionary = {}
@@ -22,8 +23,7 @@ func load_save():
 		
 		save_contents = data.duplicate()
 		saved = true
-		save_name = FileAccess.get_modified_time(save_location)
-		print(save_name)
+		save_name = Time.get_datetime_string_from_unix_time(FileAccess.get_modified_time(save_location)).substr(0, 10)
 	return
 
 func save_game(names, colors, primary_events,	
