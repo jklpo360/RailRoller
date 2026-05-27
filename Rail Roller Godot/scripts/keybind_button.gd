@@ -23,12 +23,6 @@ const CONTROLLER_LABELS: Dictionary = {
 	JoyButton.JOY_BUTTON_GUIDE: "Select"
 }
 
-
-
-func _draw():
-	if self.size.x > 78:
-		print("Oversized key input: " + str(text))
-
 func _ready():
 	primary = action_event_index == 0
 	toggle_mode = true
@@ -104,7 +98,6 @@ func _toggled(toggled_on: bool):
 				)
 			else:
 				icon = null
-				print("(physical) " + str(input))
 				GlobalSignals.change_keybind.emit(
 					player, 
 					primary,
@@ -124,7 +117,6 @@ func _toggled(toggled_on: bool):
 				)
 			else:
 				icon = null
-				print(input)
 				GlobalSignals.change_keybind.emit(
 					player, 
 					primary,

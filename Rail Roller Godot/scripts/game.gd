@@ -910,7 +910,7 @@ func _on_save_game() -> void:
 	for i in range(NUM_PLAYERS):
 		var events_list = InputMap.action_get_events("Player%s" % (i+1))
 		if events_list.size() > 0:
-			primary_events.push_back(events_list[0])
+			primary_events.push_back("%s" % events_list[0])
 		else:
 			# TODO: add a check to make sure that the game cant start when
 			#       a player doesnt have a keybind
@@ -919,7 +919,7 @@ func _on_save_game() -> void:
 	for i in range(NUM_PLAYERS):
 		var events_list = InputMap.action_get_events("Player%s" % (i+1))
 		if events_list.size() > 1:
-			secondary_events.push_back(events_list[1])
+			secondary_events.push_back("%s" % events_list[1])
 		else:
 			secondary_events.push_back(null)
 	var home_city_regions = []
@@ -938,7 +938,6 @@ func _on_save_game() -> void:
 	secondary_events, home_cities, home_city_regions, 
 	old_destinations, old_destination_regions,
 	destinations, player_regions, rewards)
-	print("sent info to SaveLoad!")
 
 func load_game() -> void:
 	#
@@ -956,18 +955,20 @@ func load_game() -> void:
 	player_regions = SaveLoad.save_contents.get("destination_regions")
 	var rewards = SaveLoad.save_contents.get("rewards")
 	for i in range(NUM_PLAYERS):
+		var player = i+1
 		# initialize colors
-		change_color(i+1, colors.get(i+1))
+		change_color(player, colors.get(player))
 		
 		# initialize InputEvents
-		var action = "Player%i" % (i+1)
+		
+		var action = "Player%s" % player
 		InputMap.action_erase_events(action)
-		InputMap.action_add_event(action, primary_events[i])
+		InputMap.action_add_event(action, InputSerializer.string_to_input_event(primary_events[i]))
 		if secondary_events[i] != null:
-			InputMap.action_add_event(action, secondary_events[i])
+			InputMap.action_add_event(action, InputSerializer.string_to_input_event(secondary_events[i]))
 		
 		# initialize text boxes
-		player_name_text_boxes[i].text = names.get(i+1)
+		player_name_text_boxes[i].text = names.get(player)
 		home_cities_text_boxes[i].text = home_cities[i]
 		home_cities_text_regions[i].text = home_city_regions[i]
 		old_destination_text_boxes[i].text = old_destinations[i]
@@ -975,15 +976,22 @@ func load_game() -> void:
 		destination_text_boxes[i].text = destinations[i]
 		destination_text_regions[i].text = player_regions[i]
 		reward_text_boxes[i].text = rewards[i]
+		
 		if primary_keybinding_buttons[i].icon == null:
-			primary_keybind_content.set(i+1, [true, primary_keybinding_buttons[i].text])
+			primary_key_buttons[i].text = primary_keybinding_buttons[i].text
+			primary_key_buttons[i].icon = null
 		else:
-			primary_keybind_content.set(i+1, [false, primary_keybinding_buttons[i].icon])
+			primary_key_buttons[i].text = ""
+			primary_key_buttons[i].icon = primary_keybinding_buttons[i].icon
 		if secondary_keybinding_buttons[i].icon == null:
-			secondary_keybind_content.set(i+1, [true, secondary_keybinding_buttons[i].text])
+			secondary_key_buttons[i].text = secondary_keybinding_buttons[i].text
+			secondary_key_buttons[i].icon = null
 		else:
-			secondary_keybind_content.set(i+1, [false, secondary_keybinding_buttons[i].icon])
-		toggle_ready(i+1)
+			secondary_key_buttons[i].text = ""
+			secondary_key_buttons[i].icon = secondary_keybinding_buttons[i].icon
+		
+		setup_interfaces[i].hide()
+		game_displays[i].show()
 	
 
 func _on_exit_game() -> void:

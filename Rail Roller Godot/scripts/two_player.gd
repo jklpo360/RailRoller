@@ -4,6 +4,18 @@ func _ready():
 	NUM_PLAYERS = 2
 	initialize_arrays()
 	if SaveLoad.loading:
+		primary_keybind_content = {
+			1 : [true, "1"],
+			2 : [true, "2"]
+		}
+		secondary_keybind_content = {
+			1 : [true, ""],
+			2 : [true, ""]
+		}
+		readied = {
+			1 : false,
+			2 : false
+		}
 		load_game()
 		SaveLoad.loading = false
 	else:

@@ -18,3 +18,5 @@ func _on_close_button_pressed() -> void:
 
 func _on_load_button_pressed() -> void:
 	GlobalSignals.load_game.emit()
+	%SaveButton.show()
+	%ExitButton.show()

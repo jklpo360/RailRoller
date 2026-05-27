@@ -46,6 +46,6 @@ func save_game(names, colors, primary_events,
 		var file = FileAccess.open(save_location, FileAccess.WRITE)
 		file.store_var(save_contents.duplicate())
 		saved = true
-		# TODO: decide the format for the name of save files in the load menu
-		#save_name = 
 		file.close()
+		save_name = Time.get_datetime_string_from_unix_time(FileAccess.get_modified_time(save_location)).substr(0, 10)
+		print("file saved! save name will be: %s" % save_name)

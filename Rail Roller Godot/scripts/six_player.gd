@@ -4,6 +4,30 @@ func _ready():
 	NUM_PLAYERS = 6
 	initialize_arrays()
 	if SaveLoad.loading:
+		primary_keybind_content = {
+			1 : [true, "1"],
+			2 : [true, "2"],
+			3 : [true, "3"],
+			4 : [true, "4"],
+			5 : [true, "5"],
+			6 : [true, "6"]
+		}
+		secondary_keybind_content = {
+			1 : [true, ""],
+			2 : [true, ""],
+			3 : [true, ""],
+			4 : [true, ""],
+			5 : [true, ""],
+			6 : [true, ""]
+		}
+		readied = {
+			1 : false,
+			2 : false,
+			3 : false, 
+			4 : false,
+			5 : false,
+			6 : false
+		}
 		load_game()
 		SaveLoad.loading = false
 	else:

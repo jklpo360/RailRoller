@@ -98,35 +98,35 @@ func _on_load_game() -> void:
 	match num_players:
 		2:
 			SaveLoad.loading = true
-			await add_child(load("res://scenes/two_player.tscn").instantiate())
+			add_child(load("res://scenes/two_player.tscn").instantiate())
 			in_menu = false
 			%MainUnfocusMask.hide()
 			%LoadMenu.hide()
 			%MainButtonMasker.hide()
 		3:
 			SaveLoad.loading = true
-			await add_child(load("res://scenes/three_player.tscn").instantiate())
+			add_child(load("res://scenes/three_player.tscn").instantiate())
 			in_menu = false
 			%MainUnfocusMask.hide()
 			%LoadMenu.hide()
 			%MainButtonMasker.hide()
 		4:
 			SaveLoad.loading = true
-			await add_child(load("res://scenes/four_player.tscn").instantiate())
+			add_child(load("res://scenes/four_player.tscn").instantiate())
 			in_menu = false
 			%MainUnfocusMask.hide()
 			%LoadMenu.hide()
 			%MainButtonMasker.hide()
 		5:
 			SaveLoad.loading = true
-			await add_child(load("res://scenes/five_player.tscn").instantiate())
+			add_child(load("res://scenes/five_player.tscn").instantiate())
 			in_menu = false
 			%MainUnfocusMask.hide()
 			%LoadMenu.hide()
 			%MainButtonMasker.hide()
 		6:
 			SaveLoad.loading = true
-			await add_child(load("res://scenes/six_player.tscn").instantiate())
+			add_child(load("res://scenes/six_player.tscn").instantiate())
 			in_menu = false
 			%MainUnfocusMask.hide()
 			%LoadMenu.hide()
