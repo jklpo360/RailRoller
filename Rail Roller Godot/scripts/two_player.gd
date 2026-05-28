@@ -46,6 +46,13 @@ func _input(event):
 			choose_destination(0)
 		if event.is_pressed() and event.is_action("Player2") and not_waiting:
 			choose_destination(1)
+	if event.is_action_pressed("Options"):
+		if paused:
+			_on_close_options_menu()
+		else:
+			paused = true
+			%GameUnfocusMask.show()
+			%GameButtonMasker.show()
 
 func _on_color_selection(player: int, color: String):
 	change_color(player, color)

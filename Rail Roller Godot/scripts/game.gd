@@ -13,6 +13,7 @@ var rng = RandomNumberGenerator.new()
 var returned_regions = []
 var not_waiting = true
 var in_game = false
+var paused = false
 
 var colors = {}
 var names = {}
@@ -45,6 +46,7 @@ var destination_text_regions
 var reward_text_boxes
 
 signal added_to_scene_tree
+@warning_ignore("unused_signal")
 signal open_exit_menu
 signal response
 
@@ -658,6 +660,7 @@ var alphabetical_cities = {
 func initialize_arrays():
 	GlobalSignals.save_game.connect(_on_save_game, CONNECT_PERSIST)
 	GlobalSignals.exit_game.connect(_on_exit_game, CONNECT_PERSIST)
+	GlobalSignals.close_options_menu.connect(_on_close_options_menu, CONNECT_PERSIST)
 	backgrounds = find_children("PlayerBackground*")
 	hiding_backgrounds = find_children("PlayerHidingBackground*")
 	ready_buttons = find_children("StartButton?")
@@ -675,7 +678,6 @@ func initialize_arrays():
 	primary_keybinding_buttons = find_children("PrimaryKeybind?")
 	secondary_keybinding_buttons = find_children("SecondaryKeybind?")
 	
-	var region_menu = find_parent("Main").find_child("RegionMenu")
 	GlobalSignals.return_region.connect(_region_response, ConnectFlags.CONNECT_PERSIST)
 	
 	player_name_text_boxes = find_children("Player*Name")
@@ -767,10 +769,6 @@ func setup_game():
 	
 	in_game = true
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func assign_home_city(player):
 	if home_cities_text_regions[player].text != "":
 		home_cities_text_regions[player].text = ""
@@ -838,6 +836,7 @@ func print_reward(origin, destination, origin_region, destination_region):
 	var table = payoff_chart[table_key]
 	return table[origin_number][destination_number]
 
+@warning_ignore("shadowed_variable")
 func _region_response(region, player):
 	returned_regions[player] = region
 	response.emit()
@@ -944,9 +943,8 @@ func load_game() -> void:
 	
 	# Load save info
 	names = SaveLoad.save_contents.get("names")
+	@warning_ignore("shadowed_variable")
 	var colors = SaveLoad.save_contents.get("colors")
-	var primary_events = SaveLoad.save_contents.get("primary_events")
-	var secondary_events = SaveLoad.save_contents.get("secondary_events")
 	home_cities = SaveLoad.save_contents.get("home_cities")
 	var home_city_regions =  SaveLoad.save_contents.get("home_city_regions")
 	var old_destinations = SaveLoad.save_contents.get("old_destinations")
@@ -958,14 +956,6 @@ func load_game() -> void:
 		var player = i+1
 		# initialize colors
 		change_color(player, colors.get(player))
-		
-		# initialize InputEvents
-		
-		var action = "Player%s" % player
-		InputMap.action_erase_events(action)
-		InputMap.action_add_event(action, InputSerializer.string_to_input_event(primary_events[i]))
-		if secondary_events[i] != null:
-			InputMap.action_add_event(action, InputSerializer.string_to_input_event(secondary_events[i]))
 		
 		# initialize text boxes
 		player_name_text_boxes[i].text = names.get(player)
@@ -992,7 +982,12 @@ func load_game() -> void:
 		
 		setup_interfaces[i].hide()
 		game_displays[i].show()
-	
+	in_game = true
+
+func _on_close_options_menu() -> void:
+	paused = false
+	%GameUnfocusMask.hide()
+	%GameButtonMasker.hide()
 
 func _on_exit_game() -> void:
 	queue_free()

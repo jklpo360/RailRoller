@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bgwiiyxn01tcv"]
+[gd_scene format=3 uid="uid://bgwiiyxn01tcv"]
 
 [ext_resource type="Script" uid="uid://cf5180fr8p8o0" path="res://scripts/start_menu.gd" id="1_du30o"]
 [ext_resource type="Script" uid="uid://5dq247v4vej0" path="res://scripts/main.gd" id="1_l2tty"]
@@ -38,23 +38,23 @@ size = Vector2(1920, 1080)
 
 [sub_resource type="QuadMesh" id="QuadMesh_jbj1t"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" unique_id=1158135377]
 script = ExtResource("1_l2tty")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2066269603]
 
-[node name="MainUnfocusMask" type="MeshInstance2D" parent="."]
+[node name="MainUnfocusMask" type="MeshInstance2D" parent="." unique_id=1721440505]
 unique_name_in_owner = true
 visible = false
 z_index = 2
 mesh = SubResource("QuadMesh_muem4")
 texture = ExtResource("2_jbj1t")
 
-[node name="MainMenuBackground" type="MeshInstance2D" parent="."]
+[node name="MainMenuBackground" type="MeshInstance2D" parent="." unique_id=985956198]
 mesh = SubResource("QuadMesh_choun")
 texture = ExtResource("2_tipki")
 
-[node name="MainMenu" type="VBoxContainer" parent="MainMenuBackground"]
+[node name="MainMenu" type="VBoxContainer" parent="MainMenuBackground" unique_id=1355754368]
 z_index = 1
 offset_left = -960.0
 offset_top = -540.0
@@ -68,7 +68,7 @@ theme = SubResource("Theme_tipki")
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="TitleText" type="Label" parent="MainMenuBackground/MainMenu"]
+[node name="TitleText" type="Label" parent="MainMenuBackground/MainMenu" unique_id=447332738]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_stretch_ratio = 0.63
@@ -77,13 +77,13 @@ label_settings = ExtResource("4_jbj1t")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Filler" type="Control" parent="MainMenuBackground/MainMenu"]
+[node name="Filler" type="Control" parent="MainMenuBackground/MainMenu" unique_id=1921718963]
 layout_mode = 2
 
-[node name="Filler2" type="Control" parent="MainMenuBackground/MainMenu"]
+[node name="Filler2" type="Control" parent="MainMenuBackground/MainMenu" unique_id=1846788860]
 layout_mode = 2
 
-[node name="StartButton" type="Button" parent="MainMenuBackground/MainMenu"]
+[node name="StartButton" type="Button" parent="MainMenuBackground/MainMenu" unique_id=2144366991]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -94,7 +94,7 @@ focus_previous = NodePath("../OptionsButton")
 theme = ExtResource("4_tefeu")
 text = "START_TEXT"
 
-[node name="LoadButton" type="Button" parent="MainMenuBackground/MainMenu"]
+[node name="LoadButton" type="Button" parent="MainMenuBackground/MainMenu" unique_id=1825688007]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -105,7 +105,7 @@ focus_previous = NodePath("../StartButton")
 theme = ExtResource("4_tefeu")
 text = "LOAD_TEXT"
 
-[node name="OptionsButton" type="Button" parent="MainMenuBackground/MainMenu"]
+[node name="OptionsButton" type="Button" parent="MainMenuBackground/MainMenu" unique_id=1169441368]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -116,7 +116,7 @@ focus_previous = NodePath("../LoadButton")
 theme = ExtResource("4_tefeu")
 text = "OPTIONS_TEXT"
 
-[node name="QuitButton" type="Button" parent="MainMenuBackground/MainMenu"]
+[node name="QuitButton" type="Button" parent="MainMenuBackground/MainMenu" unique_id=598131715]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -127,7 +127,7 @@ focus_previous = NodePath("../LoadButton")
 theme = ExtResource("4_tefeu")
 text = "QUIT_TEXT"
 
-[node name="MainButtonMasker" type="BoxContainer" parent="."]
+[node name="MainButtonMasker" type="BoxContainer" parent="." unique_id=101613184]
 unique_name_in_owner = true
 visible = false
 z_index = 2
@@ -143,23 +143,23 @@ offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlayerNumberMenu" type="Node2D" parent="."]
+[node name="PlayerNumberMenu" type="Node2D" parent="." unique_id=1810901278]
 z_index = 3
 script = ExtResource("1_du30o")
 
-[node name="NumPlayersCanvas" type="CanvasLayer" parent="PlayerNumberMenu"]
+[node name="NumPlayersCanvas" type="CanvasLayer" parent="PlayerNumberMenu" unique_id=380882551]
 unique_name_in_owner = true
 layer = 3
 visible = false
 follow_viewport_enabled = true
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="PlayerNumberMenu/NumPlayersCanvas"]
+[node name="MeshInstance2D" type="MeshInstance2D" parent="PlayerNumberMenu/NumPlayersCanvas" unique_id=1059398616]
 position = Vector2(0, -100)
 scale = Vector2(960, -540)
 mesh = SubResource("QuadMesh_1gr3v")
 texture = ExtResource("2_ygcbu")
 
-[node name="2" type="Button" parent="PlayerNumberMenu/NumPlayersCanvas"]
+[node name="2" type="Button" parent="PlayerNumberMenu/NumPlayersCanvas" unique_id=1876134398]
 offset_left = -440.0
 offset_top = -50.0
 offset_right = -294.0
@@ -173,7 +173,7 @@ focus_previous = NodePath("../6")
 theme = ExtResource("4_tefeu")
 text = "2"
 
-[node name="3" type="Button" parent="PlayerNumberMenu/NumPlayersCanvas"]
+[node name="3" type="Button" parent="PlayerNumberMenu/NumPlayersCanvas" unique_id=898954573]
 offset_left = -256.0
 offset_top = -50.0
 offset_right = -110.0
@@ -188,7 +188,7 @@ theme = ExtResource("4_tefeu")
 text = "3
 "
 
-[node name="4" type="Button" parent="PlayerNumberMenu/NumPlayersCanvas"]
+[node name="4" type="Button" parent="PlayerNumberMenu/NumPlayersCanvas" unique_id=461025209]
 offset_left = -72.0
 offset_top = -50.0
 offset_right = 74.0
@@ -202,7 +202,7 @@ focus_previous = NodePath("../3")
 theme = ExtResource("4_tefeu")
 text = "4"
 
-[node name="5" type="Button" parent="PlayerNumberMenu/NumPlayersCanvas"]
+[node name="5" type="Button" parent="PlayerNumberMenu/NumPlayersCanvas" unique_id=157103713]
 offset_left = 112.0
 offset_top = -50.0
 offset_right = 258.0
@@ -216,7 +216,7 @@ focus_previous = NodePath("../6")
 theme = ExtResource("4_tefeu")
 text = "5"
 
-[node name="6" type="Button" parent="PlayerNumberMenu/NumPlayersCanvas"]
+[node name="6" type="Button" parent="PlayerNumberMenu/NumPlayersCanvas" unique_id=1767215231]
 offset_left = 296.0
 offset_top = -50.0
 offset_right = 442.0
@@ -230,7 +230,7 @@ focus_previous = NodePath("../5")
 theme = ExtResource("4_tefeu")
 text = "6"
 
-[node name="x" type="Button" parent="PlayerNumberMenu/NumPlayersCanvas"]
+[node name="x" type="Button" parent="PlayerNumberMenu/NumPlayersCanvas" unique_id=1681117699]
 offset_left = 350.0
 offset_top = -332.0
 offset_right = 442.0
@@ -244,7 +244,7 @@ focus_previous = NodePath("../6")
 theme = ExtResource("4_tefeu")
 text = "X"
 
-[node name="TopText" type="Label" parent="PlayerNumberMenu/NumPlayersCanvas"]
+[node name="TopText" type="Label" parent="PlayerNumberMenu/NumPlayersCanvas" unique_id=587813911]
 offset_left = -480.0
 offset_top = -320.5
 offset_right = 480.0
@@ -255,26 +255,26 @@ label_settings = ExtResource("8_muem4")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RegionMenu" type="Node2D" parent="."]
+[node name="RegionMenu" type="Node2D" parent="." unique_id=343544992]
 unique_name_in_owner = true
 z_index = 2
 script = ExtResource("3_4dcsq")
 
-[node name="RegionCanvas" type="CanvasLayer" parent="RegionMenu"]
+[node name="RegionCanvas" type="CanvasLayer" parent="RegionMenu" unique_id=211996214]
 unique_name_in_owner = true
 layer = 3
 visible = false
 follow_viewport_enabled = true
 
-[node name="RegionMenuBackground" type="MeshInstance2D" parent="RegionMenu/RegionCanvas"]
+[node name="RegionMenuBackground" type="MeshInstance2D" parent="RegionMenu/RegionCanvas" unique_id=1500180093]
 position = Vector2(0, -100)
 scale = Vector2(960, -540)
 mesh = SubResource("QuadMesh_1gr3v")
 texture = ExtResource("10_dp3eg")
 
-[node name="Text" type="Node2D" parent="RegionMenu/RegionCanvas"]
+[node name="Text" type="Node2D" parent="RegionMenu/RegionCanvas" unique_id=1078063605]
 
-[node name="TopText" type="Label" parent="RegionMenu/RegionCanvas/Text"]
+[node name="TopText" type="Label" parent="RegionMenu/RegionCanvas/Text" unique_id=367731784]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -294,9 +294,9 @@ vertical_alignment = 1
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="Buttons" type="Node2D" parent="RegionMenu/RegionCanvas"]
+[node name="Buttons" type="Node2D" parent="RegionMenu/RegionCanvas" unique_id=2004438241]
 
-[node name="NorthWest" type="Button" parent="RegionMenu/RegionCanvas/Buttons"]
+[node name="NorthWest" type="Button" parent="RegionMenu/RegionCanvas/Buttons" unique_id=883643909]
 offset_left = -444.0
 offset_top = -141.0
 offset_right = -251.0
@@ -310,7 +310,7 @@ focus_previous = NodePath("../SouthEast")
 theme = ExtResource("12_0ld40")
 text = "North West"
 
-[node name="Plains" type="Button" parent="RegionMenu/RegionCanvas/Buttons"]
+[node name="Plains" type="Button" parent="RegionMenu/RegionCanvas/Buttons" unique_id=334680566]
 offset_left = -212.0
 offset_top = -141.0
 offset_right = -19.0
@@ -324,7 +324,7 @@ focus_previous = NodePath("../NorthWest")
 theme = ExtResource("12_0ld40")
 text = "Plains"
 
-[node name="NorthCentral" type="Button" parent="RegionMenu/RegionCanvas/Buttons"]
+[node name="NorthCentral" type="Button" parent="RegionMenu/RegionCanvas/Buttons" unique_id=1926568153]
 offset_left = 19.0
 offset_top = -142.0
 offset_right = 212.0
@@ -338,7 +338,7 @@ focus_previous = NodePath("../Plains")
 theme = ExtResource("12_0ld40")
 text = "North Central"
 
-[node name="NorthEast" type="Button" parent="RegionMenu/RegionCanvas/Buttons"]
+[node name="NorthEast" type="Button" parent="RegionMenu/RegionCanvas/Buttons" unique_id=288404808]
 offset_left = 250.0
 offset_top = -142.0
 offset_right = 443.0
@@ -352,7 +352,7 @@ focus_previous = NodePath("../NorthCentral")
 theme = ExtResource("12_0ld40")
 text = "North East"
 
-[node name="SouthWest" type="Button" parent="RegionMenu/RegionCanvas/Buttons"]
+[node name="SouthWest" type="Button" parent="RegionMenu/RegionCanvas/Buttons" unique_id=684326299]
 offset_left = -328.0
 offset_top = 5.0
 offset_right = -135.0
@@ -366,7 +366,7 @@ focus_previous = NodePath("../SouthCentral")
 theme = ExtResource("12_0ld40")
 text = "South West"
 
-[node name="SouthCentral" type="Button" parent="RegionMenu/RegionCanvas/Buttons"]
+[node name="SouthCentral" type="Button" parent="RegionMenu/RegionCanvas/Buttons" unique_id=1933140721]
 offset_left = -96.0
 offset_top = 5.0
 offset_right = 97.0
@@ -380,7 +380,7 @@ focus_previous = NodePath("../SouthWest")
 theme = ExtResource("12_0ld40")
 text = "South Central"
 
-[node name="SouthEast" type="Button" parent="RegionMenu/RegionCanvas/Buttons"]
+[node name="SouthEast" type="Button" parent="RegionMenu/RegionCanvas/Buttons" unique_id=2132018507]
 offset_left = 135.0
 offset_top = 4.0
 offset_right = 328.0
@@ -394,7 +394,7 @@ focus_previous = NodePath("../SouthCentral")
 theme = ExtResource("12_0ld40")
 text = "South East"
 
-[node name="Minimize" type="Button" parent="RegionMenu/RegionCanvas/Buttons"]
+[node name="Minimize" type="Button" parent="RegionMenu/RegionCanvas/Buttons" unique_id=1507162801]
 clip_contents = true
 offset_left = 360.0
 offset_top = -320.0
@@ -409,19 +409,19 @@ focus_previous = NodePath("../SouthEast")
 theme = ExtResource("4_tefeu")
 text = "-"
 
-[node name="LoadMenu" type="Node2D" parent="."]
+[node name="LoadMenu" type="Node2D" parent="." unique_id=1435537403]
 unique_name_in_owner = true
 visible = false
 z_index = 2
 script = ExtResource("9_a8y0u")
 
-[node name="Background" type="MeshInstance2D" parent="LoadMenu"]
+[node name="Background" type="MeshInstance2D" parent="LoadMenu" unique_id=1082368297]
 position = Vector2(0, 50)
 scale = Vector2(600, 400)
 mesh = SubResource("QuadMesh_eb6dy")
 texture = ExtResource("9_choun")
 
-[node name="TitleContainer" type="BoxContainer" parent="LoadMenu"]
+[node name="TitleContainer" type="BoxContainer" parent="LoadMenu" unique_id=1848642611]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -432,7 +432,7 @@ offset_bottom = 32.0
 grow_horizontal = 2
 alignment = 1
 
-[node name="TopText" type="Label" parent="LoadMenu/TitleContainer"]
+[node name="TopText" type="Label" parent="LoadMenu/TitleContainer" unique_id=131362066]
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("4_tefeu")
@@ -441,7 +441,7 @@ label_settings = ExtResource("8_muem4")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CloseButton" type="Button" parent="LoadMenu"]
+[node name="CloseButton" type="Button" parent="LoadMenu" unique_id=1090107739]
 z_index = 3
 offset_left = 178.0
 offset_top = -95.5
@@ -449,28 +449,28 @@ offset_right = 250.0
 offset_bottom = -23.5
 icon = ExtResource("10_eb6dy")
 
-[node name="SaveMenu" type="VBoxContainer" parent="LoadMenu"]
+[node name="SaveMenu" type="VBoxContainer" parent="LoadMenu" unique_id=1783446462]
 offset_left = -300.0
 offset_top = -28.0
 offset_right = 300.0
 offset_bottom = 250.0
 alignment = 1
 
-[node name="Row1" type="HBoxContainer" parent="LoadMenu/SaveMenu"]
+[node name="Row1" type="HBoxContainer" parent="LoadMenu/SaveMenu" unique_id=1419348045]
 layout_mode = 2
 theme_override_constants/separation = 13
 alignment = 2
 
-[node name="Spacer4" type="Control" parent="LoadMenu/SaveMenu/Row1"]
+[node name="Spacer4" type="Control" parent="LoadMenu/SaveMenu/Row1" unique_id=638287669]
 layout_mode = 2
 
-[node name="Spacer5" type="Control" parent="LoadMenu/SaveMenu/Row1"]
+[node name="Spacer5" type="Control" parent="LoadMenu/SaveMenu/Row1" unique_id=1708996861]
 layout_mode = 2
 
-[node name="Spacer6" type="Control" parent="LoadMenu/SaveMenu/Row1"]
+[node name="Spacer6" type="Control" parent="LoadMenu/SaveMenu/Row1" unique_id=1333055097]
 layout_mode = 2
 
-[node name="SaveName" type="Label" parent="LoadMenu/SaveMenu/Row1"]
+[node name="SaveName" type="Label" parent="LoadMenu/SaveMenu/Row1" unique_id=182443531]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 2
@@ -480,39 +480,39 @@ label_settings = ExtResource("8_muem4")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LoadButton" type="Button" parent="LoadMenu/SaveMenu/Row1"]
+[node name="LoadButton" type="Button" parent="LoadMenu/SaveMenu/Row1" unique_id=911301516]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 icon = ExtResource("12_trceg")
 
-[node name="RefreshButton" type="Button" parent="LoadMenu/SaveMenu/Row1"]
+[node name="RefreshButton" type="Button" parent="LoadMenu/SaveMenu/Row1" unique_id=15028088]
 z_index = 3
 layout_mode = 2
 icon = ExtResource("10_ya4ey")
 
-[node name="Spacer" type="Control" parent="LoadMenu/SaveMenu/Row1"]
+[node name="Spacer" type="Control" parent="LoadMenu/SaveMenu/Row1" unique_id=2055044217]
 layout_mode = 2
 
-[node name="Spacer2" type="Control" parent="LoadMenu/SaveMenu/Row1"]
+[node name="Spacer2" type="Control" parent="LoadMenu/SaveMenu/Row1" unique_id=1952121938]
 layout_mode = 2
 
-[node name="Spacer3" type="Control" parent="LoadMenu/SaveMenu/Row1"]
+[node name="Spacer3" type="Control" parent="LoadMenu/SaveMenu/Row1" unique_id=1014285417]
 layout_mode = 2
 
-[node name="OptionMenu" type="Node2D" parent="."]
+[node name="OptionMenu" type="Node2D" parent="." unique_id=862580628]
 unique_name_in_owner = true
 visible = false
-z_index = 2
+z_index = 3
 script = ExtResource("19_gqmmt")
 
-[node name="Background" type="MeshInstance2D" parent="OptionMenu"]
+[node name="Background" type="MeshInstance2D" parent="OptionMenu" unique_id=1098367413]
 position = Vector2(0, 50)
 scale = Vector2(600, 400)
 mesh = SubResource("QuadMesh_eb6dy")
 texture = ExtResource("9_choun")
 
-[node name="TitleContainer" type="BoxContainer" parent="OptionMenu"]
+[node name="TitleContainer" type="BoxContainer" parent="OptionMenu" unique_id=1502598925]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -523,7 +523,7 @@ offset_bottom = 32.0
 grow_horizontal = 2
 alignment = 1
 
-[node name="TopText" type="Label" parent="OptionMenu/TitleContainer"]
+[node name="TopText" type="Label" parent="OptionMenu/TitleContainer" unique_id=1224019860]
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("4_tefeu")
@@ -532,7 +532,7 @@ label_settings = ExtResource("8_muem4")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CloseButton" type="Button" parent="OptionMenu"]
+[node name="CloseButton" type="Button" parent="OptionMenu" unique_id=998960323]
 z_index = 3
 offset_left = 178.0
 offset_top = -95.5
@@ -540,28 +540,28 @@ offset_right = 250.0
 offset_bottom = -23.5
 icon = ExtResource("10_eb6dy")
 
-[node name="OptionsList" type="VBoxContainer" parent="OptionMenu"]
+[node name="OptionsList" type="VBoxContainer" parent="OptionMenu" unique_id=1279274092]
 offset_left = -300.0
 offset_top = -28.0
 offset_right = 300.0
 offset_bottom = 250.0
 alignment = 1
 
-[node name="SelectLanguage" type="HBoxContainer" parent="OptionMenu/OptionsList"]
+[node name="SelectLanguage" type="HBoxContainer" parent="OptionMenu/OptionsList" unique_id=1305458686]
 layout_mode = 2
 theme_override_constants/separation = 13
 alignment = 2
 
-[node name="Spacer4" type="Control" parent="OptionMenu/OptionsList/SelectLanguage"]
+[node name="Spacer4" type="Control" parent="OptionMenu/OptionsList/SelectLanguage" unique_id=481198387]
 layout_mode = 2
 
-[node name="Spacer5" type="Control" parent="OptionMenu/OptionsList/SelectLanguage"]
+[node name="Spacer5" type="Control" parent="OptionMenu/OptionsList/SelectLanguage" unique_id=1896380927]
 layout_mode = 2
 
-[node name="Spacer6" type="Control" parent="OptionMenu/OptionsList/SelectLanguage"]
+[node name="Spacer6" type="Control" parent="OptionMenu/OptionsList/SelectLanguage" unique_id=1013306403]
 layout_mode = 2
 
-[node name="OptionName" type="Label" parent="OptionMenu/OptionsList/SelectLanguage"]
+[node name="OptionName" type="Label" parent="OptionMenu/OptionsList/SelectLanguage" unique_id=181696083]
 custom_minimum_size = Vector2(425, 0)
 layout_mode = 2
 size_flags_horizontal = 2
@@ -571,36 +571,36 @@ label_settings = ExtResource("8_muem4")
 vertical_alignment = 1
 clip_text = true
 
-[node name="LanguageButton" type="Button" parent="OptionMenu/OptionsList/SelectLanguage"]
+[node name="LanguageButton" type="Button" parent="OptionMenu/OptionsList/SelectLanguage" unique_id=2001736736]
 z_index = 3
 custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
 icon = ExtResource("20_jscy8")
 
-[node name="Spacer" type="Control" parent="OptionMenu/OptionsList/SelectLanguage"]
+[node name="Spacer" type="Control" parent="OptionMenu/OptionsList/SelectLanguage" unique_id=1845924513]
 layout_mode = 2
 
-[node name="Spacer2" type="Control" parent="OptionMenu/OptionsList/SelectLanguage"]
+[node name="Spacer2" type="Control" parent="OptionMenu/OptionsList/SelectLanguage" unique_id=1302860638]
 layout_mode = 2
 
-[node name="Spacer3" type="Control" parent="OptionMenu/OptionsList/SelectLanguage"]
+[node name="Spacer3" type="Control" parent="OptionMenu/OptionsList/SelectLanguage" unique_id=749443347]
 layout_mode = 2
 
-[node name="SwapRule" type="HBoxContainer" parent="OptionMenu/OptionsList"]
+[node name="SwapRule" type="HBoxContainer" parent="OptionMenu/OptionsList" unique_id=1956794854]
 layout_mode = 2
 theme_override_constants/separation = 13
 alignment = 2
 
-[node name="Spacer4" type="Control" parent="OptionMenu/OptionsList/SwapRule"]
+[node name="Spacer4" type="Control" parent="OptionMenu/OptionsList/SwapRule" unique_id=1677494257]
 layout_mode = 2
 
-[node name="Spacer5" type="Control" parent="OptionMenu/OptionsList/SwapRule"]
+[node name="Spacer5" type="Control" parent="OptionMenu/OptionsList/SwapRule" unique_id=1099990397]
 layout_mode = 2
 
-[node name="Spacer6" type="Control" parent="OptionMenu/OptionsList/SwapRule"]
+[node name="Spacer6" type="Control" parent="OptionMenu/OptionsList/SwapRule" unique_id=1629920051]
 layout_mode = 2
 
-[node name="OptionName" type="Label" parent="OptionMenu/OptionsList/SwapRule"]
+[node name="OptionName" type="Label" parent="OptionMenu/OptionsList/SwapRule" unique_id=775322150]
 custom_minimum_size = Vector2(425, 0)
 layout_mode = 2
 size_flags_horizontal = 2
@@ -610,27 +610,27 @@ label_settings = ExtResource("8_muem4")
 vertical_alignment = 1
 clip_text = true
 
-[node name="SwapRuleButton" type="Button" parent="OptionMenu/OptionsList/SwapRule"]
+[node name="SwapRuleButton" type="Button" parent="OptionMenu/OptionsList/SwapRule" unique_id=933700168]
 z_index = 3
 custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
 
-[node name="SwapRule" type="Sprite2D" parent="OptionMenu/OptionsList/SwapRule/SwapRuleButton"]
+[node name="SwapRule" type="Sprite2D" parent="OptionMenu/OptionsList/SwapRule/SwapRuleButton" unique_id=1004752495]
 unique_name_in_owner = true
 position = Vector2(36, 36)
 texture = ExtResource("20_yc10j")
 hframes = 2
 
-[node name="Spacer" type="Control" parent="OptionMenu/OptionsList/SwapRule"]
+[node name="Spacer" type="Control" parent="OptionMenu/OptionsList/SwapRule" unique_id=1021301124]
 layout_mode = 2
 
-[node name="Spacer2" type="Control" parent="OptionMenu/OptionsList/SwapRule"]
+[node name="Spacer2" type="Control" parent="OptionMenu/OptionsList/SwapRule" unique_id=1971640125]
 layout_mode = 2
 
-[node name="Spacer3" type="Control" parent="OptionMenu/OptionsList/SwapRule"]
+[node name="Spacer3" type="Control" parent="OptionMenu/OptionsList/SwapRule" unique_id=1442895519]
 layout_mode = 2
 
-[node name="BottomRow" type="HBoxContainer" parent="OptionMenu/OptionsList"]
+[node name="BottomRow" type="HBoxContainer" parent="OptionMenu/OptionsList" unique_id=1633378438]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -638,7 +638,7 @@ theme = ExtResource("4_tefeu")
 theme_override_constants/separation = 13
 alignment = 1
 
-[node name="SaveButton" type="Button" parent="OptionMenu/OptionsList/BottomRow"]
+[node name="SaveButton" type="Button" parent="OptionMenu/OptionsList/BottomRow" unique_id=1417688056]
 unique_name_in_owner = true
 visible = false
 z_index = 3
@@ -646,14 +646,14 @@ custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
 text = "SAVE_GAME"
 
-[node name="ExitButton" type="Button" parent="OptionMenu/OptionsList/BottomRow"]
+[node name="ExitButton" type="Button" parent="OptionMenu/OptionsList/BottomRow" unique_id=39391599]
 unique_name_in_owner = true
 z_index = 3
 custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
 text = "EXIT_APPLICATION"
 
-[node name="OptionUnfocusMask" type="MeshInstance2D" parent="OptionMenu"]
+[node name="OptionUnfocusMask" type="MeshInstance2D" parent="OptionMenu" unique_id=1176872589]
 unique_name_in_owner = true
 visible = false
 z_index = 4
@@ -662,7 +662,7 @@ scale = Vector2(600, 400)
 mesh = SubResource("QuadMesh_dp3eg")
 texture = ExtResource("2_jbj1t")
 
-[node name="OptionButtonMasker" type="BoxContainer" parent="OptionMenu"]
+[node name="OptionButtonMasker" type="BoxContainer" parent="OptionMenu" unique_id=1845390230]
 unique_name_in_owner = true
 visible = false
 anchors_preset = 8
@@ -677,19 +677,19 @@ offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LanguageMenu" type="Node2D" parent="OptionMenu"]
+[node name="LanguageMenu" type="Node2D" parent="OptionMenu" unique_id=507341000]
 unique_name_in_owner = true
 visible = false
 z_index = 5
 position = Vector2(0, 50)
 
-[node name="LanguageMenuBackground" type="MeshInstance2D" parent="OptionMenu/LanguageMenu"]
+[node name="LanguageMenuBackground" type="MeshInstance2D" parent="OptionMenu/LanguageMenu" unique_id=460286811]
 z_index = 5
 scale = Vector2(400, 600)
 mesh = SubResource("QuadMesh_jbj1t")
 texture = ExtResource("10_jkv2x")
 
-[node name="TitleText" type="RichTextLabel" parent="OptionMenu/LanguageMenu"]
+[node name="TitleText" type="RichTextLabel" parent="OptionMenu/LanguageMenu" unique_id=1505434845]
 z_index = 6
 anchors_preset = 7
 anchor_left = 0.5
@@ -709,7 +709,7 @@ autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LanguageCloseButton" type="Button" parent="OptionMenu/LanguageMenu"]
+[node name="LanguageCloseButton" type="Button" parent="OptionMenu/LanguageMenu" unique_id=1156681072]
 z_index = 6
 anchors_preset = 2
 anchor_top = 1.0
@@ -723,26 +723,26 @@ scale = Vector2(0.75, 0.75)
 size_flags_horizontal = 8
 icon = ExtResource("10_eb6dy")
 
-[node name="LanguageList" type="VBoxContainer" parent="OptionMenu/LanguageMenu"]
+[node name="LanguageList" type="VBoxContainer" parent="OptionMenu/LanguageMenu" unique_id=150367555]
 z_index = 6
 offset_left = -200.0
 offset_top = -169.0
 offset_right = 200.0
 offset_bottom = 300.0
 
-[node name="Spacer" type="Control" parent="OptionMenu/LanguageMenu/LanguageList"]
+[node name="Spacer" type="Control" parent="OptionMenu/LanguageMenu/LanguageList" unique_id=326756230]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="English" type="HBoxContainer" parent="OptionMenu/LanguageMenu/LanguageList"]
+[node name="English" type="HBoxContainer" parent="OptionMenu/LanguageMenu/LanguageList" unique_id=1881802320]
 z_index = 6
 layout_mode = 2
 
-[node name="Spacer" type="Control" parent="OptionMenu/LanguageMenu/LanguageList/English"]
+[node name="Spacer" type="Control" parent="OptionMenu/LanguageMenu/LanguageList/English" unique_id=1136660430]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LanguageText" type="RichTextLabel" parent="OptionMenu/LanguageMenu/LanguageList/English"]
+[node name="LanguageText" type="RichTextLabel" parent="OptionMenu/LanguageMenu/LanguageList/English" unique_id=1924990601]
 z_index = 6
 custom_minimum_size = Vector2(260, 0)
 layout_mode = 2
@@ -754,25 +754,25 @@ autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LanguageCheckButton" type="Button" parent="OptionMenu/LanguageMenu/LanguageList/English"]
+[node name="LanguageCheckButton" type="Button" parent="OptionMenu/LanguageMenu/LanguageList/English" unique_id=1509638038]
 custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
 size_flags_vertical = 4
 theme = ExtResource("4_tefeu")
 
-[node name="Spacer3" type="Control" parent="OptionMenu/LanguageMenu/LanguageList/English"]
+[node name="Spacer3" type="Control" parent="OptionMenu/LanguageMenu/LanguageList/English" unique_id=831440174]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Japanese" type="HBoxContainer" parent="OptionMenu/LanguageMenu/LanguageList"]
+[node name="Japanese" type="HBoxContainer" parent="OptionMenu/LanguageMenu/LanguageList" unique_id=993512088]
 z_index = 6
 layout_mode = 2
 
-[node name="Spacer" type="Control" parent="OptionMenu/LanguageMenu/LanguageList/Japanese"]
+[node name="Spacer" type="Control" parent="OptionMenu/LanguageMenu/LanguageList/Japanese" unique_id=1476759571]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LanguageText" type="RichTextLabel" parent="OptionMenu/LanguageMenu/LanguageList/Japanese"]
+[node name="LanguageText" type="RichTextLabel" parent="OptionMenu/LanguageMenu/LanguageList/Japanese" unique_id=1085319121]
 z_index = 6
 custom_minimum_size = Vector2(260, 0)
 layout_mode = 2
@@ -784,25 +784,25 @@ autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LanguageCheckButton" type="Button" parent="OptionMenu/LanguageMenu/LanguageList/Japanese"]
+[node name="LanguageCheckButton" type="Button" parent="OptionMenu/LanguageMenu/LanguageList/Japanese" unique_id=845574105]
 custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
 size_flags_vertical = 4
 theme = ExtResource("4_tefeu")
 
-[node name="Spacer3" type="Control" parent="OptionMenu/LanguageMenu/LanguageList/Japanese"]
+[node name="Spacer3" type="Control" parent="OptionMenu/LanguageMenu/LanguageList/Japanese" unique_id=1360144716]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Portuguese" type="HBoxContainer" parent="OptionMenu/LanguageMenu/LanguageList"]
+[node name="Portuguese" type="HBoxContainer" parent="OptionMenu/LanguageMenu/LanguageList" unique_id=1023965176]
 z_index = 6
 layout_mode = 2
 
-[node name="Spacer" type="Control" parent="OptionMenu/LanguageMenu/LanguageList/Portuguese"]
+[node name="Spacer" type="Control" parent="OptionMenu/LanguageMenu/LanguageList/Portuguese" unique_id=1247528339]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LanguageText" type="RichTextLabel" parent="OptionMenu/LanguageMenu/LanguageList/Portuguese"]
+[node name="LanguageText" type="RichTextLabel" parent="OptionMenu/LanguageMenu/LanguageList/Portuguese" unique_id=58356228]
 z_index = 6
 custom_minimum_size = Vector2(260, 0)
 layout_mode = 2
@@ -814,25 +814,25 @@ autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LanguageCheckButton" type="Button" parent="OptionMenu/LanguageMenu/LanguageList/Portuguese"]
+[node name="LanguageCheckButton" type="Button" parent="OptionMenu/LanguageMenu/LanguageList/Portuguese" unique_id=1356255188]
 custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
 size_flags_vertical = 4
 theme = ExtResource("4_tefeu")
 
-[node name="Spacer3" type="Control" parent="OptionMenu/LanguageMenu/LanguageList/Portuguese"]
+[node name="Spacer3" type="Control" parent="OptionMenu/LanguageMenu/LanguageList/Portuguese" unique_id=573174160]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Spanish" type="HBoxContainer" parent="OptionMenu/LanguageMenu/LanguageList"]
+[node name="Spanish" type="HBoxContainer" parent="OptionMenu/LanguageMenu/LanguageList" unique_id=332477621]
 z_index = 6
 layout_mode = 2
 
-[node name="Spacer" type="Control" parent="OptionMenu/LanguageMenu/LanguageList/Spanish"]
+[node name="Spacer" type="Control" parent="OptionMenu/LanguageMenu/LanguageList/Spanish" unique_id=1646854615]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LanguageText" type="RichTextLabel" parent="OptionMenu/LanguageMenu/LanguageList/Spanish"]
+[node name="LanguageText" type="RichTextLabel" parent="OptionMenu/LanguageMenu/LanguageList/Spanish" unique_id=1428880560]
 z_index = 6
 custom_minimum_size = Vector2(260, 0)
 layout_mode = 2
@@ -844,13 +844,13 @@ autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LanguageCheckButton" type="Button" parent="OptionMenu/LanguageMenu/LanguageList/Spanish"]
+[node name="LanguageCheckButton" type="Button" parent="OptionMenu/LanguageMenu/LanguageList/Spanish" unique_id=1276635054]
 custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
 size_flags_vertical = 4
 theme = ExtResource("4_tefeu")
 
-[node name="Spacer3" type="Control" parent="OptionMenu/LanguageMenu/LanguageList/Spanish"]
+[node name="Spacer3" type="Control" parent="OptionMenu/LanguageMenu/LanguageList/Spanish" unique_id=1907567588]
 layout_mode = 2
 size_flags_horizontal = 3
 

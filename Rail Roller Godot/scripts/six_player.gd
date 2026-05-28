@@ -86,8 +86,13 @@ func _input(event):
 			choose_destination(4)
 		if event.is_pressed() and event.is_action("Player6") and not_waiting:
 			choose_destination(5)
-	if event is InputEventKey and event.pressed and event.physical_keycode == KEY_ESCAPE:
-		open_exit_menu.emit()
+	if event.is_action_pressed("Options"):
+		if paused:
+			_on_close_options_menu()
+		else:
+			paused = true
+			%GameUnfocusMask.show()
+			%GameButtonMasker.show()
 
 func _on_color_selection(player: int, color: String):
 	change_color(player, color)

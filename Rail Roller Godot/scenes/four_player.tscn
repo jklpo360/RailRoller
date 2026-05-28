@@ -51,6 +51,8 @@ font_size = 50
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="QuadMesh" id="QuadMesh_frjxl"]
+
 [node name="FourPlayer" type="Node2D" unique_id=2013229597]
 z_index = 1
 script = ExtResource("1_avmxu")
@@ -1243,6 +1245,23 @@ position = Vector2(480, 270)
 scale = Vector2(960, 540)
 mesh = SubResource("QuadMesh_ubilc")
 texture = ExtResource("11_kqp6e")
+
+[node name="GameUnfocusMask" type="MeshInstance2D" parent="." unique_id=1850296935]
+unique_name_in_owner = true
+visible = false
+z_index = 2
+scale = Vector2(1920, 1080)
+mesh = SubResource("QuadMesh_frjxl")
+texture = ExtResource("11_kqp6e")
+
+[node name="GameButtonMasker" type="BoxContainer" parent="." unique_id=313510713]
+unique_name_in_owner = true
+visible = false
+z_index = 2
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
 
 [connection signal="pressed" from="Player1/SetupInterface1/BlueSelection1" to="." method="_on_color_selection" binds= [1, "blue"]]
 [connection signal="pressed" from="Player1/SetupInterface1/GreenSelection1" to="." method="_on_color_selection" binds= [1, "green"]]

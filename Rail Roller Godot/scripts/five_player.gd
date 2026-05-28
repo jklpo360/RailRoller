@@ -65,10 +65,8 @@ func _ready():
 		}
 	
 func _input(event):
-	if event.is_action_pressed("debug"):
-		print("debug key pressed")
-		
 	if in_game:
+		print(event)
 		if event.is_pressed() and event.is_action("Player1") and not_waiting:
 			print("destinating for player 1")
 			choose_destination(0)
@@ -84,8 +82,13 @@ func _input(event):
 		if event.is_pressed() and event.is_action("Player5") and not_waiting:
 			print("destinating for player 5")
 			choose_destination(4)
-	if event is InputEventKey and event.pressed and event.physical_keycode == KEY_ESCAPE:
-		open_exit_menu.emit()
+	if event.is_action_pressed("Options"):
+		if paused:
+			_on_close_options_menu()
+		else:
+			paused = true
+			%GameUnfocusMask.show()
+			%GameButtonMasker.show()
 
 func _on_color_selection(player: int, color: String):
 	change_color(player, color)

@@ -28,6 +28,7 @@ func _ready():
 func _on_close_button_pressed() -> void:
 	if not selecting_language:
 		response.emit("close")
+		GlobalSignals.close_options_menu.emit()
 
 func _on_language_button_pressed() -> void:
 	if not selecting_language:

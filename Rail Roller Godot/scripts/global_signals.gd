@@ -9,6 +9,7 @@ signal return_region(region, player)
 
 signal open_num_players_menu
 signal close_num_players_menu
+signal close_options_menu
 
 signal open_options_menu
 signal change_language(locale_code)
