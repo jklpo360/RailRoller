@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dvs0s20v7vq2p" path="res://texture/backgrounds/start_menu_texture.png" id="10_2n2g2"]
 [ext_resource type="Script" uid="uid://b3g1b84tyasuw" path="res://scripts/keybind_button.gd" id="11_frjxl"]
 [ext_resource type="Texture2D" uid="uid://0objvwwi3byj" path="res://texture/backgrounds/transparent_mask.png" id="11_kqp6e"]
+[ext_resource type="Texture2D" uid="uid://ddimx2e2elo68" path="res://texture/icons/menu_icons/change_icon.png" id="12_2n2g2"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_ubilc"]
 
@@ -371,12 +372,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Player1HomeSwapButton" type="Button" parent="Player1/GameDisplay1" unique_id=202327302]
+visible = false
 offset_left = 25.0
 offset_top = 196.0
-offset_right = 319.0
+offset_right = 161.0
 offset_bottom = 273.0
 theme = ExtResource("9_frjxl")
 text = "SWAP_HOME"
+icon = ExtResource("12_2n2g2")
 
 [node name="Player2" type="Node2D" parent="." unique_id=396325452]
 position = Vector2(0, -540)
@@ -662,12 +665,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Player2HomeSwapButton" type="Button" parent="Player2/GameDisplay2" unique_id=1457495317]
+visible = false
 offset_left = 25.0
 offset_top = 196.0
-offset_right = 319.0
+offset_right = 161.0
 offset_bottom = 273.0
 theme = ExtResource("9_frjxl")
 text = "SWAP_HOME"
+icon = ExtResource("12_2n2g2")
 
 [node name="Player3" type="Node2D" parent="." unique_id=777659389]
 position = Vector2(-960, 0)
@@ -953,12 +958,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Player3HomeSwapButton" type="Button" parent="Player3/GameDisplay3" unique_id=99060485]
+visible = false
 offset_left = 25.0
 offset_top = 196.0
-offset_right = 319.0
+offset_right = 161.0
 offset_bottom = 273.0
 theme = ExtResource("9_frjxl")
 text = "SWAP_HOME"
+icon = ExtResource("12_2n2g2")
 
 [node name="Player4" type="Node2D" parent="." unique_id=1317043159]
 
@@ -1243,12 +1250,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Player4HomeSwapButton" type="Button" parent="Player4/GameDisplay4" unique_id=1922528454]
+visible = false
 offset_left = 25.0
 offset_top = 196.0
-offset_right = 319.0
+offset_right = 161.0
 offset_bottom = 273.0
 theme = ExtResource("9_frjxl")
 text = "SWAP_HOME"
+icon = ExtResource("12_2n2g2")
 
 [node name="PlayerHidingBackground1" type="MeshInstance2D" parent="." unique_id=1066122372]
 visible = false

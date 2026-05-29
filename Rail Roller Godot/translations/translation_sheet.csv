@@ -19,7 +19,7 @@ HOME_CITY_TEXT,Home City,Cidade natal,出身地,Ciudad natal
 PREVIOUS_DESTINATION_TEXT,Previous Destination,Destino anterior,出発地,Destino anterior
 CURRENT_DESTINATION_TEXT,Current Destination,Próximo destino,目的地,Próximo destino
 REWARD_TEXT,Reward,Recompensa,報酬 ,Regalo
-SWAP_HOME,Swap Home,,,
+SWAP_HOME,Swap,,出身地,
 HOW_MANY_PLAYERS_TEXT,How many players?,,何人？,
 CHOOSE_REGION_TEXT,Choose a region,,地域を選べなさい,
 START_BUTTON_TOOLTIP,,,,

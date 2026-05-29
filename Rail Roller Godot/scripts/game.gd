@@ -14,6 +14,7 @@ var returned_regions = []
 var not_waiting = true
 var in_game = false
 var paused = false
+var destinated = false
 
 var colors = {}
 var names = {}
@@ -36,6 +37,7 @@ var game_displays
 var player_name_text_boxes
 var primary_key_buttons
 var secondary_key_buttons
+var home_swap_buttons
 
 var home_cities_text_boxes
 var home_cities_text_regions
@@ -683,7 +685,9 @@ func initialize_arrays():
 	player_name_text_boxes = find_children("Player*Name")
 	primary_key_buttons = find_children("Player*PrimaryKey")
 	secondary_key_buttons = find_children("Player*SecondaryKey")
+	home_swap_buttons = find_children("Player*HomeSwapButton")
 	GlobalSignals.change_keybind.connect(_change_keybind, ConnectFlags.CONNECT_PERSIST)
+	GlobalSignals.swap_rule_toggled.connect(_on_swap_rule_toggled, ConnectFlags.CONNECT_PERSIST)
 	
 	home_cities_text_boxes = find_children("*HomeCitiesText")
 	home_cities_text_regions = find_children("*HomeCityRegion")
@@ -740,7 +744,6 @@ func initialize_arrays():
 		player_regions.append(0)
 		returned_regions.append("NAR")
 	
-	
 func setup_game():
 	GlobalSignals.start_game.emit()
 	for i in range(NUM_PLAYERS):
@@ -760,13 +763,14 @@ func setup_game():
 		else:
 			secondary_key_buttons[i].text = ""
 			secondary_key_buttons[i].icon = secondary_keybind_content.get(player)[1]
-		
 	var i = 0
 	while i < NUM_PLAYERS:
 		assign_home_city(i)
 		await choose_destination(i)
 		i += 1
-	
+	destinated = false
+	if Settings.swap_rule:
+		show_swap_buttons()
 	in_game = true
 
 func assign_home_city(player):
@@ -793,7 +797,9 @@ func assign_home_city(player):
 		home_cities_text_regions[player].text = str("(", player_regions[player], ")")
 
 
-func choose_destination(player): 
+func choose_destination(player):
+	hide_swap_buttons()
+	destinated = true
 	old_destination_text_boxes[player].text = destinations[player]
 	old_destination_text_regions[player].text = str("(", player_regions[player], ")")
 	var dice11 = rng.randi_range(1,6)
@@ -876,7 +882,31 @@ func toggle_ready(player):
 			ready_buttons[player-1].text = TranslationServer.translate("CHANGE_PLAYER_INFO")
 
 func swap_home_city(player):
-	print(player)
+	var index = player - 1
+	var home_city = home_cities[index]
+	var home_city_region = old_destination_text_regions[index].text
+	old_destination_text_boxes[index].text = destinations[index]
+	old_destination_text_regions[index].text = destination_text_regions[index].text
+	home_cities[index] = destinations[index]
+	home_cities_text_boxes[index].text = destinations[index]
+	if home_cities[index] == "PORTLAND":
+		home_cities_text_regions[index].text = str("(", player_regions[index], ")")
+	
+	destinations[index] = home_city
+	destination_text_boxes[index].text = home_city
+	var old_region = home_city_region.substr(1,2)
+	if old_region == "P)":
+		old_region = "P"
+	player_regions[index] = old_region
+	destination_text_regions[index].text = home_city_region
+
+func show_swap_buttons():
+	for i in range(NUM_PLAYERS):
+		home_swap_buttons[i].show()
+
+func hide_swap_buttons():
+	for i in range(NUM_PLAYERS):
+		home_swap_buttons[i].hide()
 
 func _change_keybind(player, primary, text, contents):
 	var duplicate_value = false
@@ -986,6 +1016,14 @@ func load_game() -> void:
 		setup_interfaces[i].hide()
 		game_displays[i].show()
 	in_game = true
+	hide_swap_buttons()
+
+func _on_swap_rule_toggled() -> void:
+	if not destinated:
+		if Settings.swap_rule:
+			show_swap_buttons()
+		else:
+			hide_swap_buttons()
 
 func _on_close_options_menu() -> void:
 	paused = false

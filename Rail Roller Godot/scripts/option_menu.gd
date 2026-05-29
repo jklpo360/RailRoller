@@ -46,9 +46,11 @@ func _on_language_close_button_pressed() -> void:
 func _on_swap_rule_button_pressed() -> void:
 	if Settings.swap_rule:
 		Settings.swap_rule = false
+		GlobalSignals.swap_rule_toggled.emit()
 		%SwapRule.frame = 0
 	else:
 		Settings.swap_rule = true
+		GlobalSignals.swap_rule_toggled.emit()
 		%SwapRule.frame = 1
 
 func _on_language_check_button_pressed(language_string) -> void:

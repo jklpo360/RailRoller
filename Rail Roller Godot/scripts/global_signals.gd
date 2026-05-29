@@ -13,6 +13,7 @@ signal close_options_menu
 
 signal open_options_menu
 signal change_language(locale_code)
+signal swap_rule_toggled
 
 signal start_pre_game
 signal start_game

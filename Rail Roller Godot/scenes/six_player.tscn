@@ -13,6 +13,7 @@
 [ext_resource type="LabelSettings" uid="uid://dcii2cd6iftqw" path="res://theme/text_label.tres" id="11_ypfm7"]
 [ext_resource type="Texture2D" uid="uid://0objvwwi3byj" path="res://texture/backgrounds/transparent_mask.png" id="12_ttgt6"]
 [ext_resource type="Script" uid="uid://b3g1b84tyasuw" path="res://scripts/keybind_button.gd" id="12_ypfm7"]
+[ext_resource type="Texture2D" uid="uid://ddimx2e2elo68" path="res://texture/icons/menu_icons/change_icon.png" id="14_4ka1f"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_3pspo"]
 
@@ -415,12 +416,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Player1HomeSwapButton" type="Button" parent="Player1/GameDisplay1" unique_id=1913840836]
+visible = false
 offset_left = 25.0
 offset_top = 196.0
-offset_right = 319.0
+offset_right = 161.0
 offset_bottom = 273.0
 theme = ExtResource("10_ttgt6")
 text = "SWAP_HOME"
+icon = ExtResource("14_4ka1f")
 
 [node name="Player2" type="Node2D" parent="." unique_id=27043800]
 position = Vector2(-320, -540)
@@ -709,12 +712,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Player2HomeSwapButton" type="Button" parent="Player2/GameDisplay2" unique_id=1517816876]
+visible = false
 offset_left = 25.0
 offset_top = 196.0
-offset_right = 319.0
+offset_right = 161.0
 offset_bottom = 273.0
 theme = ExtResource("10_ttgt6")
 text = "SWAP_HOME"
+icon = ExtResource("14_4ka1f")
 
 [node name="Player3" type="Node2D" parent="." unique_id=1179904262]
 position = Vector2(-960, 0)
@@ -1003,12 +1008,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Player3HomeSwapButton" type="Button" parent="Player3/GameDisplay3" unique_id=1902456711]
+visible = false
 offset_left = 25.0
 offset_top = 196.0
-offset_right = 319.0
+offset_right = 161.0
 offset_bottom = 273.0
 theme = ExtResource("10_ttgt6")
 text = "SWAP_HOME"
+icon = ExtResource("14_4ka1f")
 
 [node name="Player4" type="Node2D" parent="." unique_id=1831504865]
 position = Vector2(-320, 0)
@@ -1297,12 +1304,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Player4HomeSwapButton" type="Button" parent="Player4/GameDisplay4" unique_id=1528113529]
+visible = false
 offset_left = 25.0
 offset_top = 196.0
-offset_right = 319.0
+offset_right = 161.0
 offset_bottom = 273.0
 theme = ExtResource("10_ttgt6")
 text = "SWAP_HOME"
+icon = ExtResource("14_4ka1f")
 
 [node name="Player5" type="Node2D" parent="." unique_id=881020892]
 position = Vector2(320, -540)
@@ -1591,12 +1600,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Player5HomeSwapButton" type="Button" parent="Player5/GameDisplay5" unique_id=46574677]
+visible = false
 offset_left = 25.0
 offset_top = 196.0
-offset_right = 319.0
+offset_right = 161.0
 offset_bottom = 273.0
 theme = ExtResource("10_ttgt6")
 text = "SWAP_HOME"
+icon = ExtResource("14_4ka1f")
 
 [node name="Player6" type="Node2D" parent="." unique_id=1710271899]
 position = Vector2(320, 0)
@@ -1885,12 +1896,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Player6HomeSwapButton" type="Button" parent="Player6/GameDisplay6" unique_id=358904194]
+visible = false
 offset_left = 25.0
 offset_top = 196.0
-offset_right = 319.0
+offset_right = 161.0
 offset_bottom = 273.0
 theme = ExtResource("10_ttgt6")
 text = "SWAP_HOME"
+icon = ExtResource("14_4ka1f")
 
 [node name="GameUnfocusMask" type="MeshInstance2D" parent="." unique_id=1063590634]
 unique_name_in_owner = true
