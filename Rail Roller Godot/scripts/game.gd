@@ -875,6 +875,9 @@ func toggle_ready(player):
 			hiding_backgrounds[player-1].show()
 			ready_buttons[player-1].text = TranslationServer.translate("CHANGE_PLAYER_INFO")
 
+func swap_home_city(player):
+	print(player)
+
 func _change_keybind(player, primary, text, contents):
 	var duplicate_value = false
 	var duplicate_primary : bool

@@ -79,3 +79,6 @@ func _on_color_selection(player: int, color: String):
 
 func _on_ready_pressed(player: int):
 	toggle_ready(player)
+
+func _on_home_swap_button_pressed(player: int) -> void:
+	swap_home_city(player)

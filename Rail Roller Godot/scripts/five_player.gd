@@ -66,7 +66,6 @@ func _ready():
 	
 func _input(event):
 	if in_game:
-		print(event)
 		if event.is_pressed() and event.is_action("Player1") and not_waiting:
 			print("destinating for player 1")
 			choose_destination(0)
@@ -95,3 +94,6 @@ func _on_color_selection(player: int, color: String):
 
 func _on_ready_pressed(player: int):
 	toggle_ready(player)
+
+func _on_home_swap_button_pressed(player: int) -> void:
+	swap_home_city(player)

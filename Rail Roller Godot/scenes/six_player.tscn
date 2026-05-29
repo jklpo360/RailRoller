@@ -414,6 +414,14 @@ label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Player1HomeSwapButton" type="Button" parent="Player1/GameDisplay1" unique_id=1913840836]
+offset_left = 25.0
+offset_top = 196.0
+offset_right = 319.0
+offset_bottom = 273.0
+theme = ExtResource("10_ttgt6")
+text = "SWAP_HOME"
+
 [node name="Player2" type="Node2D" parent="." unique_id=27043800]
 position = Vector2(-320, -540)
 
@@ -699,6 +707,14 @@ offset_bottom = 540.0
 label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Player2HomeSwapButton" type="Button" parent="Player2/GameDisplay2" unique_id=1517816876]
+offset_left = 25.0
+offset_top = 196.0
+offset_right = 319.0
+offset_bottom = 273.0
+theme = ExtResource("10_ttgt6")
+text = "SWAP_HOME"
 
 [node name="Player3" type="Node2D" parent="." unique_id=1179904262]
 position = Vector2(-960, 0)
@@ -986,6 +1002,14 @@ label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Player3HomeSwapButton" type="Button" parent="Player3/GameDisplay3" unique_id=1902456711]
+offset_left = 25.0
+offset_top = 196.0
+offset_right = 319.0
+offset_bottom = 273.0
+theme = ExtResource("10_ttgt6")
+text = "SWAP_HOME"
+
 [node name="Player4" type="Node2D" parent="." unique_id=1831504865]
 position = Vector2(-320, 0)
 
@@ -1271,6 +1295,14 @@ offset_bottom = 540.0
 label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Player4HomeSwapButton" type="Button" parent="Player4/GameDisplay4" unique_id=1528113529]
+offset_left = 25.0
+offset_top = 196.0
+offset_right = 319.0
+offset_bottom = 273.0
+theme = ExtResource("10_ttgt6")
+text = "SWAP_HOME"
 
 [node name="Player5" type="Node2D" parent="." unique_id=881020892]
 position = Vector2(320, -540)
@@ -1558,6 +1590,14 @@ label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Player5HomeSwapButton" type="Button" parent="Player5/GameDisplay5" unique_id=46574677]
+offset_left = 25.0
+offset_top = 196.0
+offset_right = 319.0
+offset_bottom = 273.0
+theme = ExtResource("10_ttgt6")
+text = "SWAP_HOME"
+
 [node name="Player6" type="Node2D" parent="." unique_id=1710271899]
 position = Vector2(320, 0)
 
@@ -1844,6 +1884,14 @@ label_settings = ExtResource("11_ypfm7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Player6HomeSwapButton" type="Button" parent="Player6/GameDisplay6" unique_id=358904194]
+offset_left = 25.0
+offset_top = 196.0
+offset_right = 319.0
+offset_bottom = 273.0
+theme = ExtResource("10_ttgt6")
+text = "SWAP_HOME"
+
 [node name="GameUnfocusMask" type="MeshInstance2D" parent="." unique_id=1063590634]
 unique_name_in_owner = true
 visible = false
@@ -1868,6 +1916,7 @@ offset_bottom = 540.0
 [connection signal="pressed" from="Player1/SetupInterface1/RedSelection1" to="." method="_on_color_selection" binds= [1, "red"]]
 [connection signal="pressed" from="Player1/SetupInterface1/BlackSelection1" to="." method="_on_color_selection" binds= [1, "black"]]
 [connection signal="pressed" from="Player1/SetupInterface1/StartButtonAnchor1/StartButton1" to="." method="_on_ready_pressed" binds= [1]]
+[connection signal="pressed" from="Player1/GameDisplay1/Player1HomeSwapButton" to="." method="_on_home_swap_button_pressed" binds= [1]]
 [connection signal="pressed" from="Player2/SetupInterface2/BlueSelection2" to="." method="_on_color_selection" binds= [2, "blue"]]
 [connection signal="pressed" from="Player2/SetupInterface2/GreenSelection2" to="." method="_on_color_selection" binds= [2, "green"]]
 [connection signal="pressed" from="Player2/SetupInterface2/WhiteSelection2" to="." method="_on_color_selection" binds= [2, "white"]]
@@ -1875,6 +1924,7 @@ offset_bottom = 540.0
 [connection signal="pressed" from="Player2/SetupInterface2/RedSelection2" to="." method="_on_color_selection" binds= [2, "red"]]
 [connection signal="pressed" from="Player2/SetupInterface2/BlackSelection2" to="." method="_on_color_selection" binds= [2, "black"]]
 [connection signal="pressed" from="Player2/SetupInterface2/StartButtonAnchor2/StartButton2" to="." method="_on_ready_pressed" binds= [2]]
+[connection signal="pressed" from="Player2/GameDisplay2/Player2HomeSwapButton" to="." method="_on_home_swap_button_pressed" binds= [2]]
 [connection signal="pressed" from="Player3/SetupInterface3/BlueSelection3" to="." method="_on_color_selection" binds= [3, "blue"]]
 [connection signal="pressed" from="Player3/SetupInterface3/GreenSelection3" to="." method="_on_color_selection" binds= [3, "green"]]
 [connection signal="pressed" from="Player3/SetupInterface3/WhiteSelection3" to="." method="_on_color_selection" binds= [3, "white"]]
@@ -1882,6 +1932,7 @@ offset_bottom = 540.0
 [connection signal="pressed" from="Player3/SetupInterface3/RedSelection3" to="." method="_on_color_selection" binds= [3, "red"]]
 [connection signal="pressed" from="Player3/SetupInterface3/BlackSelection3" to="." method="_on_color_selection" binds= [3, "black"]]
 [connection signal="pressed" from="Player3/SetupInterface3/StartButtonAnchor3/StartButton3" to="." method="_on_ready_pressed" binds= [3]]
+[connection signal="pressed" from="Player3/GameDisplay3/Player3HomeSwapButton" to="." method="_on_home_swap_button_pressed" binds= [3]]
 [connection signal="pressed" from="Player4/SetupInterface4/BlueSelection4" to="." method="_on_color_selection" binds= [4, "blue"]]
 [connection signal="pressed" from="Player4/SetupInterface4/GreenSelection4" to="." method="_on_color_selection" binds= [4, "green"]]
 [connection signal="pressed" from="Player4/SetupInterface4/WhiteSelection4" to="." method="_on_color_selection" binds= [4, "white"]]
@@ -1889,6 +1940,7 @@ offset_bottom = 540.0
 [connection signal="pressed" from="Player4/SetupInterface4/RedSelection4" to="." method="_on_color_selection" binds= [4, "red"]]
 [connection signal="pressed" from="Player4/SetupInterface4/BlackSelection4" to="." method="_on_color_selection" binds= [4, "black"]]
 [connection signal="pressed" from="Player4/SetupInterface4/StartButtonAnchor4/StartButton4" to="." method="_on_ready_pressed" binds= [4]]
+[connection signal="pressed" from="Player4/GameDisplay4/Player4HomeSwapButton" to="." method="_on_home_swap_button_pressed" binds= [4]]
 [connection signal="pressed" from="Player5/SetupInterface5/BlueSelection5" to="." method="_on_color_selection" binds= [5, "blue"]]
 [connection signal="pressed" from="Player5/SetupInterface5/GreenSelection5" to="." method="_on_color_selection" binds= [5, "green"]]
 [connection signal="pressed" from="Player5/SetupInterface5/WhiteSelection5" to="." method="_on_color_selection" binds= [5, "white"]]
@@ -1896,6 +1948,7 @@ offset_bottom = 540.0
 [connection signal="pressed" from="Player5/SetupInterface5/RedSelection5" to="." method="_on_color_selection" binds= [5, "red"]]
 [connection signal="pressed" from="Player5/SetupInterface5/BlackSelection5" to="." method="_on_color_selection" binds= [5, "black"]]
 [connection signal="pressed" from="Player5/SetupInterface5/StartButtonAnchor5/StartButton5" to="." method="_on_ready_pressed" binds= [5]]
+[connection signal="pressed" from="Player5/GameDisplay5/Player5HomeSwapButton" to="." method="_on_home_swap_button_pressed" binds= [5]]
 [connection signal="pressed" from="Player6/SetupInterface6/BlueSelection6" to="." method="_on_color_selection" binds= [6, "blue"]]
 [connection signal="pressed" from="Player6/SetupInterface6/GreenSelection6" to="." method="_on_color_selection" binds= [6, "green"]]
 [connection signal="pressed" from="Player6/SetupInterface6/WhiteSelection6" to="." method="_on_color_selection" binds= [6, "white"]]
@@ -1903,3 +1956,4 @@ offset_bottom = 540.0
 [connection signal="pressed" from="Player6/SetupInterface6/RedSelection6" to="." method="_on_color_selection" binds= [6, "red"]]
 [connection signal="pressed" from="Player6/SetupInterface6/BlackSelection6" to="." method="_on_color_selection" binds= [6, "black"]]
 [connection signal="pressed" from="Player6/SetupInterface6/StartButtonAnchor6/StartButton6" to="." method="_on_ready_pressed" binds= [6]]
+[connection signal="pressed" from="Player6/GameDisplay6/Player6HomeSwapButton" to="." method="_on_home_swap_button_pressed" binds= [6]]

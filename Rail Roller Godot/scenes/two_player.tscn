@@ -339,6 +339,14 @@ label_settings = SubResource("LabelSettings_o7w5e")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Player1HomeSwapButton" type="Button" parent="Player1/GameDisplay1" unique_id=1917334050]
+offset_left = 25.0
+offset_top = 586.5
+offset_right = 424.0
+offset_bottom = 663.5
+theme = ExtResource("9_uo2h3")
+text = "Swap Home City"
+
 [node name="Player2" type="Node2D" parent="." unique_id=1762949976]
 position = Vector2(0, -540)
 
@@ -622,6 +630,14 @@ label_settings = SubResource("LabelSettings_o7w5e")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Player2HomeSwapButton" type="Button" parent="Player2/GameDisplay2" unique_id=459027733]
+offset_left = 25.0
+offset_top = 586.5
+offset_right = 424.0
+offset_bottom = 663.5
+theme = ExtResource("9_uo2h3")
+text = "Swap Home City"
+
 [node name="PlayerHidingBackground1" type="MeshInstance2D" parent="." unique_id=1546949026]
 visible = false
 position = Vector2(-480, 0)
@@ -660,6 +676,7 @@ offset_bottom = 540.0
 [connection signal="pressed" from="Player1/SetupInterface1/RedSelection1" to="." method="_on_color_selection" binds= [1, "red"]]
 [connection signal="pressed" from="Player1/SetupInterface1/BlackSelection1" to="." method="_on_color_selection" binds= [1, "black"]]
 [connection signal="pressed" from="Player1/SetupInterface1/StartButtonAnchor1/StartButton1" to="." method="_on_ready_pressed" binds= [1]]
+[connection signal="pressed" from="Player1/GameDisplay1/Player1HomeSwapButton" to="." method="_on_home_swap_button_pressed" binds= [1]]
 [connection signal="pressed" from="Player2/SetupInterface2/BlueSelection2" to="." method="_on_color_selection" binds= [2, "blue"]]
 [connection signal="pressed" from="Player2/SetupInterface2/GreenSelection2" to="." method="_on_color_selection" binds= [2, "green"]]
 [connection signal="pressed" from="Player2/SetupInterface2/WhiteSelection2" to="." method="_on_color_selection" binds= [2, "white"]]
@@ -667,3 +684,4 @@ offset_bottom = 540.0
 [connection signal="pressed" from="Player2/SetupInterface2/RedSelection2" to="." method="_on_color_selection" binds= [2, "red"]]
 [connection signal="pressed" from="Player2/SetupInterface2/BlackSelection2" to="." method="_on_color_selection" binds= [2, "black"]]
 [connection signal="pressed" from="Player2/SetupInterface2/StartButtonAnchor2/StartButton2" to="." method="_on_ready_pressed" binds= [2]]
+[connection signal="pressed" from="Player2/GameDisplay2/Player2HomeSwapButton" to="." method="_on_home_swap_button_pressed" binds= [2]]
