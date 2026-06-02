@@ -5,6 +5,7 @@ class_name KeybindButton
 @export var action_event_index : int = 0
 @export var player: int
 var primary : bool
+var evicter: bool = false
 
 const CONTROLLER_LABELS: Dictionary = {
 	JoyButton.JOY_BUTTON_A: "A",
@@ -27,9 +28,10 @@ func _ready():
 	primary = action_event_index == 0
 	toggle_mode = true
 	_toggled(false)
-	GlobalSignals.erase_keybind.connect(_erase_button, ConnectFlags.CONNECT_PERSIST)
-	GlobalSignals.bump_keybind_action_index.connect(_bump_action_index, ConnectFlags.CONNECT_PERSIST)
-	
+	GlobalSignals.change_keybind.connect(_on_change_keybind, ConnectFlags.CONNECT_PERSIST)
+	GlobalSignals.evict_duplicate_keybind_action_index.connect(_on_evict_duplicate_keybind_action_index, ConnectFlags.CONNECT_PERSIST)
+	GlobalSignals.bump_keybind_action_index.connect(_on_bump_action_index, ConnectFlags.CONNECT_PERSIST)
+
 func _toggled(toggled_on: bool):
 	if !action or !InputMap.has_action(action):
 		return
@@ -135,6 +137,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 		InputMap.action_add_event(action, event)
 		action_event_index = InputMap.action_get_events(action).size() - 1
+		evicter = true
+		GlobalSignals.evict_duplicate_keybind_action_index.emit(player, action_event_index)
 		button_pressed = false
 		release_focus()
 
@@ -143,15 +147,41 @@ func _input(event: InputEvent):
 		button_pressed = false
 		release_focus()
 
-func _erase_button(player, primary, erase_bind):
-	if self.player == player and self.primary == primary:
-		text = ""
-		icon = null
-		if erase_bind:
-			var action_events_list = InputMap.action_get_events(action)
-			if action_event_index < action_events_list.size():
-				InputMap.action_erase_event(action, action_events_list[action_event_index])
+func _on_change_keybind(player: int, primary: bool, is_text: bool, contents) -> void:
+	if not (player == self.player and primary == self.primary):
+		if is_text:
+			if text == contents:
+				text = ""
+				if not player == self.player:
+					var action_events_list = InputMap.action_get_events(action)
+					if action_event_index < action_events_list.size():
+						InputMap.action_erase_event(action, action_events_list[action_event_index])
+					if action_event_index == 0 and InputMap.action_get_events(action).size() > 0:
+						action_event_index = 2
+						GlobalSignals.bump_keybind_action_index.emit(self.player)
+		else:
+			if icon == contents:
+				icon = null
+				if not player == self.player:
+					var action_events_list = InputMap.action_get_events(action)
+					if action_event_index < action_events_list.size():
+						InputMap.action_erase_event(action, action_events_list[action_event_index])
+					if action_event_index == 0 and InputMap.action_get_events(action).size() > 0:
+						action_event_index = 2
+						GlobalSignals.bump_keybind_action_index.emit(self.player)
 
-func _bump_action_index(player):
-	if self.player == player and not primary:
-		action_event_index = 0
+func _on_evict_duplicate_keybind_action_index(player: int, action_index: int):
+	if player == self.player and action_index == action_event_index:
+		if evicter:
+			evicter = false
+		else:
+			if action_event_index == 0:
+				action_event_index = 1
+			elif action_event_index == 1:
+				action_event_index = 0
+			else:
+				print("invalid action event index was found while trying to evict!")
+
+func _on_bump_action_index(player):
+	if self.player == player:
+		action_event_index -= 1

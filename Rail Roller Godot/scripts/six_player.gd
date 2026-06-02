@@ -4,22 +4,6 @@ func _ready():
 	NUM_PLAYERS = 6
 	initialize_arrays()
 	if SaveLoad.loading:
-		primary_keybind_content = {
-			1 : [true, "1"],
-			2 : [true, "2"],
-			3 : [true, "3"],
-			4 : [true, "4"],
-			5 : [true, "5"],
-			6 : [true, "6"]
-		}
-		secondary_keybind_content = {
-			1 : [true, ""],
-			2 : [true, ""],
-			3 : [true, ""],
-			4 : [true, ""],
-			5 : [true, ""],
-			6 : [true, ""]
-		}
 		readied = {
 			1 : false,
 			2 : false,
@@ -46,22 +30,6 @@ func _ready():
 			4 : TranslationServer.translate("PLAYER_4"),
 			5 : TranslationServer.translate("PLAYER_5"),
 			6 : TranslationServer.translate("PLAYER_6")
-		}
-		primary_keybind_content = {
-			1 : [true, "1"],
-			2 : [true, "2"],
-			3 : [true, "3"],
-			4 : [true, "4"],
-			5 : [true, "5"],
-			6 : [true, "6"]
-		}
-		secondary_keybind_content = {
-			1 : [true, ""],
-			2 : [true, ""],
-			3 : [true, ""],
-			4 : [true, ""],
-			5 : [true, ""],
-			6 : [true, ""]
 		}
 		readied = {
 			1 : false,

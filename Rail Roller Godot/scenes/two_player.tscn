@@ -197,6 +197,10 @@ action = "Player1"
 player = 1
 metadata/_custom_type_script = "uid://b3g1b84tyasuw"
 
+[node name="PlayerButtonMasker1" type="BoxContainer" parent="Player1/SetupInterface1" unique_id=125483244]
+offset_right = 960.0
+offset_bottom = 1080.0
+
 [node name="StartButtonAnchor1" type="Node2D" parent="Player1/SetupInterface1" unique_id=175187769]
 position = Vector2(480, 540)
 
@@ -489,6 +493,11 @@ script = ExtResource("11_p11lq")
 action = "Player2"
 player = 2
 metadata/_custom_type_script = "uid://b3g1b84tyasuw"
+
+[node name="PlayerButtonMasker2" type="BoxContainer" parent="Player2/SetupInterface2" unique_id=1805902537]
+visible = false
+offset_right = 960.0
+offset_bottom = 1080.0
 
 [node name="StartButtonAnchor2" type="Node2D" parent="Player2/SetupInterface2" unique_id=1026809763]
 position = Vector2(480, 540)

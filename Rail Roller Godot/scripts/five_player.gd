@@ -4,20 +4,6 @@ func _ready():
 	NUM_PLAYERS = 5
 	initialize_arrays()
 	if SaveLoad.loading:
-		primary_keybind_content = {
-			1 : [true, "1"],
-			2 : [true, "2"],
-			3 : [true, "3"],
-			4 : [true, "4"],
-			5 : [true, "5"]
-		}
-		secondary_keybind_content = {
-			1 : [true, ""],
-			2 : [true, ""],
-			3 : [true, ""],
-			4 : [true, ""],
-			5 : [true, ""]
-		}
 		readied = {
 			1 : false,
 			2 : false,
@@ -42,20 +28,6 @@ func _ready():
 			4 : TranslationServer.translate("PLAYER_4"),
 			5 : TranslationServer.translate("PLAYER_5")
 		}
-		primary_keybind_content = {
-			1 : [true, "1"],
-			2 : [true, "2"],
-			3 : [true, "3"],
-			4 : [true, "4"],
-			5 : [true, "5"]
-		}
-		secondary_keybind_content = {
-			1 : [true, ""],
-			2 : [true, ""],
-			3 : [true, ""],
-			4 : [true, ""],
-			5 : [true, ""]
-		}
 		readied = {
 			1 : false,
 			2 : false,
@@ -67,19 +39,14 @@ func _ready():
 func _input(event):
 	if in_game:
 		if event.is_pressed() and event.is_action("Player1") and not_waiting:
-			print("destinating for player 1")
 			choose_destination(0)
 		if event.is_pressed() and event.is_action("Player2") and not_waiting:
-			print("destinating for player 2")
 			choose_destination(1)
 		if event.is_pressed() and event.is_action("Player3") and not_waiting:
-			print("destinating for player 3")
 			choose_destination(2)
 		if event.is_pressed() and event.is_action("Player4") and not_waiting:
-			print("destinating for player 4")
 			choose_destination(3)
 		if event.is_pressed() and event.is_action("Player5") and not_waiting:
-			print("destinating for player 5")
 			choose_destination(4)
 	if event.is_action_pressed("Options"):
 		if paused:

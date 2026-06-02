@@ -22,7 +22,7 @@ func _on_player_number_menu_response(response) -> void:
 			in_game = true
 			%MainUnfocusMask.hide()
 			%NumPlayersCanvas.hide()
-			%MainButtonMasker.hide()
+			%MainButtonMasker.show()
 			move_child(%OptionMenu, 8)
 		elif response == 3:
 			add_child(load("res://scenes/three_player.tscn").instantiate())
@@ -30,7 +30,7 @@ func _on_player_number_menu_response(response) -> void:
 			in_game = true
 			%MainUnfocusMask.hide()
 			%NumPlayersCanvas.hide()
-			%MainButtonMasker.hide()
+			%MainButtonMasker.show()
 			move_child(%OptionMenu, 8)
 		elif response == 4:
 			add_child(load("res://scenes/four_player.tscn").instantiate())
@@ -38,7 +38,7 @@ func _on_player_number_menu_response(response) -> void:
 			in_game = true
 			%MainUnfocusMask.hide()
 			%NumPlayersCanvas.hide()
-			%MainButtonMasker.hide()
+			%MainButtonMasker.show()
 			move_child(%OptionMenu, 8)
 		elif response == 5:
 			add_child(load("res://scenes/five_player.tscn").instantiate())
@@ -46,7 +46,7 @@ func _on_player_number_menu_response(response) -> void:
 			in_game = true
 			%MainUnfocusMask.hide()
 			%NumPlayersCanvas.hide()
-			%MainButtonMasker.hide()
+			%MainButtonMasker.show()
 			move_child(%OptionMenu, 8)
 		elif response == 6:
 			add_child(load("res://scenes/six_player.tscn").instantiate())
@@ -54,7 +54,7 @@ func _on_player_number_menu_response(response) -> void:
 			in_game = true
 			%MainUnfocusMask.hide()
 			%NumPlayersCanvas.hide()
-			%MainButtonMasker.hide()
+			%MainButtonMasker.show()
 			move_child(%OptionMenu, 8)
 
 func _on_start_button_pressed() -> void:
@@ -98,6 +98,7 @@ func _on_change_language(language_code) -> void:
 
 func _on_exit_game() -> void:
 	in_menu = false
+	in_game = false
 	%MainUnfocusMask.hide()
 	%MainButtonMasker.hide()
 
@@ -123,7 +124,7 @@ func _on_load_game() -> void:
 			in_game = true
 			%MainUnfocusMask.hide()
 			%LoadMenu.hide()
-			%MainButtonMasker.hide()
+			%MainButtonMasker.show()
 			move_child(%OptionMenu, 8)
 		3:
 			SaveLoad.loading = true
@@ -132,7 +133,7 @@ func _on_load_game() -> void:
 			in_game = true
 			%MainUnfocusMask.hide()
 			%LoadMenu.hide()
-			%MainButtonMasker.hide()
+			%MainButtonMasker.show()
 			move_child(%OptionMenu, 8)
 		4:
 			SaveLoad.loading = true
@@ -141,7 +142,7 @@ func _on_load_game() -> void:
 			in_game = true
 			%MainUnfocusMask.hide()
 			%LoadMenu.hide()
-			%MainButtonMasker.hide()
+			%MainButtonMasker.show()
 			move_child(%OptionMenu, 8)
 		5:
 			SaveLoad.loading = true
@@ -150,7 +151,7 @@ func _on_load_game() -> void:
 			in_game = true
 			%MainUnfocusMask.hide()
 			%LoadMenu.hide()
-			%MainButtonMasker.hide()
+			%MainButtonMasker.show()
 			move_child(%OptionMenu, 8)
 		6:
 			SaveLoad.loading = true
@@ -159,7 +160,7 @@ func _on_load_game() -> void:
 			in_game = true
 			%MainUnfocusMask.hide()
 			%LoadMenu.hide()
-			%MainButtonMasker.hide()
+			%MainButtonMasker.show()
 			move_child(%OptionMenu, 8)
 		_:
 			print("load formatting error: cannot read number of players")

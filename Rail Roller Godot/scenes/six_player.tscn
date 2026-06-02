@@ -87,48 +87,6 @@ scale = Vector2(640, 540)
 mesh = SubResource("QuadMesh_oo1rg")
 texture = ExtResource("7_ypfm7")
 
-[node name="PlayerHidingBackground1" type="MeshInstance2D" parent="." unique_id=789774350]
-visible = false
-position = Vector2(-640, -270)
-scale = Vector2(640, 540)
-mesh = SubResource("QuadMesh_oo1rg")
-texture = ExtResource("12_ttgt6")
-
-[node name="PlayerHidingBackground2" type="MeshInstance2D" parent="." unique_id=1842140181]
-visible = false
-position = Vector2(0, -270)
-scale = Vector2(640, 540)
-mesh = SubResource("QuadMesh_oo1rg")
-texture = ExtResource("12_ttgt6")
-
-[node name="PlayerHidingBackground3" type="MeshInstance2D" parent="." unique_id=1596856195]
-visible = false
-position = Vector2(-640, 270)
-scale = Vector2(640, 540)
-mesh = SubResource("QuadMesh_oo1rg")
-texture = ExtResource("12_ttgt6")
-
-[node name="PlayerHidingBackground4" type="MeshInstance2D" parent="." unique_id=773826944]
-visible = false
-position = Vector2(0, 270)
-scale = Vector2(640, 540)
-mesh = SubResource("QuadMesh_oo1rg")
-texture = ExtResource("12_ttgt6")
-
-[node name="PlayerHidingBackground5" type="MeshInstance2D" parent="." unique_id=2119381389]
-visible = false
-position = Vector2(640, -270)
-scale = Vector2(640, 540)
-mesh = SubResource("QuadMesh_oo1rg")
-texture = ExtResource("12_ttgt6")
-
-[node name="PlayerHidingBackground6" type="MeshInstance2D" parent="." unique_id=758794989]
-visible = false
-position = Vector2(640, 270)
-scale = Vector2(640, 540)
-mesh = SubResource("QuadMesh_oo1rg")
-texture = ExtResource("12_ttgt6")
-
 [node name="Player1" type="Node2D" parent="." unique_id=2050885502]
 position = Vector2(-960, -540)
 
@@ -267,6 +225,11 @@ script = ExtResource("12_ypfm7")
 action = "Player1"
 player = 1
 metadata/_custom_type_script = "uid://b3g1b84tyasuw"
+
+[node name="PlayerButtonMasker1" type="BoxContainer" parent="Player1/SetupInterface1" unique_id=1405819580]
+visible = false
+offset_right = 640.0
+offset_bottom = 540.0
 
 [node name="StartButtonAnchor1" type="Node2D" parent="Player1/SetupInterface1" unique_id=1955561180]
 position = Vector2(320, 270)
@@ -564,6 +527,11 @@ action = "Player2"
 player = 2
 metadata/_custom_type_script = "uid://b3g1b84tyasuw"
 
+[node name="PlayerButtonMasker2" type="BoxContainer" parent="Player2/SetupInterface2" unique_id=1251253949]
+visible = false
+offset_right = 640.0
+offset_bottom = 540.0
+
 [node name="StartButtonAnchor2" type="Node2D" parent="Player2/SetupInterface2" unique_id=214077294]
 position = Vector2(320, 270)
 
@@ -859,6 +827,11 @@ script = ExtResource("12_ypfm7")
 action = "Player3"
 player = 3
 metadata/_custom_type_script = "uid://b3g1b84tyasuw"
+
+[node name="PlayerButtonMasker3" type="BoxContainer" parent="Player3/SetupInterface3" unique_id=690078088]
+visible = false
+offset_right = 640.0
+offset_bottom = 540.0
 
 [node name="StartButtonAnchor3" type="Node2D" parent="Player3/SetupInterface3" unique_id=1634131708]
 position = Vector2(320, 270)
@@ -1156,6 +1129,11 @@ action = "Player4"
 player = 4
 metadata/_custom_type_script = "uid://b3g1b84tyasuw"
 
+[node name="PlayerButtonMasker4" type="BoxContainer" parent="Player4/SetupInterface4" unique_id=1787701044]
+visible = false
+offset_right = 640.0
+offset_bottom = 540.0
+
 [node name="StartButtonAnchor4" type="Node2D" parent="Player4/SetupInterface4" unique_id=840381618]
 position = Vector2(320, 270)
 
@@ -1451,6 +1429,11 @@ script = ExtResource("12_ypfm7")
 action = "Player5"
 player = 5
 metadata/_custom_type_script = "uid://b3g1b84tyasuw"
+
+[node name="PlayerButtonMasker5" type="BoxContainer" parent="Player5/SetupInterface5" unique_id=1833908033]
+visible = false
+offset_right = 640.0
+offset_bottom = 540.0
 
 [node name="StartButtonAnchor5" type="Node2D" parent="Player5/SetupInterface5" unique_id=1103358601]
 position = Vector2(320, 270)
@@ -1748,6 +1731,11 @@ action = "Player6"
 player = 6
 metadata/_custom_type_script = "uid://b3g1b84tyasuw"
 
+[node name="PlayerButtonMasker6" type="BoxContainer" parent="Player6/SetupInterface6" unique_id=1973209996]
+visible = false
+offset_right = 640.0
+offset_bottom = 540.0
+
 [node name="StartButtonAnchor6" type="Node2D" parent="Player6/SetupInterface6" unique_id=147406656]
 position = Vector2(320, 270)
 
@@ -1904,6 +1892,48 @@ offset_bottom = 273.0
 theme = ExtResource("10_ttgt6")
 text = "SWAP_HOME"
 icon = ExtResource("14_4ka1f")
+
+[node name="PlayerHidingBackground1" type="MeshInstance2D" parent="." unique_id=789774350]
+visible = false
+position = Vector2(-640, -270)
+scale = Vector2(640, 540)
+mesh = SubResource("QuadMesh_oo1rg")
+texture = ExtResource("12_ttgt6")
+
+[node name="PlayerHidingBackground2" type="MeshInstance2D" parent="." unique_id=1842140181]
+visible = false
+position = Vector2(0, -270)
+scale = Vector2(640, 540)
+mesh = SubResource("QuadMesh_oo1rg")
+texture = ExtResource("12_ttgt6")
+
+[node name="PlayerHidingBackground3" type="MeshInstance2D" parent="." unique_id=1596856195]
+visible = false
+position = Vector2(-640, 270)
+scale = Vector2(640, 540)
+mesh = SubResource("QuadMesh_oo1rg")
+texture = ExtResource("12_ttgt6")
+
+[node name="PlayerHidingBackground4" type="MeshInstance2D" parent="." unique_id=773826944]
+visible = false
+position = Vector2(0, 270)
+scale = Vector2(640, 540)
+mesh = SubResource("QuadMesh_oo1rg")
+texture = ExtResource("12_ttgt6")
+
+[node name="PlayerHidingBackground5" type="MeshInstance2D" parent="." unique_id=2119381389]
+visible = false
+position = Vector2(640, -270)
+scale = Vector2(640, 540)
+mesh = SubResource("QuadMesh_oo1rg")
+texture = ExtResource("12_ttgt6")
+
+[node name="PlayerHidingBackground6" type="MeshInstance2D" parent="." unique_id=758794989]
+visible = false
+position = Vector2(640, 270)
+scale = Vector2(640, 540)
+mesh = SubResource("QuadMesh_oo1rg")
+texture = ExtResource("12_ttgt6")
 
 [node name="GameUnfocusMask" type="MeshInstance2D" parent="." unique_id=1063590634]
 unique_name_in_owner = true

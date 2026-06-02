@@ -222,11 +222,15 @@ offset_top = 364.0
 offset_right = 890.0
 offset_bottom = 441.0
 theme = ExtResource("9_frjxl")
-text = "1"
 script = ExtResource("11_frjxl")
 action = "Player1"
 player = 1
 metadata/_custom_type_script = "uid://b3g1b84tyasuw"
+
+[node name="PlayerButtonMasker1" type="BoxContainer" parent="Player1/SetupInterface1" unique_id=995013771]
+visible = false
+offset_right = 960.0
+offset_bottom = 540.0
 
 [node name="StartButtonAnchor1" type="Node2D" parent="Player1/SetupInterface1" unique_id=556175065]
 position = Vector2(480, 270)
@@ -515,7 +519,6 @@ offset_top = 364.0
 offset_right = 890.0
 offset_bottom = 441.0
 theme = ExtResource("9_frjxl")
-text = "2"
 script = ExtResource("11_frjxl")
 action = "Player2"
 player = 2
@@ -539,6 +542,13 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("9_frjxl")
 text = "READY"
+
+[node name="PlayerButtonMasker2" type="BoxContainer" parent="Player2/SetupInterface2/StartButtonAnchor2" unique_id=1925131927]
+visible = false
+offset_left = -480.0
+offset_top = -270.0
+offset_right = 480.0
+offset_bottom = 270.0
 
 [node name="GameDisplay2" type="Node2D" parent="Player2" unique_id=2012407856]
 visible = false
@@ -808,11 +818,15 @@ offset_top = 364.0
 offset_right = 890.0
 offset_bottom = 441.0
 theme = ExtResource("9_frjxl")
-text = "3"
 script = ExtResource("11_frjxl")
 action = "Player3"
 player = 3
 metadata/_custom_type_script = "uid://b3g1b84tyasuw"
+
+[node name="PlayerButtonMasker3" type="BoxContainer" parent="Player3/SetupInterface3" unique_id=916146460]
+visible = false
+offset_right = 960.0
+offset_bottom = 540.0
 
 [node name="StartButtonAnchor3" type="Node2D" parent="Player3/SetupInterface3" unique_id=1564468137]
 position = Vector2(480, 270)
@@ -1100,11 +1114,15 @@ offset_top = 364.0
 offset_right = 890.0
 offset_bottom = 441.0
 theme = ExtResource("9_frjxl")
-text = "4"
 script = ExtResource("11_frjxl")
 action = "Player4"
 player = 4
 metadata/_custom_type_script = "uid://b3g1b84tyasuw"
+
+[node name="PlayerButtonMasker4" type="BoxContainer" parent="Player4/SetupInterface4" unique_id=326612793]
+visible = false
+offset_right = 960.0
+offset_bottom = 540.0
 
 [node name="StartButtonAnchor4" type="Node2D" parent="Player4/SetupInterface4" unique_id=2086625173]
 position = Vector2(480, 270)

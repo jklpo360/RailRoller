@@ -21,15 +21,16 @@ var names = {}
 var player_name_text_fields = []
 var primary_keybinding_buttons = []
 var secondary_keybinding_buttons = []
-var primary_keybind_content = {}
-var secondary_keybind_content = {}
 var readied = {}
 var home_cities = []
+var home_city_regions = []
+var old_regions = []
 var destinations = []
 var player_regions = []
 
 var backgrounds
 var hiding_backgrounds
+var button_maskers
 var ready_buttons
 var setup_interfaces
 var game_displays
@@ -54,7 +55,7 @@ signal response
 
 var payoff_chart
 
-var region = {
+var regions = {
   [1,2]: "P",
   [1,3]: "SE",
   [1,4]: "SE",
@@ -665,6 +666,7 @@ func initialize_arrays():
 	GlobalSignals.close_options_menu.connect(_on_close_options_menu, CONNECT_PERSIST)
 	backgrounds = find_children("PlayerBackground*")
 	hiding_backgrounds = find_children("PlayerHidingBackground*")
+	button_maskers = find_children("PlayerButtonMasker*")
 	ready_buttons = find_children("StartButton?")
 	setup_interfaces = find_children("SetupInterface*")
 	game_displays = find_children("GameDisplay*")
@@ -686,8 +688,8 @@ func initialize_arrays():
 	primary_key_buttons = find_children("Player*PrimaryKey")
 	secondary_key_buttons = find_children("Player*SecondaryKey")
 	home_swap_buttons = find_children("Player*HomeSwapButton")
-	GlobalSignals.change_keybind.connect(_change_keybind, ConnectFlags.CONNECT_PERSIST)
 	GlobalSignals.swap_rule_toggled.connect(_on_swap_rule_toggled, ConnectFlags.CONNECT_PERSIST)
+	GlobalSignals.show_regions_toggled.connect(_on_show_regions_toggled, ConnectFlags.CONNECT_PERSIST)
 	
 	home_cities_text_boxes = find_children("*HomeCitiesText")
 	home_cities_text_regions = find_children("*HomeCityRegion")
@@ -741,6 +743,8 @@ func initialize_arrays():
 	for i in range(NUM_PLAYERS):
 		home_cities.append(0)
 		destinations.append(0)
+		home_city_regions.append(0)
+		old_regions.append(0)
 		player_regions.append(0)
 		returned_regions.append("NAR")
 	
@@ -749,20 +753,10 @@ func setup_game():
 	for i in range(NUM_PLAYERS):
 		var player = i+1
 		player_name_text_boxes[i].text = names.get(player)
-		
-		if primary_keybind_content.get(player)[0]:
-			primary_key_buttons[i].text = primary_keybind_content.get(player)[1]
-			primary_key_buttons[i].icon = null
-		else:
-			primary_key_buttons[i].text = ""
-			primary_key_buttons[i].icon = primary_keybind_content.get(player)[1]
-			
-		if secondary_keybind_content.get(player)[0]:
-			secondary_key_buttons[i].text = secondary_keybind_content.get(player)[1]
-			secondary_key_buttons[i].icon = null
-		else:
-			secondary_key_buttons[i].text = ""
-			secondary_key_buttons[i].icon = secondary_keybind_content.get(player)[1]
+		primary_key_buttons[i].text = primary_keybinding_buttons[i].text
+		primary_key_buttons[i].icon = primary_keybinding_buttons[i].icon
+		secondary_key_buttons[i].text = secondary_keybinding_buttons[i].text
+		secondary_key_buttons[i].icon = secondary_keybinding_buttons[i].icon
 	var i = 0
 	while i < NUM_PLAYERS:
 		assign_home_city(i)
@@ -774,8 +768,6 @@ func setup_game():
 	in_game = true
 
 func assign_home_city(player):
-	if home_cities_text_regions[player].text != "":
-		home_cities_text_regions[player].text = ""
 	var dice11 = rng.randi_range(1,6)
 	var dice21 = rng.randi_range(1,6)
 	var blackdice1 = rng.randi_range(0,1)
@@ -788,20 +780,36 @@ func assign_home_city(player):
 	var roll2 = []
 	roll2.append(blackdice2)
 	roll2.append((dice12 + dice22))
-	player_regions[player] = region[roll1]
-	old_destination_text_regions[player].text = str("(", player_regions[player], ")")
-	home_cities[player] = cities[region[roll1]][roll2]
+	player_regions[player] = regions[roll1]
+	old_regions[player] = player_regions[player]
+	home_cities[player] = cities[regions[roll1]][roll2]
 	destinations[player] = home_cities[player]
 	home_cities_text_boxes[player].text = home_cities[player]
-	if home_cities[player] == "PORTLAND":
-		home_cities_text_regions[player].text = str("(", player_regions[player], ")")
+	home_city_regions[player] = player_regions[player]
+	if is_portland(home_cities[player]):
+		home_cities_text_regions[player].text = parenthesize(player_regions[player])
+	if Settings.show_regions:
+		old_destination_text_regions[player].text = parenthesize(player_regions[player])
+	else:
+		if is_portland(destinations[player]):
+			old_destination_text_regions[player].text = parenthesize(player_regions[player])
+		else:
+			old_destination_text_regions[player].text = ""
 
 
 func choose_destination(player):
 	hide_swap_buttons()
 	destinated = true
 	old_destination_text_boxes[player].text = destinations[player]
-	old_destination_text_regions[player].text = str("(", player_regions[player], ")")
+	destination_text_boxes[player].text = TranslationServer.translate("CHOOSE_REGION_TEXT")
+	old_regions[player] = player_regions[player]
+	if Settings.show_regions:
+		old_destination_text_regions[player].text = parenthesize(old_regions[player])
+	else:
+		if is_portland(destinations[player]):
+			old_destination_text_regions[player].text = parenthesize(old_regions[player])
+		else:
+			old_destination_text_regions[player].text = ""
 	var dice11 = rng.randi_range(1,6)
 	var dice21 = rng.randi_range(1,6)
 	var blackdice1 = rng.randi_range(0,1)
@@ -814,7 +822,7 @@ func choose_destination(player):
 	var roll2 = []
 	roll2.append(blackdice2)
 	roll2.append((dice12 + dice22))
-	var random_region = region[roll1]
+	var random_region = regions[roll1]
 	# Choosing a region
 	if random_region == player_regions[player]:
 		not_waiting = false
@@ -827,13 +835,16 @@ func choose_destination(player):
 		player_regions[player] = random_region
 	var old_city = destinations[player]
 	var new_city = cities[player_regions[player]][roll2]
-	destination_text_regions[player].text = str("(", player_regions[player], ")")
 	destinations[player] = new_city
 	destination_text_boxes[player].text = destinations[player]
-	var old_region = old_destination_text_regions[player].text.substr(1,2)
-	if old_region == "P)":
-		old_region = "P"
-	reward_text_boxes[player].text = str(print_reward(old_city, new_city, old_region, player_regions[player]))
+	reward_text_boxes[player].text = str(print_reward(old_city, new_city, old_regions[player], player_regions[player]))
+	if Settings.show_regions:
+		destination_text_regions[player].text = parenthesize(player_regions[player])
+	else:
+		if is_portland(destinations[player]):
+			destination_text_regions[player].text = parenthesize(player_regions[player])
+		else:
+			destination_text_regions[player].text = ""
 
 func print_reward(origin, destination, origin_region, destination_region):
 	var origin_number = alphabetical_cities.get(origin_region).find(origin)
@@ -842,7 +853,6 @@ func print_reward(origin, destination, origin_region, destination_region):
 	var table = payoff_chart[table_key]
 	return table[origin_number][destination_number]
 
-@warning_ignore("shadowed_variable")
 func _region_response(region, player):
 	returned_regions[player] = region
 	response.emit()
@@ -858,10 +868,12 @@ func change_color(player, color):
 	return
 
 func toggle_ready(player):
+	var index = player - 1
 	if readied.get(player):
 		readied.set(player, false)
-		hiding_backgrounds[player-1].hide()
-		ready_buttons[player-1].text = TranslationServer.translate("READY")
+		hiding_backgrounds[index].hide()
+		button_maskers[index].hide()
+		ready_buttons[index].text = TranslationServer.translate("READY")
 	else:
 		readied.set(player, true)
 		var all_readied = true
@@ -869,6 +881,8 @@ func toggle_ready(player):
 			all_readied = all_readied and i
 		if all_readied:
 			for i in hiding_backgrounds:
+				i.hide()
+			for i in button_maskers:
 				i.hide()
 			for i in setup_interfaces:
 				i.hide()
@@ -878,27 +892,45 @@ func toggle_ready(player):
 				i.text = TranslationServer.translate("READY")
 			setup_game()
 		else:
-			hiding_backgrounds[player-1].show()
-			ready_buttons[player-1].text = TranslationServer.translate("CHANGE_PLAYER_INFO")
+			hiding_backgrounds[index].show()
+			button_maskers[index].show()
+			ready_buttons[index].text = TranslationServer.translate("CHANGE_PLAYER_INFO")
+
+func is_portland(city: String) -> bool:
+	return city == "PORTLAND"
+
+func parenthesize(region: String) -> String:
+	return str("(", region, ")")
 
 func swap_home_city(player):
 	var index = player - 1
 	var home_city = home_cities[index]
-	var home_city_region = old_destination_text_regions[index].text
+	var home_city_region = old_regions[index]
 	old_destination_text_boxes[index].text = destinations[index]
-	old_destination_text_regions[index].text = destination_text_regions[index].text
+	old_regions[index] = player_regions[index]
 	home_cities[index] = destinations[index]
 	home_cities_text_boxes[index].text = destinations[index]
-	if home_cities[index] == "PORTLAND":
-		home_cities_text_regions[index].text = str("(", player_regions[index], ")")
+	if is_portland(home_cities[index]):
+		home_cities_text_regions[index].text = parenthesize(player_regions[index])
+	else:
+		home_cities_text_regions[index].text = ""
 	
 	destinations[index] = home_city
 	destination_text_boxes[index].text = home_city
-	var old_region = home_city_region.substr(1,2)
-	if old_region == "P)":
-		old_region = "P"
-	player_regions[index] = old_region
-	destination_text_regions[index].text = home_city_region
+	player_regions[index] = home_city_region
+	
+	if Settings.show_regions:
+		old_destination_text_regions[index].text = parenthesize(old_regions[index])
+		destination_text_regions[index].text = parenthesize(player_regions[index])
+	else:
+		if is_portland(old_destination_text_boxes[index].text):
+			old_destination_text_regions[index].text = parenthesize(old_regions[index])
+		else:
+			old_destination_text_regions[index].text = ""
+		if is_portland(destinations[index]):
+			destination_text_regions[index].text = parenthesize(player_regions[index])
+		else:
+			destination_text_regions[index].text = ""
 
 func show_swap_buttons():
 	for i in range(NUM_PLAYERS):
@@ -907,35 +939,6 @@ func show_swap_buttons():
 func hide_swap_buttons():
 	for i in range(NUM_PLAYERS):
 		home_swap_buttons[i].hide()
-
-func _change_keybind(player, primary, text, contents):
-	var duplicate_value = false
-	var duplicate_primary : bool
-	var duplicate_index : int
-	var primary_values = primary_keybind_content.values()
-	var secondary_values = secondary_keybind_content.values()
-	for i in range(NUM_PLAYERS):
-		if text == primary_values[i][0] and contents == primary_values[i][1]:
-			duplicate_value = true
-			duplicate_primary = true
-			duplicate_index = i
-			break
-		if text == secondary_values[i][0] and contents == secondary_values[i][1]:
-			duplicate_value = true
-			duplicate_primary = false
-			duplicate_index = i
-			break
-			
-	if duplicate_value:
-		if duplicate_primary:
-			primary_keybind_content.set(duplicate_index+1, [true, ""])
-		else:
-			secondary_keybind_content.set(duplicate_index+1, [true, ""])
-		GlobalSignals.erase_keybind.emit(duplicate_index+1, duplicate_primary, duplicate_index+1 != player)
-	if primary:
-		primary_keybind_content.set(player, [text, contents])
-	else:
-		secondary_keybind_content.set(player, [text, contents])
 
 func _on_save_game() -> void:
 	var primary_events = []
@@ -954,21 +957,15 @@ func _on_save_game() -> void:
 			secondary_events.push_back("%s" % events_list[1])
 		else:
 			secondary_events.push_back(null)
-	var home_city_regions = []
-	for x in home_cities_text_regions:
-		home_city_regions.push_back(x.text)
 	var old_destinations = []
 	for x in old_destination_text_boxes:
 		old_destinations.push_back(x.text)
-	var old_destination_regions = []
-	for x in old_destination_text_regions:
-		old_destination_regions.push_back(x.text)
 	var rewards = []
 	for x in reward_text_boxes:
 		rewards.push_back(x.text)
 	SaveLoad.save_game(names, colors, primary_events,
 	secondary_events, home_cities, home_city_regions, 
-	old_destinations, old_destination_regions,
+	old_destinations, old_regions,
 	destinations, player_regions, rewards)
 
 func load_game() -> void:
@@ -979,9 +976,9 @@ func load_game() -> void:
 	@warning_ignore("shadowed_variable")
 	var colors = SaveLoad.save_contents.get("colors")
 	home_cities = SaveLoad.save_contents.get("home_cities")
-	var home_city_regions =  SaveLoad.save_contents.get("home_city_regions")
+	home_city_regions =  SaveLoad.save_contents.get("home_city_regions")
 	var old_destinations = SaveLoad.save_contents.get("old_destinations")
-	var old_destination_regions = SaveLoad.save_contents.get("old_destination_regions")
+	old_regions = SaveLoad.save_contents.get("old_destination_regions")
 	destinations = SaveLoad.save_contents.get("destinations")
 	player_regions = SaveLoad.save_contents.get("destination_regions")
 	var rewards = SaveLoad.save_contents.get("rewards")
@@ -993,12 +990,23 @@ func load_game() -> void:
 		# initialize text boxes
 		player_name_text_boxes[i].text = names.get(player)
 		home_cities_text_boxes[i].text = home_cities[i]
-		home_cities_text_regions[i].text = home_city_regions[i]
+		if is_portland(home_cities[i]):
+			home_cities_text_regions[i].text = parenthesize(home_city_regions[i])
 		old_destination_text_boxes[i].text = old_destinations[i]
-		old_destination_text_regions[i].text = old_destination_regions[i]
 		destination_text_boxes[i].text = destinations[i]
-		destination_text_regions[i].text = player_regions[i]
 		reward_text_boxes[i].text = rewards[i]
+		if Settings.show_regions:
+			old_destination_text_regions[i].text = parenthesize(old_regions[i])
+			destination_text_regions[i].text = parenthesize(player_regions[i])
+		else:
+			if is_portland(old_destinations[i]):
+				old_destination_text_regions[i].text = parenthesize(old_regions[i])
+			else:
+				old_destination_text_regions[i].text = ""
+			if is_portland(destinations[i]):
+				destination_text_regions[i].text = parenthesize(player_regions[i])
+			else:
+				destination_text_regions[i].text = ""
 		
 		if primary_keybinding_buttons[i].icon == null:
 			primary_key_buttons[i].text = primary_keybinding_buttons[i].text
@@ -1024,6 +1032,23 @@ func _on_swap_rule_toggled() -> void:
 			show_swap_buttons()
 		else:
 			hide_swap_buttons()
+
+func _on_show_regions_toggled() -> void:
+	if in_game:
+		if Settings.show_regions:
+			for i in range(NUM_PLAYERS):
+				old_destination_text_regions[i].text = parenthesize(old_regions[i])
+				destination_text_regions[i].text = parenthesize(player_regions[i])
+		else:
+			for i in range(NUM_PLAYERS):
+				if is_portland(old_destination_text_boxes[i].text):
+					old_destination_text_regions[i].text = parenthesize(old_regions[i])
+				else:
+					old_destination_text_regions[i].text = ""
+				if is_portland(destinations[i]):
+					destination_text_regions[i].text = parenthesize(player_regions[i])
+				else:
+					destination_text_regions[i].text = ""
 
 func _on_close_options_menu() -> void:
 	paused = false

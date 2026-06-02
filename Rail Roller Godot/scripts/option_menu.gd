@@ -53,6 +53,16 @@ func _on_swap_rule_button_pressed() -> void:
 		GlobalSignals.swap_rule_toggled.emit()
 		%SwapRule.frame = 1
 
+func _on_show_regions_button_pressed() -> void:
+	if Settings.show_regions:
+		Settings.show_regions = false
+		GlobalSignals.show_regions_toggled.emit()
+		%ShowRegions.frame = 0
+	else:
+		Settings.show_regions = true
+		GlobalSignals.show_regions_toggled.emit()
+		%ShowRegions.frame = 1
+
 func _on_language_check_button_pressed(language_string) -> void:
 	GlobalSignals.change_language.emit(language_string)
 	var pressed_button = language_order_dictionary.get(language_string)

@@ -507,8 +507,8 @@ z_index = 3
 script = ExtResource("19_gqmmt")
 
 [node name="Background" type="MeshInstance2D" parent="OptionMenu" unique_id=1098367413]
-position = Vector2(0, 50)
-scale = Vector2(600, 400)
+position = Vector2(0, 42.999977)
+scale = Vector2(800, 526)
 mesh = SubResource("QuadMesh_eb6dy")
 texture = ExtResource("9_choun")
 
@@ -516,10 +516,10 @@ texture = ExtResource("9_choun")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -300.0
-offset_top = -150.0
-offset_right = 300.0
-offset_bottom = 32.0
+offset_left = -400.0
+offset_top = -220.0
+offset_right = 400.0
+offset_bottom = -38.0
 grow_horizontal = 2
 alignment = 1
 
@@ -534,17 +534,17 @@ vertical_alignment = 1
 
 [node name="CloseButton" type="Button" parent="OptionMenu" unique_id=998960323]
 z_index = 3
-offset_left = 178.0
-offset_top = -95.5
-offset_right = 250.0
-offset_bottom = -23.5
+offset_left = 289.0
+offset_top = -165.0
+offset_right = 361.0
+offset_bottom = -93.0
 icon = ExtResource("10_eb6dy")
 
 [node name="OptionsList" type="VBoxContainer" parent="OptionMenu" unique_id=1279274092]
-offset_left = -300.0
-offset_top = -28.0
-offset_right = 300.0
-offset_bottom = 250.0
+offset_left = -400.0
+offset_top = -38.0
+offset_right = 400.0
+offset_bottom = 306.0
 alignment = 1
 
 [node name="SelectLanguage" type="HBoxContainer" parent="OptionMenu/OptionsList" unique_id=1305458686]
@@ -564,7 +564,7 @@ layout_mode = 2
 [node name="OptionName" type="Label" parent="OptionMenu/OptionsList/SelectLanguage" unique_id=181696083]
 custom_minimum_size = Vector2(425, 0)
 layout_mode = 2
-size_flags_horizontal = 2
+size_flags_horizontal = 3
 theme = ExtResource("4_tefeu")
 text = "SELECT_LANGUAGE_TEXT"
 label_settings = ExtResource("8_muem4")
@@ -603,7 +603,7 @@ layout_mode = 2
 [node name="OptionName" type="Label" parent="OptionMenu/OptionsList/SwapRule" unique_id=775322150]
 custom_minimum_size = Vector2(425, 0)
 layout_mode = 2
-size_flags_horizontal = 2
+size_flags_horizontal = 3
 theme = ExtResource("4_tefeu")
 text = "SWAP_RULE_TEXT"
 label_settings = ExtResource("8_muem4")
@@ -628,6 +628,50 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Spacer3" type="Control" parent="OptionMenu/OptionsList/SwapRule" unique_id=1442895519]
+layout_mode = 2
+
+[node name="ShowRegions" type="HBoxContainer" parent="OptionMenu/OptionsList" unique_id=1702380360]
+layout_mode = 2
+theme_override_constants/separation = 13
+alignment = 2
+
+[node name="Spacer4" type="Control" parent="OptionMenu/OptionsList/ShowRegions" unique_id=1161354449]
+layout_mode = 2
+
+[node name="Spacer5" type="Control" parent="OptionMenu/OptionsList/ShowRegions" unique_id=1889976635]
+layout_mode = 2
+
+[node name="Spacer6" type="Control" parent="OptionMenu/OptionsList/ShowRegions" unique_id=1463640404]
+layout_mode = 2
+
+[node name="OptionName" type="Label" parent="OptionMenu/OptionsList/ShowRegions" unique_id=230731304]
+custom_minimum_size = Vector2(425, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_tefeu")
+text = "SHOW_REGION_TEXT"
+label_settings = ExtResource("8_muem4")
+vertical_alignment = 1
+clip_text = true
+
+[node name="ShowRegionsButton" type="Button" parent="OptionMenu/OptionsList/ShowRegions" unique_id=1474762884]
+z_index = 3
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+
+[node name="ShowRegions" type="Sprite2D" parent="OptionMenu/OptionsList/ShowRegions/ShowRegionsButton" unique_id=1473873366]
+unique_name_in_owner = true
+position = Vector2(36, 36)
+texture = ExtResource("20_yc10j")
+hframes = 2
+
+[node name="Spacer" type="Control" parent="OptionMenu/OptionsList/ShowRegions" unique_id=693715428]
+layout_mode = 2
+
+[node name="Spacer2" type="Control" parent="OptionMenu/OptionsList/ShowRegions" unique_id=780157363]
+layout_mode = 2
+
+[node name="Spacer3" type="Control" parent="OptionMenu/OptionsList/ShowRegions" unique_id=758418733]
 layout_mode = 2
 
 [node name="BottomRow" type="HBoxContainer" parent="OptionMenu/OptionsList" unique_id=1633378438]
@@ -657,8 +701,8 @@ text = "EXIT_APPLICATION"
 unique_name_in_owner = true
 visible = false
 z_index = 4
-position = Vector2(0, 50)
-scale = Vector2(600, 400)
+position = Vector2(0, 42.99999)
+scale = Vector2(800, 526)
 mesh = SubResource("QuadMesh_dp3eg")
 texture = ExtResource("2_jbj1t")
 
@@ -670,10 +714,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -150.0
-offset_right = 300.0
-offset_bottom = 250.0
+offset_left = -400.0
+offset_top = -220.0
+offset_right = 400.0
+offset_bottom = 306.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -881,6 +925,7 @@ size_flags_horizontal = 3
 [connection signal="pressed" from="OptionMenu/CloseButton" to="OptionMenu" method="_on_close_button_pressed"]
 [connection signal="pressed" from="OptionMenu/OptionsList/SelectLanguage/LanguageButton" to="OptionMenu" method="_on_language_button_pressed"]
 [connection signal="pressed" from="OptionMenu/OptionsList/SwapRule/SwapRuleButton" to="OptionMenu" method="_on_swap_rule_button_pressed"]
+[connection signal="pressed" from="OptionMenu/OptionsList/ShowRegions/ShowRegionsButton" to="OptionMenu" method="_on_show_regions_button_pressed"]
 [connection signal="pressed" from="OptionMenu/OptionsList/BottomRow/SaveButton" to="OptionMenu" method="_on_save_button_pressed"]
 [connection signal="pressed" from="OptionMenu/OptionsList/BottomRow/ExitButton" to="OptionMenu" method="_on_exit_button_pressed"]
 [connection signal="pressed" from="OptionMenu/LanguageMenu/LanguageCloseButton" to="OptionMenu" method="_on_language_close_button_pressed"]

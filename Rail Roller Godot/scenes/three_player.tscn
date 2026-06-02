@@ -223,11 +223,15 @@ offset_top = 364.0
 offset_right = 890.0
 offset_bottom = 441.0
 theme = ExtResource("6_gyv5h")
-text = "1"
 script = ExtResource("11_7o3hj")
 action = "Player1"
 player = 1
 metadata/_custom_type_script = "uid://b3g1b84tyasuw"
+
+[node name="PlayerButtonMasker1" type="BoxContainer" parent="Player1/SetupInterface1" unique_id=1205430234]
+visible = false
+offset_right = 960.0
+offset_bottom = 540.0
 
 [node name="StartButtonAnchor1" type="Node2D" parent="Player1/SetupInterface1" unique_id=1586223699]
 position = Vector2(480, 270)
@@ -516,11 +520,15 @@ offset_top = 364.0
 offset_right = 890.0
 offset_bottom = 441.0
 theme = ExtResource("6_gyv5h")
-text = "2"
 script = ExtResource("11_7o3hj")
 action = "Player2"
 player = 2
 metadata/_custom_type_script = "uid://b3g1b84tyasuw"
+
+[node name="PlayerButtonMasker2" type="BoxContainer" parent="Player2/SetupInterface2" unique_id=170430577]
+visible = false
+offset_right = 960.0
+offset_bottom = 540.0
 
 [node name="StartButtonAnchor2" type="Node2D" parent="Player2/SetupInterface2" unique_id=1426985781]
 position = Vector2(480, 270)
@@ -809,11 +817,15 @@ offset_top = 364.0
 offset_right = 890.0
 offset_bottom = 441.0
 theme = ExtResource("6_gyv5h")
-text = "3"
 script = ExtResource("11_7o3hj")
 action = "Player3"
 player = 3
 metadata/_custom_type_script = "uid://b3g1b84tyasuw"
+
+[node name="PlayerButtonMasker3" type="BoxContainer" parent="Player3/SetupInterface3" unique_id=1167924968]
+visible = false
+offset_right = 960.0
+offset_bottom = 540.0
 
 [node name="StartButtonAnchor3" type="Node2D" parent="Player3/SetupInterface3" unique_id=317067641]
 position = Vector2(480, 270)
