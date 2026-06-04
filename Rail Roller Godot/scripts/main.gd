@@ -125,6 +125,8 @@ func _on_load_game() -> void:
 			%MainUnfocusMask.hide()
 			%LoadMenu.hide()
 			%MainButtonMasker.show()
+			%OptionMenu._on_start_pre_game()
+			%OptionMenu._on_start_game()
 			move_child(%OptionMenu, 8)
 		3:
 			SaveLoad.loading = true
@@ -134,6 +136,8 @@ func _on_load_game() -> void:
 			%MainUnfocusMask.hide()
 			%LoadMenu.hide()
 			%MainButtonMasker.show()
+			%OptionMenu._on_start_pre_game()
+			%OptionMenu._on_start_game()
 			move_child(%OptionMenu, 8)
 		4:
 			SaveLoad.loading = true
@@ -143,6 +147,8 @@ func _on_load_game() -> void:
 			%MainUnfocusMask.hide()
 			%LoadMenu.hide()
 			%MainButtonMasker.show()
+			%OptionMenu._on_start_pre_game()
+			%OptionMenu._on_start_game()
 			move_child(%OptionMenu, 8)
 		5:
 			SaveLoad.loading = true
@@ -152,6 +158,8 @@ func _on_load_game() -> void:
 			%MainUnfocusMask.hide()
 			%LoadMenu.hide()
 			%MainButtonMasker.show()
+			%OptionMenu._on_start_pre_game()
+			%OptionMenu._on_start_game()
 			move_child(%OptionMenu, 8)
 		6:
 			SaveLoad.loading = true
@@ -161,6 +169,8 @@ func _on_load_game() -> void:
 			%MainUnfocusMask.hide()
 			%LoadMenu.hide()
 			%MainButtonMasker.show()
+			%OptionMenu._on_start_pre_game()
+			%OptionMenu._on_start_game()
 			move_child(%OptionMenu, 8)
 		_:
 			print("load formatting error: cannot read number of players")
