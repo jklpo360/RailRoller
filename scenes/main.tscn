@@ -257,24 +257,20 @@ vertical_alignment = 1
 
 [node name="RegionMenu" type="Node2D" parent="." unique_id=343544992]
 unique_name_in_owner = true
+visible = false
 z_index = 2
+z_as_relative = false
 script = ExtResource("3_4dcsq")
 
-[node name="RegionCanvas" type="CanvasLayer" parent="RegionMenu" unique_id=211996214]
-unique_name_in_owner = true
-layer = 3
-visible = false
-follow_viewport_enabled = true
-
-[node name="RegionMenuBackground" type="MeshInstance2D" parent="RegionMenu/RegionCanvas" unique_id=1500180093]
+[node name="RegionMenuBackground" type="MeshInstance2D" parent="RegionMenu" unique_id=1500180093]
 position = Vector2(0, -100)
 scale = Vector2(960, -540)
 mesh = SubResource("QuadMesh_1gr3v")
 texture = ExtResource("10_dp3eg")
 
-[node name="Text" type="Node2D" parent="RegionMenu/RegionCanvas" unique_id=1078063605]
+[node name="Text" type="Node2D" parent="RegionMenu" unique_id=1078063605]
 
-[node name="TopText" type="Label" parent="RegionMenu/RegionCanvas/Text" unique_id=367731784]
+[node name="TopText" type="Label" parent="RegionMenu/Text" unique_id=367731784]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -294,9 +290,9 @@ vertical_alignment = 1
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="Buttons" type="Node2D" parent="RegionMenu/RegionCanvas" unique_id=2004438241]
+[node name="Buttons" type="Node2D" parent="RegionMenu" unique_id=2004438241]
 
-[node name="NorthWest" type="Button" parent="RegionMenu/RegionCanvas/Buttons" unique_id=883643909]
+[node name="NorthWest" type="Button" parent="RegionMenu/Buttons" unique_id=883643909]
 offset_left = -444.0
 offset_top = -141.0
 offset_right = -251.0
@@ -310,7 +306,7 @@ focus_previous = NodePath("../SouthEast")
 theme = ExtResource("12_0ld40")
 text = "North West"
 
-[node name="Plains" type="Button" parent="RegionMenu/RegionCanvas/Buttons" unique_id=334680566]
+[node name="Plains" type="Button" parent="RegionMenu/Buttons" unique_id=334680566]
 offset_left = -212.0
 offset_top = -141.0
 offset_right = -19.0
@@ -324,7 +320,7 @@ focus_previous = NodePath("../NorthWest")
 theme = ExtResource("12_0ld40")
 text = "Plains"
 
-[node name="NorthCentral" type="Button" parent="RegionMenu/RegionCanvas/Buttons" unique_id=1926568153]
+[node name="NorthCentral" type="Button" parent="RegionMenu/Buttons" unique_id=1926568153]
 offset_left = 19.0
 offset_top = -142.0
 offset_right = 212.0
@@ -338,7 +334,7 @@ focus_previous = NodePath("../Plains")
 theme = ExtResource("12_0ld40")
 text = "North Central"
 
-[node name="NorthEast" type="Button" parent="RegionMenu/RegionCanvas/Buttons" unique_id=288404808]
+[node name="NorthEast" type="Button" parent="RegionMenu/Buttons" unique_id=288404808]
 offset_left = 250.0
 offset_top = -142.0
 offset_right = 443.0
@@ -352,7 +348,7 @@ focus_previous = NodePath("../NorthCentral")
 theme = ExtResource("12_0ld40")
 text = "North East"
 
-[node name="SouthWest" type="Button" parent="RegionMenu/RegionCanvas/Buttons" unique_id=684326299]
+[node name="SouthWest" type="Button" parent="RegionMenu/Buttons" unique_id=684326299]
 offset_left = -328.0
 offset_top = 5.0
 offset_right = -135.0
@@ -366,7 +362,7 @@ focus_previous = NodePath("../SouthCentral")
 theme = ExtResource("12_0ld40")
 text = "South West"
 
-[node name="SouthCentral" type="Button" parent="RegionMenu/RegionCanvas/Buttons" unique_id=1933140721]
+[node name="SouthCentral" type="Button" parent="RegionMenu/Buttons" unique_id=1933140721]
 offset_left = -96.0
 offset_top = 5.0
 offset_right = 97.0
@@ -380,7 +376,7 @@ focus_previous = NodePath("../SouthWest")
 theme = ExtResource("12_0ld40")
 text = "South Central"
 
-[node name="SouthEast" type="Button" parent="RegionMenu/RegionCanvas/Buttons" unique_id=2132018507]
+[node name="SouthEast" type="Button" parent="RegionMenu/Buttons" unique_id=2132018507]
 offset_left = 135.0
 offset_top = 4.0
 offset_right = 328.0
@@ -394,7 +390,7 @@ focus_previous = NodePath("../SouthCentral")
 theme = ExtResource("12_0ld40")
 text = "South East"
 
-[node name="Minimize" type="Button" parent="RegionMenu/RegionCanvas/Buttons" unique_id=1507162801]
+[node name="Minimize" type="Button" parent="RegionMenu/Buttons" unique_id=1507162801]
 clip_contents = true
 offset_left = 360.0
 offset_top = -320.0
@@ -909,14 +905,14 @@ size_flags_horizontal = 3
 [connection signal="pressed" from="PlayerNumberMenu/NumPlayersCanvas/5" to="PlayerNumberMenu" method="_on_5_pressed"]
 [connection signal="pressed" from="PlayerNumberMenu/NumPlayersCanvas/6" to="PlayerNumberMenu" method="_on_6_pressed"]
 [connection signal="pressed" from="PlayerNumberMenu/NumPlayersCanvas/x" to="PlayerNumberMenu" method="_on_x_pressed"]
-[connection signal="pressed" from="RegionMenu/RegionCanvas/Buttons/NorthWest" to="RegionMenu" method="_on_north_west_pressed"]
-[connection signal="pressed" from="RegionMenu/RegionCanvas/Buttons/Plains" to="RegionMenu" method="_on_plains_pressed"]
-[connection signal="pressed" from="RegionMenu/RegionCanvas/Buttons/NorthCentral" to="RegionMenu" method="_on_north_central_pressed"]
-[connection signal="pressed" from="RegionMenu/RegionCanvas/Buttons/NorthEast" to="RegionMenu" method="_on_north_east_pressed"]
-[connection signal="pressed" from="RegionMenu/RegionCanvas/Buttons/SouthWest" to="RegionMenu" method="_on_south_west_pressed"]
-[connection signal="pressed" from="RegionMenu/RegionCanvas/Buttons/SouthCentral" to="RegionMenu" method="_on_south_central_pressed"]
-[connection signal="pressed" from="RegionMenu/RegionCanvas/Buttons/SouthEast" to="RegionMenu" method="_on_south_east_pressed"]
-[connection signal="pressed" from="RegionMenu/RegionCanvas/Buttons/Minimize" to="RegionMenu" method="_on_minimize_pressed"]
+[connection signal="pressed" from="RegionMenu/Buttons/NorthWest" to="RegionMenu" method="_on_north_west_pressed"]
+[connection signal="pressed" from="RegionMenu/Buttons/Plains" to="RegionMenu" method="_on_plains_pressed"]
+[connection signal="pressed" from="RegionMenu/Buttons/NorthCentral" to="RegionMenu" method="_on_north_central_pressed"]
+[connection signal="pressed" from="RegionMenu/Buttons/NorthEast" to="RegionMenu" method="_on_north_east_pressed"]
+[connection signal="pressed" from="RegionMenu/Buttons/SouthWest" to="RegionMenu" method="_on_south_west_pressed"]
+[connection signal="pressed" from="RegionMenu/Buttons/SouthCentral" to="RegionMenu" method="_on_south_central_pressed"]
+[connection signal="pressed" from="RegionMenu/Buttons/SouthEast" to="RegionMenu" method="_on_south_east_pressed"]
+[connection signal="pressed" from="RegionMenu/Buttons/Minimize" to="RegionMenu" method="_on_minimize_pressed"]
 [connection signal="response" from="LoadMenu" to="." method="_on_load_menu_response"]
 [connection signal="pressed" from="LoadMenu/CloseButton" to="LoadMenu" method="_on_close_button_pressed"]
 [connection signal="pressed" from="LoadMenu/SaveMenu/Row1/LoadButton" to="LoadMenu" method="_on_load_button_pressed"]

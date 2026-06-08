@@ -899,8 +899,12 @@ func toggle_ready(player):
 func is_portland(city: String) -> bool:
 	return city == "PORTLAND"
 
-func parenthesize(region: String) -> String:
-	return str("(", region, ")")
+func parenthesize(region) -> String:
+	match region:
+		0:
+			return ""
+		_:
+			return str("(", region, ")")
 
 func swap_home_city(player):
 	var index = player - 1
@@ -1034,7 +1038,7 @@ func _on_swap_rule_toggled() -> void:
 			hide_swap_buttons()
 
 func _on_show_regions_toggled() -> void:
-	if in_game:
+	if game_displays[0].visible:
 		if Settings.show_regions:
 			for i in range(NUM_PLAYERS):
 				old_destination_text_regions[i].text = parenthesize(old_regions[i])

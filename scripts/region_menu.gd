@@ -17,48 +17,48 @@ func _ready():
 	GlobalSignals.exit_game.connect(_on_exit_game, CONNECT_PERSIST)
 
 func _on_choose_region(player):
-	%RegionCanvas.show()
+	show()
 	current_player = player
 
 func _on_north_west_pressed() -> void:
 	if not minimized:
-		%RegionCanvas.hide()
+		hide()
 		GlobalSignals.return_region.emit("NW", current_player)
 
 
 func _on_plains_pressed() -> void:
 	if not minimized:
-		%RegionCanvas.hide()
+		hide()
 		GlobalSignals.return_region.emit("P", current_player)
 
 
 func _on_north_central_pressed() -> void:
 	if not minimized:
-		%RegionCanvas.hide()
+		hide()
 		GlobalSignals.return_region.emit("NC", current_player)
 
 
 func _on_north_east_pressed() -> void:
 	if not minimized:
-		%RegionCanvas.hide()
+		hide()
 		GlobalSignals.return_region.emit("NE", current_player)
 
 
 func _on_south_west_pressed() -> void:
 	if not minimized:
-		%RegionCanvas.hide()
+		hide()
 		GlobalSignals.return_region.emit("SW", current_player)
 
 
 func _on_south_central_pressed() -> void:
 	if not minimized:
-		%RegionCanvas.hide()
+		hide()
 		GlobalSignals.return_region.emit("SC", current_player)
 
 
 func _on_south_east_pressed() -> void:
 	if not minimized:
-		%RegionCanvas.hide()
+		hide()
 		GlobalSignals.return_region.emit("SE", current_player)
 
 var minimized = false
@@ -83,16 +83,16 @@ func _process(delta: float) -> void:
 			alpha += delta * animation_speed
 			if alpha > 1:
 				alpha = 1
-			%RegionCanvas.scale = lerp(starting_scale, ending_scale, alpha)
-			%RegionCanvas.offset = lerp(starting_offset, ending_offset, alpha)
+			scale = lerp(starting_scale, ending_scale, alpha)
+			position = lerp(starting_offset, ending_offset, alpha)
 	else:
 		if alpha > 0:
 			alpha -= delta * animation_speed
 			if alpha < 0:
 				alpha = 0
-			%RegionCanvas.scale = lerp(starting_scale, ending_scale, alpha)
-			%RegionCanvas.offset = lerp(starting_offset, ending_offset, alpha)
+			scale = lerp(starting_scale, ending_scale, alpha)
+			position = lerp(starting_offset, ending_offset, alpha)
 		
 
 func _on_exit_game() -> void:
-	%RegionCanvas.hide()
+	hide()
