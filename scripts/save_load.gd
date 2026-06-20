@@ -1,6 +1,6 @@
 extends Node
 
-const save_location = "user://SaveFile.json"
+var save_location = "user://SaveFile.json"
 var saved = false
 var loading = false
 var save_name = ""
@@ -8,6 +8,10 @@ var save_name = ""
 var save_contents: Dictionary = {}
 
 func _ready():
+	print(save_location)
+	if not OS.is_debug_build():
+		save_location = OS.get_executable_path().get_base_dir().path_join("SaveFile.json")
+	print(save_location)
 	check_for_save()
 
 func check_for_save():

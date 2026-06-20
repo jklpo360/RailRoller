@@ -17,7 +17,7 @@ func _on_player_number_menu_response(response) -> void:
 	else:
 		GlobalSignals.start_pre_game.emit()
 		if response == 2:
-			add_child(load("res://scenes/two_player.tscn").instantiate())
+			add_child(load("res://scenes/pc/two_player.tscn").instantiate())
 			in_menu = false
 			in_game = true
 			%MainUnfocusMask.hide()
@@ -25,7 +25,7 @@ func _on_player_number_menu_response(response) -> void:
 			%MainButtonMasker.show()
 			move_child(%OptionMenu, 8)
 		elif response == 3:
-			add_child(load("res://scenes/three_player.tscn").instantiate())
+			add_child(load("res://scenes/pc/three_player.tscn").instantiate())
 			in_menu = false
 			in_game = true
 			%MainUnfocusMask.hide()
@@ -33,7 +33,7 @@ func _on_player_number_menu_response(response) -> void:
 			%MainButtonMasker.show()
 			move_child(%OptionMenu, 8)
 		elif response == 4:
-			add_child(load("res://scenes/four_player.tscn").instantiate())
+			add_child(load("res://scenes/pc/four_player.tscn").instantiate())
 			in_menu = false
 			in_game = true
 			%MainUnfocusMask.hide()
@@ -41,7 +41,7 @@ func _on_player_number_menu_response(response) -> void:
 			%MainButtonMasker.show()
 			move_child(%OptionMenu, 8)
 		elif response == 5:
-			add_child(load("res://scenes/five_player.tscn").instantiate())
+			add_child(load("res://scenes/pc/five_player.tscn").instantiate())
 			in_menu = false
 			in_game = true
 			%MainUnfocusMask.hide()
@@ -49,7 +49,7 @@ func _on_player_number_menu_response(response) -> void:
 			%MainButtonMasker.show()
 			move_child(%OptionMenu, 8)
 		elif response == 6:
-			add_child(load("res://scenes/six_player.tscn").instantiate())
+			add_child(load("res://scenes/pc/six_player.tscn").instantiate())
 			in_menu = false
 			in_game = true
 			%MainUnfocusMask.hide()
@@ -119,7 +119,7 @@ func _on_load_game() -> void:
 	match num_players:
 		2:
 			SaveLoad.loading = true
-			add_child(load("res://scenes/two_player.tscn").instantiate())
+			add_child(load("res://scenes/pc/two_player.tscn").instantiate())
 			in_menu = false
 			in_game = true
 			%MainUnfocusMask.hide()
@@ -130,7 +130,7 @@ func _on_load_game() -> void:
 			move_child(%OptionMenu, 8)
 		3:
 			SaveLoad.loading = true
-			add_child(load("res://scenes/three_player.tscn").instantiate())
+			add_child(load("res://scenes/pc/three_player.tscn").instantiate())
 			in_menu = false
 			in_game = true
 			%MainUnfocusMask.hide()
@@ -141,7 +141,7 @@ func _on_load_game() -> void:
 			move_child(%OptionMenu, 8)
 		4:
 			SaveLoad.loading = true
-			add_child(load("res://scenes/four_player.tscn").instantiate())
+			add_child(load("res://scenes/pc/four_player.tscn").instantiate())
 			in_menu = false
 			in_game = true
 			%MainUnfocusMask.hide()
@@ -152,7 +152,7 @@ func _on_load_game() -> void:
 			move_child(%OptionMenu, 8)
 		5:
 			SaveLoad.loading = true
-			add_child(load("res://scenes/five_player.tscn").instantiate())
+			add_child(load("res://scenes/pc/five_player.tscn").instantiate())
 			in_menu = false
 			in_game = true
 			%MainUnfocusMask.hide()
@@ -163,7 +163,7 @@ func _on_load_game() -> void:
 			move_child(%OptionMenu, 8)
 		6:
 			SaveLoad.loading = true
-			add_child(load("res://scenes/six_player.tscn").instantiate())
+			add_child(load("res://scenes/pc/six_player.tscn").instantiate())
 			in_menu = false
 			in_game = true
 			%MainUnfocusMask.hide()
