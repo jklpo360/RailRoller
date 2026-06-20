@@ -59,7 +59,7 @@ The once in the pre-game menu or main assistant, the options menu will have a 'Q
 When pressed, the assistant will immediately return back to the main menu without saving progress.
 From the main menu, the 'Exit' Button can be pressed to close the assistant.
 
-[modernRailRoller]: https://github.com/jklpo360/RailRoller/raw/main/images/modernrailroller.png "Example of Rail Roller in action"
+[modernRailRoller]: https://github.com/jklpo360/RailRoller/raw/main/images/modernrailroller.PNG "Example of Rail Roller in action"
 [mainMenu]: https://github.com/jklpo360/RailRoller/raw/main/images/mainmenu.jpg "Main menu of Rail Roller"
 [preGameMenu]: https://github.com/jklpo360/RailRoller/raw/main/images/pregamemenu.jpg "Pre-game setup menu"
 [optionMenu]: https://github.com/jklpo360/RailRoller/raw/main/images/optionmenu.jpg "Options menu"
