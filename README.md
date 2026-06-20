@@ -4,7 +4,7 @@ Rail Roller is a comprehensive tabletop assistant to the board game Rail Baron.
 
 ## Installation
 
-Use the [web version]() or download from the [github page](https://github.com/jklpo360/RailRoller/releases/) for releases on every platform.
+Download the latest [Release](https://github.com/jklpo360/RailRoller/releases/), unpack the compressed folder, and run the RailRoller executable.
 
 ## Getting started
 
